@@ -36,10 +36,20 @@ namespace GazeToolBar
         //Fixation variance threshold
         double xFixationThreashold = .9;
         double yFixationThreashold = .3;
+        
+        //Adjustments to fixation detection, where EyeX Y-Axis data stream becomes unstable when a user is gazing at the top edge of the screen.
+        //these settings work well for 21 inch 1680x1050 res screen
+        double yFixationCutOffThreasholdWhenGazeAtTopOfScreen = 100;
+        double yFixationScreenBoundary;
+        double screenBoudaryCutOffPercent = 15;
+
+        public bool ZoomerFixation {get; set;}
 
         //ring buffer arrays.
         double[] xBuffer;
         double[] yBuffer;
+
+
 
         EFixationStreamEventType fixationState;
 
@@ -53,6 +63,8 @@ namespace GazeToolBar
         //Constructor
         public CustomFixationDataStream(FormsEyeXHost EyeXHost)
         {
+            //Calculate the amount of pixels away from the top of the screen to set cut of for top of screen threshold adjustment.
+            yFixationScreenBoundary = ValueNeverChange.PRIMARY_SCREEN.Height * (screenBoudaryCutOffPercent / 100);
 
             gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             //Create gate points event handler delegate
@@ -66,7 +78,7 @@ namespace GazeToolBar
             yBuffer = new double[bufferSize];
 
             fixationState = EFixationStreamEventType.Waiting;
-
+            ZoomerFixation = false;
         }
 
 
@@ -77,13 +89,11 @@ namespace GazeToolBar
         /// <param name="currentGaze"></param>
         private void updateGazeCoodinates(object o, GazePointEventArgs currentGaze)
         {
-
             addCoordinateToBuffer(currentGaze.X, currentGaze.Y);
 
             gPAverage = average();
 
             generateFixationState(calculateVariance(), currentGaze.Timestamp);
-    
         }
 
 
@@ -94,17 +104,21 @@ namespace GazeToolBar
         /// <param name="timestamp"></param>
           private void generateFixationState(GazePoint gazeVariation, double timestamp)
         {
-              //Set pointer to next fixation data bucket.
-            CustomFixationEventArgs cpe = null;
+           //Set pointer to next fixation data bucket.
+           CustomFixationEventArgs cpe = null;
 
+           //check where users gaze is, if it is less than yFixationScreenBoundary set yAdjustedThreashold to yFixationCutOffThreasholdWhenGazeAtTopOfScreen
+           //To compensate for EyeX's poor accuracy when gazing near top edge of screen.
+           double yAdjustedThreashold = gPAverage.y < yFixationScreenBoundary && !ZoomerFixation ? yFixationCutOffThreasholdWhenGazeAtTopOfScreen : yFixationThreashold;
+            
 
               //Check gaze data variation, current state and create appropriate event. Then set the CustomfixationDetectionStreams state.
-            if (fixationState == EFixationStreamEventType.Waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yFixationThreashold)
+            if (fixationState == EFixationStreamEventType.Waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yAdjustedThreashold)
             {
                 cpe = new CustomFixationEventArgs(EFixationStreamEventType.Start, timestamp, gPAverage.x, gPAverage.y);
                 fixationState = EFixationStreamEventType.Middle;
             }
-            else if (fixationState == EFixationStreamEventType.Middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yFixationThreashold)
+            else if (fixationState == EFixationStreamEventType.Middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yAdjustedThreashold)
             {
                 cpe = new CustomFixationEventArgs(EFixationStreamEventType.End, timestamp, gPAverage.x, gPAverage.y);
                 fixationState = EFixationStreamEventType.Waiting;
