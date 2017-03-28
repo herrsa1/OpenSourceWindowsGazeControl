@@ -124,6 +124,7 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.shortCutKeyPressed)
                     {
+                        //if the short cut key flag is raised go straight to the zooming state
                         currentState = SystemState.Zooming;
                     }
                     break;
@@ -141,6 +142,7 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.timeOut)
                     {
+                        //on time out reset all flags and go back to waiting.
                         EnterWaitState();
                         SystemFlags.timeOut = false;
                     }
@@ -180,6 +182,7 @@ namespace GazeToolBar
                     if (SystemFlags.scrolling)
                     {
                         currentState = SystemState.ScrollWait;
+                        //go to action
                     }
                     else
                     {
@@ -307,7 +310,9 @@ namespace GazeToolBar
                         }
                         else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                         {
+                            //set state to scroll wait, system waits while user scrolls
                             SystemFlags.currentState = SystemState.ScrollWait;
+                            //until scroling is set to false by scroll control instance(it detects a user looking outside the screen bounds)
                             SystemFlags.scrolling = true;
                             VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                             scrollWorker.StartScroll();
