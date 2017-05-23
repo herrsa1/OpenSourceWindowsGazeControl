@@ -16,6 +16,21 @@ namespace Karna.Magnification
         private System.Windows.Forms.Timer timer;
         public Point FixationPoint { get; set; }
 
+        public float Magnification
+        {
+            get { return magnification; }
+            set
+            {
+                if (magnification != value)
+                {
+                    magnification = value;
+                    // Set the magnification factor.
+                    Transformation matrix = new Transformation(magnification);
+                    NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
+                }
+            }
+        }
+
         public Magnifier(Form form)
         {
             if (form == null)
@@ -82,7 +97,6 @@ namespace Karna.Magnification
 
             RECT sourceRect = new RECT();
 
-            //NativeMethods.GetCursorPos(ref mousePoint);
 
             int width = (int)((magWindowRect.right - magWindowRect.left) / magnification);
             int height = (int)((magWindowRect.bottom - magWindowRect.top) / magnification);
@@ -133,21 +147,6 @@ namespace Karna.Magnification
 
             // Force redraw.
             NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
-        }
-
-        public float Magnification
-        {
-            get { return magnification; }
-            set
-            {
-                if (magnification != value)
-                {
-                    magnification = value;
-                    // Set the magnification factor.
-                    Transformation matrix = new Transformation(magnification);
-                    NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
-                }
-            }
         }
 
         protected void SetupMagnifier()
