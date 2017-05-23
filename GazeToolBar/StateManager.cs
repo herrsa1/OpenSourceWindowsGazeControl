@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Karna.Magnification;
 
 namespace GazeToolBar
 {
@@ -42,8 +43,8 @@ namespace GazeToolBar
         FormsEyeXHost eyeXHost;
         bool cornerBool = false;
         bool edgeBool = false;
-
         ShortcutKeyWorker shortCutKeyWorker;
+        Magnifier magnifier;
         
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
@@ -53,7 +54,7 @@ namespace GazeToolBar
 
             SystemFlags.currentState = SystemState.Wait;
 
-            fixationWorker = new FixationDetection(eyeXHost);
+            fixationWorker = new FixationDetection(eyeXHost); // <-- will be implementing interface here to cater for alternative "zoom" functionality
 
             scrollWorker = new ScrollControl(200, 5, 50, 20, eyeXHost);
 
@@ -62,6 +63,8 @@ namespace GazeToolBar
             SystemFlags.hasSelectedButtonColourBeenReset = true;
 
             zoomer = new ZoomLens(fixationWorker, eyeXHost);
+
+            magnifier = new Magnifier(zoomer);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
@@ -207,8 +210,14 @@ namespace GazeToolBar
                         edgeBool = true;
                     }
 
-                    zoomer.TakeScreenShot();//This is taking the screenshot that will be zoomed in on
-                    zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
+                    //zoomer.TakeScreenShot();//This is taking the screenshot that will be zoomed in on
+                    //zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
+
+                    magnifier.FixationPoint = fixationPoint;
+                    zoomer.StartDrawTimer();
+                    zoomer.Show();
+
+
                     //disable neccesary flags
                     SystemFlags.gaze = false;
                     SystemFlags.fixationRunning = false;

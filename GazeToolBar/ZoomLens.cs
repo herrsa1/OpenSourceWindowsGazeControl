@@ -43,17 +43,14 @@ namespace GazeToolBar
 
             gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
         }
-        public void CreateZoomLens(Point FixationPoint)
+
+
+        public void StartDrawTimer()
         {
-            Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
-            this.Show();//make lens visible
-            offScreenGraphics.DrawImage(zoomedScreenshot, 0, 0, zoomedScreenshot.Width, zoomedScreenshot.Height);
-            this.TopMost = true;
-            Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
-            Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
             DrawTimer.Start();
-            Application.DoEvents();
         }
+
+
         //This method measures from each corner to the fixation point to determine if the fixation point is in a corner
         //if the user looked in a corner to returns the appropriate Corner enum or it returns a noCorner enum
         public Corner checkCorners(Point FixationPoint)
@@ -81,6 +78,8 @@ namespace GazeToolBar
             }
             return Corner.NoCorner;
         }
+
+
         //This method checks if the user looked near an edge of the screen and returns the appropriate enum
         public Edge checkEdge()
         {
@@ -103,6 +102,8 @@ namespace GazeToolBar
             }
             return edge;
         }
+
+
         //Once a corner is detected this method is used to position the form right up against the corner. This is to prevent the window from moving off-screen
         public void setZoomLensPositionCorner(Corner corner)
         {
@@ -126,6 +127,8 @@ namespace GazeToolBar
                     break;
             }
         }
+
+
         //If an edge is detected this method is called to position the zoomLens right up against an edge of the screen. 
         public void setZoomLensPositionEdge(Edge edge, Point fixationPoint)
         {
@@ -151,6 +154,8 @@ namespace GazeToolBar
                     break;
             }
         }
+
+
         //distance calculation from corner point to corner
         private int calculateCornerDistance(Point fixationPoint, Point corner)
         {
@@ -158,11 +163,14 @@ namespace GazeToolBar
             return returnInt;
         }
 
+
         public void determineDesktopLocation(Point FixationPoint)
         {
             this.DesktopLocation = new Point(FixationPoint.X - (this.Width / 2), FixationPoint.Y - (this.Height / 2));
             SetLensPoint(FixationPoint, Edge.NoEdge);
         }
+
+
         private int calculateLensPointX(int fixationX)
         {
             int x;
@@ -170,6 +178,8 @@ namespace GazeToolBar
             x = x + this.Size.Width / 4;
             return x;
         }
+
+
         private int calculateLensPointY(int fixationY)
         {
             int y;
@@ -177,6 +187,8 @@ namespace GazeToolBar
             y = y + this.Size.Height / 4;
             return y;
         }
+
+
         public void SetLensPoint(Point FixationPoint, Edge edge)//determines the location of the zoomed in screenshot
         {
             switch (edge)
@@ -203,45 +215,22 @@ namespace GazeToolBar
                     break;
             }
         }
+
+
         public void TakeScreenShot()
         {
             Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
             graphics.CopyFromScreen(lensPoint.X, lensPoint.Y, 0, 0, zoomSize, CopyPixelOperation.SourceCopy);
         }
+
+
         public void ResetZoomLens()
         {
             DrawTimer.Stop();
             this.Hide();
         }
-        //This method takes a point on the zoomed-in form and translates it to the equivalent desktop coordinates
-        public Point TranslateGazePoint(Point fixationPoint)
-        {
-            Point relativePoint = this.PointToClient(fixationPoint);//this gets the on form coordinates from the fixation point(which is screen coordinates)
-            //check to see if the user actually fixated on the ZoomLens
-            if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
-            {
-                return new Point(-1, -1);//If it is out of bound at all, this will return -1, -1. The zoom will be canceled
-            }
-            return TranslateToDesktop(relativePoint.X, relativePoint.Y);
-        }
-        private Point TranslateToDesktop(int x, int y)//This method translates on form coordinates to desktop coordinates
-        {
-            Point returnPoint = new Point();
 
-            int halfHeight = this.Width / 2;
-            int halfWidth = this.Height / 2;
-            int halfHeightDivZoom = halfHeight / ZOOMLEVEL;
-            int halfWidthDivZoom = halfWidth / ZOOMLEVEL;
 
-            int finalY = halfHeight - halfHeightDivZoom;
-            finalY = this.Top + finalY;
-            returnPoint.Y = finalY + (y / ZOOMLEVEL);
-
-            int finalX = halfWidth - halfWidthDivZoom;
-            finalX = this.Left + finalX;
-            returnPoint.X = finalX + (x / ZOOMLEVEL);
-            return returnPoint;
-        }
         //This method offsets the final fixation position calculations based on what edge has been detected.
         //Instead of zooming from the middle of the zoomlens, when an edge happens it zooms from the edge of the screen, so the final positon needs to be offset in order to
         //accurately click where the user was looking.
@@ -268,6 +257,8 @@ namespace GazeToolBar
             }
             return fixationPoint;
         }
+
+
         //this method is similar to the edge offset
         //it has to offset the final fixation value in by the X and the Y value to move the fixation into the corner.
         public Point cornerOffset(Corner corner, Point fixationPoint)
@@ -297,6 +288,7 @@ namespace GazeToolBar
             return fixationPoint;
         }
 
+
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
             offScreenGraphics.DrawImage(zoomedScreenshot, 0, 0, ZOOMLENS_SIZE, ZOOMLENS_SIZE);
@@ -305,5 +297,64 @@ namespace GazeToolBar
 
             mainCanvas.DrawImage(offScreenBitmap, 0, 0);
         }
+
+
+        //==============================================================
+        //
+        // Methods taken out from refactoring to use windows magnification api
+        // ( Native api calls done using C# wrapper -> Karna.magnification)
+        //
+        //
+
+
+
+        //public void CreateZoomLens(Point FixationPoint)
+        //{
+        //    Size zoomSize = new Size(this.Size.Width / 2, this.Size.Height / 2);
+        //    this.Show();//make lens visible
+        //    offScreenGraphics.DrawImage(zoomedScreenshot, 0, 0, zoomedScreenshot.Width, zoomedScreenshot.Height);
+        //    this.TopMost = true;
+        //    Console.WriteLine("ZoomLens.Bounds.X = " + this.Bounds.X);
+        //    Console.WriteLine("ZoomLens.Bounds.Y = " + this.Bounds.Y);
+        //    DrawTimer.Start();
+        //    Application.DoEvents();
+        //}
+
+
+        ////This method takes a point on the zoomed-in form and translates it to the equivalent desktop coordinates
+        //public Point TranslateGazePoint(Point fixationPoint)
+        //{
+        //    Point relativePoint = this.PointToClient(fixationPoint);//this gets the on form coordinates from the fixation point(which is screen coordinates)
+        //    //check to see if the user actually fixated on the ZoomLens
+        //    if (relativePoint.X < 0 || relativePoint.Y < 0 || relativePoint.X > this.Width || relativePoint.Y > this.Height)
+        //    {
+        //        return new Point(-1, -1);//If it is out of bound at all, this will return -1, -1. The zoom will be canceled
+        //    }
+        //    return TranslateToDesktop(relativePoint.X, relativePoint.Y);
+        //}
+
+
+
+        //private Point TranslateToDesktop(int x, int y)//This method translates on form coordinates to desktop coordinates
+        //{
+        //    Point returnPoint = new Point();
+
+        //    int halfHeight = this.Width / 2;
+        //    int halfWidth = this.Height / 2;
+        //    int halfHeightDivZoom = halfHeight / ZOOMLEVEL;
+        //    int halfWidthDivZoom = halfWidth / ZOOMLEVEL;
+
+        //    int finalY = halfHeight - halfHeightDivZoom;
+        //    finalY = this.Top + finalY;
+        //    returnPoint.Y = finalY + (y / ZOOMLEVEL);
+
+        //    int finalX = halfWidth - halfWidthDivZoom;
+        //    finalX = this.Left + finalX;
+        //    returnPoint.X = finalX + (x / ZOOMLEVEL);
+        //    return returnPoint;
+        //}
+
+
+
     }
 }
