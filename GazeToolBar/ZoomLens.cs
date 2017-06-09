@@ -41,7 +41,7 @@ namespace GazeToolBar
             graphics = Graphics.FromImage(zoomedScreenshot);
             this.FormBorderStyle = FormBorderStyle.None;//removes window borders from form
             fixdet = FixDet;
-            drawingForm = new DrawingForm(FixDet, this);
+            drawingForm = new DrawingForm(FixDet);
             //====================================================
             // This is for making form appear on top of window's menu
             TopMost = true;
@@ -202,12 +202,14 @@ namespace GazeToolBar
 
         public void Start()
         {
+            // Show the form that the user feedback image is drawn on
             drawingForm.Show();
             DrawTimer.Start();
         }
 
         public void ResetZoomLens()
         {
+            // Stop timer, and hide drawing form and zoom form
             DrawTimer.Stop();
             drawingForm.ClearForm();
             Hide();          
@@ -272,6 +274,7 @@ namespace GazeToolBar
 
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
+            // Show drawing form and tell him to draw
             drawingForm.Show();
             drawingForm.Draw();
         }

@@ -62,7 +62,10 @@ namespace GazeToolBar
 
             SystemFlags.hasSelectedButtonColourBeenReset = true;
 
+            // Instantiate the ZoomLens, this is the form that is given to magnifier
             zoomer = new ZoomLens(fixationWorker, eyeXHost);
+            // Instantiate the magnifier, this is Sam Medlocks refactored magnifier
+            // This calls the low-level API
             magnifier = new ZoomMagnifier(zoomer);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
@@ -211,7 +214,9 @@ namespace GazeToolBar
                         edgeBool = true;
                     }
 
+                    // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
+                    // This initiate's the timer for drawing of the user feedback image
                     zoomer.Start();
                     zoomer.Show();
 
@@ -230,6 +235,9 @@ namespace GazeToolBar
                     fixationPoint = fixationWorker.getXY();
 
                     zoomer.ResetZoomLens();//hide the lens
+                    //Set the magnification factor back to initial value
+                    //This is done so that a "dynamic zoom in" feature can be
+                    // implemented in the future
                     magnifier.ResetZoomValue();
 
                     //Checking if the user has zoomed in on an edge or a corner and offsetting the zoomed in click calculations to account for the
