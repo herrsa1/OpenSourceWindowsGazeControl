@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace Karna.Magnification
 {
 
-    internal static class NativeMethods
+    public static class NativeMethods
     {
 
         public static IntPtr HWND_TOPMOST = new IntPtr(-1);
@@ -89,7 +89,7 @@ namespace Karna.Magnification
         public const int SM_SWAPBUTTON = 0x17;
         public const int SM_XVIRTUALSCREEN = 0x4c;
         public const int SM_YVIRTUALSCREEN = 0x4d;
-        
+
         public const string WC_MAGNIFIER = "Magnifier";
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
@@ -128,7 +128,7 @@ namespace Karna.Magnification
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool InvalidateRect(IntPtr hWnd, IntPtr rect, [MarshalAs(UnmanagedType.Bool)] bool erase);
 
-        [DllImport("Magnification.dll", CallingConvention=CallingConvention.StdCall)]
+        [DllImport("Magnification.dll", CallingConvention = CallingConvention.StdCall)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool MagInitialize();
 

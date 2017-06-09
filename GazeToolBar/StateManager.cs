@@ -44,8 +44,8 @@ namespace GazeToolBar
         bool cornerBool = false;
         bool edgeBool = false;
         ShortcutKeyWorker shortCutKeyWorker;
-        Magnifier magnifier;
-        
+        //Magnifier magnifier;
+        ZoomMagnifier magnifier;
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
         {
@@ -54,7 +54,7 @@ namespace GazeToolBar
 
             SystemFlags.currentState = SystemState.Wait;
 
-            fixationWorker = new FixationDetection(eyeXHost); // <-- will be implementing interface here to cater for alternative "zoom" functionality
+            fixationWorker = new FixationDetection(eyeXHost);
 
             scrollWorker = new ScrollControl(200, 5, 50, 20, eyeXHost);
 
@@ -63,8 +63,7 @@ namespace GazeToolBar
             SystemFlags.hasSelectedButtonColourBeenReset = true;
 
             zoomer = new ZoomLens(fixationWorker, eyeXHost);
-
-            magnifier = new Magnifier(zoomer);
+            magnifier = new ZoomMagnifier(zoomer);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
             corner = new Corner();
@@ -90,6 +89,7 @@ namespace GazeToolBar
             SystemFlags.timeOut = false;
             fixationWorker.IsZoomerFixation(false);
             currentState = SystemState.Wait;
+            
         }
         //The update method is responsible for transitioning from state to state. Once a state is changed the action() method is run
         public void UpdateState()
@@ -191,6 +191,7 @@ namespace GazeToolBar
                     {
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
+
                     //zoomLens setup
                     zoomer.determineDesktopLocation(fixationPoint);
                     //checking if the user looked in a corner
@@ -210,30 +211,26 @@ namespace GazeToolBar
                         edgeBool = true;
                     }
 
-                    //zoomer.TakeScreenShot();//This is taking the screenshot that will be zoomed in on
-                    //zoomer.CreateZoomLens(fixationPoint);//create a zoom lens at this location
-
                     magnifier.FixationPoint = fixationPoint;
-                    zoomer.StartDrawTimer();
+                    zoomer.Start();
                     zoomer.Show();
 
-
-                    //disable neccesary flags
+                    //disable neccesary flags 
                     SystemFlags.gaze = false;
                     SystemFlags.fixationRunning = false;
                     break;
                 case SystemState.ZoomWait://waiting for user to fixate
                     if (!SystemFlags.fixationRunning)
-                    {                        
+                    {
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
                     break;
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
-
                     fixationPoint = fixationWorker.getXY();
+
                     zoomer.ResetZoomLens();//hide the lens
-                    fixationPoint = zoomer.TranslateGazePoint(fixationPoint);//translate the form coordinates to the desktop
+                    magnifier.ResetZoomValue();
 
                     //Checking if the user has zoomed in on an edge or a corner and offsetting the zoomed in click calculations to account for the
                     //different location of the screenshot

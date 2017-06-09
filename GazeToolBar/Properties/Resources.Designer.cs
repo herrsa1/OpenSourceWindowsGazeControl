@@ -63,6 +63,16 @@ namespace GazeToolBar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crosshair_1 {
+            get {
+                object obj = ResourceManager.GetObject("crosshair_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Double_Click_icon {
             get {
                 object obj = ResourceManager.GetObject("Double_Click_icon", resourceCulture);

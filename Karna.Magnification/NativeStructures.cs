@@ -7,7 +7,7 @@ using System.ComponentModel;
 namespace Karna.Magnification
 {
     // Magnifier Window Styles
-    internal enum MagnifierStyle : int
+    public enum MagnifierStyle : int
     {
         MS_SHOWMAGNIFIEDCURSOR = 0x0001,
         MS_CLIPAROUNDCURSOR = 0x0002,
@@ -15,14 +15,14 @@ namespace Karna.Magnification
     }
 
     // Filter Modes
-    internal enum FilterMode
+    public enum FilterMode
     {
         MW_FILTERMODE_EXCLUDE = 0,
         MW_FILTERMODE_INCLUDE = 1
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct Transformation
+    public struct Transformation
     {
         public float m00;
         public float m10;
@@ -44,7 +44,7 @@ namespace Karna.Magnification
     }
 
     [StructLayout(LayoutKind.Sequential)]
-    internal struct ColorEffect
+    public struct ColorEffect
     {
         public float transform00;
         public float transform10;
@@ -71,6 +71,11 @@ namespace Karna.Magnification
         public float transform42;
         public float transform43;
         public float transform44;
+
+        public static explicit operator ColorEffect(MagnifierStyle v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     /// <summary>
@@ -78,7 +83,7 @@ namespace Karna.Magnification
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "POINT"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
     [StructLayout(LayoutKind.Sequential)]
-    internal struct POINT
+    public struct POINT
     {
         /// <summary>
         /// The X coordinate of the point
@@ -112,7 +117,7 @@ namespace Karna.Magnification
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "RECT"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1034:NestedTypesShouldNotBeVisible")]
     [StructLayout(LayoutKind.Sequential)]
-    internal struct RECT
+    public struct RECT
     {
         /// <summary>
         /// Position of left edge
@@ -183,7 +188,7 @@ namespace Karna.Magnification
     /// </summary>
     [FlagsAttribute]
     [Description("Specifies the style of the window being created")]
-    internal enum WindowStyles : int
+    public enum WindowStyles : int
     {
         /// <summary>
         /// Creates an overlapped window. An overlapped window has a title bar and a border 
@@ -292,7 +297,7 @@ namespace Karna.Magnification
     ///Common window styles
     /// </summary>
     [Description("Common window styles")]
-    internal enum CommonWindowStyles : int
+    public enum CommonWindowStyles : int
     {
         /// <summary>
         ///Creates an overlapped window. An overlapped window has a title bar and a border. Same as the WS_OVERLAPPED style. 
@@ -327,7 +332,7 @@ namespace Karna.Magnification
     }
 
     [FlagsAttribute]
-    internal enum SetWindowPosFlags : int
+    public enum SetWindowPosFlags : int
     {
         SWP_NOSIZE = 1,
         SWP_NOMOVE = 2,
@@ -347,7 +352,7 @@ namespace Karna.Magnification
     /// </summary>
     [FlagsAttribute]
     [Description("Specifies the extended style of the window")]
-    internal enum ExtendedWindowStyles : int
+    public enum ExtendedWindowStyles : int
     {
         /// <summary>
         /// Creates a window that has a double border; the window can, optionally, 
@@ -395,7 +400,7 @@ namespace Karna.Magnification
         /// </summary>
         WS_EX_WINDOWEDGE = 0x00000100,
         /// <summary>
-        ///  Specifies that a window has a 3D look — that is, a border with a sunken edge. 
+        ///  Specifies that a window has a 3D look â€” that is, a border with a sunken edge. 
         /// </summary>
         WS_EX_CLIENTEDGE = 0x00000200,
         /// <summary>
@@ -470,7 +475,7 @@ namespace Karna.Magnification
     /// Common extended window styles
     /// </summary>
     [Description("Common extended window styles")]
-    internal enum CommonExtendedWindowStyles : int
+    public enum CommonExtendedWindowStyles : int
     {
         /// <summary>
         /// Combines the WS_EX_CLIENTEDGE and WS_EX_WINDOWEDGE styles.
@@ -490,7 +495,7 @@ namespace Karna.Magnification
     /// </summary>
     [FlagsAttribute]
     [Description("Layered window flags")]
-    internal enum LayeredWindowAttributeFlags : int
+    public enum LayeredWindowAttributeFlags : int
     {
         /// <summary>
         /// Use key as a transparency color
@@ -504,7 +509,7 @@ namespace Karna.Magnification
 
 
     [FlagsAttribute]
-    internal enum LayeredWindowUpdateFlags : int
+    public enum LayeredWindowUpdateFlags : int
     {
         ULW_COLORKEY = 0x00000001,
         ULW_ALPHA = 0x00000002,
@@ -512,13 +517,13 @@ namespace Karna.Magnification
     }
 
     [FlagsAttribute]
-    internal enum BlendOperations : byte
+    public enum BlendOperations : byte
     {
         AC_SRC_OVER = 0x00,
         AC_SRC_ALPHA = 0x01
     }
 
-    internal enum ShowWindowStyles : short
+    public enum ShowWindowStyles : short
     {
         SW_HIDE = 0,
         SW_SHOWNORMAL = 1,
@@ -537,7 +542,7 @@ namespace Karna.Magnification
         SW_MAX = 11
     }
 
-    internal enum WindowMessage : int
+    public enum WindowMessage : int
     {
         WM_CREATE = 0x0001,
         WM_DESTROY = 0x0002,
@@ -595,3 +600,4 @@ namespace Karna.Magnification
     }
 
 }
+

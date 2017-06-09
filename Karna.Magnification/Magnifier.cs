@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace Karna.Magnification
 {
@@ -16,20 +17,11 @@ namespace Karna.Magnification
         private System.Windows.Forms.Timer timer;
         public Point FixationPoint { get; set; }
 
-        public float Magnification
-        {
-            get { return magnification; }
-            set
-            {
-                if (magnification != value)
-                {
-                    magnification = value;
-                    // Set the magnification factor.
-                    Transformation matrix = new Transformation(magnification);
-                    NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
-                }
-            }
-        }
+
+        [DllImport("User32.dll")]
+        public static extern IntPtr GetDC(IntPtr hwnd);
+        [DllImport("User32.dll")]
+        public static extern void ReleaseDC(IntPtr hwnd, IntPtr dc);
 
         public Magnifier(Form form)
         {
@@ -77,7 +69,7 @@ namespace Karna.Magnification
 
         protected virtual void ResizeMagnifier()
         {
-            if ( initialized && (hwndMag != IntPtr.Zero))
+            if (initialized && (hwndMag != IntPtr.Zero))
             {
                 NativeMethods.GetClientRect(form.Handle, ref magWindowRect);
                 // Resize the control to fill the window.
@@ -97,6 +89,7 @@ namespace Karna.Magnification
 
             RECT sourceRect = new RECT();
 
+            //NativeMethods.GetCursorPos(ref mousePoint);
 
             int width = (int)((magWindowRect.right - magWindowRect.left) / magnification);
             int height = (int)((magWindowRect.bottom - magWindowRect.top) / magnification);
@@ -147,6 +140,22 @@ namespace Karna.Magnification
 
             // Force redraw.
             NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
+        }
+
+
+        public float Magnification
+        {
+            get { return magnification; }
+            set
+            {
+                if (magnification != value)
+                {
+                    magnification = value;
+                    // Set the magnification factor.
+                    Transformation matrix = new Transformation(magnification);
+                    NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
+                }
+            }
         }
 
         protected void SetupMagnifier()

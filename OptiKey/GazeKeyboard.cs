@@ -244,7 +244,7 @@ namespace OptiKey
                 args.Result = new UIDialogResult(ExecutionFlow.BreakExecution, SendReport.Send);
             };
 
-            NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
+            //NBug.Settings.InternalLogWritten += (logMessage, category) => Log.DebugFormat("NBUG:{0} - {1}", category, logMessage);
 #endif
         }        
 
