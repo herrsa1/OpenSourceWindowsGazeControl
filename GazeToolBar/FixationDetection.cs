@@ -29,7 +29,7 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Use to toggle extra point smoothing on and off
-       bool usePointSmoother = false;
+       bool usePointSmoother = true;
 
        //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
        public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);

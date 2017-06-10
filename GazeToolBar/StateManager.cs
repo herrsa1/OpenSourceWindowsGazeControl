@@ -37,14 +37,9 @@ namespace GazeToolBar
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
-        Corner corner;
-        Edge edge;
         SystemState currentState;
         FormsEyeXHost eyeXHost;
-        bool cornerBool = false;
-        bool edgeBool = false;
         ShortcutKeyWorker shortCutKeyWorker;
-        //Magnifier magnifier;
         ZoomMagnifier magnifier;
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
@@ -69,18 +64,20 @@ namespace GazeToolBar
             magnifier = new ZoomMagnifier(zoomer);
 
             Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
-            corner = new Corner();
 
             this.shortCutKeyWorker = shortCutKeyWorker;
 
             Run();
-
         }
+
+
         public void Run()
         {
             UpdateState();
             Action();
         }
+
+
         public void EnterWaitState()
         {
             //these flags are here so that they get reset before anything else happens in the SM
@@ -94,6 +91,8 @@ namespace GazeToolBar
             currentState = SystemState.Wait;
             
         }
+
+
         //The update method is responsible for transitioning from state to state. Once a state is changed the action() method is run
         public void UpdateState()
         {
@@ -163,6 +162,8 @@ namespace GazeToolBar
             }
             SystemFlags.currentState = currentState;
         }
+
+
         //The action state is responsible for completing each action that must take place during each state
         public void Action()
         {
@@ -195,25 +196,6 @@ namespace GazeToolBar
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
 
-                    //zoomLens setup
-                    zoomer.determineDesktopLocation(fixationPoint);
-                    //checking if the user looked in a corner
-                    corner = zoomer.checkCorners(fixationPoint);
-                    //Checking if a user looked near an edge
-                    edge = zoomer.checkEdge();
-                    cornerBool = false;
-                    edgeBool = false;
-                    if (corner != Corner.NoCorner)//if the user looked in a corner
-                    {
-                        zoomer.setZoomLensPositionCorner(corner);//set the lens into the corner
-                        cornerBool = true;
-                    }
-                    else if (edge != Edge.NoEdge)//if there is no corner and the user looked near the edge of the screen
-                    {
-                        zoomer.setZoomLensPositionEdge(edge, fixationPoint);//set lens to edge
-                        edgeBool = true;
-                    }
-
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
                     // This initiate's the timer for drawing of the user feedback image
@@ -235,49 +217,31 @@ namespace GazeToolBar
                     fixationPoint = fixationWorker.getXY();
 
                     zoomer.ResetZoomLens();//hide the lens
+
                     //Set the magnification factor back to initial value
-                    //This is done so that a "dynamic zoom in" feature can be
+                    // This is done so that a "dynamic zoom in" feature can be
                     // implemented in the future
                     magnifier.ResetZoomValue();
 
-                    //Checking if the user has zoomed in on an edge or a corner and offsetting the zoomed in click calculations to account for the
-                    //different location of the screenshot
-                    //e.g when a corner is selected the program zooms into the corner instead of the middle of the zoomlens, this means that for the final point to be accurate
-                    //there must be an offset to account for the different zoom direction.
-                    if (cornerBool)
+                    //execute the appropriate action
+                    if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
                     {
-                        fixationPoint = zoomer.cornerOffset(corner, fixationPoint);
+                        VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
                     }
-                    else if (edgeBool)
+                    else if (SystemFlags.actionToBePerformed == ActionToBePerformed.RightClick)
                     {
-                        fixationPoint = zoomer.edgeOffset(edge, fixationPoint);
+                        VirtualMouse.RightMouseClick(fixationPoint.X, fixationPoint.Y);
                     }
-                    if (fixationPoint.X == -1)//check if it's out of bounds
+                    else if (SystemFlags.actionToBePerformed == ActionToBePerformed.DoubleClick)
                     {
-                        EnterWaitState();
+                        VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
                     }
-                    else
+                    else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
                     {
-                        //execute the appropriate action
-                        if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
-                        {
-                            VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
-                        }
-                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.RightClick)
-                        {
-                            VirtualMouse.RightMouseClick(fixationPoint.X, fixationPoint.Y);
-                        }
-                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.DoubleClick)
-                        {
-                            VirtualMouse.LeftDoubleClick(fixationPoint.X, fixationPoint.Y);
-                        }
-                        else if (SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll)
-                        {
-                            SystemFlags.currentState = SystemState.ScrollWait;
-                            SystemFlags.scrolling = true;
-                            VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
-                            scrollWorker.StartScroll();
-                        }
+                        SystemFlags.currentState = SystemState.ScrollWait;
+                        SystemFlags.scrolling = true;
+                        VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
+                        scrollWorker.StartScroll();
                     }
                     break;
             }
