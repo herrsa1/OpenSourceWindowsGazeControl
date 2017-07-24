@@ -15,7 +15,7 @@ namespace GazeToolBar
         public static float ZOOM_MAX = 2F;          //Max zoom amount
 
         public Point FixationPoint { get; set; }
-        private Point Offset { get; set; }  //Offset is the amount of pixels moved when repositioning the form if it is offscreen. It's used to reposition the Fixation point.
+        public Point Offset { get; set; }  //Offset is the amount of pixels moved when repositioning the form if it is offscreen. It's used to reposition the Fixation point.
         private Form form;
         private Timer updateTimer;
         private RECT magWindowRect = new RECT();
@@ -102,7 +102,7 @@ namespace GazeToolBar
             }
 
             RECT sourceRect = new RECT();
-            Point zoomPosition = GetZoomPosition();
+            Point zoomPosition = Utils.SubtractPoints(GetZoomPosition(), Offset);
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
             //Magnified width and height
             int width = (int)(form.Width / Magnification);
@@ -129,7 +129,7 @@ namespace GazeToolBar
         //Gets the position that the zoom will be centered on
         public Point GetZoomPosition()
         {
-            return FixationPoint;
+            return Utils.AddPoints(FixationPoint, Offset);
         }
 
         //TODO: move to utility class
@@ -141,6 +141,7 @@ namespace GazeToolBar
 
         public void ResetZoomValue()
         {
+            Offset = new Point(0, 0);
             Magnification = 2.0f;
         }
 

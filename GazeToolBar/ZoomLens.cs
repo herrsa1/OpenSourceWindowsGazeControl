@@ -27,6 +27,8 @@ namespace GazeToolBar
         FixationDetection fixdet;
         DrawingForm drawingForm;
 
+        public Point Offset { get; set; }
+
         public ZoomLens(FixationDetection FixDet, FormsEyeXHost EyeXHost)
         {
             InitializeComponent();
@@ -69,7 +71,7 @@ namespace GazeToolBar
         {
             // Show drawing form and tell him to draw
             drawingForm.Show();
-            drawingForm.Draw();
+            drawingForm.Draw(Offset);
         }
     }
 }

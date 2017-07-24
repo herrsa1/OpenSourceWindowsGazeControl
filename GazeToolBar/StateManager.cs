@@ -198,6 +198,7 @@ namespace GazeToolBar
                     magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
+                    zoomer.Offset = magnifier.Offset;
                     // This initiate's the timer for drawing of the user feedback image
                     zoomer.Start();
                     zoomer.Show();
@@ -212,9 +213,15 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
+                    zoomer.Offset = magnifier.Offset;
                     break;
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
+
+                    Point o = Utils.DividePoint(magnifier.Offset, 2);
+
+                    fixationPoint.X -= o.X;
+                    fixationPoint.Y -= o.Y;
 
                     zoomer.ResetZoomLens();//hide the lens
 

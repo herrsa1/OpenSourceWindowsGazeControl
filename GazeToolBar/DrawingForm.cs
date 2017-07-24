@@ -58,14 +58,15 @@ namespace GazeToolBar
         }
 
 
-        public void Draw()
+        public void Draw(Point offset)
         {
+            offset = Utils.DividePoint(offset, 2);
             Point formCoordinates = currentGaze;
 
             Refresh();
 
-            int crossHairX = formCoordinates.X - (crosshairImage.Width / 2);
-            int crossHairY = formCoordinates.Y - (crosshairImage.Height / 2);
+            int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2)) - offset.X;
+            int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2)) - offset.Y;
 
             graphics.DrawImage(crosshairImage, crossHairX, crossHairY);
         }
