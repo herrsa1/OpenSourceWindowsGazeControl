@@ -116,14 +116,14 @@ namespace GazeToolBar
                     //increment timeout interval so a fixation doesn't get cut off.
                     timeOutTimer.Interval += FixationDetectionTimeLength + FixationExtensionBuffer; ;
 
-                    Console.WriteLine(timeOutTimer.Interval);
+         //           Console.WriteLine(timeOutTimer.Interval);
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
 
 
                     //Instantiate new point smoother, this clears out and previous in the ring buffer.
                     pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
 
-                    Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
+                    //Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
                 //if fixation data is in the middle of a fixation, use the data returned to highlight progress and draw users current gaze location to the screen.
                 if (fixationDataBucket.Status == EFixationStreamEventType.Middle)
@@ -153,7 +153,7 @@ namespace GazeToolBar
                     fixationTimer.Stop();
                     //customfixStream.ResetFixationDetectionState();
                     //Debug
-                    Console.WriteLine("Fixation Stopped due to end datatype");
+                    //Console.WriteLine("Fixation Stopped due to end datatype");
                 }
             }
         }
@@ -171,7 +171,7 @@ namespace GazeToolBar
             fixationState = EFixationState.WaitingForFixationRequest;
             SystemFlags.gaze = true;
             //Debug
-            Console.WriteLine("Timer reached event, running required action");
+           // Console.WriteLine("Timer reached event, running required action");
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace GazeToolBar
           
             pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
 
-            Console.WriteLine("Start detection call");
+            //Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;
             timeOutTimer.Start();
         }
@@ -242,7 +242,7 @@ namespace GazeToolBar
 
             FixationProgressEventArgs FPEA = new FixationProgressEventArgs(progress, x, y);
 
-            Console.WriteLine("Fixation percentage " + progress);
+            //Console.WriteLine("Fixation percentage " + progress);
 
             if(currentProgress != null)
             {

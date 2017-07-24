@@ -228,9 +228,6 @@ namespace GazeToolBar
             {
                 Point panelLocation = new Point(currentPanel.Location.X, spacerBuffer);
 
-                Console.WriteLine(screenHeight);
-                Console.WriteLine(panelLocation.Y);
-
                 currentPanel.Location = panelLocation;
 
                 spacerBuffer += screenSectionSize;

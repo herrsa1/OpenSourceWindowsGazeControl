@@ -15,6 +15,7 @@ namespace GazeToolBar
         public static float ZOOM_MAX = 2F;          //Max zoom amount
 
         public Point FixationPoint { get; set; }
+        private Point Offset { get; set; }  //Offset is the amount of pixels moved when repositioning the form if it is offscreen. It's used to reposition the Fixation point.
         private Form form;
         private Timer updateTimer;
         private RECT magWindowRect = new RECT();
@@ -23,13 +24,14 @@ namespace GazeToolBar
         private bool hasInitialized;
         private float magnification;
 
-        public ZoomMagnifier(Form displayForm)
+        public ZoomMagnifier(Form displayform, Point fixationPoint)
         {
             Magnification = DO_ZOOM ? 1 : ZOOM_MAX; //Set magnification to the max if not zooming
-            form = displayForm;
+            form = displayform;
             form.TopMost = true;
             updateTimer = new Timer();
 
+            FixationPoint = fixationPoint;
             InitLens();
 
             //Event handlers
@@ -39,6 +41,11 @@ namespace GazeToolBar
 
             updateTimer.Interval = UPDATE_SPEED;
             updateTimer.Enabled = true;
+            Offset = new Point(0, 0);
+        }
+
+        public ZoomMagnifier(Form displayform) : this(displayform, new Point(0,0))
+        {
         }
 
         public void InitLens()
@@ -58,6 +65,32 @@ namespace GazeToolBar
                 Transformation matrix = new Transformation(Magnification);
                 NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
             }
+
+        }
+
+        public void UpdatePosition(Point fixationPoint)
+        {
+            Point zoomPosition = fixationPoint;
+            Rectangle screenBounds = Screen.FromControl(form).Bounds;
+
+            form.Left = zoomPosition.X - (form.Width / 2);
+            form.Top = zoomPosition.Y - (form.Height / 2);
+
+            int initLeft = form.Left;
+            int initTop = form.Top;
+
+            form.Left = Clamp(form.Left, 0, screenBounds.Width - form.Width);
+            form.Top = Clamp(form.Top, 0, screenBounds.Height - form.Height);
+
+            int finalLeft = form.Left;
+            int finalTop = form.Top;
+
+            Utils.Print("Position-",initLeft, initTop, finalLeft, finalTop);
+            int offsetX = finalLeft - initLeft;
+            int offsetY = finalTop - initTop;
+
+            Offset = new Point(offsetX, offsetY);
+            Utils.Print("Offset-", offsetX, offsetY);
         }
 
         public virtual void UpdateMagnifier()
@@ -71,16 +104,9 @@ namespace GazeToolBar
             RECT sourceRect = new RECT();
             Point zoomPosition = GetZoomPosition();
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
-
             //Magnified width and height
             int width = (int)(form.Width / Magnification);
             int height = (int)(form.Height / Magnification);
-
-            //Form position
-            form.Left = zoomPosition.X - (form.Width / 2);
-            form.Top = zoomPosition.Y - (form.Height / 2);
-            form.Left = Clamp(form.Left, 0, screenBounds.Width - form.Width);
-            form.Top = Clamp(form.Top, 0, screenBounds.Height - form.Height);
 
             //Zoom rectangle position
             sourceRect.left = zoomPosition.X - (width / 2);
@@ -157,6 +183,11 @@ namespace GazeToolBar
                 }
             }
             get { return magnification; }
+        }
+
+        public  void Stop()
+        {
+            updateTimer.Enabled = false;
         }
     }
 }

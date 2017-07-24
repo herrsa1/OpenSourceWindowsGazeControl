@@ -8,18 +8,15 @@ namespace GazeToolBar
 {
     public class Utils
     {
-        public static void print(params Object[] toPrint)
-        {
-            print(" ", toPrint);
-        }
-
-        public static void print(String seperator, params Object[] toPrint)
+        public static void Print(params Object[] toPrint)
         {
             String outString = "";
             foreach (Object o in toPrint)
             {
-                outString += o.ToString() + seperator;
+                outString += o.ToString() + " ";
             }
+
+            Console.WriteLine(outString);
         }
     }
 }

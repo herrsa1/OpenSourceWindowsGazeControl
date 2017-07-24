@@ -63,7 +63,7 @@ namespace GazeToolBar
             // This calls the low-level API
             magnifier = new ZoomMagnifier(zoomer);
 
-            Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
+            //Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
 
             this.shortCutKeyWorker = shortCutKeyWorker;
 
@@ -195,7 +195,7 @@ namespace GazeToolBar
                     {
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
-
+                    magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
                     // This initiate's the timer for drawing of the user feedback image
