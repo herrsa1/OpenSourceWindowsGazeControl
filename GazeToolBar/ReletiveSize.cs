@@ -11,32 +11,6 @@ namespace GazeToolBar
     */
     static class ReletiveSize
     {
-        //public static readonly Size formSize = new Size(Convert.ToInt32(ValueNeverChange.SCREEN_SIZE.Width * ValueNeverChange.FORM_WEIGTH_PERCENTAGE), ValueNeverChange.SCREEN_SIZE.Height);
-        //public static readonly Size btnSize = new Size(Convert.ToInt32(formSize.Width * 0.5), Convert.ToInt32(formSize.Height * 0.07));
-        //public static readonly Size btnPanelSize = new Size(btnSize.Width + 6, btnSize.Height + 6);
-        //public static readonly int gap = btnSize.Height;
-        //public static readonly Size panelSize = new Size(200,1000);
-        //public static readonly int btnPositionX = 3;
-        //public static readonly int panelPositionY = 0;
-        //public static readonly int pnlPositionX = 0;
-
-        //public static readonly int btnPostionY = 3;
-
-        
-
-        //public static int pnlPostionY(int num)
-        //{
-        //    if(num == 1)
-        //    {
-        //        return ((num - 1) * btnSize.Height) + 3;
-        //    }
-        //    else
-        //    {
-        //        return ((num - 1) * btnSize.Height + gap * (num - 1) + 3);
-        //    }
-        //}
-
-
         public static Point panelSaveAndCancel(int width, int height)
         {
             int x = (ValueNeverChange.SCREEN_SIZE.Width - width) / 2;
@@ -130,7 +104,6 @@ namespace GazeToolBar
             foreach (Control c in parentPanel.Controls)
             {
                 percent += 0.1f;
-                //c.Location.Y
             }
         }
 

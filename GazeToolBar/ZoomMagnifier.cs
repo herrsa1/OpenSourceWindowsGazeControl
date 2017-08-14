@@ -7,7 +7,7 @@ namespace GazeToolBar
 {
     public class ZoomMagnifier
     {
-        private const int UPDATE_SPEED = 1; //how fast the lens will update
+        protected const int UPDATE_SPEED = 1; //how fast the lens will update
 
         //TODO: Move these to settings json
         public static bool DO_ZOOM = false;         //Zoom enabled
@@ -16,13 +16,14 @@ namespace GazeToolBar
 
         public Point FixationPoint { get; set; }
         public Point Offset { get; set; }  //Offset is the amount of pixels moved when repositioning the form if it is offscreen. It's used to reposition the Fixation point.
-        private Form form;
-        private Timer updateTimer;
-        private RECT magWindowRect = new RECT();
-        private IntPtr hwndMag;
+        public Point SecondaryOffset { get; set; }  //Used for the Centered zoom offset from the sides..
+        protected Form form;
+        protected Timer updateTimer;
+        protected RECT magWindowRect = new RECT();
+        protected IntPtr hwndMag;
 
-        private bool hasInitialized;
-        private float magnification;
+        protected bool hasInitialized;
+        protected float magnification;
 
         public ZoomMagnifier(Form displayform, Point fixationPoint)
         {
@@ -42,10 +43,7 @@ namespace GazeToolBar
             updateTimer.Interval = UPDATE_SPEED;
             updateTimer.Enabled = true;
             Offset = new Point(0, 0);
-        }
-
-        public ZoomMagnifier(Form displayform) : this(displayform, new Point(0,0))
-        {
+            SecondaryOffset = new Point(0, 0);
         }
 
         public void InitLens()
@@ -68,7 +66,7 @@ namespace GazeToolBar
 
         }
 
-        public void UpdatePosition(Point fixationPoint)
+        public virtual void UpdatePosition(Point fixationPoint)
         {
             Point zoomPosition = fixationPoint;
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
@@ -92,7 +90,7 @@ namespace GazeToolBar
             Offset = new Point(offsetX, offsetY);
             Utils.Print("Offset-", offsetX, offsetY);
         }
-
+         
         public virtual void UpdateMagnifier()
         {
             //If the magnifier is not setup correctly (will crash otherwise)
@@ -142,6 +140,7 @@ namespace GazeToolBar
         public void ResetZoomValue()
         {
             Offset = new Point(0, 0);
+            SecondaryOffset = new Point(0, 0);
             Magnification = 2.0f;
         }
 
@@ -167,7 +166,7 @@ namespace GazeToolBar
         }
 
         //the magnification factor
-        private float Magnification
+        protected float Magnification
         {
             set
             {
@@ -189,6 +188,11 @@ namespace GazeToolBar
         public  void Stop()
         {
             updateTimer.Enabled = false;
+        }
+
+        public virtual int MagnifierDivAmount()
+        {
+            return (int)ZOOM_MAX;
         }
     }
 }

@@ -61,7 +61,7 @@ namespace GazeToolBar
             zoomer = new ZoomLens(fixationWorker, eyeXHost);
             // Instantiate the magnifier, this is Sam Medlocks refactored magnifier
             // This calls the low-level API
-            magnifier = new ZoomMagnifier(zoomer);
+            magnifier = CreateMagnifier();
 
             //Console.WriteLine(scrollWorker.deadZoneRect.LeftBound + "," + scrollWorker.deadZoneRect.RightBound + "," + scrollWorker.deadZoneRect.TopBound + "," + scrollWorker.deadZoneRect.BottomBound);
 
@@ -198,8 +198,12 @@ namespace GazeToolBar
                     magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
-                    zoomer.Offset = magnifier.Offset;
-                    // This initiate's the timer for drawing of the user feedback image
+                    Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
+                    Point p2 = Utils.DividePoint(magnifier.SecondaryOffset, magnifier.MagnifierDivAmount());
+
+                    Point o = Utils.AddPoints(p1, p2);
+
+                    zoomer.Offset = o;                    // This initiate's the timer for drawing of the user feedback image
                     zoomer.Start();
                     zoomer.Show();
 
@@ -213,16 +217,16 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
-                    zoomer.Offset = magnifier.Offset;
+                    SetZoomerOffset();
                     break;
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
 
-                    Point o = Utils.DividePoint(magnifier.Offset, 2);
+                    SetZoomerOffset();
 
-                    fixationPoint.X -= o.X;
-                    fixationPoint.Y -= o.Y;
-
+                    fixationPoint.X += zoomer.Offset.X;
+                    fixationPoint.Y += zoomer.Offset.Y;
+                    Utils.Print(fixationPoint);
                     zoomer.ResetZoomLens();//hide the lens
 
                     //Set the magnification factor back to initial value
@@ -252,6 +256,21 @@ namespace GazeToolBar
                     }
                     break;
             }
+        }
+
+        public void SetZoomerOffset()
+        {
+            Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
+            Point p2 = Utils.DividePoint(magnifier.SecondaryOffset, magnifier.MagnifierDivAmount());
+
+            Point o = Utils.AddPoints(p1, p2);
+
+            zoomer.Offset = o;
+        }
+
+        private ZoomMagnifier CreateMagnifier()
+        {
+            return new ZoomMagnifierCentered(zoomer, fixationPoint);
         }
     }
 }

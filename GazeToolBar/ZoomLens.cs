@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using ImageProcessing;
+using WindowsAPI;
 
 namespace GazeToolBar
 {
@@ -18,6 +20,7 @@ namespace GazeToolBar
         // TODO: Move this to settings json
         // Setting the width & height of the ZoomLens
         public static int ZOOMLENS_SIZE = 500;
+        static List<Bitmap> listZoom = new List<Bitmap>();
 
         Graphics graphics;
         Graphics offScreenGraphics;
@@ -32,6 +35,7 @@ namespace GazeToolBar
         public ZoomLens(FixationDetection FixDet, FormsEyeXHost EyeXHost)
         {
             InitializeComponent();
+
             this.Width = ZOOMLENS_SIZE;
             this.Height = ZOOMLENS_SIZE;
             offScreenBitmap = new Bitmap(this.Width, this.Height);

@@ -13,16 +13,9 @@ namespace GazeToolBar
 {
     static class Program
     {
-       // private static FormsEyeXHost eyeXHost = new FormsEyeXHost();
-
         public static string path { get; set; }
         public static SettingJSON readSettings { get; set; }
         public static bool onStartUp { get; set; }
-
-        //public static FormsEyeXHost EyeXHost
-        //{
-        //    get { return eyeXHost; }
-        //}
         
         /// <summary>
         /// The main entry point for the application.
@@ -39,7 +32,6 @@ namespace GazeToolBar
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
-            //eyeXHost.Dispose();
 
         }
 
@@ -48,17 +40,6 @@ namespace GazeToolBar
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
-                //TODO: Need to be replaced
-
-                //defaultSetting.language = "    English\r\n(United States)";
-                //defaultSetting.position = "Right";
-                //defaultSetting.precision = 0;
-                //defaultSetting.selection = "GAZE";
-                //defaultSetting.size = "SMALL";
-                //defaultSetting.soundFeedback = false;
-                //defaultSetting.speed = 0;
-                //defaultSetting.typingSpeed = 0;
-                //defaultSetting.wordPrediction = false;
                 defaultSetting.fixationTimeLength = ValueNeverChange.DEFAULT_TIME_LENGTH;
                 defaultSetting.fixationTimeOut = ValueNeverChange.DEFAULT_TIME_OUT;
                 defaultSetting.leftClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;

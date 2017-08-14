@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GazeToolBar
 {
-    public class Utils
+    public static class Utils
     {
         /*
          *  An easy utility for printing several values at once
@@ -57,6 +57,20 @@ namespace GazeToolBar
             int fY = p.Y / divideAmount;
 
             return new Point(fX, fY);
+        }
+
+        /// <summary>
+        /// Fills an array 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="arr">The Array to fill</param>
+        /// <param name="fillWith">The data to fill each slot</param>
+        public static void ArrayFill<T>(this T[] arr, T fillWith)
+        {
+            for(int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = fillWith;
+            }
         }
     }
 }

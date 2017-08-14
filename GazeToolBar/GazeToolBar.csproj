@@ -9,12 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GazeToolBar</RootNamespace>
     <AssemblyName>GazeToolBar</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <PublishUrl>C:\Users\medlsp1\Desktop\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,12 +26,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,10 +38,12 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,10 +58,34 @@
   <PropertyGroup>
     <ApplicationIcon>Gaze.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5FE66283237673F475506F132E01012B03BA6618</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>GazeToolBar_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EyeXFramework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Release\EyeXFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageProcessing">
+      <HintPath>C:\Users\medlsp1\Desktop\ImageProcessing.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -86,6 +113,9 @@
     <Reference Include="Tobii.EyeX.Client.Net20">
       <HintPath>..\..\lib\x64\Tobii.EyeX.Client.Net20.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsAPI">
+      <HintPath>C:\Users\medlsp1\Desktop\WindowsAPI.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsInput, Version=1.0.4.1, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -104,6 +134,9 @@
     <Compile Include="FixationDetection.cs" />
     <Compile Include="CustomFixationEventArgs.cs" />
     <Compile Include="FixationProgressEventArgs.cs" />
+    <Compile Include="FixationSmootherAverage.cs" />
+    <Compile Include="FixationSmootherBase.cs" />
+    <Compile Include="FixationSmootherExponential.cs" />
     <Compile Include="Form1.BehavMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,10 +148,11 @@
     </Compile>
     <Compile Include="GazeHightlight\GazeHighlight.cs" />
     <Compile Include="GazeHightlight\GazeHighlightShaderFactory.cs" />
+    <Compile Include="GazePoint.cs" />
     <Compile Include="HookedKeyboardEventArgs.cs" />
     <Compile Include="GazeHightlight\IGazeHighlightShader.cs" />
+    <Compile Include="IFixationSmoother.cs" />
     <Compile Include="KeyboardHook.cs" />
-    <Compile Include="PointSmoother.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GazeHightlight\RedToGreenShader.cs" />
@@ -146,6 +180,7 @@
       <DependentUpon>ZoomLens.cs</DependentUpon>
     </Compile>
     <Compile Include="ZoomMagnifier.cs" />
+    <Compile Include="ZoomMagnifierCentered.cs" />
     <EmbeddedResource Include="DrawingForm.resx">
       <DependentUpon>DrawingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +209,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="GazeToolBar_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -53,7 +53,6 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHiLteRightClick);
             highlightPannerList.Add(pnlHighLightSingleLeft);
             highlightPannerList.Add(pnlHighLightDoubleClick);
-            //highlightPannerList.Add(pnlHighLightDragAndDrop);
             highlightPannerList.Add(pnlHighLightScrol);
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightSettings);
@@ -80,7 +79,6 @@ namespace GazeToolBar
             menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
             menuItemExit.Click += new EventHandler(menuItemExit_Click);
             settingsItem.Text = "Setting";
-           // settingsItem.Click += new EventHandler(settingItem_Click);
             contextMenu.MenuItems.Add(settingsItem);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
@@ -115,16 +113,7 @@ namespace GazeToolBar
             //Start monitoring key presses.
             LowLevelKeyBoardHook.HookKeyboard();
             Edge = AppBarEdges.Right;
-            //TODO: Need to be replaced
 
-            //if(Program.readSettings.position == "left")
-            //{
-            //    Edge = AppBarEdges.Left;
-            //}
-            //else
-            //{
-            //    Edge = AppBarEdges.Right;
-            //}
             stateManager = new StateManager(this, shortCutKeyWorker, eyeXHost);
             stateManager.fixationWorker.FixationDetectionTimeLength = Program.readSettings.fixationTimeLength;
             stateManager.fixationWorker.FixationTimeOutLength = Program.readSettings.fixationTimeOut;
@@ -186,11 +175,6 @@ namespace GazeToolBar
             SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
 
         }
-
-        //private void btnDragAndDrop_Click(object sender, EventArgs e)
-        //{
-        //    //Create logic to run left mouse down, update xy then left mouse up to simulate drag and drop
-        //}
 
         public void OnStartTextChange()
         {

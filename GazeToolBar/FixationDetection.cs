@@ -29,7 +29,7 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Use to toggle extra point smoothing on and off
-       bool usePointSmoother = true;
+       bool usePointSmoother = false;
 
        //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
        public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
@@ -59,7 +59,7 @@ namespace GazeToolBar
 
 
         //Worker class to further smooth points if required.
-        private PointSmoother pointSmootherWorker;
+        private IFixationSmoother pointSmootherWorker;
         private int pointSmootherBufferSize = 100;
 
         //Fixation data stream.
@@ -93,7 +93,10 @@ namespace GazeToolBar
             fixationTimer.Elapsed += runActionWhenTimerReachesLimit;
         }
 
-
+        public IFixationSmoother CreateSmoother(int size)
+        {
+            return new FixationSmootherExponential(size);
+        }
 
         
         /// <summary>
@@ -121,7 +124,7 @@ namespace GazeToolBar
 
 
                     //Instantiate new point smoother, this clears out and previous in the ring buffer.
-                    pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+                    pointSmootherWorker = CreateSmoother(pointSmootherBufferSize);
 
                     //Console.WriteLine("Fixation Begin X" + fixationDataBucket.X + " Y" + fixationDataBucket.Y);
                 }
@@ -133,8 +136,8 @@ namespace GazeToolBar
                     {
                         //Data smoothing being done in CustomFixationDectection, 
                         currentSmoothPoint = pointSmootherWorker.UpdateAndGetSmoothPoint(fixationDataBucket.X, fixationDataBucket.Y);
-                        xPosFixation = (int)Math.Floor(currentSmoothPoint.x);
-                        yPosFixation = (int)Math.Floor(currentSmoothPoint.y);
+                        xPosFixation = (int)Math.Floor(currentSmoothPoint.X);
+                        yPosFixation = (int)Math.Floor(currentSmoothPoint.Y);
                     }
                     else
                     {
@@ -200,8 +203,8 @@ namespace GazeToolBar
         public void StartDetectingFixation()
         {
             customfixStream.ResetFixationDetectionState();
-          
-            pointSmootherWorker = new PointSmoother(pointSmootherBufferSize);
+
+            pointSmootherWorker = CreateSmoother(pointSmootherBufferSize);
 
             //Console.WriteLine("Start detection call");
             fixationState = EFixationState.DetectingFixation;

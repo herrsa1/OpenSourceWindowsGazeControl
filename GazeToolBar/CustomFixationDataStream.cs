@@ -66,7 +66,7 @@ namespace GazeToolBar
             //Calculate the amount of pixels away from the top of the screen to set cut of for top of screen threshold adjustment.
             yFixationScreenBoundary = ValueNeverChange.PRIMARY_SCREEN.Height * (screenBoudaryCutOffPercent / 100);
 
-            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.Unfiltered);
             //Create gate points event handler delegate
             EventHandler<GazePointEventArgs> gazeDel = new EventHandler<GazePointEventArgs>(updateGazeCoodinates);
             //register delegate with gaze data stream next event.
@@ -109,23 +109,23 @@ namespace GazeToolBar
 
            //check where users gaze is, if it is less than yFixationScreenBoundary set yAdjustedThreashold to yFixationCutOffThreasholdWhenGazeAtTopOfScreen
            //To compensate for EyeX's poor accuracy when gazing near top edge of screen.
-           double yAdjustedThreashold = gPAverage.y < yFixationScreenBoundary && !ZoomerFixation ? yFixationCutOffThreasholdWhenGazeAtTopOfScreen : yFixationThreashold;
+           double yAdjustedThreashold = gPAverage.Y < yFixationScreenBoundary && !ZoomerFixation ? yFixationCutOffThreasholdWhenGazeAtTopOfScreen : yFixationThreashold;
             
 
               //Check gaze data variation, current state and create appropriate event. Then set the CustomfixationDetectionStreams state.
-            if (fixationState == EFixationStreamEventType.Waiting && gazeVariation.x < xFixationThreashold && gazeVariation.y < yAdjustedThreashold)
+            if (fixationState == EFixationStreamEventType.Waiting && gazeVariation.X < xFixationThreashold && gazeVariation.Y < yAdjustedThreashold)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Start, timestamp, gPAverage.x, gPAverage.y);
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Start, timestamp, gPAverage.X, gPAverage.Y);
                 fixationState = EFixationStreamEventType.Middle;
             }
-            else if (fixationState == EFixationStreamEventType.Middle && gazeVariation.x > xFixationThreashold && gazeVariation.y > yAdjustedThreashold)
+            else if (fixationState == EFixationStreamEventType.Middle && gazeVariation.X > xFixationThreashold && gazeVariation.Y > yAdjustedThreashold)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.End, timestamp, gPAverage.x, gPAverage.y);
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.End, timestamp, gPAverage.X, gPAverage.Y);
                 fixationState = EFixationStreamEventType.Waiting;
             }
             else if (fixationState == EFixationStreamEventType.Middle)
             {
-                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Middle, timestamp, gPAverage.x, gPAverage.y);
+                cpe = new CustomFixationEventArgs(EFixationStreamEventType.Middle, timestamp, gPAverage.X, gPAverage.Y);
             }
 
 
@@ -188,8 +188,8 @@ namespace GazeToolBar
             xTotal = Math.Sqrt(xTotal);
             yTotal = Math.Sqrt(yTotal);
 
-            xTotal = xTotal - gPAverage.x;
-            yTotal = yTotal - gPAverage.y;
+            xTotal = xTotal - gPAverage.X;
+            yTotal = yTotal - gPAverage.Y;
 
 
 
@@ -220,7 +220,7 @@ namespace GazeToolBar
             double xTotal = 0;
             double yTotal = 0;
             
-            GazePoint returnSmoothPoint;
+            GazePoint returnSmoothPoint = new GazePoint();
 
             for (int arrayIndex = 0; arrayIndex < bufferFullIndex; arrayIndex++)
             {
@@ -228,8 +228,8 @@ namespace GazeToolBar
                 yTotal += yBuffer[arrayIndex];
             }
 
-            returnSmoothPoint.x = xTotal / bufferFullIndex;
-            returnSmoothPoint.y = yTotal / bufferFullIndex;
+            returnSmoothPoint.X = xTotal / bufferFullIndex;
+            returnSmoothPoint.Y = yTotal / bufferFullIndex;
 
             return returnSmoothPoint;
         }

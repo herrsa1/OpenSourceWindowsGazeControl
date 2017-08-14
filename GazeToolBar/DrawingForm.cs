@@ -68,6 +68,9 @@ namespace GazeToolBar
             int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2)) - offset.X;
             int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2)) - offset.Y;
 
+         //    crossHairX = Math.Max(0, crossHairX);
+        //   crossHairY = Math.Max(0, crossHairY);
+
             graphics.DrawImage(crosshairImage, crossHairX, crossHairY);
         }
 
