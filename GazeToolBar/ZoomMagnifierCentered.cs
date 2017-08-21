@@ -33,6 +33,21 @@ namespace GazeToolBar
             int dY = fixationPoint.Y - (form.Top + FORM_HEIGHT / 2);
 
             Offset = new Point(dX, dY);
+
+            RECT sourceRect = new RECT();
+            Point zoomPosition = Utils.SubtractPoints(GetZoomPosition(), Offset);
+            //Magnified width and height
+            int width = (int)(form.Width / Magnification);
+            int height = (int)(form.Height / Magnification);
+
+            //Zoom rectangle position
+            sourceRect.left = zoomPosition.X - (width / 2);
+            sourceRect.top = zoomPosition.Y - (height / 2);
+
+            Console.WriteLine(SecondaryOffset);
+
+            NativeMethods.MagSetWindowSource(hwndMag, sourceRect);  //Sets the source of the zoom
+            NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true); // Force redraw.
         }
 
         public override void UpdateMagnifier()
@@ -53,17 +68,6 @@ namespace GazeToolBar
             //Zoom rectangle position
             sourceRect.left = zoomPosition.X - (width / 2);
             sourceRect.top = zoomPosition.Y - (height / 2);
-
-            int inLeft = sourceRect.left;
-            int inTop = sourceRect.top;
-
-            sourceRect.left = Clamp(sourceRect.left, 0, screenBounds.Width - width);
-            sourceRect.top = Clamp(sourceRect.top, 0, screenBounds.Height - height);
-
-            int fnLeft = inLeft - sourceRect.left;
-            int fnTop = inTop - sourceRect.top;
-
-            SecondaryOffset = new Point(fnLeft, fnTop);
 
             Console.WriteLine(SecondaryOffset);
 

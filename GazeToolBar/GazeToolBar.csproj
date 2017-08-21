@@ -123,6 +123,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionHandler.cs" />
     <Compile Include="AutoStart.cs" />
     <Compile Include="CustomFixationDataStream.cs" />
     <Compile Include="DrawingForm.cs">
@@ -149,6 +150,7 @@
     <Compile Include="GazeHightlight\GazeHighlight.cs" />
     <Compile Include="GazeHightlight\GazeHighlightShaderFactory.cs" />
     <Compile Include="GazePoint.cs" />
+    <Compile Include="GazeToolbar.cs" />
     <Compile Include="HookedKeyboardEventArgs.cs" />
     <Compile Include="GazeHightlight\IGazeHighlightShader.cs" />
     <Compile Include="IFixationSmoother.cs" />
@@ -170,6 +172,7 @@
     </Compile>
     <Compile Include="ShortcutKeyWorker.cs" />
     <Compile Include="StateManager.cs" />
+    <Compile Include="TrayMenu.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ValueNeverChange.cs" />
     <Compile Include="VirtualMouse.cs" />
