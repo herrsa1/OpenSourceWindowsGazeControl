@@ -16,10 +16,12 @@ namespace GazeToolBar
             //TODO:
             //Subscribe to all the events
             //Change methods to accept sender and event args
+            
         }
 
-        public void HandleLeftClick()
+        public void HandleLeftClick(Object sender, EventArgs e)
         {
+
             SetAction(ActionToBePerformed.LeftClick);
         }
     

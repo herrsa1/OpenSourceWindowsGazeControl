@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using Karna.Magnification;
 using System.Drawing;
+using EyeXFramework.Forms;
+using EyeXFramework;
+using Tobii.EyeX.Framework;
 
 namespace GazeToolBar
 {
@@ -21,6 +24,13 @@ namespace GazeToolBar
         protected Timer updateTimer;
         protected RECT magWindowRect = new RECT();
         protected IntPtr hwndMag;
+        protected RECT sourceRect;
+        FormsEyeXHost eyeXHost;
+        GazePointDataStream gazeStream;
+
+        public Point CurrentLook {get; set;}
+
+        public Timer Timer { get { return updateTimer; } }
 
         protected bool hasInitialized;
         protected float magnification;
@@ -41,9 +51,20 @@ namespace GazeToolBar
             updateTimer.Tick += new EventHandler(timer_Tick);
 
             updateTimer.Interval = UPDATE_SPEED;
-            updateTimer.Enabled = true;
+            updateTimer.Enabled = false;
             Offset = new Point(0, 0);
             SecondaryOffset = new Point(0, 0);
+
+            eyeXHost = new FormsEyeXHost();
+            eyeXHost.Start();
+            gazeStream = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            gazeStream.Next += (s, e) => SetLook(e.X, e.Y);
+
+        }
+
+        private void SetLook(double x, double y)
+        {
+            CurrentLook = new Point((int)x, (int)y);
         }
 
         public void InitLens()
@@ -87,7 +108,7 @@ namespace GazeToolBar
             int offsetX = finalLeft - initLeft;
             int offsetY = finalTop - initTop;
 
-            Offset = new Point(offsetX, offsetY);
+            //Offset = new Point(offsetX, offsetY);
             Utils.Print("Offset-", offsetX, offsetY);
         }
          
@@ -99,7 +120,7 @@ namespace GazeToolBar
                 return;
             }
 
-            RECT sourceRect = new RECT();
+            sourceRect = new RECT();
             Point zoomPosition = Utils.SubtractPoints(GetZoomPosition(), Offset);
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
             //Magnified width and height
@@ -142,6 +163,7 @@ namespace GazeToolBar
             Offset = new Point(0, 0);
             SecondaryOffset = new Point(0, 0);
             Magnification = 2.0f;
+            Timer.Enabled = false;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -193,6 +215,23 @@ namespace GazeToolBar
         public virtual int MagnifierDivAmount()
         {
             return (int)ZOOM_MAX;
+        }
+
+
+        public Point GetLookPosition()
+        {
+            Point startPoint = new Point(sourceRect.left, sourceRect.top);
+            Point actualLook = CurrentLook;
+            Point formPos = new Point(form.Left, form.Top);
+            Point adjustedPoint = Utils.SubtractPoints(actualLook, formPos);
+            Point magAdjust = new Point(adjustedPoint.X / 2, adjustedPoint.Y / 2);
+
+            Point finalPoint = Utils.AddPoints(magAdjust, startPoint);
+
+            //  Point finalPoint = adjustedPoint;//Utils.SubtractPoints(Utils.AddPoints(startPoint, adjustedPoint), 1);
+            //  MessageBox.Show(adjustedPoint.X + " " + adjustedPoint.Y + " " + finalPoint.X + " " + finalPoint.Y);
+
+            return finalPoint;
         }
     }
 }

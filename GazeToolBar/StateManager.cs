@@ -195,13 +195,14 @@ namespace GazeToolBar
                     {
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
-                    magnifier.UpdatePosition(fixationPoint);
+                    magnifier.Timer.Enabled = true;
+                  //  magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
                     Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
                     Point p2 = Utils.DividePoint(magnifier.SecondaryOffset, magnifier.MagnifierDivAmount());
 
-                    Point o = Utils.AddPoints(p1, p2);
+                    Point o = Utils.SubtractPoints(p1, p2);
 
                     zoomer.Offset = o;                    // This initiate's the timer for drawing of the user feedback image
                     zoomer.Start();
@@ -226,13 +227,17 @@ namespace GazeToolBar
 
                     fixationPoint.X += zoomer.Offset.X;
                     fixationPoint.Y += zoomer.Offset.Y;
+
+                    fixationPoint = magnifier.GetLookPosition();
                     Utils.Print(fixationPoint);
                     zoomer.ResetZoomLens();//hide the lens
-
+                  //  MessageBox.Show(magnifier.SecondaryOffset.X + " " + magnifier.SecondaryOffset.Y);
                     //Set the magnification factor back to initial value
                     // This is done so that a "dynamic zoom in" feature can be
                     // implemented in the future
                     magnifier.ResetZoomValue();
+
+
 
                     //execute the appropriate action
                     if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)
@@ -263,7 +268,7 @@ namespace GazeToolBar
             Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
             Point p2 = Utils.DividePoint(magnifier.SecondaryOffset, magnifier.MagnifierDivAmount());
 
-            Point o = Utils.AddPoints(p1, p2);
+            Point o = Utils.SubtractPoints(p1, p2);
 
             zoomer.Offset = o;
         }
