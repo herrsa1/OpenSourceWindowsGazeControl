@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="ShortcutKeyWorker.cs" />
     <Compile Include="StateManager.cs" />
+    <Compile Include="StateManager_new.cs" />
     <Compile Include="TrayMenu.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ValueNeverChange.cs" />

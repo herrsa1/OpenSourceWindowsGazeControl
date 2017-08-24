@@ -21,10 +21,14 @@ namespace GazeToolBar
         //The icon the the system tray
         private TrayMenu trayMenu;
 
+        //The statemanager controls most of the program
+        private StateManager_new manager;
+
         public GazeToolbar()
         {
             actionHandler = new ActionHandler();
             keyboardHook = new KeyboardHook();
+            manager = new StateManager_new();
 
             //TODO: move FKeyMapDictionary to  ShortcutKeyWorker class and see if eyeXHost is needed
             //shortcutKeyWorker = new ShortcutKeyWorker(keyboardHook, FKeyMapDictionary, eyeXHost);

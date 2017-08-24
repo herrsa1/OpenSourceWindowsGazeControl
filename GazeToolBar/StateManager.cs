@@ -218,12 +218,12 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
-                    SetZoomerOffset();
+                    //SetZoomerOffset();
                     break;
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
                     fixationPoint = fixationWorker.getXY();
 
-                    SetZoomerOffset();
+                    //SetZoomerOffset();
 
                     fixationPoint.X += zoomer.Offset.X;
                     fixationPoint.Y += zoomer.Offset.Y;
@@ -263,6 +263,7 @@ namespace GazeToolBar
             }
         }
 
+        /*
         public void SetZoomerOffset()
         {
             Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
@@ -271,7 +272,7 @@ namespace GazeToolBar
             Point o = Utils.SubtractPoints(p1, p2);
 
             zoomer.Offset = o;
-        }
+        }*/
 
         private ZoomMagnifier CreateMagnifier()
         {
