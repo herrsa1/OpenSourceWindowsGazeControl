@@ -194,6 +194,7 @@ namespace GazeToolBar
                     zoomer.Offset = o;                    // This initiate's the timer for drawing of the user feedback image
                     zoomer.Start();
                     zoomer.Show();
+                    zoomer.CrossHairPos = magnifier.GetLookPosition();
 
                     //disable neccesary flags 
                     SystemFlags.hasGaze = false;
@@ -205,6 +206,7 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
+                    zoomer.CrossHairPos = magnifier.GetLookPosition();
                     //SetZoomerOffset();
                     break;
                 case SystemState.ApplyAction: //the fixation on the zoom lens has been detected
@@ -249,17 +251,6 @@ namespace GazeToolBar
                     break;
             }
         }
-
-        /*
-        public void SetZoomerOffset()
-        {
-            Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
-            Point p2 = Utils.DividePoint(magnifier.SecondaryOffset, magnifier.MagnifierDivAmount());
-
-            Point o = Utils.SubtractPoints(p1, p2);
-
-            zoomer.Offset = o;
-        }*/
 
         private ZoomMagnifier CreateMagnifier()
         {

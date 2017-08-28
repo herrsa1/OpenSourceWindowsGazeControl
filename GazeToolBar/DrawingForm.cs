@@ -22,7 +22,7 @@ namespace GazeToolBar
         Point currentGaze;
         Image crosshairImage;
 
-        public DrawingForm(FixationDetection fixDet)
+        public DrawingForm()
         {
             InitializeComponent();
 
@@ -31,9 +31,6 @@ namespace GazeToolBar
             // highlightSize = new Size(40, 40);
             currentGaze = new Point();
 
-            // Subscride to the event which gives current co-ordinates
-            // of current eye position on screen
-            fixDet.currentProgress += updateLocation;
             // Load the user feedback image
             crosshairImage = Properties.Resources.crosshair_1;
         }
@@ -57,16 +54,24 @@ namespace GazeToolBar
             TopMost = true;
         }
 
-
-        public void Draw(Point offset)
+        public void SetCrossHairPos(Point p)
         {
-            offset = Utils.DividePoint(offset, 2);
+            currentGaze = p;
+        }
+
+        public void SetCrossHairPos(int x, int y)
+        {
+            SetCrossHairPos(new Point(x, y));
+        }
+
+        public void Draw()
+        {
             Point formCoordinates = currentGaze;
 
             Refresh();
 
-            int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2)) - offset.X;
-            int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2)) - offset.Y;
+            int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2));
+            int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2));
 
          //    crossHairX = Math.Max(0, crossHairX);
         //   crossHairY = Math.Max(0, crossHairY);
@@ -78,17 +83,6 @@ namespace GazeToolBar
         {
             Refresh();
             Hide();
-        }
-
-        /// <summary>
-        /// Updates point to draw feedback image via progress event args
-        /// </summary>
-        /// <param name="o"></param>
-        /// <param name="progress"></param>
-        private void updateLocation(object o, FixationProgressEventArgs progress)
-        {
-            currentGaze.X = progress.X;
-            currentGaze.Y = progress.Y;
         }
     }
 }

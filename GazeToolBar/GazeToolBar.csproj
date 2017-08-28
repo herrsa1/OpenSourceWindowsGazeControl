@@ -176,7 +176,7 @@
     <Compile Include="SystemFlags.cs" />
     <Compile Include="TrayMenu.cs" />
     <Compile Include="Utils.cs" />
-    <Compile Include="ValueNeverChange.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="VirtualMouse.cs" />
     <Compile Include="ZoomLens.cs">
       <SubType>Form</SubType>

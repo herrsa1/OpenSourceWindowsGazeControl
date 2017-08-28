@@ -28,9 +28,10 @@ namespace GazeToolBar
         Bitmap zoomedScreenshot;
         Bitmap offScreenBitmap;
         FixationDetection fixdet;
-      //  DrawingForm drawingForm;
+        DrawingForm drawingForm;
 
         public Point Offset { get; set; }
+        public Point CrossHairPos { get; set; }
 
         public ZoomLens()
         {
@@ -45,7 +46,7 @@ namespace GazeToolBar
             graphics = Graphics.FromImage(zoomedScreenshot);
             this.FormBorderStyle = FormBorderStyle.None;//removes window borders from form
            // fixdet = FixDet;
-          //  drawingForm = new DrawingForm(FixDet);
+            drawingForm = new DrawingForm();
             //====================================================
             // This is for making form appear on top of window's menu
             TopMost = true;
@@ -57,7 +58,7 @@ namespace GazeToolBar
         public void Start()
         {
             // Show the form that the user feedback image is drawn on
-         //   drawingForm.Show();
+            drawingForm.Show();
             DrawTimer.Start();
         }
 
@@ -66,7 +67,7 @@ namespace GazeToolBar
         {
             // Stop timer, and hide drawing form and zoom form
             DrawTimer.Stop();
-          //  drawingForm.ClearForm();
+            drawingForm.ClearForm();
             Hide();          
         }
 
@@ -74,8 +75,9 @@ namespace GazeToolBar
         private void DrawTimer_Tick(object sender, EventArgs e)
         {
             // Show drawing form and tell him to draw
-          //  drawingForm.Show();
-          //  drawingForm.Draw(Offset);
+            drawingForm.SetCrossHairPos(CrossHairPos);
+            drawingForm.Show();
+            drawingForm.Draw();
         }
     }
 }
