@@ -43,7 +43,7 @@ namespace GazeToolBar
             pnlKeyboardIsShow = false;
 
             //Set Short cut key assignment panel to the viable width of the form
-            pnlPageKeyboard.Width = ValueNeverChange.SCREEN_SIZE.Width - 20;
+            pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
 
             //Set feed back label to the center of the screen.
             lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
@@ -151,7 +151,7 @@ namespace GazeToolBar
         public void ChangeButtonColor(Button button, bool onOff, bool hasText)
         {
 
-            button.BackColor = onOff ? ValueNeverChange.SelectedColor: ValueNeverChange.SettingButtonColor;
+            button.BackColor = onOff ? Constants.SelectedColor: Constants.SettingButtonColor;
             if (hasText)
             {
                 if (onOff)
@@ -232,8 +232,8 @@ namespace GazeToolBar
                 //setting.speed = trackBarFixTimeOut.Value;
                 //setting.wordPrediction = onOff[2];
 
-                setting.fixationTimeLength = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
-                setting.fixationTimeOut = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
+                setting.fixationTimeLength = trackBarFixTimeLength.Value * Constants.GAP_TIME_LENGTH + Constants.MIN_TIME_LENGTH;
+                setting.fixationTimeOut = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
                 setting.leftClick = lbLeft.Text;
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
@@ -283,8 +283,8 @@ namespace GazeToolBar
 
 
             //TODO: Need to be replaced
-            trackBarFixTimeLength.Value = (Program.readSettings.fixationTimeLength - ValueNeverChange.MIN_TIME_LENGTH) / ValueNeverChange.GAP_TIME_LENGTH;
-            trackBarFixTimeOut.Value = (Program.readSettings.fixationTimeOut - ValueNeverChange.MIN_TIME_OUT) / ValueNeverChange.GAP_TIME_OUT;
+            trackBarFixTimeLength.Value = (Program.readSettings.fixationTimeLength - Constants.MIN_TIME_LENGTH) / Constants.GAP_TIME_LENGTH;
+            trackBarFixTimeOut.Value = (Program.readSettings.fixationTimeOut - Constants.MIN_TIME_OUT) / Constants.GAP_TIME_OUT;
             lbLeft.Text = Program.readSettings.leftClick;
             lbDouble.Text = Program.readSettings.doubleClick;
             lbRight.Text = Program.readSettings.rightClick;
@@ -475,14 +475,14 @@ namespace GazeToolBar
 
         private void trackBarFixTimeLength_ValueChanged(object sender, EventArgs e)
         {
-            form1.stateManager.fixationWorker.FixationDetectionTimeLength = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
-            form1.stateManager.fixationWorker.fixationTimer.Interval = trackBarFixTimeLength.Value * ValueNeverChange.GAP_TIME_LENGTH + ValueNeverChange.MIN_TIME_LENGTH;
+            form1.stateManager.fixationWorker.FixationDetectionTimeLength = trackBarFixTimeLength.Value * Constants.GAP_TIME_LENGTH + Constants.MIN_TIME_LENGTH;
+            form1.stateManager.fixationWorker.fixationTimer.Interval = trackBarFixTimeLength.Value * Constants.GAP_TIME_LENGTH + Constants.MIN_TIME_LENGTH;
         }
 
         private void trackBarFixTimeOut_ValueChanged(object sender, EventArgs e)
         {
-            form1.stateManager.fixationWorker.FixationTimeOutLength = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
-            form1.stateManager.fixationWorker.timeOutTimer.Interval = trackBarFixTimeOut.Value * ValueNeverChange.GAP_TIME_OUT + ValueNeverChange.MIN_TIME_OUT;
+            form1.stateManager.fixationWorker.FixationTimeOutLength = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
+            form1.stateManager.fixationWorker.timeOutTimer.Interval = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
         }
     }
 }

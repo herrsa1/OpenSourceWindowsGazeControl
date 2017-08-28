@@ -64,7 +64,7 @@ namespace GazeToolBar
         public CustomFixationDataStream(FormsEyeXHost EyeXHost)
         {
             //Calculate the amount of pixels away from the top of the screen to set cut of for top of screen threshold adjustment.
-            yFixationScreenBoundary = ValueNeverChange.PRIMARY_SCREEN.Height * (screenBoudaryCutOffPercent / 100);
+            yFixationScreenBoundary = Constants.PRIMARY_SCREEN.Height * (screenBoudaryCutOffPercent / 100);
 
             gazeStream = EyeXHost.CreateGazePointDataStream(GazePointDataMode.Unfiltered);
             //Create gate points event handler delegate

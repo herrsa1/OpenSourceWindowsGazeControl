@@ -24,6 +24,15 @@ namespace GazeToolBar
         //The timer that runs the program, this is run every ms
         private Timer ControlTimer;
 
+        //This is the form that appears when clicking on an area of the screen
+        private ZoomLens zoomForm;
+
+        //This controls the magnification on the ZoomLens
+        private ZoomMagnifier magnifier;
+
+        //Monitor Gaze fixation data and raise systems flag when this occurs.
+        private FixationDetection fixationWorker; 
+
         public StateManager_new()
         {
             /*
@@ -35,6 +44,11 @@ namespace GazeToolBar
             ControlTimer.Interval = 1;
             ControlTimer.Enabled = true;
             ControlTimer.Tick += RunCycle;
+
+            //Setup the zoom form
+            zoomForm = new ZoomLens();
+            magnifier = CreateMagnifier();
+            fixationWorker = new FixationDetection();
         }
 
         /*
@@ -44,6 +58,14 @@ namespace GazeToolBar
         {
             UpdateState();
             DoAction();
+        }
+
+        /*
+            * Creates the zoom magnifier 
+         */
+        private ZoomMagnifier CreateMagnifier()
+        {
+            return new ZoomMagnifierCentered(zoomForm, new System.Drawing.Point()); //TODO: remove the need for the point here
         }
 
         /*
@@ -74,50 +96,9 @@ namespace GazeToolBar
             }
         }
 
-        public void DoActionWait()
-        {
-            if (SystemFlags.hasSelectedButtonColourBeenReset == false)
-            {
-                SystemFlags.hasSelectedButtonColourBeenReset = true;
-            }
-        }
-
-        public void DoActionButtonSelected()
-        {
-            if (!SystemFlags.fixationRunning)
-            {
-                //fixationWorker.StartDetectingFixation();  //TODO
-                SystemFlags.fixationRunning = true;
-            }
-        }
-
-        public void DoActionZooming()
-        {
-                //TODO
-        }
-
-        public void DoActionZoomWait()
-        {
-            if (!SystemFlags.fixationRunning)
-            {
-               // fixationWorker.StartDetectingFixation();  //TODO
-                SystemFlags.fixationRunning = true;
-            }
-        }
-
-        public void DoActionScrollWait()
-        {
-            //nofu
-        }
-
-        public void DoActionApply()
-        {
-            //TODO
-        }
-
         /*
-             * Will switch the current state and see if it needs to change
-         */
+            * Will switch the current state and see if it needs to change
+        */
         public void UpdateState()
         {
             switch (SystemFlags.currentState)
@@ -143,6 +124,48 @@ namespace GazeToolBar
             }
         }
 
+        public void DoActionWait()
+        {
+            if (SystemFlags.hasSelectedButtonColourBeenReset == false)
+            {
+                SystemFlags.hasSelectedButtonColourBeenReset = true;
+            }
+        }
+
+        public void DoActionButtonSelected()
+        {
+            if (!SystemFlags.fixationRunning)
+            {
+                fixationWorker.StartDetectingFixation();
+                SystemFlags.fixationRunning = true;
+            }
+        }
+
+        public void DoActionZooming()
+        {
+                //TODO
+        }
+
+        public void DoActionZoomWait()
+        {
+            if (!SystemFlags.fixationRunning)
+            {
+                fixationWorker.StartDetectingFixation();
+                SystemFlags.fixationRunning = true;
+            }
+        }
+
+        public void DoActionScrollWait()
+        {
+            //nofu
+        }
+
+        public void DoActionApply()
+        {
+            //TODO
+        }
+
+
         /*
              *  Called from UpdateState() when the system state is in the Wait phase
         */
@@ -165,7 +188,7 @@ namespace GazeToolBar
         public void UpdateActionButtonSelectedState()
         {
             SystemFlags.hasSelectedButtonColourBeenReset = false;
-            if (SystemFlags.gaze)
+            if (SystemFlags.hasGaze)
             {
                 SetState(SystemState.Zooming);
             }
@@ -196,14 +219,14 @@ namespace GazeToolBar
         */
         public void UpdateZoomWaitState()
         {
-            if (SystemFlags.gaze)   //if the second zoomGaze has happed an action needs to be performed
+            if (SystemFlags.hasGaze)   //if the second zoomGaze has happed an action needs to be performed
             {
                 SetState(SystemState.ApplyAction);
             }
             else if (SystemFlags.timeOut)
             {
                 EnterWaitState();
-                //zoomer.ResetZoomLens();   //TODO
+                zoomForm.ResetZoomLens();
             }
         }
 
@@ -250,9 +273,9 @@ namespace GazeToolBar
             SystemFlags.fixationRunning = false;
             SystemFlags.actionButtonSelected = false;
             SystemFlags.fixationRunning = false;
-            SystemFlags.gaze = false;
+            SystemFlags.hasGaze = false;
             SystemFlags.timeOut = false;
-            //fixationWorker.IsZoomerFixation(false);   //TODO
+            fixationWorker.IsZoomerFixation(false);
             SetState(SystemState.Wait);
         }
     }

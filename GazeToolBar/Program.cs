@@ -40,12 +40,12 @@ namespace GazeToolBar
             if (!File.Exists(path))
             {
                 SettingJSON defaultSetting = new SettingJSON();
-                defaultSetting.fixationTimeLength = ValueNeverChange.DEFAULT_TIME_LENGTH;
-                defaultSetting.fixationTimeOut = ValueNeverChange.DEFAULT_TIME_OUT;
-                defaultSetting.leftClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
-                defaultSetting.doubleClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
-                defaultSetting.rightClick = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
-                defaultSetting.scoll = ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.fixationTimeLength = Constants.DEFAULT_TIME_LENGTH;
+                defaultSetting.fixationTimeOut = Constants.DEFAULT_TIME_OUT;
+                defaultSetting.leftClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.doubleClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.rightClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.scoll = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

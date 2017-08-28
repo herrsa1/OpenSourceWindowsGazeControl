@@ -48,8 +48,8 @@ namespace GazeToolBar
         {
             Top = 0;
             Left = 0;
-            Width = ValueNeverChange.SCREEN_SIZE.Width;
-            Height = ValueNeverChange.SCREEN_SIZE.Height;
+            Width = Constants.SCREEN_SIZE.Width;
+            Height = Constants.SCREEN_SIZE.Height;
             FormBorderStyle = FormBorderStyle.None;
             TransparencyKey = Color.Thistle;
             BackColor = Color.Thistle;

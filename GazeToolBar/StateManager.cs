@@ -17,19 +17,6 @@ namespace GazeToolBar
     public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
     public enum Edge { NoEdge = -1, Top, Right, Bottom, Left, TopLeft, TopRight, BottomLeft, BottomRight }
 
-    public static class SystemFlags
-    {
-        public static bool isKeyBoardUP { get; set; }
-        public static bool actionButtonSelected { get; set; }
-        public static ActionToBePerformed actionToBePerformed { get; set; }
-        public static SystemState currentState { get; set; }
-        public static bool gaze { get; set; }
-        public static bool timeOut { get; set; }
-        public static bool fixationRunning { get; set; }
-        public static bool hasSelectedButtonColourBeenReset { get; set; }
-        public static bool scrolling { get; set; }
-        public static bool shortCutKeyPressed { get; set; }
-    }
     public class StateManager
     {
         public FixationDetection fixationWorker;
@@ -58,7 +45,7 @@ namespace GazeToolBar
             SystemFlags.hasSelectedButtonColourBeenReset = true;
 
             // Instantiate the ZoomLens, this is the form that is given to magnifier
-            zoomer = new ZoomLens(fixationWorker, eyeXHost);
+            zoomer = new ZoomLens();
             // Instantiate the magnifier, this is Sam Medlocks refactored magnifier
             // This calls the low-level API
             magnifier = CreateMagnifier();
@@ -85,7 +72,7 @@ namespace GazeToolBar
             SystemFlags.fixationRunning = false;
             SystemFlags.actionButtonSelected = false;
             SystemFlags.fixationRunning = false;
-            SystemFlags.gaze = false;
+            SystemFlags.hasGaze = false;
             SystemFlags.timeOut = false;
             fixationWorker.IsZoomerFixation(false);
             currentState = SystemState.Wait;
@@ -112,7 +99,7 @@ namespace GazeToolBar
                     break;
                 case SystemState.ActionButtonSelected:
                     SystemFlags.hasSelectedButtonColourBeenReset = false;
-                    if (SystemFlags.gaze)
+                    if (SystemFlags.hasGaze)
                     {
                         currentState = SystemState.Zooming;
                     }
@@ -133,7 +120,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ZoomWait:
-                    if (SystemFlags.gaze)//if the second zoomGaze has happed an action needs to be performed
+                    if (SystemFlags.hasGaze)//if the second zoomGaze has happed an action needs to be performed
                     {
                         currentState = SystemState.ApplyAction;
                     }
@@ -196,7 +183,7 @@ namespace GazeToolBar
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
                     magnifier.Timer.Enabled = true;
-                  //  magnifier.UpdatePosition(fixationPoint);
+                   // magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
                     Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
@@ -209,7 +196,7 @@ namespace GazeToolBar
                     zoomer.Show();
 
                     //disable neccesary flags 
-                    SystemFlags.gaze = false;
+                    SystemFlags.hasGaze = false;
                     SystemFlags.fixationRunning = false;
                     break;
                 case SystemState.ZoomWait://waiting for user to fixate

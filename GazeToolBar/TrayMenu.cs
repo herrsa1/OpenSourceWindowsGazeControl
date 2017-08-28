@@ -28,7 +28,7 @@ namespace GazeToolBar
             //Set the menu item's text
             menuExit.Text = "Exit";
             menuSettings.Text = "Setting";
-            menuStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
+            menuStartOnOff.Text = Constants.AUTO_START_OFF;
 
             //Add all components to the menu
             menu.MenuItems.Add(menuSettings);
@@ -43,7 +43,7 @@ namespace GazeToolBar
         //Update the text shown on the autostart menu button
         public void OnStartTextChange()
         {
-            menuStartOnOff.Text = Program.onStartUp ? ValueNeverChange.AUTO_START_ON : ValueNeverChange.AUTO_START_OFF;
+            menuStartOnOff.Text = Program.onStartUp ? Constants.AUTO_START_ON : Constants.AUTO_START_OFF;
         }
 
         ////////////////////////////////////////////////////////////////////////////

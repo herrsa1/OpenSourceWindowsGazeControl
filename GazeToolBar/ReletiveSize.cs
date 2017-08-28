@@ -13,29 +13,29 @@ namespace GazeToolBar
     {
         public static Point panelSaveAndCancel(int width, int height)
         {
-            int x = (ValueNeverChange.SCREEN_SIZE.Width - width) / 2;
-            int y = ValueNeverChange.SCREEN_SIZE.Height - height - (int)(ValueNeverChange.SCREEN_SIZE.Height * 0.06);
+            int x = (Constants.SCREEN_SIZE.Width - width) / 2;
+            int y = Constants.SCREEN_SIZE.Height - height - (int)(Constants.SCREEN_SIZE.Height * 0.06);
             return new Point(x, y);
         }
 
         public static Size panelGeneralSize()
         {
-            int w = ValueNeverChange.SCREEN_SIZE.Width;
-            int h = (int)(ValueNeverChange.SCREEN_SIZE.Height * 0.6);
+            int w = Constants.SCREEN_SIZE.Width;
+            int h = (int)(Constants.SCREEN_SIZE.Height * 0.6);
             return new Size(w, h);
         }
 
         public static Point panelSwitchSettingLocation(int width, int height)
         {
-            int x = ValueNeverChange.SCREEN_SIZE.Width / 2 - width / 2;
-            int y = (int)(ValueNeverChange.SCREEN_SIZE.Height * 0.09);
+            int x = Constants.SCREEN_SIZE.Width / 2 - width / 2;
+            int y = (int)(Constants.SCREEN_SIZE.Height * 0.09);
             return new Point(x, y);
         }
 
         public static Point mainPanelLocation(int _y, int height)
         {
             int x = 0;
-            int y = _y + height + (int)(ValueNeverChange.SCREEN_SIZE.Height * 0.06);
+            int y = _y + height + (int)(Constants.SCREEN_SIZE.Height * 0.06);
             return new Point(x, y);
         }
 
@@ -107,6 +107,6 @@ namespace GazeToolBar
             }
         }
 
-        public static Size TabControlSize = new Size(ValueNeverChange.SCREEN_SIZE.Width, ValueNeverChange.SCREEN_SIZE.Height - 56 * 2);  
+        public static Size TabControlSize = new Size(Constants.SCREEN_SIZE.Width, Constants.SCREEN_SIZE.Height - 56 * 2);  
     }
 }

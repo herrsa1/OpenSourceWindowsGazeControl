@@ -76,7 +76,7 @@ namespace GazeToolBar
         private void initMenuItem()
         {
             menuItemExit.Text = "Exit";
-            menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
+            menuItemStartOnOff.Text = Constants.AUTO_START_OFF;
             menuItemExit.Click += new EventHandler(menuItemExit_Click);
             settingsItem.Text = "Setting";
             contextMenu.MenuItems.Add(settingsItem);
@@ -99,10 +99,10 @@ namespace GazeToolBar
 
 
             FKeyMapDictionary = new Dictionary<ActionToBePerformed, string>();
-            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
-            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
-            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
-            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, ValueNeverChange.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.DoubleClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.Scroll, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.RightClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
 
 
             //Instantiate keyboard hook and pass into worker class.
@@ -180,11 +180,11 @@ namespace GazeToolBar
         {
             if (Program.onStartUp)
             {
-                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_ON;
+                menuItemStartOnOff.Text = Constants.AUTO_START_ON;
             }
             else
             {
-                menuItemStartOnOff.Text = ValueNeverChange.AUTO_START_OFF;
+                menuItemStartOnOff.Text = Constants.AUTO_START_OFF;
             }
         }
 
@@ -196,7 +196,7 @@ namespace GazeToolBar
 
         private void setButtonPanelHight(List<Panel> panelList)
         {
-            int screenHeight = ValueNeverChange.SCREEN_SIZE.Height;
+            int screenHeight = Constants.SCREEN_SIZE.Height;
            
             int amountOfPanels = panelList.Count;
            

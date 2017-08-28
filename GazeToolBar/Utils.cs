@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,9 +22,46 @@ namespace GazeToolBar
             String outString = "";
             foreach (Object o in toPrint)
             {
-                outString += o.ToString() + " ";
+                if(o != null)
+                    outString += o.ToString() + " ";
             }
             Trace.WriteLine(outString);
+        }
+
+        /*
+         * An easy utility for writing several values to a file
+         * Each object will be written to a new line. Each element in an array will be written to a new line
+         * 
+         * Usage:
+         *      WriteToFile("output.txt", "Results\n_____", results, "Answers\n_____", answers);
+         */
+        public static bool WriteToFile(String filename, params Object[] toWrite)
+        {
+            StreamWriter writer = null;
+
+            try
+            {
+                writer = new StreamWriter(filename);
+                foreach(Object o in toWrite)
+                {
+                    if (o != null)
+                    {
+                        String outString = o.ToString();
+                        writer.WriteLine(outString);
+                    }
+                }
+            }
+            catch(IOException e)
+            {
+                Print(e.StackTrace);
+                return false;
+            }
+            finally
+            {
+                if (writer != null)
+                    writer.Close();
+            }
+            return true;
         }
 
         /*

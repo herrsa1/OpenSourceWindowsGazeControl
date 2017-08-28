@@ -108,7 +108,7 @@ namespace GazeToolBar
            if(currentGazeLocationX > deadZoneRect.RightBound)
            {
                //Calculate how much to scroll
-               xScrollValue = calculateScrollSpeed(currentGazeLocationX, deadZoneRect.RightBound, ValueNeverChange.SCREEN_SIZE.Width, ScrollScalarValue, false);
+               xScrollValue = calculateScrollSpeed(currentGazeLocationX, deadZoneRect.RightBound, Constants.SCREEN_SIZE.Width, ScrollScalarValue, false);
            }
            //check if users gaze on X axis is less than left bound of deadZoneRect
            if(currentGazeLocationX < deadZoneRect.LeftBound)
@@ -118,7 +118,7 @@ namespace GazeToolBar
 
            if (currentGazeLocationY > deadZoneRect.BottomBound)
            {
-               yScrollValue = calculateScrollSpeed(currentGazeLocationY, deadZoneRect.BottomBound, ValueNeverChange.SCREEN_SIZE.Height, ScrollScalarValue, false);
+               yScrollValue = calculateScrollSpeed(currentGazeLocationY, deadZoneRect.BottomBound, Constants.SCREEN_SIZE.Height, ScrollScalarValue, false);
            }
            if (currentGazeLocationY < deadZoneRect.TopBound)
            {
@@ -191,8 +191,8 @@ namespace GazeToolBar
        //Check if the coordinates are out side the bounds of the primary screen.
        private bool checkIFGazeOffScreen(double gazeX, double gazeY)
        {
-           if( gazeX > ValueNeverChange.SCREEN_SIZE.Width || gazeX < 0
-                || gazeY > ValueNeverChange.PRIMARY_SCREEN.Height || gazeY < 0)
+           if( gazeX > Constants.SCREEN_SIZE.Width || gazeX < 0
+                || gazeY > Constants.PRIMARY_SCREEN.Height || gazeY < 0)
            {
                return true;
            }
@@ -223,12 +223,12 @@ namespace GazeToolBar
             //Work out bounds of deadZoneRect rectangle ie place where no scrolling happens when the user is looking there.
 
             //Find Center of each axis
-            int screenHolizontalCenter = ValueNeverChange.SCREEN_SIZE.Width / 2;
-            int screenVerticalCenter = ValueNeverChange.SCREEN_SIZE.Height / 2;
+            int screenHolizontalCenter = Constants.SCREEN_SIZE.Width / 2;
+            int screenVerticalCenter = Constants.SCREEN_SIZE.Height / 2;
 
             //work out how many pixels the deadZone is on each axis
-            int deadZoneWidth = (int)(((double)DeadZoneHorizontalPercent / 100) * ValueNeverChange.SCREEN_SIZE.Width);
-            int deadZoneHeight = (int)(((double)DeadZoneVerticalPercent / 100) * ValueNeverChange.SCREEN_SIZE.Height);
+            int deadZoneWidth = (int)(((double)DeadZoneHorizontalPercent / 100) * Constants.SCREEN_SIZE.Width);
+            int deadZoneHeight = (int)(((double)DeadZoneVerticalPercent / 100) * Constants.SCREEN_SIZE.Height);
            
             //half this amount.
             int halfDeadZoneWidth = deadZoneWidth / 2;

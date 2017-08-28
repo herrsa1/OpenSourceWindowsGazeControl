@@ -64,7 +64,7 @@ namespace GazeToolBar
                 //Reset the button color to its origin color
                 resetButtonsColor();
                 //Set this button to other color, so people know this button has selected
-                btnDoubleClick.BackColor = ValueNeverChange.SelectedColor;
+                btnDoubleClick.BackColor = Constants.SelectedColor;
                 //Click this button
                 btnDoubleClick.PerformClick();
             }
@@ -75,7 +75,7 @@ namespace GazeToolBar
             if (e.HasGaze)
             {
                 resetButtonsColor();
-                btnRightClick.BackColor = ValueNeverChange.SelectedColor;
+                btnRightClick.BackColor = Constants.SelectedColor;
                 btnRightClick.PerformClick();
             }
         }
@@ -85,7 +85,7 @@ namespace GazeToolBar
             if (e.HasGaze)
             {
                 resetButtonsColor();
-                btnSingleLeftClick.BackColor = ValueNeverChange.SelectedColor;
+                btnSingleLeftClick.BackColor = Constants.SelectedColor;
                 btnSingleLeftClick.PerformClick();
             }
         }
@@ -104,7 +104,7 @@ namespace GazeToolBar
             if (e.HasGaze)
             {
                 resetButtonsColor();
-                btnScoll.BackColor = ValueNeverChange.SelectedColor;
+                btnScoll.BackColor = Constants.SelectedColor;
                 btnScoll.PerformClick();
             }
         }

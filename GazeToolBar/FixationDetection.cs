@@ -65,8 +65,15 @@ namespace GazeToolBar
         //Fixation data stream.
         CustomFixationDataStream customfixStream;
 
+        public FixationDetection() : this(new FormsEyeXHost())
+        {
+
+        }
+
         public FixationDetection(FormsEyeXHost EyeXHost)
         {
+            if (!EyeXHost.IsStarted)
+                EyeXHost.Start();
 
             customfixStream = new CustomFixationDataStream(EyeXHost);
 
@@ -172,7 +179,7 @@ namespace GazeToolBar
             timeOutTimer.Stop();
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
-            SystemFlags.gaze = true;
+            SystemFlags.hasGaze = true;
             //Debug
            // Console.WriteLine("Timer reached event, running required action");
         }
@@ -229,7 +236,7 @@ namespace GazeToolBar
 
             double currentFixationlength = currentTimeStamp - fixationProgressStartTimeStamp;
 
-            double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * ValueNeverChange.ONE_HUNDERED;
+            double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * 100;
 
            
             return(int)progressPercent;
