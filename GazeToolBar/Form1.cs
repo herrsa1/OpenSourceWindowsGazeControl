@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using EyeXFramework.Forms;
 using OptiKey;
 using OptiKey.UI.Windows;
-
+using GazeToolBar;
 
 namespace GazeToolBar
 {
@@ -67,7 +67,58 @@ namespace GazeToolBar
             keyboard.ShowInTaskbar = false;
 
             connectBehaveMap();
+
+            String[] sidebarArrangement = Program.readSettings.sidebar;
+            ArrangeSidebar(sidebarArrangement);
         }
+
+        public void ArrangeSidebar(string[] sidebarArrangement)
+        {
+            foreach(Panel p in highlightPannerList)
+            {
+                p.Left = -100;
+            }
+
+            const int BUTTON_HEIGHT = 75;
+            int gapSize = (740 / sidebarArrangement.Length) - (BUTTON_HEIGHT/2);
+         //   MessageBox.Show(gapSize + " " + sidebarArrangement.Length + " " + 740 + " " + BUTTON_HEIGHT);
+            int yPos = gapSize;
+            foreach(String s in sidebarArrangement)
+            {
+                Panel highlight = GetHighlightPanelForString(s);
+
+                if(highlight != null)
+                {
+                    highlight.Top = yPos;
+                    highlight.Left = 15;
+
+                    yPos += BUTTON_HEIGHT + gapSize;
+                }
+            }
+        }
+
+        private Panel GetHighlightPanelForString(String buttonString)
+        {
+            switch (buttonString)
+            {
+                case "right_click":
+                    return pnlHiLteRightClick;
+                case "left_click":
+                    return pnlHighLightSingleLeft;
+                case "double_left_click":
+                    return pnlHighLightDoubleClick;
+                case "scroll":
+                    return pnlHighLightScrol;
+                case "keyboard":
+                    return pnlHighLightKeyboard;
+                case "settings":
+                    return pnlHighLightSettings;
+                default:
+                    return null;
+            }
+        }
+
+
 
         /// <summary>
         /// Setup the context menu for
@@ -128,8 +179,11 @@ namespace GazeToolBar
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            settings = new Settings(this, eyeXHost);
-            settings.Show();
+            SidebarArrangementForm fm = new SidebarArrangementForm();
+            fm.sideForm = this;
+            fm.Show();
+           // settings = new Settings(this, eyeXHost);
+           // settings.Show();
         }
 
         private void btnRightClick_Click(object sender, EventArgs e)

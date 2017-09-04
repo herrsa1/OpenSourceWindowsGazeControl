@@ -14,5 +14,6 @@ namespace GazeToolBar
         public string doubleClick { get; set; }
         public string rightClick { get; set; }
         public string scoll { get; set; }
+        public string[] sidebar { get; set; }
     }
 }

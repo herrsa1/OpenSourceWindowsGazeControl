@@ -238,12 +238,13 @@ namespace GazeToolBar
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
+                setting.sidebar = Program.readSettings.sidebar;
 
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
-                form1.NotifyIcon.BalloonTipText = "Your settins are successfuly saved";
+                form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
                 this.Close();
                 form1.NotifyIcon.ShowBalloonTip(2000);
             }
