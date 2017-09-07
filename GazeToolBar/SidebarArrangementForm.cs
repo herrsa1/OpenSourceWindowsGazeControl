@@ -199,34 +199,10 @@ namespace GazeToolBar
             }
         }
 
-        private void btnActionSettings_Click(object sender, EventArgs e)
+        //Called when an action button is clicked
+        private void btnActionButtonClick_Click(object sender, EventArgs e)
         {
-            ActionButtonClick(btnActionSettings);
-        }
-
-        private void btnActionDoubleLeftClick_Click(object sender, EventArgs e)
-        {
-            ActionButtonClick(btnActionDoubleLeftClick);
-        }
-
-        private void btnActionLeftClick_Click(object sender, EventArgs e)
-        {
-            ActionButtonClick(btnActionLeftClick);
-        }
-
-        private void btnActionScrollClick_Click(object sender, EventArgs e)
-        {
-            ActionButtonClick(btnActionScrollClick);
-        }
-
-        private void btnActionRightClick_Click(object sender, EventArgs e)
-        {
-            ActionButtonClick(btnActionRightClick);
-        }
-
-        private void btnActionKeyboard_Click(object sender, EventArgs e)
-        {
-            ActionButtonClick(btnActionKeyboard);
+            ActionButtonClick((Button)sender);
         }
 
         //SAVE REMOVE THIS LATER

@@ -50,7 +50,7 @@
             this.btnActionSettings.TabIndex = 5;
             this.btnActionSettings.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionSettings.UseVisualStyleBackColor = false;
-            this.btnActionSettings.Click += new System.EventHandler(this.btnActionSettings_Click);
+            this.btnActionSettings.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnActionLeftClick
             // 
@@ -62,7 +62,7 @@
             this.btnActionLeftClick.TabIndex = 4;
             this.btnActionLeftClick.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionLeftClick.UseVisualStyleBackColor = false;
-            this.btnActionLeftClick.Click += new System.EventHandler(this.btnActionLeftClick_Click);
+            this.btnActionLeftClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnActionKeyboard
             // 
@@ -74,7 +74,7 @@
             this.btnActionKeyboard.TabIndex = 3;
             this.btnActionKeyboard.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionKeyboard.UseVisualStyleBackColor = false;
-            this.btnActionKeyboard.Click += new System.EventHandler(this.btnActionKeyboard_Click);
+            this.btnActionKeyboard.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnActionScrollClick
             // 
@@ -86,7 +86,7 @@
             this.btnActionScrollClick.TabIndex = 2;
             this.btnActionScrollClick.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionScrollClick.UseVisualStyleBackColor = false;
-            this.btnActionScrollClick.Click += new System.EventHandler(this.btnActionScrollClick_Click);
+            this.btnActionScrollClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnActionDoubleLeftClick
             // 
@@ -98,7 +98,7 @@
             this.btnActionDoubleLeftClick.TabIndex = 11;
             this.btnActionDoubleLeftClick.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionDoubleLeftClick.UseVisualStyleBackColor = false;
-            this.btnActionDoubleLeftClick.Click += new System.EventHandler(this.btnActionDoubleLeftClick_Click);
+            this.btnActionDoubleLeftClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnActionRightClick
             // 
@@ -110,7 +110,7 @@
             this.btnActionRightClick.TabIndex = 0;
             this.btnActionRightClick.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnActionRightClick.UseVisualStyleBackColor = false;
-            this.btnActionRightClick.Click += new System.EventHandler(this.btnActionRightClick_Click);
+            this.btnActionRightClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // btnMoveUp
             // 
