@@ -44,7 +44,7 @@
             // 
             this.btnActionSettings.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnActionSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
-            this.btnActionSettings.Location = new System.Drawing.Point(127, 261);
+            this.btnActionSettings.Location = new System.Drawing.Point(90, 83);
             this.btnActionSettings.Name = "btnActionSettings";
             this.btnActionSettings.Size = new System.Drawing.Size(100, 100);
             this.btnActionSettings.TabIndex = 5;
@@ -80,7 +80,7 @@
             // 
             this.btnActionScrollClick.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnActionScrollClick.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
-            this.btnActionScrollClick.Location = new System.Drawing.Point(127, 381);
+            this.btnActionScrollClick.Location = new System.Drawing.Point(132, 325);
             this.btnActionScrollClick.Name = "btnActionScrollClick";
             this.btnActionScrollClick.Size = new System.Drawing.Size(100, 100);
             this.btnActionScrollClick.TabIndex = 2;
