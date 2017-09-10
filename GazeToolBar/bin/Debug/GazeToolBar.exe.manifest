@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1607680">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1610240">
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0R49Jao5qffWDzrEUVorCNsuBexMZmoyimaJWa+kv6o=</dsig:DigestValue>
+        <dsig:DigestValue>nazBh0qrs+mqt6+SopwNHOEbhj1/GvhK3O0pjpIoXuk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,7 +84,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vXdwtVztyQuTyQ7xkkSSsPZP5RjoBAwCfXPkL3T42h8=</dsig:DigestValue>
+        <dsig:DigestValue>Vr8LYtxKQBaLw1yCmLes6sjZ5GJS5cbhbL7bcNsietc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -156,19 +156,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DkrBkT7ElhAILXVchVEu/sAEXC96VOE8a7U2pJFpwdE=</dsig:DigestValue>
+        <dsig:DigestValue>HRDt+YcJbnRcCEUEzYVktJ8pjBR0mOdOYRmhqUKETxk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="39424">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="de-DE" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lV9G3D64HbanpOLFdInQzHIJxWgUqgOpzY4FIygHXF8=</dsig:DigestValue>
+        <dsig:DigestValue>tcuvAOFLPkVc2ayrlSSLl7qP1BMTiyxGJCRBVZWuLD4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,19 +180,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KGsPKPazB04GDGDqUqgNj2cDNVpRqc3MBoxtebI+lcI=</dsig:DigestValue>
+        <dsig:DigestValue>3/YQGCA2Hd1rb1CfyOIg+Bqa96Pv61iUzfLWJPXcOTs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38912">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="nl" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oP+T3JIKu0DtLQS/Qw+Xa3qN683AX3iFkzYhL+8Ab84=</dsig:DigestValue>
+        <dsig:DigestValue>Maf2i3PoGnxeXoFrqsN38jL8dDCgHUN/eYqQ4V3msSg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -204,7 +204,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cDXppVrBMMB3C1yzWHJf4JC2v366KS4EM0r7jrq4+rI=</dsig:DigestValue>
+        <dsig:DigestValue>RYs/IUMGIXmbPywf/718dfJR/D3IFccH+s5DP7K4tng=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -502,13 +502,13 @@
       <dsig:DigestValue>uoBFhTi4/pxUl7dABXhPqAAk+WIz9L5wFZYeNJtLm2g=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\Double-Click-icon.png" size="53262">
+  <file name="Images\Double-Click-icon.png" size="1820">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>nkDlQRlB16hQkLZrO4/oE4xMACzkcEbdi/uA+4ggq7Y=</dsig:DigestValue>
+      <dsig:DigestValue>EDvzPgJAh9rcrTELoJ1oGPOzs6ckp0jOLDCeqbTZHR8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Images\Double-Click-icon-Selected.fw.png" size="52409">
@@ -556,13 +556,13 @@
       <dsig:DigestValue>8Z4tqI6OIfzqOtBS8Kp4joYJDrS4FfwuV8kyH/k2o+Q=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\Left-Click-icon.png" size="53631">
+  <file name="Images\Left-Click-icon.png" size="1551">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>RpCy4fbqo9Y89MMLkS8shcReV1b0kb1wTdfXZZZkhiw=</dsig:DigestValue>
+      <dsig:DigestValue>uPkwUAG94hkDbr9tPTpVpYZhixWUFG/AMxfnjqSo6F8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Images\Left-Click-ico-Selected.fw.png" size="51639">
@@ -574,13 +574,13 @@
       <dsig:DigestValue>rIut1OMtRLiRiLeMPEvkZIlRVhqd4LPSgP9rt8FNlH0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\Right-Click-icon.png" size="52589">
+  <file name="Images\Right-Click-icon.png" size="1565">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>akte4Y61QexRTQzsySoCPfD+l1mYNzndDJu/poKgDp8=</dsig:DigestValue>
+      <dsig:DigestValue>p8erDIdA3l8vvptCxfFQ1wZ70dSVUOU6ZLg/2LraLmg=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Images\Right-Click-icon-Selected.png" size="53154">

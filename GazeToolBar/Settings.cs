@@ -14,6 +14,7 @@ namespace GazeToolBar
         private Form1 form1;
         private bool[] onOff;
         private bool pnlKeyboardIsShow;
+        private bool pnlZoomSettingsIsShow;
         private bool pnlGeneralIsShow;
         private bool WaitForUserKeyPress;
         private static FormsEyeXHost eyeXHost;
@@ -41,6 +42,7 @@ namespace GazeToolBar
             }
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
+            pnlZoomSettingsIsShow = false;
 
             //Set Short cut key assignment panel to the viable width of the form
             pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
@@ -317,10 +319,13 @@ namespace GazeToolBar
             if (!pnlGeneralIsShow)
             {
                 pnlPageKeyboard.Hide();
+                pnlZoomSettings.Hide();
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
+                ChangeButtonColor(btnZoomSettings, false, true);
                 pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
                 pnlKeyboardIsShow = false;
+                pnlZoomSettingsIsShow = false;
                 pnlGeneralIsShow = true;
 
                 WaitForUserKeyPress = false;
@@ -332,11 +337,14 @@ namespace GazeToolBar
             if (!pnlKeyboardIsShow)
             {
                 pnlGeneral.Hide();
+                pnlZoomSettings.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
+                ChangeButtonColor(btnZoomSettings, false, true);
                 pnlPageKeyboard.Show();
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
                 pnlKeyboardIsShow = true;
                 pnlGeneralIsShow = false;
+                pnlZoomSettingsIsShow = false;
 
                 lbFKeyFeedback.Text = "";
             }
@@ -483,6 +491,22 @@ namespace GazeToolBar
         {
             form1.stateManager.fixationWorker.FixationTimeOutLength = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
             form1.stateManager.fixationWorker.timeOutTimer.Interval = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
+        }
+
+        private void btnZoomSettings_Click(object sender, EventArgs e)
+        {
+            if (!pnlZoomSettingsIsShow)
+            {
+                pnlGeneral.Hide();
+                pnlPageKeyboard.Hide();
+                ChangeButtonColor(btnGeneralSetting, false, true);
+                ChangeButtonColor(btnShortCutKeySetting, false, true);
+                pnlZoomSettings.Show();
+                ChangeButtonColor(btnZoomSettings, true, true);
+                pnlZoomSettingsIsShow = true;
+                pnlKeyboardIsShow = false;
+                pnlGeneralIsShow = false;
+            }
         }
     }
 }
