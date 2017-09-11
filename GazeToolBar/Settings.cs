@@ -252,6 +252,12 @@ namespace GazeToolBar
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
                 setting.sidebar = Program.readSettings.sidebar;
+                Program.readSettings.sidebar = selectedActions.ToArray<string>();
+
+                string sidebarSettings = JsonConvert.SerializeObject(Program.readSettings);
+                File.WriteAllText(Program.path, sidebarSettings);
+
+                sideForm.ArrangeSidebar(Program.readSettings.sidebar);
 
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
