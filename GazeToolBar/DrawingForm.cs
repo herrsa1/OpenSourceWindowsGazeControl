@@ -21,19 +21,23 @@ namespace GazeToolBar
         //Size highlightSize;
         Point currentGaze;
         Image crosshairImage;
+        private IFixationSmoother smoother;
 
         public DrawingForm()
         {
             InitializeComponent();
 
+            smoother = CreateSmoother();
             // If wanting to draw a fillEllipse, or re-introduce gazeHighlight
             // then un-comment the below line to set size
             // highlightSize = new Size(40, 40);
             currentGaze = new Point();
 
             // Load the user feedback image
-            crosshairImage = Properties.Resources.crosshair_1;
+            crosshairImage = Properties.Resources.crosshair_2;
         }
+
+
 
         /// <summary>
         /// Make form full screen, remove border, and make transparent
@@ -54,9 +58,15 @@ namespace GazeToolBar
             TopMost = true;
         }
 
+        public IFixationSmoother CreateSmoother()
+        {
+            return new FixationSmootherExponential(10);
+        }
+
         public void SetCrossHairPos(Point p)
         {
-            currentGaze = p;
+            GazePoint pp = smoother.UpdateAndGetSmoothPoint(p.X, p.Y);
+            currentGaze = new Point((int)pp.X, (int)pp.Y);
         }
 
         public void SetCrossHairPos(int x, int y)
@@ -83,6 +93,7 @@ namespace GazeToolBar
         {
             Refresh();
             Hide();
+            smoother = CreateSmoother();
         }
     }
 }

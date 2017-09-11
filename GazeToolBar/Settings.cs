@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Collections.Generic;
 using EyeXFramework.Forms;
+using System.Linq;
 
 namespace GazeToolBar
 {
@@ -16,8 +17,16 @@ namespace GazeToolBar
         private bool pnlKeyboardIsShow;
         private bool pnlZoomSettingsIsShow;
         private bool pnlGeneralIsShow;
+        private bool pnlRearrangeSettingsIsShown;
         private bool WaitForUserKeyPress;
         private static FormsEyeXHost eyeXHost;
+        private List<Point> sidebarActionInitPositions = new List<Point>();
+        private List<String> selectedActions = new List<String>();
+        private List<Button> actionButtons = new List<Button>();
+        private String selectionButton = "";
+        private Dictionary<String, Button> buttonMap = new Dictionary<string, Button>();
+
+        public Form1 sideForm;
 
 
         private List<Panel> fKeyPannels;
@@ -26,6 +35,7 @@ namespace GazeToolBar
         {
             eyeXHost = EyeXHost;
             InitializeComponent();
+            InitSidebarActions();
             pnlPageKeyboard.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
@@ -43,6 +53,7 @@ namespace GazeToolBar
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
             pnlZoomSettingsIsShow = false;
+            pnlRearrangeSettingsIsShown = false;
 
             //Set Short cut key assignment panel to the viable width of the form
             pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
@@ -240,12 +251,13 @@ namespace GazeToolBar
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
+                setting.sidebar = Program.readSettings.sidebar;
 
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
-                form1.NotifyIcon.BalloonTipText = "Your settins are successfuly saved";
+                form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
                 this.Close();
                 form1.NotifyIcon.ShowBalloonTip(2000);
             }
@@ -320,13 +332,16 @@ namespace GazeToolBar
             {
                 pnlPageKeyboard.Hide();
                 pnlZoomSettings.Hide();
+                pnlRearrangeSettings.Hide();
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
+                pnlGeneralIsShow = true;
                 pnlKeyboardIsShow = false;
                 pnlZoomSettingsIsShow = false;
-                pnlGeneralIsShow = true;
+                pnlRearrangeSettingsIsShown = false;
 
                 WaitForUserKeyPress = false;
             }
@@ -338,15 +353,56 @@ namespace GazeToolBar
             {
                 pnlGeneral.Hide();
                 pnlZoomSettings.Hide();
+                pnlRearrangeSettings.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlPageKeyboard.Show();
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
                 pnlKeyboardIsShow = true;
                 pnlGeneralIsShow = false;
                 pnlZoomSettingsIsShow = false;
+                pnlRearrangeSettingsIsShown = false;
 
                 lbFKeyFeedback.Text = "";
+            }
+        }
+
+        private void btnZoomSettings_Click(object sender, EventArgs e)
+        {
+            if (!pnlZoomSettingsIsShow)
+            {
+                pnlGeneral.Hide();
+                pnlPageKeyboard.Hide();
+                pnlRearrangeSettings.Hide();
+                ChangeButtonColor(btnGeneralSetting, false, true);
+                ChangeButtonColor(btnShortCutKeySetting, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
+                pnlZoomSettings.Show();
+                ChangeButtonColor(btnZoomSettings, true, true);
+                pnlZoomSettingsIsShow = true;
+                pnlKeyboardIsShow = false;
+                pnlGeneralIsShow = false;
+                pnlRearrangeSettingsIsShown = false;
+            }
+        }
+
+        private void btnRearrangeSetting_Click(object sender, EventArgs e)
+        {
+            if (!pnlRearrangeSettingsIsShown)
+            {
+                pnlGeneral.Hide();
+                pnlPageKeyboard.Hide();
+                pnlZoomSettings.Hide();
+                ChangeButtonColor(btnGeneralSetting, false, true);
+                ChangeButtonColor(btnShortCutKeySetting, false, true);
+                ChangeButtonColor(btnZoomSettings, false, true);
+                pnlRearrangeSettings.Show();
+                ChangeButtonColor(btnRearrangeSetting, true, true);
+                pnlRearrangeSettingsIsShown = true;
+                pnlZoomSettingsIsShow = false;
+                pnlKeyboardIsShow = false;
+                pnlGeneralIsShow = false;
             }
         }
 
@@ -493,20 +549,176 @@ namespace GazeToolBar
             form1.stateManager.fixationWorker.timeOutTimer.Interval = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
         }
 
-        private void btnZoomSettings_Click(object sender, EventArgs e)
+        //Methods to rearrange sidebar
+        private void InitSidebarActions()
         {
-            if (!pnlZoomSettingsIsShow)
+            buttonMap.Add("left_click", btnActionLeftClick);
+            buttonMap.Add("right_click", btnActionRightClick);
+            buttonMap.Add("keyboard", btnActionKeyboard);
+            buttonMap.Add("double_left_click", btnActionDoubleLeftClick);
+            buttonMap.Add("scroll", btnActionScrollClick);
+            buttonMap.Add("settings", btnActionSettings);
+
+            actionButtons.Add(btnActionDoubleLeftClick);
+            actionButtons.Add(btnActionLeftClick);
+            actionButtons.Add(btnActionRightClick);
+            actionButtons.Add(btnActionScrollClick);
+            actionButtons.Add(btnActionKeyboard);
+            actionButtons.Add(btnActionSettings);
+
+            foreach (Button b in actionButtons)
             {
-                pnlGeneral.Hide();
-                pnlPageKeyboard.Hide();
-                ChangeButtonColor(btnGeneralSetting, false, true);
-                ChangeButtonColor(btnShortCutKeySetting, false, true);
-                pnlZoomSettings.Show();
-                ChangeButtonColor(btnZoomSettings, true, true);
-                pnlZoomSettingsIsShow = true;
-                pnlKeyboardIsShow = false;
-                pnlGeneralIsShow = false;
+                sidebarActionInitPositions.Add(new Point(b.Left, b.Top));
             }
+
+            foreach (String s in Program.readSettings.sidebar)
+            {
+                AddAction(s);
+            }
+
+        }
+        public void AddAction(String actionString)
+        {
+            selectedActions.Add(actionString);
+            RefreshActions();
+        }
+
+        public void RemoveAction(String actionString)
+        {
+            selectedActions.Remove(actionString);
+            RefreshActions();
+        }
+
+        public void RefreshActions()
+        {
+            const int XPOS = 850;
+            int yPos = 80;
+            const int YGAP = 10;
+
+            int ind = 0;
+            foreach (Button b in actionButtons)
+            {
+                if (ButtonInSidebar(b))
+                {
+                    int selIndex = selectedActions.IndexOf(GetStringForButton(b));
+                    int y = yPos + ((b.Height + YGAP) * selIndex);
+
+                    b.Left = XPOS;
+                    b.Top = y;
+                }
+                else
+                {
+                    b.Left = sidebarActionInitPositions[ind].X;
+                    b.Top = sidebarActionInitPositions[ind].Y;
+                }
+                ind++;
+            }
+        }
+
+        private Button GetButtonForString(String buttonString)
+        {
+            return buttonMap[buttonString];
+        }
+
+        private String GetStringForButton(Button button)
+        {
+            String actionString = buttonMap.First(x => x.Value == button).Key;
+
+            return actionString;
+        }
+
+        public bool ButtonInSidebar(Button b)
+        {
+            foreach (String s in selectedActions)
+            {
+                Button actionButton = GetButtonForString(s);
+                if (actionButton == b)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public void ActionButtonClick(Button b)
+        {
+            String buttonString = GetStringForButton(b);
+            if (ButtonInSidebar(b))
+            {
+                if (!selectionButton.Equals(""))
+                {
+                    Button selButton = GetButtonForString(selectionButton);
+                    selButton.BackColor = Color.Black;
+                }
+
+                selectionButton = buttonString;
+                b.BackColor = Color.Red;
+            }
+            else
+            {
+                AddAction(buttonString);
+            }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (!selectionButton.Equals("") && !selectionButton.Equals("settings"))
+            {
+                Button b = GetButtonForString(selectionButton);
+                b.BackColor = Color.Black;
+
+                RemoveAction(selectionButton);
+                selectionButton = "";
+
+                RefreshActions();
+            }
+        }
+
+        private void btnMoveUp_Click(object sender, EventArgs e)
+        {
+            if (!selectionButton.Equals(""))
+            {
+                Button b = GetButtonForString(selectionButton);
+
+                int currentIndex = selectedActions.IndexOf(selectionButton);
+                if (currentIndex > 0)
+                {
+                    String temp = selectedActions[currentIndex];
+                    selectedActions[currentIndex] = selectedActions[currentIndex - 1];
+                    selectedActions[currentIndex - 1] = temp;
+                    RefreshActions();
+
+                }
+
+                b.BackColor = Color.Black;
+                selectionButton = "";
+            }
+        }
+
+        private void btnMoveDown_Click(object sender, EventArgs e)
+        {
+            if (!selectionButton.Equals(""))
+            {
+                Button b = GetButtonForString(selectionButton);
+
+                int currentIndex = selectedActions.IndexOf(selectionButton);
+                if (currentIndex < selectedActions.Count - 1)
+                {
+                    String temp = selectedActions[currentIndex];
+                    selectedActions[currentIndex] = selectedActions[currentIndex + 1];
+                    selectedActions[currentIndex + 1] = temp;
+                    RefreshActions();
+                }
+
+                b.BackColor = Color.Black;
+                selectionButton = "";
+            }
+        }
+
+        //Called when an action button is clicked
+        private void btnActionButtonClick_Click(object sender, EventArgs e)
+        {
+            ActionButtonClick((Button)sender);
         }
     }
 }
