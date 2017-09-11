@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 namespace GazeToolBar
 {
@@ -17,6 +18,7 @@ namespace GazeToolBar
     /// </summary>
     public partial class DrawingForm : Form
     {
+        public enum CrossHair {CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3 };
         Graphics graphics;
         //Size highlightSize;
         Point currentGaze;
@@ -30,11 +32,27 @@ namespace GazeToolBar
             // then un-comment the below line to set size
             // highlightSize = new Size(40, 40);
             currentGaze = new Point();
-
+            crosshairImage = GetCrossHairImage((CrossHair) Program.readSettings.CrossHair);
             // Load the user feedback image
-            crosshairImage = Properties.Resources.crosshair_1;
+            
         }
 
+        public static Image GetCrossHairImage(CrossHair c)
+        {
+            switch (c)
+            {
+                case CrossHair.CROSSHAIR_1:
+                    return Properties.Resources.crosshair_1;
+                case CrossHair.CROSSHAIR_2:
+                    return Properties.Resources.crosshair_2;
+                case CrossHair.CROSSHAIR_3:
+                    return Properties.Resources.crosshair_3;
+                default:
+                    return Properties.Resources.crosshair_1;
+            }
+        }
+
+        
         /// <summary>
         /// Make form full screen, remove border, and make transparent
         /// Also give a graphics instance and set to topmost (for yet to be finished win10 menu bug)

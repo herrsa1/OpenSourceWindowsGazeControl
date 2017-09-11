@@ -265,6 +265,8 @@
     <Content Include="Images\settings-icon-selected.fw.png" />
     <Content Include="Images\settings-icon.png" />
     <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\crosshair_2.png" />
+    <None Include="Resources\crosshair_3.png" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
