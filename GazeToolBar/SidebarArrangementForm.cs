@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-    public partial class SidebarArrangementForm : Form
+    public partial class SidebarArrangementForm : SettingsBase
     {
         private List<Point> sidebarActionInitPositions = new List<Point>();
         private List<String> selectedActions = new List<String>();
@@ -75,9 +75,14 @@ namespace GazeToolBar
 
         public void RefreshActions()
         {
-            const int XPOS = 850;
-            int yPos = 80;
+            
+            int PointMidX = Width / 2;
+            int PointMidY = Height / 2;
+
+             int XPOS = PointMidX + (PointMidX / 2);
+            int yPos = 200;
             const int YGAP = 10;
+
 
             int ind = 0;
             foreach (Button b in actionButtons)
@@ -97,6 +102,7 @@ namespace GazeToolBar
                 }
                 ind++;
             }
+
         }
 
         private Button GetButtonForString(String buttonString)
@@ -156,6 +162,7 @@ namespace GazeToolBar
 
                 RefreshActions();
             }
+            Settings.sidebar = selectedActions.ToArray<string>();
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
@@ -177,6 +184,8 @@ namespace GazeToolBar
                 b.BackColor = Color.Black;
                 selectionButton = "";
             }
+            Settings.sidebar = selectedActions.ToArray<string>();
+
         }
 
         private void btnMoveDown_Click(object sender, EventArgs e)
@@ -197,6 +206,8 @@ namespace GazeToolBar
                 b.BackColor = Color.Black;
                 selectionButton = "";
             }
+            Settings.sidebar = selectedActions.ToArray<string>();
+
         }
 
         //Called when an action button is clicked
@@ -214,6 +225,16 @@ namespace GazeToolBar
             File.WriteAllText(Program.path, settings);
 
             sideForm.ArrangeSidebar(Program.readSettings.sidebar);
+        }
+
+        private void SidebarArrangementForm_Load(object sender, EventArgs e)
+        {
+            int PointMidX = Width / 2;
+            int PointMidY = Height / 2;
+
+            panelArrows.Location = new Point(PointMidX - (panelArrows.Width / 2), PointMidY - (panelArrows.Height / 2));
+
+            RefreshActions();
         }
     }
 }

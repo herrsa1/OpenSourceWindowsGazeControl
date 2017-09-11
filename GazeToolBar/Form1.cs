@@ -179,9 +179,11 @@ namespace GazeToolBar
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            settings = new Settings(this, eyeXHost);
-            settings.sideForm = this;
-            settings.Show();
+            /*   settings = new Settings(this, eyeXHost);
+               settings.sideForm = this;
+               settings.Show();*/
+
+            SettingsBase.Open(this);
         }
 
         private void btnRightClick_Click(object sender, EventArgs e)

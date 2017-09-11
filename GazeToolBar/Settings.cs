@@ -139,6 +139,7 @@ namespace GazeToolBar
         //    OnTheRight = flag;
         //}
 
+            ///
         private void btnAutoStart_Click(object sender, EventArgs e)
         {
 
@@ -160,7 +161,7 @@ namespace GazeToolBar
             form1.OnStartTextChange();
 
         }
-
+        ///
         public void ChangeButtonColor(Button button, bool onOff, bool hasText)
         {
 
@@ -185,7 +186,7 @@ namespace GazeToolBar
         //    changeSitchGaze(gazeOrSwitch);
 
         //}
-
+        //
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
@@ -338,7 +339,6 @@ namespace GazeToolBar
             {
                 pnlPageKeyboard.Hide();
                 pnlZoomSettings.Hide();
-                pnlRearrangeSettings.Hide();
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
@@ -359,7 +359,6 @@ namespace GazeToolBar
             {
                 pnlGeneral.Hide();
                 pnlZoomSettings.Hide();
-                pnlRearrangeSettings.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
@@ -380,7 +379,6 @@ namespace GazeToolBar
             {
                 pnlGeneral.Hide();
                 pnlPageKeyboard.Hide();
-                pnlRearrangeSettings.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
@@ -403,7 +401,6 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
-                pnlRearrangeSettings.Show();
                 ChangeButtonColor(btnRearrangeSetting, true, true);
                 pnlRearrangeSettingsIsShown = true;
                 pnlZoomSettingsIsShow = false;
@@ -558,19 +555,6 @@ namespace GazeToolBar
         //Methods to rearrange sidebar
         private void InitSidebarActions()
         {
-            buttonMap.Add("left_click", btnActionLeftClick);
-            buttonMap.Add("right_click", btnActionRightClick);
-            buttonMap.Add("keyboard", btnActionKeyboard);
-            buttonMap.Add("double_left_click", btnActionDoubleLeftClick);
-            buttonMap.Add("scroll", btnActionScrollClick);
-            buttonMap.Add("settings", btnActionSettings);
-
-            actionButtons.Add(btnActionDoubleLeftClick);
-            actionButtons.Add(btnActionLeftClick);
-            actionButtons.Add(btnActionRightClick);
-            actionButtons.Add(btnActionScrollClick);
-            actionButtons.Add(btnActionKeyboard);
-            actionButtons.Add(btnActionSettings);
 
             foreach (Button b in actionButtons)
             {
@@ -598,7 +582,7 @@ namespace GazeToolBar
         public void RefreshActions()
         {
             const int XPOS = 850;
-            int yPos = 80;
+            int yPos = 10;
             const int YGAP = 10;
 
             int ind = 0;
