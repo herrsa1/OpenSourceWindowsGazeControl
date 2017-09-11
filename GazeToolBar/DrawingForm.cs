@@ -18,7 +18,7 @@ namespace GazeToolBar
     /// </summary>
     public partial class DrawingForm : Form
     {
-        public enum CrossHair {CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3 };
+        public enum CrossHair {CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3, CROSSHAIR_4, CROSSHAIR_5, CROSSHAIR_6 , CROSSHAIR_7, NONE };
         Graphics graphics;
         //Size highlightSize;
         Point currentGaze;
@@ -47,12 +47,22 @@ namespace GazeToolBar
                     return Properties.Resources.crosshair_2;
                 case CrossHair.CROSSHAIR_3:
                     return Properties.Resources.crosshair_3;
+                case CrossHair.CROSSHAIR_4:
+                    return Properties.Resources.crosshair_4;
+                case CrossHair.CROSSHAIR_5:
+                    return Properties.Resources.crosshair_5;
+                case CrossHair.CROSSHAIR_6:
+                    return Properties.Resources.crosshair_6;
+                case CrossHair.CROSSHAIR_7:
+                    return Properties.Resources.crosshair_7;
+                case CrossHair.NONE:
+                    return Properties.Resources.crosshair_None;
                 default:
-                    return Properties.Resources.crosshair_1;
+                    return Properties.Resources.crosshair_2;
             }
         }
 
-        
+
         /// <summary>
         /// Make form full screen, remove border, and make transparent
         /// Also give a graphics instance and set to topmost (for yet to be finished win10 menu bug)
