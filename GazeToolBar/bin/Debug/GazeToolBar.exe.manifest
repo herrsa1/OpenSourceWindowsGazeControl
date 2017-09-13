@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1630208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1632688">
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>p00hzb+5hzpNNyFTzchaoP0axEPAtrwrGlTBLcn4irA=</dsig:DigestValue>
+        <dsig:DigestValue>hvjYzrjX++9CRZk2hc/EPs6qhAVb2p2lSuvrpjS0uJs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,7 +84,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vXdwtVztyQuTyQ7xkkSSsPZP5RjoBAwCfXPkL3T42h8=</dsig:DigestValue>
+        <dsig:DigestValue>gGbpiwnELvZz6Kqrd1OBBfAeYmwLzyHKarvD2opxcQo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,14 +149,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4033536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4030976">
       <assemblyIdentity name="OptiKey" version="2.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wMYaS9qxvoBFtrg+qI/nKSInnqnQ93pNu16RlUOF0dI=</dsig:DigestValue>
+        <dsig:DigestValue>FS/yIW8RXwuuCX5rLmDH/+fZ6lRqJ88Bzuhc2Yr7Dh0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -168,7 +168,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>e6E0sFdAtTZqdVmYdGCVrZL8SjiKhygEg7jsGYuD1lE=</dsig:DigestValue>
+        <dsig:DigestValue>brt9StXIMQfqlmTc70k+3+qv2RfCOB54Suuanq5oHvI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,7 +180,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fzQ3TJGmvUAIuEKlJosfmtwJOol3Tcas1Qt6yub51gY=</dsig:DigestValue>
+        <dsig:DigestValue>j6bUyfAvAul1O/PU4LPVBzHRh/Ctmb56WPDRBbp6rJo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -192,7 +192,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oYTZOGTNyeGdDly5Qibdgp/ttFCDQYhdMaZy++/4Vls=</dsig:DigestValue>
+        <dsig:DigestValue>jr1/xwY+Y/EFnmixm2DUidqCeDr7pPk8vAU1Bzdh638=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -204,7 +204,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FXth1pLESI9skvv3mhRz4o3wtvcxS6L3ezDFjKITz68=</dsig:DigestValue>
+        <dsig:DigestValue>PRghb4iQ3MyDLrtTzlNylGvvlchF45BDtA5MYHoTAy8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -624,16 +624,15 @@
       <!-- A list of the Windows versions that this application has been tested on and is
            is designed to work with. Uncomment the appropriate elements and Windows will 
            automatically selected the most compatible environment. -->
-      <!-- Windows Vista -->
+      Windows Vista
       <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />
-      <!-- Windows 7 -->
+      Windows 7
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
-      <!-- Windows 8 -->
+      Windows 8
       <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />
-      <!-- Windows 8.1 -->
+      Windows 8.1
       <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
-      <!-- Windows 10 -->
-      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
-    </application>
+      indows 10
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" /></application>
   </compatibility>
 </asmv1:assembly>

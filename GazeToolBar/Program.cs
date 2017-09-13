@@ -46,7 +46,7 @@ namespace GazeToolBar
                 defaultSetting.doubleClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.rightClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.scoll = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
-                defaultSetting.CrossHair = (int) DrawingForm.CrossHair.CROSSHAIR_7;
+                defaultSetting.CrossHair = (int) DrawingForm.CrossHair.CROSSHAIR_3;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

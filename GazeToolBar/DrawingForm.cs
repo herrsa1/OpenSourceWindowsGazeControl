@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace GazeToolBar
@@ -97,14 +99,19 @@ namespace GazeToolBar
             Point formCoordinates = currentGaze;
 
             Refresh();
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Bitmap image = (Bitmap)crosshairImage;
+            int crossHairX = (formCoordinates.X - (image.Width / 2));
+            int crossHairY = (formCoordinates.Y - (image.Height / 2));
 
-            int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2));
-            int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2));
+            //    crossHairX = Math.Max(0, crossHairX);
+            //   crossHairY = Math.Max(0, crossHairY);
 
-         //    crossHairX = Math.Max(0, crossHairX);
-        //   crossHairY = Math.Max(0, crossHairY);
+            //image.MakeTransparent(Color.Gray);
+            
 
-            graphics.DrawImage(crosshairImage, crossHairX, crossHairY);
+            Rectangle Dimensions = new Rectangle(crossHairX, crossHairY, image.Width, image.Height);
+            graphics.DrawImage(image, Dimensions);
         }
 
         public void ClearForm()

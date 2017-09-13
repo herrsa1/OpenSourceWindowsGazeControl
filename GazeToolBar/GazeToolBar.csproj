@@ -16,7 +16,7 @@
     <TargetFrameworkProfile />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <PublishUrl>C:\Users\medlsp1\Desktop\</PublishUrl>
+    <PublishUrl>H:\Year3\Project2\TestInstall\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -59,25 +59,28 @@
     <ApplicationIcon>Gaze.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>5FE66283237673F475506F132E01012B03BA6618</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>7720FF65D5130C64A0147545A76879F53E699CE4</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>GazeToolBar_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>GazeToolBar_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>GazeToolBar.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EyeXFramework, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -214,6 +217,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
+    <None Include="GazeToolBar_1_TemporaryKey.pfx" />
     <None Include="GazeToolBar_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
