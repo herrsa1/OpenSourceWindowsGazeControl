@@ -171,11 +171,17 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsBase.BehavMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SettingsBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingsBase.Designer.cs">
       <DependentUpon>SettingsBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SettingsGeneral.BehavMap.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingsGeneral.cs">
       <SubType>Form</SubType>
@@ -183,12 +189,16 @@
     <Compile Include="SettingsGeneral.Designer.cs">
       <DependentUpon>SettingsGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsShortcut.BehavMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SettingsShortcut.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SettingsShortcut.Designer.cs">
       <DependentUpon>SettingsShortcut.cs</DependentUpon>
     </Compile>
+    <Compile Include="SettingsZoom.BehavMap.cs" />
     <Compile Include="SettingsZoom.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +206,7 @@
       <DependentUpon>SettingsZoom.cs</DependentUpon>
     </Compile>
     <Compile Include="ShortcutKeyWorker.cs" />
+    <Compile Include="SidebarArrangementForm.BehavMap.cs" />
     <Compile Include="SidebarArrangementForm.cs">
       <SubType>Form</SubType>
     </Compile>

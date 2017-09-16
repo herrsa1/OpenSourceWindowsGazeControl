@@ -146,7 +146,6 @@
             this.btFKeyRightClick.TabIndex = 1;
             this.btFKeyRightClick.Text = "Set";
             this.btFKeyRightClick.UseVisualStyleBackColor = true;
-            this.btFKeyRightClick.Click += new System.EventHandler(this.btFKeyRightClick_Click);
             // 
             // pnlFKeyHighlight4
             // 
@@ -169,7 +168,6 @@
             this.btClearFKeyRightClick.TabIndex = 2;
             this.btClearFKeyRightClick.Text = "Clear";
             this.btClearFKeyRightClick.UseVisualStyleBackColor = true;
-            this.btClearFKeyRightClick.Click += new System.EventHandler(this.btClearFKeyRightClick_Click);
             // 
             // pnlDoubleClick
             // 
@@ -227,7 +225,6 @@
             this.btFKeyDoubleClick.TabIndex = 1;
             this.btFKeyDoubleClick.Text = "Set";
             this.btFKeyDoubleClick.UseVisualStyleBackColor = true;
-            this.btFKeyDoubleClick.Click += new System.EventHandler(this.btFKeyDoubleClick_Click);
             // 
             // pnlFKeyHighlight6
             // 
@@ -250,7 +247,6 @@
             this.btClearFKeyDoubleClick.TabIndex = 2;
             this.btClearFKeyDoubleClick.Text = "Clear";
             this.btClearFKeyDoubleClick.UseVisualStyleBackColor = true;
-            this.btClearFKeyDoubleClick.Click += new System.EventHandler(this.btClearFKeyDoubleClick_Click);
             // 
             // pnlScroll
             // 
@@ -297,7 +293,6 @@
             this.btClearFKeyScroll.TabIndex = 2;
             this.btClearFKeyScroll.Text = "Clear";
             this.btClearFKeyScroll.UseVisualStyleBackColor = true;
-            this.btClearFKeyScroll.Click += new System.EventHandler(this.btClearFKeyScroll_Click);
             // 
             // pnlFKeyHighlight7
             // 
@@ -320,7 +315,6 @@
             this.btFKeyScroll.TabIndex = 1;
             this.btFKeyScroll.Text = "Set";
             this.btFKeyScroll.UseVisualStyleBackColor = true;
-            this.btFKeyScroll.Click += new System.EventHandler(this.btFKeyScroll_Click);
             // 
             // pictureBox4
             // 
@@ -366,7 +360,6 @@
             this.btClearFKeyLeftClick.TabIndex = 2;
             this.btClearFKeyLeftClick.Text = "Clear";
             this.btClearFKeyLeftClick.UseVisualStyleBackColor = true;
-            this.btClearFKeyLeftClick.Click += new System.EventHandler(this.btClearFKeyLeftClick_Click);
             // 
             // pnlFKeyHighlight1
             // 
@@ -389,7 +382,6 @@
             this.btFKeyLeftClick.TabIndex = 1;
             this.btFKeyLeftClick.Text = "Set";
             this.btFKeyLeftClick.UseVisualStyleBackColor = true;
-            this.btFKeyLeftClick.Click += new System.EventHandler(this.btFKeyLeftClick_Click);
             // 
             // lbLeft
             // 
@@ -466,6 +458,7 @@
 
         #endregion
 
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
         private System.Windows.Forms.Label lbFKeyFeedback;
         private System.Windows.Forms.Panel pnlRightClick;
         private System.Windows.Forms.Label lbRight;

@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1647104">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1650176">
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aKo25wh2HtzpHnhfybZ2MKooSchukxUp02g5oyCUFzg=</dsig:DigestValue>
+        <dsig:DigestValue>hjZwOAH/SzUARV51+rdOa6nhjxU3fdxpIEHfMXKMwxs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,7 +84,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Vr8LYtxKQBaLw1yCmLes6sjZ5GJS5cbhbL7bcNsietc=</dsig:DigestValue>
+        <dsig:DigestValue>/QHp6d/LFCuEVhmfrON9LWCG/9P1Srr7vueNCAUTh94=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -156,19 +156,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DkrBkT7ElhAILXVchVEu/sAEXC96VOE8a7U2pJFpwdE=</dsig:DigestValue>
+        <dsig:DigestValue>MGr3J2uSZPhk+Vn3LPisMnzw0htofrF9XTwbX+yWzGQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="39424">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="de-DE" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lV9G3D64HbanpOLFdInQzHIJxWgUqgOpzY4FIygHXF8=</dsig:DigestValue>
+        <dsig:DigestValue>3kF3zsYuKzWa3B81xlZB11MlaUnyEDW9KNB++8aA3Ac=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,19 +180,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KGsPKPazB04GDGDqUqgNj2cDNVpRqc3MBoxtebI+lcI=</dsig:DigestValue>
+        <dsig:DigestValue>rZ7c7zRBEZEHF6iNtaXipbAoCOi0r0WXcJqkVw/iJGk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38912">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="nl" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oP+T3JIKu0DtLQS/Qw+Xa3qN683AX3iFkzYhL+8Ab84=</dsig:DigestValue>
+        <dsig:DigestValue>srZ9GRvVL1SpHvig7PM4bUSGd+rYjc3xeLnLi6yxRfs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -204,7 +204,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cDXppVrBMMB3C1yzWHJf4JC2v366KS4EM0r7jrq4+rI=</dsig:DigestValue>
+        <dsig:DigestValue>E0046HNEzkRh5H0fY3BYKWpTs4+wx+ib7MKYnSxWYWE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

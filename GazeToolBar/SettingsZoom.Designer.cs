@@ -267,6 +267,7 @@
 
         #endregion
 
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
         private System.Windows.Forms.Panel pnlZoomAmount;
         private System.Windows.Forms.Panel pnlZoomAmountContent;
         private System.Windows.Forms.Panel panel5;

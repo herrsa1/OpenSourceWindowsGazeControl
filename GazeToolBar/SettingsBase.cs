@@ -8,12 +8,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EyeXFramework.Forms;
 using System.Windows.Forms;
 
 namespace GazeToolBar
 {
     public partial class SettingsBase : Form
     {
+        public static FormsEyeXHost eyeXHost;
         public Form1 Sidebar
         {
             get;
@@ -29,7 +31,7 @@ namespace GazeToolBar
         public SettingsBase()
         {
             InitializeComponent();
-
+            eyeXHost = null;
         }
 
         private void SettingsBase_Load(object sender, EventArgs e)
@@ -64,8 +66,9 @@ namespace GazeToolBar
             Close();
         }
 
-        public static void Open(Form1 sidebar)
+        public static void Open(Form1 sidebar, FormsEyeXHost EyeXHost)
         {
+            eyeXHost = EyeXHost;
             SettingsGeneral gen = new SettingsGeneral();
             gen.Sidebar = sidebar;
             gen.Settings = Program.readSettings;
@@ -133,6 +136,12 @@ namespace GazeToolBar
             Sidebar.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
             this.Close();
             Sidebar.NotifyIcon.ShowBalloonTip(2000);
+        }
+
+        private void SettingsBase_Shown(object sender, EventArgs e)
+        {
+            connectBehaveMap();
+            Sidebar.shortCutKeyWorker.StopKeyboardWorker();
         }
     }
 }

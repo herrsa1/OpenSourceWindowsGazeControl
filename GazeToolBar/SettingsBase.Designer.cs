@@ -208,6 +208,7 @@
             this.Text = "SettingsBase";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SettingsBase_FormClosed);
             this.Load += new System.EventHandler(this.SettingsBase_Load);
+            this.Shown += new System.EventHandler(this.SettingsBase_Shown);
             this.pnlSwitchSetting.ResumeLayout(false);
             this.pnlKeysButton.ResumeLayout(false);
             this.pnlGeneralButton.ResumeLayout(false);
@@ -220,6 +221,7 @@
 
         #endregion
 
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
         private System.Windows.Forms.Panel pnlSwitchSetting;
         private System.Windows.Forms.Button btnRearrangeSetting;
         private System.Windows.Forms.Button btnZoomSettings;

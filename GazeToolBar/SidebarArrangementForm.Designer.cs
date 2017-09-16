@@ -192,6 +192,8 @@
         }
 
         #endregion
+
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
         private System.Windows.Forms.Button btnActionRightClick;
         private System.Windows.Forms.Button btnActionDoubleLeftClick;
         private System.Windows.Forms.Button btnActionScrollClick;

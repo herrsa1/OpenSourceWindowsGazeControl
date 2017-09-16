@@ -326,6 +326,7 @@
 
         #endregion
 
+        private EyeXFramework.Forms.BehaviorMap bhavSettingMap;
         private System.Windows.Forms.Panel pnlFixationTimeOut;
         private System.Windows.Forms.Panel pnlFixTimeOutContent;
         private System.Windows.Forms.Panel pnlFTOPlus;

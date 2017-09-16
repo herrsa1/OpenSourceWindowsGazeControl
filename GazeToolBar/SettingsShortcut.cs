@@ -13,7 +13,6 @@ namespace GazeToolBar
     public partial class SettingsShortcut : SettingsBase
     {
         private Boolean WaitForUserKeyPress;
-        ActionToBePerformed actionToAssignKey;
 
         public SettingsShortcut()
         {
@@ -69,10 +68,6 @@ namespace GazeToolBar
                 {
                     Sidebar.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
                     updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
-                    Settings.leftClick = lbLeft.Text;
-                    Settings.doubleClick = lbDouble.Text;
-                    Settings.rightClick = lbRight.Text;
-                    Settings.scoll = lbScroll.Text;
                     WaitForUserKeyPress = false;
                     lbFKeyFeedback.Text = "";
                 }
@@ -97,61 +92,5 @@ namespace GazeToolBar
         {
             WaitForUserKeyPress = false;
         }
-
-        private void btFKeyLeftClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.LeftClick;
-            lbFKeyFeedback.Text = "please press a key";
-
-        }
-
-        private void btFKeyRightClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.RightClick;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        private void btFKeyDoubleClick_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.DoubleClick;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        private void btFKeyScroll_Click(object sender, EventArgs e)
-        {
-            WaitForUserKeyPress = true;
-            actionToAssignKey = ActionToBePerformed.Scroll;
-            lbFKeyFeedback.Text = "please press a key";
-        }
-
-        String notAssigned = "N/A";
-
-        private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
-        {
-            Sidebar.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
-            lbLeft.Text = notAssigned;
-        }
-
-        private void btClearFKeyRightClick_Click(object sender, EventArgs e)
-        {
-            Sidebar.shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = notAssigned;
-            lbRight.Text = notAssigned;
-        }
-
-        private void btClearFKeyDoubleClick_Click(object sender, EventArgs e)
-        {
-            Sidebar.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
-            lbDouble.Text = notAssigned;
-        }
-
-        private void btClearFKeyScroll_Click(object sender, EventArgs e)
-        {
-            Sidebar.shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = notAssigned;
-            lbScroll.Text = notAssigned;
-        }
-
     }
 }
