@@ -821,6 +821,7 @@ namespace GazeToolBar
             this.btnZoomSizePlus.TabIndex = 13;
             this.btnZoomSizePlus.Text = "+";
             this.btnZoomSizePlus.UseVisualStyleBackColor = false;
+            this.btnZoomSizePlus.Click += new System.EventHandler(this.btnZoomSizePlus_Click);
             // 
             // trackBarZoomWindowSize
             // 
@@ -831,6 +832,7 @@ namespace GazeToolBar
             this.trackBarZoomWindowSize.TabIndex = 12;
             this.trackBarZoomWindowSize.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarZoomWindowSize.Value = 5;
+            this.trackBarZoomWindowSize.ValueChanged += new System.EventHandler(this.trackBarZoomWindowSize_ValueChanged);
             // 
             // pnlZWSMinus
             // 
@@ -854,6 +856,7 @@ namespace GazeToolBar
             this.btnZoomSizeMinus.TabIndex = 14;
             this.btnZoomSizeMinus.Text = "-";
             this.btnZoomSizeMinus.UseVisualStyleBackColor = false;
+            this.btnZoomSizeMinus.Click += new System.EventHandler(this.btnZoomSizeMinus_Click);
             // 
             // labZoomWindowSize
             // 
@@ -910,6 +913,7 @@ namespace GazeToolBar
             this.btnZoomAmountPlus.TabIndex = 16;
             this.btnZoomAmountPlus.Text = "+";
             this.btnZoomAmountPlus.UseVisualStyleBackColor = false;
+            this.btnZoomAmountPlus.Click += new System.EventHandler(this.btnZoomAmountPlus_Click);
             // 
             // trackBarZoomAmount
             // 
@@ -921,6 +925,7 @@ namespace GazeToolBar
             this.trackBarZoomAmount.TabIndex = 15;
             this.trackBarZoomAmount.TickStyle = System.Windows.Forms.TickStyle.Both;
             this.trackBarZoomAmount.Value = 5;
+            this.trackBarZoomAmount.ValueChanged += new System.EventHandler(this.trackBarZoomAmount_ValueChanged);
             // 
             // pnlZIAMinus
             // 
@@ -944,6 +949,7 @@ namespace GazeToolBar
             this.btnZoomAmountMinus.TabIndex = 17;
             this.btnZoomAmountMinus.Text = "-";
             this.btnZoomAmountMinus.UseVisualStyleBackColor = false;
+            this.btnZoomAmountMinus.Click += new System.EventHandler(this.btnZoomAmountMinus_Click);
             // 
             // labZoomAmount
             // 
@@ -963,7 +969,7 @@ namespace GazeToolBar
             this.pnlZoomSettings.Location = new System.Drawing.Point(460, 87);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(157, 61);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(152, 61);
             this.pnlZoomSettings.TabIndex = 29;
             // 
             // pnlGeneral
@@ -974,7 +980,7 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelPrecision);
             this.pnlGeneral.Location = new System.Drawing.Point(277, 92);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(147, 56);
+            this.pnlGeneral.Size = new System.Drawing.Size(699, 327);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1431,9 +1437,9 @@ namespace GazeToolBar
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(2826, 753);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlRearrange);
-            this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlSwitchSetting);
             this.Controls.Add(this.panelSaveAndCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

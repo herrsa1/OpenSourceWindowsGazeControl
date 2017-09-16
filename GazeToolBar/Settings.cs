@@ -574,7 +574,35 @@ namespace GazeToolBar
         {
             changeTrackBarValue(trackBarFixTimeOut, "I");
         }
+        private void btnZoomSizeMinus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarZoomWindowSize, "D");
+        }
 
+        private void btnZoomSizePlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarZoomWindowSize, "I");
+        }
+
+        private void btnZoomAmountMinus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarZoomAmount, "D");
+        }
+
+        private void btnZoomAmountPlus_Click(object sender, EventArgs e)
+        {
+            changeTrackBarValue(trackBarZoomAmount, "I");
+        }
+
+        private void trackBarZoomWindowSize_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBarZoomAmount_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
         private void trackBarFixTimeLength_ValueChanged(object sender, EventArgs e)
         {
             form1.stateManager.fixationWorker.FixationDetectionTimeLength = trackBarFixTimeLength.Value * Constants.GAP_TIME_LENGTH + Constants.MIN_TIME_LENGTH;

@@ -171,47 +171,7 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingsBase.BehavMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsBase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsBase.Designer.cs">
-      <DependentUpon>SettingsBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsGeneral.BehavMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsGeneral.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsGeneral.Designer.cs">
-      <DependentUpon>SettingsGeneral.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsShortcut.BehavMap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsShortcut.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsShortcut.Designer.cs">
-      <DependentUpon>SettingsShortcut.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SettingsZoom.BehavMap.cs" />
-    <Compile Include="SettingsZoom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsZoom.Designer.cs">
-      <DependentUpon>SettingsZoom.cs</DependentUpon>
-    </Compile>
     <Compile Include="ShortcutKeyWorker.cs" />
-    <Compile Include="SidebarArrangementForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SidebarArrangementForm.Designer.cs">
-      <DependentUpon>SidebarArrangementForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="StateManager.cs" />
     <Compile Include="StateManager_new.cs" />
     <Compile Include="SystemFlags.cs" />
@@ -247,21 +207,6 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsBase.resx">
-      <DependentUpon>SettingsBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsGeneral.resx">
-      <DependentUpon>SettingsGeneral.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsShortcut.resx">
-      <DependentUpon>SettingsShortcut.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SettingsZoom.resx">
-      <DependentUpon>SettingsZoom.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SidebarArrangementForm.resx">
-      <DependentUpon>SidebarArrangementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ZoomLens.resx">
       <DependentUpon>ZoomLens.cs</DependentUpon>
