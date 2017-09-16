@@ -77,7 +77,9 @@ namespace GazeToolBar
             this.pnlGeneralButton = new System.Windows.Forms.Panel();
             this.pnlKeysButton = new System.Windows.Forms.Panel();
             this.pnlSwitchSetting = new System.Windows.Forms.Panel();
+            this.pnlRearrangeButton = new System.Windows.Forms.Panel();
             this.btnRearrangeSetting = new System.Windows.Forms.Button();
+            this.pnlZoomButton = new System.Windows.Forms.Panel();
             this.btnZoomSettings = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlZoomSize = new System.Windows.Forms.Panel();
@@ -120,6 +122,26 @@ namespace GazeToolBar
             this.pnlFTLMins = new System.Windows.Forms.Panel();
             this.btnFixTimeLengthMins = new System.Windows.Forms.Button();
             this.lblFixationDetectionTimeLength = new System.Windows.Forms.Label();
+            this.pnlRearrange = new System.Windows.Forms.Panel();
+            this.pnlRearrangeControls = new System.Windows.Forms.Panel();
+            this.pnlMoveUpButton = new System.Windows.Forms.Panel();
+            this.btnMoveUp = new System.Windows.Forms.Button();
+            this.pnlMoveDownButton = new System.Windows.Forms.Panel();
+            this.btnMoveDown = new System.Windows.Forms.Button();
+            this.pnlRemoveButton = new System.Windows.Forms.Panel();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.pnlRightClickButton = new System.Windows.Forms.Panel();
+            this.btnActionRightClick = new System.Windows.Forms.Button();
+            this.pnlSettingsButton = new System.Windows.Forms.Panel();
+            this.btnActionSettings = new System.Windows.Forms.Button();
+            this.pnlLeftClickButton = new System.Windows.Forms.Panel();
+            this.btnActionLeftClick = new System.Windows.Forms.Button();
+            this.pnlKeyboardButton = new System.Windows.Forms.Panel();
+            this.btnActionKeyboard = new System.Windows.Forms.Button();
+            this.pnlScrollClickButton = new System.Windows.Forms.Panel();
+            this.btnActionScrollClick = new System.Windows.Forms.Button();
+            this.pnlDoubleLeftClickButton = new System.Windows.Forms.Panel();
+            this.btnActionDoubleLeftClick = new System.Windows.Forms.Button();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
             this.pnlSave.SuspendLayout();
@@ -145,6 +167,8 @@ namespace GazeToolBar
             this.pnlGeneralButton.SuspendLayout();
             this.pnlKeysButton.SuspendLayout();
             this.pnlSwitchSetting.SuspendLayout();
+            this.pnlRearrangeButton.SuspendLayout();
+            this.pnlZoomButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlZoomSize.SuspendLayout();
             this.pnlZoomSizeContent.SuspendLayout();
@@ -171,6 +195,17 @@ namespace GazeToolBar
             this.pnlFTLPlus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).BeginInit();
             this.pnlFTLMins.SuspendLayout();
+            this.pnlRearrange.SuspendLayout();
+            this.pnlRearrangeControls.SuspendLayout();
+            this.pnlMoveUpButton.SuspendLayout();
+            this.pnlMoveDownButton.SuspendLayout();
+            this.pnlRemoveButton.SuspendLayout();
+            this.pnlRightClickButton.SuspendLayout();
+            this.pnlSettingsButton.SuspendLayout();
+            this.pnlLeftClickButton.SuspendLayout();
+            this.pnlKeyboardButton.SuspendLayout();
+            this.pnlScrollClickButton.SuspendLayout();
+            this.pnlDoubleLeftClickButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -239,10 +274,10 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
             this.pnlPageKeyboard.Controls.Add(this.pnlLeftClick);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(519, 207);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(643, 86);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(175, 106);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 62);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
             // lbFKeyFeedback
@@ -364,7 +399,7 @@ namespace GazeToolBar
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
             this.pictureBox3.Location = new System.Drawing.Point(16, 22);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
@@ -491,7 +526,7 @@ namespace GazeToolBar
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
             this.pictureBox4.Location = new System.Drawing.Point(19, 22);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
@@ -631,10 +666,10 @@ namespace GazeToolBar
             this.btnGeneralSetting.FlatAppearance.BorderSize = 5;
             this.btnGeneralSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneralSetting.ForeColor = System.Drawing.Color.White;
-            this.btnGeneralSetting.Location = new System.Drawing.Point(4, 0);
+            this.btnGeneralSetting.Location = new System.Drawing.Point(2, 2);
             this.btnGeneralSetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnGeneralSetting.Name = "btnGeneralSetting";
-            this.btnGeneralSetting.Size = new System.Drawing.Size(147, 62);
+            this.btnGeneralSetting.Size = new System.Drawing.Size(150, 70);
             this.btnGeneralSetting.TabIndex = 28;
             this.btnGeneralSetting.Text = "General Setting";
             this.btnGeneralSetting.UseVisualStyleBackColor = false;
@@ -646,10 +681,10 @@ namespace GazeToolBar
             this.btnShortCutKeySetting.FlatAppearance.BorderSize = 5;
             this.btnShortCutKeySetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShortCutKeySetting.ForeColor = System.Drawing.Color.White;
-            this.btnShortCutKeySetting.Location = new System.Drawing.Point(1, 0);
+            this.btnShortCutKeySetting.Location = new System.Drawing.Point(2, 2);
             this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(1);
             this.btnShortCutKeySetting.Name = "btnShortCutKeySetting";
-            this.btnShortCutKeySetting.Size = new System.Drawing.Size(147, 62);
+            this.btnShortCutKeySetting.Size = new System.Drawing.Size(150, 70);
             this.btnShortCutKeySetting.TabIndex = 29;
             this.btnShortCutKeySetting.Text = "Shortcut Keys";
             this.btnShortCutKeySetting.UseVisualStyleBackColor = false;
@@ -661,7 +696,7 @@ namespace GazeToolBar
             this.pnlGeneralButton.Location = new System.Drawing.Point(2, 2);
             this.pnlGeneralButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlGeneralButton.Name = "pnlGeneralButton";
-            this.pnlGeneralButton.Size = new System.Drawing.Size(151, 64);
+            this.pnlGeneralButton.Size = new System.Drawing.Size(154, 75);
             this.pnlGeneralButton.TabIndex = 22;
             // 
             // pnlKeysButton
@@ -670,20 +705,28 @@ namespace GazeToolBar
             this.pnlKeysButton.Location = new System.Drawing.Point(370, 2);
             this.pnlKeysButton.Margin = new System.Windows.Forms.Padding(2);
             this.pnlKeysButton.Name = "pnlKeysButton";
-            this.pnlKeysButton.Size = new System.Drawing.Size(151, 62);
+            this.pnlKeysButton.Size = new System.Drawing.Size(154, 75);
             this.pnlKeysButton.TabIndex = 22;
             // 
             // pnlSwitchSetting
             // 
             this.pnlSwitchSetting.BackColor = System.Drawing.Color.Black;
-            this.pnlSwitchSetting.Controls.Add(this.btnRearrangeSetting);
-            this.pnlSwitchSetting.Controls.Add(this.btnZoomSettings);
+            this.pnlSwitchSetting.Controls.Add(this.pnlRearrangeButton);
+            this.pnlSwitchSetting.Controls.Add(this.pnlZoomButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlKeysButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlGeneralButton);
             this.pnlSwitchSetting.Location = new System.Drawing.Point(273, 0);
             this.pnlSwitchSetting.Name = "pnlSwitchSetting";
-            this.pnlSwitchSetting.Size = new System.Drawing.Size(708, 79);
+            this.pnlSwitchSetting.Size = new System.Drawing.Size(708, 81);
             this.pnlSwitchSetting.TabIndex = 28;
+            // 
+            // pnlRearrangeButton
+            // 
+            this.pnlRearrangeButton.Controls.Add(this.btnRearrangeSetting);
+            this.pnlRearrangeButton.Location = new System.Drawing.Point(551, 2);
+            this.pnlRearrangeButton.Name = "pnlRearrangeButton";
+            this.pnlRearrangeButton.Size = new System.Drawing.Size(154, 75);
+            this.pnlRearrangeButton.TabIndex = 32;
             // 
             // btnRearrangeSetting
             // 
@@ -691,14 +734,22 @@ namespace GazeToolBar
             this.btnRearrangeSetting.FlatAppearance.BorderSize = 5;
             this.btnRearrangeSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRearrangeSetting.ForeColor = System.Drawing.Color.White;
-            this.btnRearrangeSetting.Location = new System.Drawing.Point(557, 4);
+            this.btnRearrangeSetting.Location = new System.Drawing.Point(2, 2);
             this.btnRearrangeSetting.Margin = new System.Windows.Forms.Padding(1);
             this.btnRearrangeSetting.Name = "btnRearrangeSetting";
-            this.btnRearrangeSetting.Size = new System.Drawing.Size(147, 62);
+            this.btnRearrangeSetting.Size = new System.Drawing.Size(150, 70);
             this.btnRearrangeSetting.TabIndex = 30;
             this.btnRearrangeSetting.Text = "Rearrange ToolBar";
             this.btnRearrangeSetting.UseVisualStyleBackColor = false;
             this.btnRearrangeSetting.Click += new System.EventHandler(this.btnRearrangeSetting_Click);
+            // 
+            // pnlZoomButton
+            // 
+            this.pnlZoomButton.Controls.Add(this.btnZoomSettings);
+            this.pnlZoomButton.Location = new System.Drawing.Point(185, 2);
+            this.pnlZoomButton.Name = "pnlZoomButton";
+            this.pnlZoomButton.Size = new System.Drawing.Size(154, 75);
+            this.pnlZoomButton.TabIndex = 31;
             // 
             // btnZoomSettings
             // 
@@ -706,10 +757,10 @@ namespace GazeToolBar
             this.btnZoomSettings.FlatAppearance.BorderSize = 5;
             this.btnZoomSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnZoomSettings.ForeColor = System.Drawing.Color.White;
-            this.btnZoomSettings.Location = new System.Drawing.Point(186, 4);
+            this.btnZoomSettings.Location = new System.Drawing.Point(2, 2);
             this.btnZoomSettings.Margin = new System.Windows.Forms.Padding(1);
             this.btnZoomSettings.Name = "btnZoomSettings";
-            this.btnZoomSettings.Size = new System.Drawing.Size(147, 62);
+            this.btnZoomSettings.Size = new System.Drawing.Size(150, 70);
             this.btnZoomSettings.TabIndex = 30;
             this.btnZoomSettings.Text = "Zoom Settings";
             this.btnZoomSettings.UseVisualStyleBackColor = false;
@@ -909,10 +960,10 @@ namespace GazeToolBar
             // 
             this.pnlZoomSettings.Controls.Add(this.pnlZoomAmount);
             this.pnlZoomSettings.Controls.Add(this.pnlZoomSize);
-            this.pnlZoomSettings.Location = new System.Drawing.Point(912, 214);
+            this.pnlZoomSettings.Location = new System.Drawing.Point(460, 87);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(178, 69);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(157, 61);
             this.pnlZoomSettings.TabIndex = 29;
             // 
             // pnlGeneral
@@ -921,9 +972,9 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.pnlFixationTimeOut);
             this.pnlGeneral.Controls.Add(this.panelOther);
             this.pnlGeneral.Controls.Add(this.panelPrecision);
-            this.pnlGeneral.Location = new System.Drawing.Point(108, 177);
+            this.pnlGeneral.Location = new System.Drawing.Point(277, 92);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(335, 185);
+            this.pnlGeneral.Size = new System.Drawing.Size(147, 56);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1175,6 +1226,204 @@ namespace GazeToolBar
             this.lblFixationDetectionTimeLength.TabIndex = 11;
             this.lblFixationDetectionTimeLength.Text = "Fixation \r\nTime Length";
             // 
+            // pnlRearrange
+            // 
+            this.pnlRearrange.BackColor = System.Drawing.Color.Black;
+            this.pnlRearrange.Controls.Add(this.pnlRearrangeControls);
+            this.pnlRearrange.Controls.Add(this.pnlRightClickButton);
+            this.pnlRearrange.Controls.Add(this.pnlSettingsButton);
+            this.pnlRearrange.Controls.Add(this.pnlLeftClickButton);
+            this.pnlRearrange.Controls.Add(this.pnlKeyboardButton);
+            this.pnlRearrange.Controls.Add(this.pnlScrollClickButton);
+            this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
+            this.pnlRearrange.Location = new System.Drawing.Point(824, 87);
+            this.pnlRearrange.Name = "pnlRearrange";
+            this.pnlRearrange.Size = new System.Drawing.Size(157, 61);
+            this.pnlRearrange.TabIndex = 30;
+            // 
+            // pnlRearrangeControls
+            // 
+            this.pnlRearrangeControls.Controls.Add(this.pnlMoveUpButton);
+            this.pnlRearrangeControls.Controls.Add(this.pnlMoveDownButton);
+            this.pnlRearrangeControls.Controls.Add(this.pnlRemoveButton);
+            this.pnlRearrangeControls.Location = new System.Drawing.Point(636, 60);
+            this.pnlRearrangeControls.Name = "pnlRearrangeControls";
+            this.pnlRearrangeControls.Size = new System.Drawing.Size(132, 408);
+            this.pnlRearrangeControls.TabIndex = 4;
+            // 
+            // pnlMoveUpButton
+            // 
+            this.pnlMoveUpButton.Controls.Add(this.btnMoveUp);
+            this.pnlMoveUpButton.Location = new System.Drawing.Point(19, 19);
+            this.pnlMoveUpButton.Name = "pnlMoveUpButton";
+            this.pnlMoveUpButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlMoveUpButton.TabIndex = 3;
+            // 
+            // btnMoveUp
+            // 
+            this.btnMoveUp.BackColor = System.Drawing.Color.Black;
+            this.btnMoveUp.Image = global::GazeToolBar.Properties.Resources.button_up;
+            this.btnMoveUp.Location = new System.Drawing.Point(2, 2);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(90, 90);
+            this.btnMoveUp.TabIndex = 0;
+            this.btnMoveUp.UseVisualStyleBackColor = false;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+            // 
+            // pnlMoveDownButton
+            // 
+            this.pnlMoveDownButton.Controls.Add(this.btnMoveDown);
+            this.pnlMoveDownButton.Location = new System.Drawing.Point(19, 287);
+            this.pnlMoveDownButton.Name = "pnlMoveDownButton";
+            this.pnlMoveDownButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlMoveDownButton.TabIndex = 3;
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.BackColor = System.Drawing.Color.Black;
+            this.btnMoveDown.Image = global::GazeToolBar.Properties.Resources.button_down;
+            this.btnMoveDown.Location = new System.Drawing.Point(2, 2);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(90, 90);
+            this.btnMoveDown.TabIndex = 0;
+            this.btnMoveDown.UseVisualStyleBackColor = false;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
+            // pnlRemoveButton
+            // 
+            this.pnlRemoveButton.Controls.Add(this.btnRemove);
+            this.pnlRemoveButton.Location = new System.Drawing.Point(19, 155);
+            this.pnlRemoveButton.Name = "pnlRemoveButton";
+            this.pnlRemoveButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlRemoveButton.TabIndex = 3;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.Black;
+            this.btnRemove.Image = global::GazeToolBar.Properties.Resources.button_left;
+            this.btnRemove.Location = new System.Drawing.Point(2, 2);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(90, 90);
+            this.btnRemove.TabIndex = 0;
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // pnlRightClickButton
+            // 
+            this.pnlRightClickButton.BackColor = System.Drawing.Color.Black;
+            this.pnlRightClickButton.Controls.Add(this.btnActionRightClick);
+            this.pnlRightClickButton.Location = new System.Drawing.Point(179, 275);
+            this.pnlRightClickButton.Name = "pnlRightClickButton";
+            this.pnlRightClickButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlRightClickButton.TabIndex = 2;
+            // 
+            // btnActionRightClick
+            // 
+            this.btnActionRightClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionRightClick.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
+            this.btnActionRightClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionRightClick.Name = "btnActionRightClick";
+            this.btnActionRightClick.Size = new System.Drawing.Size(90, 90);
+            this.btnActionRightClick.TabIndex = 0;
+            this.btnActionRightClick.UseVisualStyleBackColor = false;
+            this.btnActionRightClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlSettingsButton
+            // 
+            this.pnlSettingsButton.Controls.Add(this.btnActionSettings);
+            this.pnlSettingsButton.Location = new System.Drawing.Point(483, 167);
+            this.pnlSettingsButton.Name = "pnlSettingsButton";
+            this.pnlSettingsButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlSettingsButton.TabIndex = 2;
+            // 
+            // btnActionSettings
+            // 
+            this.btnActionSettings.BackColor = System.Drawing.Color.Black;
+            this.btnActionSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
+            this.btnActionSettings.Location = new System.Drawing.Point(2, 2);
+            this.btnActionSettings.Name = "btnActionSettings";
+            this.btnActionSettings.Size = new System.Drawing.Size(90, 90);
+            this.btnActionSettings.TabIndex = 0;
+            this.btnActionSettings.UseVisualStyleBackColor = false;
+            this.btnActionSettings.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlLeftClickButton
+            // 
+            this.pnlLeftClickButton.Controls.Add(this.btnActionLeftClick);
+            this.pnlLeftClickButton.Location = new System.Drawing.Point(179, 167);
+            this.pnlLeftClickButton.Name = "pnlLeftClickButton";
+            this.pnlLeftClickButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlLeftClickButton.TabIndex = 2;
+            // 
+            // btnActionLeftClick
+            // 
+            this.btnActionLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionLeftClick.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
+            this.btnActionLeftClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionLeftClick.Name = "btnActionLeftClick";
+            this.btnActionLeftClick.Size = new System.Drawing.Size(90, 90);
+            this.btnActionLeftClick.TabIndex = 0;
+            this.btnActionLeftClick.UseVisualStyleBackColor = false;
+            this.btnActionLeftClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlKeyboardButton
+            // 
+            this.pnlKeyboardButton.BackColor = System.Drawing.Color.Transparent;
+            this.pnlKeyboardButton.Controls.Add(this.btnActionKeyboard);
+            this.pnlKeyboardButton.Location = new System.Drawing.Point(290, 167);
+            this.pnlKeyboardButton.Name = "pnlKeyboardButton";
+            this.pnlKeyboardButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlKeyboardButton.TabIndex = 2;
+            // 
+            // btnActionKeyboard
+            // 
+            this.btnActionKeyboard.BackColor = System.Drawing.Color.Black;
+            this.btnActionKeyboard.Image = global::GazeToolBar.Properties.Resources.Keyboard_icon;
+            this.btnActionKeyboard.Location = new System.Drawing.Point(2, 2);
+            this.btnActionKeyboard.Name = "btnActionKeyboard";
+            this.btnActionKeyboard.Size = new System.Drawing.Size(90, 90);
+            this.btnActionKeyboard.TabIndex = 0;
+            this.btnActionKeyboard.UseVisualStyleBackColor = false;
+            this.btnActionKeyboard.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlScrollClickButton
+            // 
+            this.pnlScrollClickButton.Controls.Add(this.btnActionScrollClick);
+            this.pnlScrollClickButton.Location = new System.Drawing.Point(290, 61);
+            this.pnlScrollClickButton.Name = "pnlScrollClickButton";
+            this.pnlScrollClickButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlScrollClickButton.TabIndex = 2;
+            // 
+            // btnActionScrollClick
+            // 
+            this.btnActionScrollClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionScrollClick.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
+            this.btnActionScrollClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionScrollClick.Name = "btnActionScrollClick";
+            this.btnActionScrollClick.Size = new System.Drawing.Size(90, 90);
+            this.btnActionScrollClick.TabIndex = 0;
+            this.btnActionScrollClick.UseVisualStyleBackColor = false;
+            this.btnActionScrollClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlDoubleLeftClickButton
+            // 
+            this.pnlDoubleLeftClickButton.Controls.Add(this.btnActionDoubleLeftClick);
+            this.pnlDoubleLeftClickButton.Location = new System.Drawing.Point(179, 61);
+            this.pnlDoubleLeftClickButton.Name = "pnlDoubleLeftClickButton";
+            this.pnlDoubleLeftClickButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlDoubleLeftClickButton.TabIndex = 1;
+            // 
+            // btnActionDoubleLeftClick
+            // 
+            this.btnActionDoubleLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionDoubleLeftClick.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
+            this.btnActionDoubleLeftClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionDoubleLeftClick.Name = "btnActionDoubleLeftClick";
+            this.btnActionDoubleLeftClick.Size = new System.Drawing.Size(90, 90);
+            this.btnActionDoubleLeftClick.TabIndex = 0;
+            this.btnActionDoubleLeftClick.UseVisualStyleBackColor = false;
+            this.btnActionDoubleLeftClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1182,9 +1431,10 @@ namespace GazeToolBar
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(2826, 753);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlPageKeyboard);
+            this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlSwitchSetting);
-            this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.panelSaveAndCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1227,6 +1477,8 @@ namespace GazeToolBar
             this.pnlGeneralButton.ResumeLayout(false);
             this.pnlKeysButton.ResumeLayout(false);
             this.pnlSwitchSetting.ResumeLayout(false);
+            this.pnlRearrangeButton.ResumeLayout(false);
+            this.pnlZoomButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlZoomSize.ResumeLayout(false);
             this.pnlZoomSize.PerformLayout();
@@ -1262,6 +1514,17 @@ namespace GazeToolBar
             this.pnlFTLPlus.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).EndInit();
             this.pnlFTLMins.ResumeLayout(false);
+            this.pnlRearrange.ResumeLayout(false);
+            this.pnlRearrangeControls.ResumeLayout(false);
+            this.pnlMoveUpButton.ResumeLayout(false);
+            this.pnlMoveDownButton.ResumeLayout(false);
+            this.pnlRemoveButton.ResumeLayout(false);
+            this.pnlRightClickButton.ResumeLayout(false);
+            this.pnlSettingsButton.ResumeLayout(false);
+            this.pnlLeftClickButton.ResumeLayout(false);
+            this.pnlKeyboardButton.ResumeLayout(false);
+            this.pnlScrollClickButton.ResumeLayout(false);
+            this.pnlDoubleLeftClickButton.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1355,5 +1618,27 @@ namespace GazeToolBar
         private Panel pnlFTLMins;
         private Button btnFixTimeLengthMins;
         private Label lblFixationDetectionTimeLength;
+        private Panel pnlRearrangeButton;
+        private Panel pnlZoomButton;
+        private Panel pnlRearrange;
+        private Panel pnlDoubleLeftClickButton;
+        private Button btnActionDoubleLeftClick;
+        private Panel pnlScrollClickButton;
+        private Button btnActionScrollClick;
+        private Panel pnlRightClickButton;
+        private Button btnActionRightClick;
+        private Panel pnlSettingsButton;
+        private Button btnActionSettings;
+        private Panel pnlLeftClickButton;
+        private Button btnActionLeftClick;
+        private Panel pnlKeyboardButton;
+        private Button btnActionKeyboard;
+        private Panel pnlMoveUpButton;
+        private Button btnMoveUp;
+        private Panel pnlRemoveButton;
+        private Button btnRemove;
+        private Panel pnlMoveDownButton;
+        private Button btnMoveDown;
+        private Panel pnlRearrangeControls;
     }
 }

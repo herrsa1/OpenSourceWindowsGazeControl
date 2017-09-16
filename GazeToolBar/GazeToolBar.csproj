@@ -206,7 +206,6 @@
       <DependentUpon>SettingsZoom.cs</DependentUpon>
     </Compile>
     <Compile Include="ShortcutKeyWorker.cs" />
-    <Compile Include="SidebarArrangementForm.BehavMap.cs" />
     <Compile Include="SidebarArrangementForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -17,16 +17,15 @@ namespace GazeToolBar
         private bool pnlKeyboardIsShow;
         private bool pnlZoomSettingsIsShow;
         private bool pnlGeneralIsShow;
-        private bool pnlRearrangeSettingsIsShown;
+        private bool pnlRearrangeIsShown;
         private bool WaitForUserKeyPress;
         private static FormsEyeXHost eyeXHost;
         private List<Point> sidebarActionInitPositions = new List<Point>();
         private List<String> selectedActions = new List<String>();
         private List<Button> actionButtons = new List<Button>();
+        private List<Panel> actionPanels = new List<Panel>();
         private String selectionButton = "";
         private Dictionary<String, Button> buttonMap = new Dictionary<string, Button>();
-
-        public Form1 sideForm;
 
 
         private List<Panel> fKeyPannels;
@@ -53,9 +52,7 @@ namespace GazeToolBar
             pnlGeneralIsShow = true;
             pnlKeyboardIsShow = false;
             pnlZoomSettingsIsShow = false;
-            pnlRearrangeSettingsIsShown = false;
-
-            //Set Short cut key assignment panel to the viable width of the form
+            pnlRearrangeIsShown = false;
             
 
 
@@ -110,18 +107,13 @@ namespace GazeToolBar
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
             pnlOtherAuto.Location = new Point(panelOther.Size.Width / 2, pnlOtherAuto.Location.Y);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
-            
-
-
+            //Shortcut settings panel
             //pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
             pnlPageKeyboard.Size = ReletiveSize.panelGeneralSize();
             pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-
             //Set feed back label to the center of the screen.
             lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
             //pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-
-
             //Zoom Settings size and location
             //Main Panel
             pnlZoomSettings.Size = ReletiveSize.panelGeneralSize();
@@ -141,6 +133,11 @@ namespace GazeToolBar
             pnlZoomAmountContent.Size = pnlZoomSizeContent.Size;
             trackBarZoomAmount.Size = trackBarZoomWindowSize.Size;
             pnlZIAPlus.Location = new Point(pnlZWSPlus.Location.X, pnlZIAPlus.Location.Y);
+            //Rearrange panel
+            pnlRearrange.Size = ReletiveSize.panelGeneralSize();
+            pnlRearrange.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlRearrangeControls.Location = ReletiveSize.centerLocation(pnlRearrange, pnlRearrangeControls);
+            
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
@@ -164,7 +161,7 @@ namespace GazeToolBar
         //    OnTheRight = flag;
         //}
 
-            ///
+        ///
         private void btnAutoStart_Click(object sender, EventArgs e)
         {
 
@@ -277,16 +274,21 @@ namespace GazeToolBar
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
-                setting.sidebar = Program.readSettings.sidebar;
+                setting.sidebar = selectedActions.ToArray<string>();
+
+                //setting.sidebar = Program.readSettings.sidebar;
+                //Program.readSettings.sidebar = selectedActions.ToArray<string>();
+
+                //string sidebarSettings = JsonConvert.SerializeObject(Program.readSettings);
+                //File.WriteAllText(Program.path, sidebarSettings);
+
+
                 Program.readSettings.sidebar = selectedActions.ToArray<string>();
-
-                string sidebarSettings = JsonConvert.SerializeObject(Program.readSettings);
-                File.WriteAllText(Program.path, sidebarSettings);
-
-                sideForm.ArrangeSidebar(Program.readSettings.sidebar);
-
+                form1.ArrangeSidebar(Program.readSettings.sidebar);
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
+                
+
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
                 form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
@@ -364,15 +366,17 @@ namespace GazeToolBar
             {
                 pnlPageKeyboard.Hide();
                 pnlZoomSettings.Hide();
+                pnlRearrange.Hide();
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
                 pnlGeneralIsShow = true;
                 pnlKeyboardIsShow = false;
                 pnlZoomSettingsIsShow = false;
-                pnlRearrangeSettingsIsShown = false;
+                pnlRearrangeIsShown = false;
 
                 WaitForUserKeyPress = false;
             }
@@ -384,15 +388,17 @@ namespace GazeToolBar
             {
                 pnlGeneral.Hide();
                 pnlZoomSettings.Hide();
+                pnlRearrange.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlPageKeyboard.Show();
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
                 pnlKeyboardIsShow = true;
                 pnlGeneralIsShow = false;
                 pnlZoomSettingsIsShow = false;
-                pnlRearrangeSettingsIsShown = false;
+                pnlRearrangeIsShown = false;
 
                 lbFKeyFeedback.Text = "";
             }
@@ -404,21 +410,23 @@ namespace GazeToolBar
             {
                 pnlGeneral.Hide();
                 pnlPageKeyboard.Hide();
+                pnlRearrange.Hide();
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlZoomSettings.Show();
                 ChangeButtonColor(btnZoomSettings, true, true);
                 pnlZoomSettingsIsShow = true;
                 pnlKeyboardIsShow = false;
                 pnlGeneralIsShow = false;
-                pnlRearrangeSettingsIsShown = false;
+                pnlRearrangeIsShown = false;
             }
         }
 
         private void btnRearrangeSetting_Click(object sender, EventArgs e)
         {
-            if (!pnlRearrangeSettingsIsShown)
+            if (!pnlRearrangeIsShown)
             {
                 pnlGeneral.Hide();
                 pnlPageKeyboard.Hide();
@@ -426,8 +434,10 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                pnlRearrange.Show();
                 ChangeButtonColor(btnRearrangeSetting, true, true);
-                pnlRearrangeSettingsIsShown = true;
+                RefreshActions();
+                pnlRearrangeIsShown = true;
                 pnlZoomSettingsIsShow = false;
                 pnlKeyboardIsShow = false;
                 pnlGeneralIsShow = false;
@@ -581,16 +591,36 @@ namespace GazeToolBar
         private void InitSidebarActions()
         {
 
-            foreach (Button b in actionButtons)
+            buttonMap.Add("left_click", btnActionLeftClick);
+            buttonMap.Add("right_click", btnActionRightClick);
+            buttonMap.Add("keyboard", btnActionKeyboard);
+            buttonMap.Add("double_left_click", btnActionDoubleLeftClick);
+            buttonMap.Add("scroll", btnActionScrollClick);
+            buttonMap.Add("settings", btnActionSettings);
+
+            actionButtons.Add(btnActionDoubleLeftClick);
+            actionButtons.Add(btnActionLeftClick);
+            actionButtons.Add(btnActionRightClick);
+            actionButtons.Add(btnActionScrollClick);
+            actionButtons.Add(btnActionKeyboard);
+            actionButtons.Add(btnActionSettings);
+
+            actionPanels.Add(pnlDoubleLeftClickButton);
+            actionPanels.Add(pnlLeftClickButton);
+            actionPanels.Add(pnlRightClickButton);
+            actionPanels.Add(pnlScrollClickButton);
+            actionPanels.Add(pnlKeyboardButton);
+            actionPanels.Add(pnlSettingsButton);
+
+            foreach (Panel pnl in actionPanels)
             {
-                sidebarActionInitPositions.Add(new Point(b.Left, b.Top));
+                sidebarActionInitPositions.Add(new Point(pnl.Left, pnl.Top));
             }
 
             foreach (String s in Program.readSettings.sidebar)
             {
                 AddAction(s);
             }
-
         }
         public void AddAction(String actionString)
         {
@@ -606,7 +636,7 @@ namespace GazeToolBar
 
         public void RefreshActions()
         {
-            const int XPOS = 850;
+            int XPOS = pnlRearrange.Width - 400;
             int yPos = 10;
             const int YGAP = 10;
 
@@ -618,13 +648,14 @@ namespace GazeToolBar
                     int selIndex = selectedActions.IndexOf(GetStringForButton(b));
                     int y = yPos + ((b.Height + YGAP) * selIndex);
 
-                    b.Left = XPOS;
-                    b.Top = y;
+                    actionPanels[ind].Left = XPOS;
+                    actionPanels[ind].Top = y;
+
                 }
                 else
                 {
-                    b.Left = sidebarActionInitPositions[ind].X;
-                    b.Top = sidebarActionInitPositions[ind].Y;
+                    actionPanels[ind].Left = sidebarActionInitPositions[ind].X;
+                    actionPanels[ind].Top = sidebarActionInitPositions[ind].Y;
                 }
                 ind++;
             }

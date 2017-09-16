@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="GazeToolBar.exe.manifest" size="35017">
+    <dependentAssembly dependencyType="install" codebase="GazeToolBar.exe.manifest" size="35016">
       <assemblyIdentity name="GazeToolBar.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>s6Y4d0k/qSrh5h79bX/nG4wWEVpqicZXsvkNFWF+sTk=</dsig:DigestValue>
+        <dsig:DigestValue>aV5kYF+O5/LHNdVr08STV8c1xP3F9gRQbx9QeKQPMvw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

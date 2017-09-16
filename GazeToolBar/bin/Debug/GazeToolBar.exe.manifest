@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1650176">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1654784">
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hjZwOAH/SzUARV51+rdOa6nhjxU3fdxpIEHfMXKMwxs=</dsig:DigestValue>
+        <dsig:DigestValue>1oCU3j9KQha9qy7qiOwrxATJmmmTmH7Z4ElevzbIp1Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -592,13 +592,13 @@
       <dsig:DigestValue>AG1QFui33QSihdPh4LO6GPvKuajT/VNUt1W4GWBj2/A=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Images\settings-icon.png" size="54451">
+  <file name="Images\settings-icon.png" size="2425">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>cxlXYdDLQ5idYz6cXoavouHK6N7/tyy7HsjVwx1OFOk=</dsig:DigestValue>
+      <dsig:DigestValue>Lklm3UTg3K33Yy2opr55Psp8HiIWW5cgNGed0Gb0EWQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Images\settings-icon-selected.fw.png" size="52228">

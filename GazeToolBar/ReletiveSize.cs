@@ -98,6 +98,14 @@ namespace GazeToolBar
             return p;
         }
 
+        public static Point centerLocation(Control parent, Control itemToCenter)
+        {
+            Point p = new Point();
+            p.X = (parent.Width / 2) - (itemToCenter.Width / 2);
+            p.Y = (parent.Height / 2) - (itemToCenter.Height / 2);
+            return p;
+        }
+
         public static void evenlyDistrubute(Panel parentPanel)
         {
             float percent = 0.0f;
