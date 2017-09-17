@@ -170,6 +170,7 @@ namespace GazeToolBar
             stateManager.fixationWorker.FixationTimeOutLength = Program.readSettings.fixationTimeOut;
             stateManager.fixationWorker.fixationTimer.Interval = Program.readSettings.fixationTimeLength;
             stateManager.fixationWorker.timeOutTimer.Interval = Program.readSettings.fixationTimeOut;
+            stateManager.magnifier.MaxZoom = Program.readSettings.maxZoom;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = Program.readSettings.leftClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.DoubleClick] = Program.readSettings.doubleClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = Program.readSettings.rightClick;

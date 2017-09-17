@@ -29,6 +29,7 @@ namespace GazeToolBar
         GazePointDataStream gazeStream;
 
         public Point CurrentLook {get; set;}
+        public float MaxZoom { get; set; } //Max zoom amount
 
         public Timer Timer { get { return updateTimer; } }
 

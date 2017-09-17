@@ -277,7 +277,7 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Location = new System.Drawing.Point(643, 86);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 62);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(154, 62);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
             // lbFKeyFeedback
@@ -682,7 +682,7 @@ namespace GazeToolBar
             this.btnShortCutKeySetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnShortCutKeySetting.ForeColor = System.Drawing.Color.White;
             this.btnShortCutKeySetting.Location = new System.Drawing.Point(2, 2);
-            this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(1);
+            this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnShortCutKeySetting.Name = "btnShortCutKeySetting";
             this.btnShortCutKeySetting.Size = new System.Drawing.Size(150, 70);
             this.btnShortCutKeySetting.TabIndex = 29;
@@ -735,7 +735,7 @@ namespace GazeToolBar
             this.btnRearrangeSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRearrangeSetting.ForeColor = System.Drawing.Color.White;
             this.btnRearrangeSetting.Location = new System.Drawing.Point(2, 2);
-            this.btnRearrangeSetting.Margin = new System.Windows.Forms.Padding(1);
+            this.btnRearrangeSetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnRearrangeSetting.Name = "btnRearrangeSetting";
             this.btnRearrangeSetting.Size = new System.Drawing.Size(150, 70);
             this.btnRearrangeSetting.TabIndex = 30;
@@ -758,7 +758,7 @@ namespace GazeToolBar
             this.btnZoomSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnZoomSettings.ForeColor = System.Drawing.Color.White;
             this.btnZoomSettings.Location = new System.Drawing.Point(2, 2);
-            this.btnZoomSettings.Margin = new System.Windows.Forms.Padding(1);
+            this.btnZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnZoomSettings.Name = "btnZoomSettings";
             this.btnZoomSettings.Size = new System.Drawing.Size(150, 70);
             this.btnZoomSettings.TabIndex = 30;
@@ -980,7 +980,7 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelPrecision);
             this.pnlGeneral.Location = new System.Drawing.Point(277, 92);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(699, 327);
+            this.pnlGeneral.Size = new System.Drawing.Size(150, 56);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1270,6 +1270,7 @@ namespace GazeToolBar
             this.btnMoveUp.BackColor = System.Drawing.Color.Black;
             this.btnMoveUp.Image = global::GazeToolBar.Properties.Resources.button_up;
             this.btnMoveUp.Location = new System.Drawing.Point(2, 2);
+            this.btnMoveUp.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(90, 90);
             this.btnMoveUp.TabIndex = 0;
@@ -1289,6 +1290,7 @@ namespace GazeToolBar
             this.btnMoveDown.BackColor = System.Drawing.Color.Black;
             this.btnMoveDown.Image = global::GazeToolBar.Properties.Resources.button_down;
             this.btnMoveDown.Location = new System.Drawing.Point(2, 2);
+            this.btnMoveDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(90, 90);
             this.btnMoveDown.TabIndex = 0;
@@ -1308,6 +1310,7 @@ namespace GazeToolBar
             this.btnRemove.BackColor = System.Drawing.Color.Black;
             this.btnRemove.Image = global::GazeToolBar.Properties.Resources.button_left;
             this.btnRemove.Location = new System.Drawing.Point(2, 2);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(90, 90);
             this.btnRemove.TabIndex = 0;
@@ -1328,6 +1331,7 @@ namespace GazeToolBar
             this.btnActionRightClick.BackColor = System.Drawing.Color.Black;
             this.btnActionRightClick.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
             this.btnActionRightClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionRightClick.Margin = new System.Windows.Forms.Padding(2);
             this.btnActionRightClick.Name = "btnActionRightClick";
             this.btnActionRightClick.Size = new System.Drawing.Size(90, 90);
             this.btnActionRightClick.TabIndex = 0;
@@ -1347,6 +1351,7 @@ namespace GazeToolBar
             this.btnActionSettings.BackColor = System.Drawing.Color.Black;
             this.btnActionSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
             this.btnActionSettings.Location = new System.Drawing.Point(2, 2);
+            this.btnActionSettings.Margin = new System.Windows.Forms.Padding(2);
             this.btnActionSettings.Name = "btnActionSettings";
             this.btnActionSettings.Size = new System.Drawing.Size(90, 90);
             this.btnActionSettings.TabIndex = 0;
@@ -1366,6 +1371,7 @@ namespace GazeToolBar
             this.btnActionLeftClick.BackColor = System.Drawing.Color.Black;
             this.btnActionLeftClick.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
             this.btnActionLeftClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionLeftClick.Margin = new System.Windows.Forms.Padding(2);
             this.btnActionLeftClick.Name = "btnActionLeftClick";
             this.btnActionLeftClick.Size = new System.Drawing.Size(90, 90);
             this.btnActionLeftClick.TabIndex = 0;
@@ -1424,6 +1430,7 @@ namespace GazeToolBar
             this.btnActionDoubleLeftClick.BackColor = System.Drawing.Color.Black;
             this.btnActionDoubleLeftClick.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
             this.btnActionDoubleLeftClick.Location = new System.Drawing.Point(2, 2);
+            this.btnActionDoubleLeftClick.Margin = new System.Windows.Forms.Padding(2);
             this.btnActionDoubleLeftClick.Name = "btnActionDoubleLeftClick";
             this.btnActionDoubleLeftClick.Size = new System.Drawing.Size(90, 90);
             this.btnActionDoubleLeftClick.TabIndex = 0;

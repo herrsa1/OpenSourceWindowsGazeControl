@@ -18,6 +18,9 @@ namespace GazeToolBar
         public static readonly int DEFAULT_TIME_LENGTH = 1500;
         public static readonly int MIN_TIME_OUT = 4500;
         public static readonly int GAP_TIME_OUT = 500;
+        public static readonly int MINTST = 1;
+        public static readonly int GAPTST = 2;
+        public static readonly float DEFAULT_MAX_ZOOM = 2F;
         public static readonly int DEFAULT_TIME_OUT = 7000;
         public static readonly string RES_NAME = "GazeToolBar";
         public static readonly string AUTO_START_ON = "Auto Start Is On";

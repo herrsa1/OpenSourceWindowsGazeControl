@@ -333,6 +333,7 @@ namespace GazeToolBar
             //TODO: Need to be replaced
             trackBarFixTimeLength.Value = (Program.readSettings.fixationTimeLength - Constants.MIN_TIME_LENGTH) / Constants.GAP_TIME_LENGTH;
             trackBarFixTimeOut.Value = (Program.readSettings.fixationTimeOut - Constants.MIN_TIME_OUT) / Constants.GAP_TIME_OUT;
+            trackBarZoomAmount.Value = (int)(Program.readSettings.maxZoom - Constants.MINTST) / Constants.GAPTST;
             lbLeft.Text = Program.readSettings.leftClick;
             lbDouble.Text = Program.readSettings.doubleClick;
             lbRight.Text = Program.readSettings.rightClick;
@@ -414,13 +415,12 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                ChangeButtonColor(btnRearrangeSetting, false, true);
                 pnlZoomSettings.Show();
                 ChangeButtonColor(btnZoomSettings, true, true);
                 pnlZoomSettingsIsShow = true;
+                pnlRearrangeIsShown = false;
                 pnlKeyboardIsShow = false;
                 pnlGeneralIsShow = false;
-                pnlRearrangeIsShown = false;
             }
         }
 
@@ -592,6 +592,7 @@ namespace GazeToolBar
         private void btnZoomAmountPlus_Click(object sender, EventArgs e)
         {
             changeTrackBarValue(trackBarZoomAmount, "I");
+            MessageBox.Show("Click Working!!");
         }
 
         private void trackBarZoomWindowSize_ValueChanged(object sender, EventArgs e)
@@ -601,7 +602,7 @@ namespace GazeToolBar
 
         private void trackBarZoomAmount_ValueChanged(object sender, EventArgs e)
         {
-
+            form1.stateManager.magnifier.MaxZoom = trackBarZoomAmount.Value * Constants.GAPTST + Constants.MINTST;
         }
         private void trackBarFixTimeLength_ValueChanged(object sender, EventArgs e)
         {

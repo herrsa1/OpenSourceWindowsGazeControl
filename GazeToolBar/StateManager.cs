@@ -27,7 +27,7 @@ namespace GazeToolBar
         SystemState currentState;
         FormsEyeXHost eyeXHost;
         ShortcutKeyWorker shortCutKeyWorker;
-        ZoomMagnifier magnifier;
+        public ZoomMagnifier magnifier;
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
         {
