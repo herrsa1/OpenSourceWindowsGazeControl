@@ -969,7 +969,7 @@ namespace GazeToolBar
             this.pnlZoomSettings.Location = new System.Drawing.Point(460, 87);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(152, 61);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(150, 61);
             this.pnlZoomSettings.TabIndex = 29;
             // 
             // pnlGeneral
