@@ -277,7 +277,7 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Location = new System.Drawing.Point(643, 86);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(154, 62);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 62);
             this.pnlPageKeyboard.TabIndex = 26;
             // 
             // lbFKeyFeedback
@@ -1244,7 +1244,7 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(824, 87);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(157, 61);
+            this.pnlRearrange.Size = new System.Drawing.Size(154, 61);
             this.pnlRearrange.TabIndex = 30;
             // 
             // pnlRearrangeControls
@@ -1268,6 +1268,7 @@ namespace GazeToolBar
             // btnMoveUp
             // 
             this.btnMoveUp.BackColor = System.Drawing.Color.Black;
+            this.btnMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMoveUp.Image = global::GazeToolBar.Properties.Resources.button_up;
             this.btnMoveUp.Location = new System.Drawing.Point(2, 2);
             this.btnMoveUp.Margin = new System.Windows.Forms.Padding(2);
@@ -1288,6 +1289,7 @@ namespace GazeToolBar
             // btnMoveDown
             // 
             this.btnMoveDown.BackColor = System.Drawing.Color.Black;
+            this.btnMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMoveDown.Image = global::GazeToolBar.Properties.Resources.button_down;
             this.btnMoveDown.Location = new System.Drawing.Point(2, 2);
             this.btnMoveDown.Margin = new System.Windows.Forms.Padding(2);
@@ -1308,6 +1310,7 @@ namespace GazeToolBar
             // btnRemove
             // 
             this.btnRemove.BackColor = System.Drawing.Color.Black;
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.Image = global::GazeToolBar.Properties.Resources.button_left;
             this.btnRemove.Location = new System.Drawing.Point(2, 2);
             this.btnRemove.Margin = new System.Windows.Forms.Padding(2);
@@ -1329,6 +1332,7 @@ namespace GazeToolBar
             // btnActionRightClick
             // 
             this.btnActionRightClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionRightClick.Image = global::GazeToolBar.Properties.Resources.Right_Click_icon;
             this.btnActionRightClick.Location = new System.Drawing.Point(2, 2);
             this.btnActionRightClick.Margin = new System.Windows.Forms.Padding(2);
@@ -1349,6 +1353,7 @@ namespace GazeToolBar
             // btnActionSettings
             // 
             this.btnActionSettings.BackColor = System.Drawing.Color.Black;
+            this.btnActionSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
             this.btnActionSettings.Location = new System.Drawing.Point(2, 2);
             this.btnActionSettings.Margin = new System.Windows.Forms.Padding(2);
@@ -1369,6 +1374,7 @@ namespace GazeToolBar
             // btnActionLeftClick
             // 
             this.btnActionLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionLeftClick.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
             this.btnActionLeftClick.Location = new System.Drawing.Point(2, 2);
             this.btnActionLeftClick.Margin = new System.Windows.Forms.Padding(2);
@@ -1390,6 +1396,7 @@ namespace GazeToolBar
             // btnActionKeyboard
             // 
             this.btnActionKeyboard.BackColor = System.Drawing.Color.Black;
+            this.btnActionKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionKeyboard.Image = global::GazeToolBar.Properties.Resources.Keyboard_icon;
             this.btnActionKeyboard.Location = new System.Drawing.Point(2, 2);
             this.btnActionKeyboard.Name = "btnActionKeyboard";
@@ -1409,6 +1416,7 @@ namespace GazeToolBar
             // btnActionScrollClick
             // 
             this.btnActionScrollClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionScrollClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionScrollClick.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
             this.btnActionScrollClick.Location = new System.Drawing.Point(2, 2);
             this.btnActionScrollClick.Name = "btnActionScrollClick";
@@ -1428,6 +1436,7 @@ namespace GazeToolBar
             // btnActionDoubleLeftClick
             // 
             this.btnActionDoubleLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnActionDoubleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActionDoubleLeftClick.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
             this.btnActionDoubleLeftClick.Location = new System.Drawing.Point(2, 2);
             this.btnActionDoubleLeftClick.Margin = new System.Windows.Forms.Padding(2);
