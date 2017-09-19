@@ -47,7 +47,9 @@ namespace GazeToolBar
                 defaultSetting.rightClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.scoll = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.sidebar = new string[] { "right_click", "left_click", "double_left_click", "scroll", "keyboard", "settings" };
-                defaultSetting.maxZoom = Constants.DEFAULT_MAX_ZOOM;
+                defaultSetting.maxZoom = 2;
+                defaultSetting.Crosshair = 1;
+                defaultSetting.zoomWindowSize = 10;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

@@ -14,10 +14,9 @@ namespace GazeToolBar
     {
         private Form1 form1;
         private bool[] onOff;
-        private bool pnlKeyboardIsShow;
-        private bool pnlZoomSettingsIsShow;
-        private bool pnlGeneralIsShow;
-        private bool pnlRearrangeIsShown;
+
+        private Panel shownPanel;
+
         private bool WaitForUserKeyPress;
         private static FormsEyeXHost eyeXHost;
         private List<Point> sidebarActionInitPositions = new List<Point>();
@@ -36,6 +35,7 @@ namespace GazeToolBar
             InitializeComponent();
             InitSidebarActions();
             pnlPageKeyboard.Hide();
+            pnlCrosshairPage.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
             //This code make setting form full screen
@@ -49,13 +49,9 @@ namespace GazeToolBar
             {
                 onOff[i] = false;
             }
-            pnlGeneralIsShow = true;
-            pnlKeyboardIsShow = false;
-            pnlZoomSettingsIsShow = false;
-            pnlRearrangeIsShown = false;
+
+            shownPanel = pnlGeneral;
             
-
-
             //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
             fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll };// pnlDragAndDrop };
             //Set panel positions.
@@ -70,9 +66,6 @@ namespace GazeToolBar
             WaitForUserKeyPress = false;
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
-
-
-           
 
         }
 
@@ -139,7 +132,12 @@ namespace GazeToolBar
             pnlRearrange.Size = ReletiveSize.panelGeneralSize();
             pnlRearrange.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
             pnlRearrangeControls.Location = ReletiveSize.centerLocation(pnlRearrange, pnlRearrangeControls);
-            
+            //Crosshair Panel
+            pnlCrosshairPage.Size = ReletiveSize.panelGeneralSize();
+            pnlCrosshairPage.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            panelCrosshairSelection.Location = ReletiveSize.centerLocation(pnlCrosshairPage, panelCrosshairSelection);
+            pictureBoxCrosshairPreview.Location = ReletiveSize.centerLocation(pnlCrosshairPage, pictureBoxCrosshairPreview);
+            pictureBoxCrosshairPreview.Location = new Point(pictureBoxCrosshairPreview.Location.X, pictureBoxCrosshairPreview.Location.Y + pictureBoxCrosshairPreview.Height);
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
@@ -277,6 +275,9 @@ namespace GazeToolBar
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
                 setting.sidebar = selectedActions.ToArray<string>();
+                setting.Crosshair = trackBarCrosshair.Value;
+                setting.maxZoom = trackBarZoomAmount.Value;
+                setting.zoomWindowSize = trackBarZoomWindowSize.Value;
 
                 //setting.sidebar = Program.readSettings.sidebar;
                 //Program.readSettings.sidebar = selectedActions.ToArray<string>();
@@ -289,8 +290,8 @@ namespace GazeToolBar
                 form1.ArrangeSidebar(Program.readSettings.sidebar);
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
-                
 
+                Program.readSettings = setting;
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
                 form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
@@ -335,11 +336,15 @@ namespace GazeToolBar
             //TODO: Need to be replaced
             trackBarFixTimeLength.Value = (Program.readSettings.fixationTimeLength - Constants.MIN_TIME_LENGTH) / Constants.GAP_TIME_LENGTH;
             trackBarFixTimeOut.Value = (Program.readSettings.fixationTimeOut - Constants.MIN_TIME_OUT) / Constants.GAP_TIME_OUT;
-            trackBarZoomAmount.Value = (int)(Program.readSettings.maxZoom - Constants.MINTST) / Constants.GAPTST;
+            trackBarZoomAmount.Value = Program.readSettings.maxZoom;
+            trackBarZoomWindowSize.Value = Program.readSettings.zoomWindowSize;
             lbLeft.Text = Program.readSettings.leftClick;
             lbDouble.Text = Program.readSettings.doubleClick;
             lbRight.Text = Program.readSettings.rightClick;
             lbScroll.Text = Program.readSettings.scoll;
+
+            trackBarCrosshair.Value = Program.readSettings.Crosshair;
+            UpdateCrosshair();
 
             //if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
             //{
@@ -365,21 +370,17 @@ namespace GazeToolBar
 
         private void btnGeneralSetting_Click(object sender, EventArgs e)
         {
-            if (!pnlGeneralIsShow)
+            if (shownPanel != pnlGeneral)
             {
-                pnlPageKeyboard.Hide();
-                pnlZoomSettings.Hide();
-                pnlRearrange.Hide();
+                shownPanel.Hide();
+                shownPanel = pnlGeneral;
+                shownPanel.Show();
+
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                pnlGeneral.Show();
                 ChangeButtonColor(btnGeneralSetting, true, true);
-                pnlGeneralIsShow = true;
-                pnlKeyboardIsShow = false;
-                pnlZoomSettingsIsShow = false;
-                pnlRearrangeIsShown = false;
 
                 WaitForUserKeyPress = false;
             }
@@ -387,21 +388,17 @@ namespace GazeToolBar
 
         private void btnKeyBoardSetting_Click(object sender, EventArgs e)
         {
-            if (!pnlKeyboardIsShow)
+            if (shownPanel != pnlPageKeyboard)
             {
-                pnlGeneral.Hide();
-                pnlZoomSettings.Hide();
-                pnlRearrange.Hide();
+                shownPanel.Hide();
+                shownPanel = pnlPageKeyboard;
+                shownPanel.Show();
+
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                pnlPageKeyboard.Show();
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
-                pnlKeyboardIsShow = true;
-                pnlGeneralIsShow = false;
-                pnlZoomSettingsIsShow = false;
-                pnlRearrangeIsShown = false;
 
                 lbFKeyFeedback.Text = "";
             }
@@ -409,41 +406,85 @@ namespace GazeToolBar
 
         private void btnZoomSettings_Click(object sender, EventArgs e)
         {
-            if (!pnlZoomSettingsIsShow)
+            if (shownPanel != pnlZoomSettings)
             {
-                pnlGeneral.Hide();
-                pnlPageKeyboard.Hide();
-                pnlRearrange.Hide();
+                shownPanel.Hide();
+                shownPanel = pnlZoomSettings;
+                shownPanel.Show();
+
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                pnlZoomSettings.Show();
                 ChangeButtonColor(btnZoomSettings, true, true);
-                pnlZoomSettingsIsShow = true;
-                pnlRearrangeIsShown = false;
-                pnlKeyboardIsShow = false;
-                pnlGeneralIsShow = false;
             }
         }
 
         private void btnRearrangeSetting_Click(object sender, EventArgs e)
         {
-            if (!pnlRearrangeIsShown)
+            if (shownPanel != pnlRearrange)
             {
-                pnlGeneral.Hide();
-                pnlPageKeyboard.Hide();
-                pnlZoomSettings.Hide();
+                shownPanel.Hide();
+                shownPanel = pnlRearrange;
+                shownPanel.Show();
+
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
-                pnlRearrange.Show();
                 ChangeButtonColor(btnRearrangeSetting, true, true);
                 RefreshActions();
-                pnlRearrangeIsShown = true;
-                pnlZoomSettingsIsShow = false;
-                pnlKeyboardIsShow = false;
-                pnlGeneralIsShow = false;
             }
+        }
+
+        private void buttonCrosshairSetting_Click(object sender, EventArgs e)
+        {
+            shownPanel.Hide();
+            shownPanel = pnlCrosshairPage;
+            shownPanel.Show();
+
+            ChangeButtonColor(btnShortCutKeySetting, false, true);
+            ChangeButtonColor(btnZoomSettings, false, true);
+            ChangeButtonColor(btnRearrangeSetting, false, true);
+            ChangeButtonColor(btnRearrangeSetting, false, true);
+            ChangeButtonColor(btnGeneralSetting, true, true);
+
+            WaitForUserKeyPress = false;
+        }
+
+        private void buttonCrosshairDown_Click(object sender, EventArgs e)
+        {
+            if (trackBarCrosshair.Value == 0)
+            {
+                trackBarCrosshair.Value = trackBarCrosshair.Maximum;
+            }
+            else
+            {
+                trackBarCrosshair.Value--;
+            }
+            UpdateCrosshair();
+        }
+
+        private void buttonCrosshairUp_Click(object sender, EventArgs e)
+        {
+            if (trackBarCrosshair.Value == trackBarCrosshair.Maximum)
+            {
+                trackBarCrosshair.Value = 0;
+            }
+            else
+            {
+                trackBarCrosshair.Value++;
+            }
+
+            UpdateCrosshair();
+        }
+
+        private void trackBarCrosshair_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateCrosshair();
+        }
+
+        public void UpdateCrosshair()
+        {
+            pictureBoxCrosshairPreview.Image = DrawingForm.GetCrossHairImage((DrawingForm.CrossHair)trackBarCrosshair.Value);
         }
 
         private void changeTrackBarValue(TrackBar trackbar, String IncrementOrDecrement)
@@ -797,5 +838,7 @@ namespace GazeToolBar
         {
             ActionButtonClick((Button)sender);
         }
+
+
     }
 }

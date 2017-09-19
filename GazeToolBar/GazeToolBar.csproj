@@ -267,11 +267,16 @@
     <Content Include="Images\settings-icon.png" />
     <None Include="Resources\Image1.bmp" />
     <None Include="Resources\crosshair_2.png" />
-    <None Include="Resources\crosshair_3.png" />
     <None Include="Resources\button_right.png" />
     <None Include="Resources\button_up.png" />
     <None Include="Resources\button_down.png" />
     <None Include="Resources\button_left.png" />
+    <None Include="Resources\crosshair_None.png" />
+    <None Include="Resources\crosshair_7.png" />
+    <None Include="Resources\crosshair_6.png" />
+    <None Include="Resources\crosshair_5.png" />
+    <None Include="Resources\crosshair_4.png" />
+    <None Include="Resources\crosshair_3.png" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -11,12 +11,13 @@ namespace GazeToolBar
 {
     public class ZoomMagnifierCentered : ZoomMagnifier
     {
-        private const int FORM_WIDTH = 1024;
-        private const int FORM_HEIGHT = 576;
+        private int FORM_WIDTH { get; set; }
+        private int FORM_HEIGHT { get; set;}
 
         public ZoomMagnifierCentered(Form displayform, Point fixationPoint) : base(displayform, fixationPoint)
         {
-
+            FORM_WIDTH = Program.readSettings.zoomWindowSize * 100;
+            FORM_HEIGHT = FORM_WIDTH / 2;
         }
 
         public override void UpdatePosition(Point fixationPoint)

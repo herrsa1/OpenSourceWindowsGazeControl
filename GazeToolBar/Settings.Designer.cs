@@ -77,11 +77,12 @@ namespace GazeToolBar
             this.pnlGeneralButton = new System.Windows.Forms.Panel();
             this.pnlKeysButton = new System.Windows.Forms.Panel();
             this.pnlSwitchSetting = new System.Windows.Forms.Panel();
+            this.panelCrosshairButton = new System.Windows.Forms.Panel();
+            this.buttonCrosshairSetting = new System.Windows.Forms.Button();
             this.pnlRearrangeButton = new System.Windows.Forms.Panel();
             this.btnRearrangeSetting = new System.Windows.Forms.Button();
             this.pnlZoomButton = new System.Windows.Forms.Panel();
             this.btnZoomSettings = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pnlZoomSize = new System.Windows.Forms.Panel();
             this.pnlZoomSizeContent = new System.Windows.Forms.Panel();
             this.pnlZWSPlus = new System.Windows.Forms.Panel();
@@ -142,6 +143,17 @@ namespace GazeToolBar
             this.btnActionScrollClick = new System.Windows.Forms.Button();
             this.pnlDoubleLeftClickButton = new System.Windows.Forms.Panel();
             this.btnActionDoubleLeftClick = new System.Windows.Forms.Button();
+            this.pnlCrosshairPage = new System.Windows.Forms.Panel();
+            this.pictureBoxCrosshairPreview = new System.Windows.Forms.PictureBox();
+            this.panelCrosshairSelection = new System.Windows.Forms.Panel();
+            this.panelCrosshairHolder = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.buttonCrosshairUp = new System.Windows.Forms.Button();
+            this.trackBarCrosshair = new System.Windows.Forms.TrackBar();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.buttonCrosshairDown = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
             this.pnlSave.SuspendLayout();
@@ -167,9 +179,9 @@ namespace GazeToolBar
             this.pnlGeneralButton.SuspendLayout();
             this.pnlKeysButton.SuspendLayout();
             this.pnlSwitchSetting.SuspendLayout();
+            this.panelCrosshairButton.SuspendLayout();
             this.pnlRearrangeButton.SuspendLayout();
             this.pnlZoomButton.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.pnlZoomSize.SuspendLayout();
             this.pnlZoomSizeContent.SuspendLayout();
             this.pnlZWSPlus.SuspendLayout();
@@ -206,6 +218,14 @@ namespace GazeToolBar
             this.pnlKeyboardButton.SuspendLayout();
             this.pnlScrollClickButton.SuspendLayout();
             this.pnlDoubleLeftClickButton.SuspendLayout();
+            this.pnlCrosshairPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrosshairPreview)).BeginInit();
+            this.panelCrosshairSelection.SuspendLayout();
+            this.panelCrosshairHolder.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).BeginInit();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -711,14 +731,38 @@ namespace GazeToolBar
             // pnlSwitchSetting
             // 
             this.pnlSwitchSetting.BackColor = System.Drawing.Color.Black;
+            this.pnlSwitchSetting.Controls.Add(this.panelCrosshairButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlRearrangeButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlZoomButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlKeysButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlGeneralButton);
             this.pnlSwitchSetting.Location = new System.Drawing.Point(273, 0);
             this.pnlSwitchSetting.Name = "pnlSwitchSetting";
-            this.pnlSwitchSetting.Size = new System.Drawing.Size(708, 81);
+            this.pnlSwitchSetting.Size = new System.Drawing.Size(933, 81);
             this.pnlSwitchSetting.TabIndex = 28;
+            // 
+            // panelCrosshairButton
+            // 
+            this.panelCrosshairButton.Controls.Add(this.buttonCrosshairSetting);
+            this.panelCrosshairButton.Location = new System.Drawing.Point(732, 2);
+            this.panelCrosshairButton.Name = "panelCrosshairButton";
+            this.panelCrosshairButton.Size = new System.Drawing.Size(154, 75);
+            this.panelCrosshairButton.TabIndex = 33;
+            // 
+            // buttonCrosshairSetting
+            // 
+            this.buttonCrosshairSetting.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCrosshairSetting.FlatAppearance.BorderSize = 5;
+            this.buttonCrosshairSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCrosshairSetting.ForeColor = System.Drawing.Color.White;
+            this.buttonCrosshairSetting.Location = new System.Drawing.Point(4, 2);
+            this.buttonCrosshairSetting.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCrosshairSetting.Name = "buttonCrosshairSetting";
+            this.buttonCrosshairSetting.Size = new System.Drawing.Size(150, 70);
+            this.buttonCrosshairSetting.TabIndex = 30;
+            this.buttonCrosshairSetting.Text = "Crosshairs";
+            this.buttonCrosshairSetting.UseVisualStyleBackColor = false;
+            this.buttonCrosshairSetting.Click += new System.EventHandler(this.buttonCrosshairSetting_Click);
             // 
             // pnlRearrangeButton
             // 
@@ -734,12 +778,12 @@ namespace GazeToolBar
             this.btnRearrangeSetting.FlatAppearance.BorderSize = 5;
             this.btnRearrangeSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRearrangeSetting.ForeColor = System.Drawing.Color.White;
-            this.btnRearrangeSetting.Location = new System.Drawing.Point(2, 2);
+            this.btnRearrangeSetting.Location = new System.Drawing.Point(4, 2);
             this.btnRearrangeSetting.Margin = new System.Windows.Forms.Padding(2);
             this.btnRearrangeSetting.Name = "btnRearrangeSetting";
             this.btnRearrangeSetting.Size = new System.Drawing.Size(150, 70);
             this.btnRearrangeSetting.TabIndex = 30;
-            this.btnRearrangeSetting.Text = "Rearrange ToolBar";
+            this.btnRearrangeSetting.Text = "Rearrange Toolbar";
             this.btnRearrangeSetting.UseVisualStyleBackColor = false;
             this.btnRearrangeSetting.Click += new System.EventHandler(this.btnRearrangeSetting_Click);
             // 
@@ -765,17 +809,6 @@ namespace GazeToolBar
             this.btnZoomSettings.Text = "Zoom Settings";
             this.btnZoomSettings.UseVisualStyleBackColor = false;
             this.btnZoomSettings.Click += new System.EventHandler(this.btnZoomSettings_Click);
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(19, 22);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(114, 71);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox5.TabIndex = 0;
-            this.pictureBox5.TabStop = false;
             // 
             // pnlZoomSize
             // 
@@ -827,11 +860,13 @@ namespace GazeToolBar
             // 
             this.trackBarZoomWindowSize.BackColor = System.Drawing.Color.Black;
             this.trackBarZoomWindowSize.Location = new System.Drawing.Point(108, 35);
+            this.trackBarZoomWindowSize.Maximum = 15;
+            this.trackBarZoomWindowSize.Minimum = 4;
             this.trackBarZoomWindowSize.Name = "trackBarZoomWindowSize";
             this.trackBarZoomWindowSize.Size = new System.Drawing.Size(896, 45);
             this.trackBarZoomWindowSize.TabIndex = 12;
             this.trackBarZoomWindowSize.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarZoomWindowSize.Value = 5;
+            this.trackBarZoomWindowSize.Value = 10;
             this.trackBarZoomWindowSize.ValueChanged += new System.EventHandler(this.trackBarZoomWindowSize_ValueChanged);
             // 
             // pnlZWSMinus
@@ -919,12 +954,14 @@ namespace GazeToolBar
             // 
             this.trackBarZoomAmount.AutoSize = false;
             this.trackBarZoomAmount.Location = new System.Drawing.Point(108, 35);
+            this.trackBarZoomAmount.Maximum = 4;
+            this.trackBarZoomAmount.Minimum = 1;
             this.trackBarZoomAmount.Name = "trackBarZoomAmount";
             this.trackBarZoomAmount.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarZoomAmount.Size = new System.Drawing.Size(896, 45);
             this.trackBarZoomAmount.TabIndex = 15;
             this.trackBarZoomAmount.TickStyle = System.Windows.Forms.TickStyle.Both;
-            this.trackBarZoomAmount.Value = 5;
+            this.trackBarZoomAmount.Value = 2;
             this.trackBarZoomAmount.ValueChanged += new System.EventHandler(this.trackBarZoomAmount_ValueChanged);
             // 
             // pnlZIAMinus
@@ -969,7 +1006,7 @@ namespace GazeToolBar
             this.pnlZoomSettings.Location = new System.Drawing.Point(460, 87);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(150, 61);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(141, 382);
             this.pnlZoomSettings.TabIndex = 29;
             // 
             // pnlGeneral
@@ -1446,12 +1483,137 @@ namespace GazeToolBar
             this.btnActionDoubleLeftClick.UseVisualStyleBackColor = false;
             this.btnActionDoubleLeftClick.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
+            // pnlCrosshairPage
+            // 
+            this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
+            this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1009, 87);
+            this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlCrosshairPage.Name = "pnlCrosshairPage";
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(150, 75);
+            this.pnlCrosshairPage.TabIndex = 30;
+            // 
+            // pictureBoxCrosshairPreview
+            // 
+            this.pictureBoxCrosshairPreview.BackColor = System.Drawing.Color.White;
+            this.pictureBoxCrosshairPreview.Location = new System.Drawing.Point(596, 268);
+            this.pictureBoxCrosshairPreview.Name = "pictureBoxCrosshairPreview";
+            this.pictureBoxCrosshairPreview.Size = new System.Drawing.Size(150, 150);
+            this.pictureBoxCrosshairPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCrosshairPreview.TabIndex = 15;
+            this.pictureBoxCrosshairPreview.TabStop = false;
+            // 
+            // panelCrosshairSelection
+            // 
+            this.panelCrosshairSelection.BackColor = System.Drawing.Color.Black;
+            this.panelCrosshairSelection.Controls.Add(this.panelCrosshairHolder);
+            this.panelCrosshairSelection.Controls.Add(this.label3);
+            this.panelCrosshairSelection.Location = new System.Drawing.Point(12, 108);
+            this.panelCrosshairSelection.Name = "panelCrosshairSelection";
+            this.panelCrosshairSelection.Size = new System.Drawing.Size(1156, 138);
+            this.panelCrosshairSelection.TabIndex = 14;
+            // 
+            // panelCrosshairHolder
+            // 
+            this.panelCrosshairHolder.BackColor = System.Drawing.Color.Black;
+            this.panelCrosshairHolder.Controls.Add(this.panel8);
+            this.panelCrosshairHolder.Controls.Add(this.trackBarCrosshair);
+            this.panelCrosshairHolder.Controls.Add(this.panel9);
+            this.panelCrosshairHolder.Location = new System.Drawing.Point(4, 22);
+            this.panelCrosshairHolder.Margin = new System.Windows.Forms.Padding(2);
+            this.panelCrosshairHolder.Name = "panelCrosshairHolder";
+            this.panelCrosshairHolder.Size = new System.Drawing.Size(1125, 110);
+            this.panelCrosshairHolder.TabIndex = 22;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.buttonCrosshairUp);
+            this.panel8.Location = new System.Drawing.Point(1014, 9);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(94, 95);
+            this.panel8.TabIndex = 23;
+            // 
+            // buttonCrosshairUp
+            // 
+            this.buttonCrosshairUp.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCrosshairUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCrosshairUp.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonCrosshairUp.ForeColor = System.Drawing.Color.White;
+            this.buttonCrosshairUp.Location = new System.Drawing.Point(2, 2);
+            this.buttonCrosshairUp.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCrosshairUp.Name = "buttonCrosshairUp";
+            this.buttonCrosshairUp.Size = new System.Drawing.Size(90, 90);
+            this.buttonCrosshairUp.TabIndex = 13;
+            this.buttonCrosshairUp.Text = "+";
+            this.buttonCrosshairUp.UseVisualStyleBackColor = false;
+            this.buttonCrosshairUp.Click += new System.EventHandler(this.buttonCrosshairUp_Click);
+            // 
+            // trackBarCrosshair
+            // 
+            this.trackBarCrosshair.BackColor = System.Drawing.Color.Black;
+            this.trackBarCrosshair.Location = new System.Drawing.Point(108, 35);
+            this.trackBarCrosshair.Maximum = 8;
+            this.trackBarCrosshair.Name = "trackBarCrosshair";
+            this.trackBarCrosshair.Size = new System.Drawing.Size(896, 45);
+            this.trackBarCrosshair.TabIndex = 12;
+            this.trackBarCrosshair.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarCrosshair.Value = 5;
+            this.trackBarCrosshair.ValueChanged += new System.EventHandler(this.trackBarCrosshair_ValueChanged);
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.buttonCrosshairDown);
+            this.panel9.Location = new System.Drawing.Point(2, 9);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(94, 95);
+            this.panel9.TabIndex = 22;
+            // 
+            // buttonCrosshairDown
+            // 
+            this.buttonCrosshairDown.BackColor = System.Drawing.Color.Transparent;
+            this.buttonCrosshairDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCrosshairDown.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonCrosshairDown.ForeColor = System.Drawing.Color.White;
+            this.buttonCrosshairDown.Location = new System.Drawing.Point(2, 2);
+            this.buttonCrosshairDown.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCrosshairDown.Name = "buttonCrosshairDown";
+            this.buttonCrosshairDown.Size = new System.Drawing.Size(90, 90);
+            this.buttonCrosshairDown.TabIndex = 14;
+            this.buttonCrosshairDown.Text = "-";
+            this.buttonCrosshairDown.UseVisualStyleBackColor = false;
+            this.buttonCrosshairDown.Click += new System.EventHandler(this.buttonCrosshairDown_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("SimSun", 12F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(15, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 16);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Crosshair Type";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
+            this.pictureBox5.Location = new System.Drawing.Point(19, 22);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(114, 71);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox5.TabIndex = 0;
+            this.pictureBox5.TabStop = false;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(2826, 753);
+            this.Controls.Add(this.pnlCrosshairPage);
             this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlPageKeyboard);
@@ -1499,9 +1661,9 @@ namespace GazeToolBar
             this.pnlGeneralButton.ResumeLayout(false);
             this.pnlKeysButton.ResumeLayout(false);
             this.pnlSwitchSetting.ResumeLayout(false);
+            this.panelCrosshairButton.ResumeLayout(false);
             this.pnlRearrangeButton.ResumeLayout(false);
             this.pnlZoomButton.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.pnlZoomSize.ResumeLayout(false);
             this.pnlZoomSize.PerformLayout();
             this.pnlZoomSizeContent.ResumeLayout(false);
@@ -1547,6 +1709,16 @@ namespace GazeToolBar
             this.pnlKeyboardButton.ResumeLayout(false);
             this.pnlScrollClickButton.ResumeLayout(false);
             this.pnlDoubleLeftClickButton.ResumeLayout(false);
+            this.pnlCrosshairPage.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrosshairPreview)).EndInit();
+            this.panelCrosshairSelection.ResumeLayout(false);
+            this.panelCrosshairSelection.PerformLayout();
+            this.panelCrosshairHolder.ResumeLayout(false);
+            this.panelCrosshairHolder.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).EndInit();
+            this.panel9.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1662,5 +1834,17 @@ namespace GazeToolBar
         private Panel pnlMoveDownButton;
         private Button btnMoveDown;
         private Panel pnlRearrangeControls;
+        private Panel panelCrosshairButton;
+        private Button buttonCrosshairSetting;
+        private Panel pnlCrosshairPage;
+        private Panel panelCrosshairSelection;
+        private Panel panelCrosshairHolder;
+        private Panel panel8;
+        private Button buttonCrosshairUp;
+        private TrackBar trackBarCrosshair;
+        private Panel panel9;
+        private Button buttonCrosshairDown;
+        private Label label3;
+        private PictureBox pictureBoxCrosshairPreview;
     }
 }

@@ -15,6 +15,8 @@ namespace GazeToolBar
         public string rightClick { get; set; }
         public string scoll { get; set; }
         public string[] sidebar { get; set; }
-        public float maxZoom { get; set; }
+        public int maxZoom { get; set; }
+        public int Crosshair { get; set; }
+        public int zoomWindowSize { get; set; }
     }
 }

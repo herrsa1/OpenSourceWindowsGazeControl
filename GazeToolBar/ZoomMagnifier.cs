@@ -15,7 +15,7 @@ namespace GazeToolBar
         //TODO: Move these to settings json
         public static bool DO_ZOOM = false;         //Zoom enabled
         public static float ZOOM_SPEED = 0.005F;    //Amount zoom will increment
-        public static float ZOOM_MAX = 2F;          //Max zoom amount
+        public static float ZOOM_MAX = Program.readSettings.maxZoom;          //Max zoom amount
 
         public Point FixationPoint { get; set; }
         public Point Offset { get; set; }  //Offset is the amount of pixels moved when repositioning the form if it is offscreen. It's used to reposition the Fixation point.
@@ -225,7 +225,7 @@ namespace GazeToolBar
             Point actualLook = CurrentLook;
             Point formPos = new Point(form.Left, form.Top);
             Point adjustedPoint = Utils.SubtractPoints(actualLook, formPos);
-            Point magAdjust = new Point(adjustedPoint.X / 2, adjustedPoint.Y / 2);
+            Point magAdjust = new Point((int)(adjustedPoint.X / ZOOM_MAX), (int)(adjustedPoint.Y / ZOOM_MAX));
 
             Point finalPoint = Utils.AddPoints(magAdjust, startPoint);
 

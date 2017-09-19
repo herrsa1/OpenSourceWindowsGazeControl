@@ -17,6 +17,9 @@ namespace GazeToolBar
     /// </summary>
     public partial class DrawingForm : Form
     {
+        public enum CrossHair { CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3, CROSSHAIR_4, CROSSHAIR_5, CROSSHAIR_6, CROSSHAIR_7, NONE };
+
+
         Graphics graphics;
         //Size highlightSize;
         Point currentGaze;
@@ -34,10 +37,33 @@ namespace GazeToolBar
             currentGaze = new Point();
 
             // Load the user feedback image
-            crosshairImage = Properties.Resources.crosshair_2;
+            crosshairImage = GetCrossHairImage((CrossHair)Program.readSettings.Crosshair);
         }
 
-
+        public static Image GetCrossHairImage(CrossHair c)
+        {
+            switch (c)
+            {
+                case CrossHair.CROSSHAIR_1:
+                    return Properties.Resources.crosshair_1;
+                case CrossHair.CROSSHAIR_2:
+                    return Properties.Resources.crosshair_2;
+                case CrossHair.CROSSHAIR_3:
+                    return Properties.Resources.crosshair_3;
+                case CrossHair.CROSSHAIR_4:
+                    return Properties.Resources.crosshair_4;
+                case CrossHair.CROSSHAIR_5:
+                    return Properties.Resources.crosshair_5;
+                case CrossHair.CROSSHAIR_6:
+                    return Properties.Resources.crosshair_6;
+                case CrossHair.CROSSHAIR_7:
+                    return Properties.Resources.crosshair_7;
+                case CrossHair.NONE:
+                    return Properties.Resources.crosshair_None;
+                default:
+                    return Properties.Resources.crosshair_2;
+            }
+        }
 
         /// <summary>
         /// Make form full screen, remove border, and make transparent
@@ -58,6 +84,7 @@ namespace GazeToolBar
             TopMost = true;
         }
 
+
         public IFixationSmoother CreateSmoother()
         {
             return new FixationSmootherExponential(10);
@@ -65,8 +92,7 @@ namespace GazeToolBar
 
         public void SetCrossHairPos(Point p)
         {
-            GazePoint pp = smoother.UpdateAndGetSmoothPoint(p.X, p.Y);
-            currentGaze = new Point((int)pp.X, (int)pp.Y);
+            currentGaze = p;
         }
 
         public void SetCrossHairPos(int x, int y)
@@ -77,16 +103,16 @@ namespace GazeToolBar
         public void Draw()
         {
             Point formCoordinates = currentGaze;
+            crosshairImage = GetCrossHairImage((CrossHair)Program.readSettings.Crosshair);
 
             Refresh();
+            graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            Bitmap image = (Bitmap)crosshairImage;
+            int crossHairX = (formCoordinates.X - (image.Width / 2));
+            int crossHairY = (formCoordinates.Y - (image.Height / 2));
 
-            int crossHairX = (formCoordinates.X - (crosshairImage.Width / 2));
-            int crossHairY = (formCoordinates.Y - (crosshairImage.Height / 2));
-
-         //    crossHairX = Math.Max(0, crossHairX);
-        //   crossHairY = Math.Max(0, crossHairY);
-
-            graphics.DrawImage(crosshairImage, crossHairX, crossHairY);
+            Rectangle Dimensions = new Rectangle(crossHairX, crossHairY, image.Width, image.Height);
+            graphics.DrawImage(image, Dimensions);
         }
 
         public void ClearForm()
