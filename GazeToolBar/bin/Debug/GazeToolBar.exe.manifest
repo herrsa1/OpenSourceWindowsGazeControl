@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Gaze.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -53,14 +53,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1641984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1643008">
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>It5j4ZF2rhM7TPhSFVj7o+wVTDpnUWiEKQ6gZkI11jU=</dsig:DigestValue>
+        <dsig:DigestValue>0UgS0OoJKBF+mTMS/D0zL2HX7FBSkNjB0oKpjfDOdms=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,26 +149,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4033536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4031488">
       <assemblyIdentity name="OptiKey" version="2.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bdwpNoz69SnppY3JUMoT/wYMSyllm+N3dc7DV2af8rA=</dsig:DigestValue>
+        <dsig:DigestValue>m+dtqI+xI++xM6Bgvg/ImU5xS5sqhN2a21sR8u4VLVI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="39424">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="de-DE" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Vo9mKvBMnl7uRt6I7nVd2ELEguzk1sudvZbTJdTB0ao=</dsig:DigestValue>
+        <dsig:DigestValue>0n4SQrgCcjT+Gn/f+cCF8T9SupMcbifI9kw6l/tdIDU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,19 +180,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rIpjZRnlPgNJB8CKBhNCMoLIdpGassRupDqTksCMqAU=</dsig:DigestValue>
+        <dsig:DigestValue>Pr1+ioqXqpZVds4DLWUTfWfnuQNvhAgdvNUeMt+piU4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38912">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="nl" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ld4cDGZdJws0/5/5jbwqxe+iFC2ohfLjCwPGqUE8VFU=</dsig:DigestValue>
+        <dsig:DigestValue>2pR+RKxaddrO0tafA5PfO+sb7HVkDfs9DJd7QepuEZU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -204,7 +204,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>G0rzHNVcvGbcaPxBAnWNTr6sDRQg8EDEv4CqjJATD9k=</dsig:DigestValue>
+        <dsig:DigestValue>77glK1Y9+a1iOMP5FLqejhP8Fe6vImQ8Cy7kftexcVg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -493,13 +493,13 @@
       <dsig:DigestValue>VxueUQout8r1is9/n4eKqDWVGzvuEURtLqhQckdDHrY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="GazeToolBar.exe.config" size="526">
+  <file name="GazeToolBar.exe.config" size="540">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Lbq6T5z2M+uhdbOWn6wnvcWDbUPQhibzyPh3LGiSK9k=</dsig:DigestValue>
+      <dsig:DigestValue>uoBFhTi4/pxUl7dABXhPqAAk+WIz9L5wFZYeNJtLm2g=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Images\Double-Click-icon.png" size="1820">
@@ -624,16 +624,15 @@
       <!-- A list of the Windows versions that this application has been tested on and is
            is designed to work with. Uncomment the appropriate elements and Windows will 
            automatically selected the most compatible environment. -->
-      <!-- Windows Vista -->
+      Windows Vista
       <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />
-      <!-- Windows 7 -->
+      Windows 7
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
-      <!-- Windows 8 -->
+      Windows 8
       <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />
-      <!-- Windows 8.1 -->
+      Windows 8.1
       <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
-      <!-- Windows 10 -->
-      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
-    </application>
+      Windows 10
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" /></application>
   </compatibility>
 </asmv1:assembly>
