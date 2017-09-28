@@ -17,17 +17,6 @@ namespace GazeToolBar
 {
     public partial class ZoomLens : Form
     {
-        // TODO: Move this to settings json
-        // Setting the width & height of the ZoomLens
-        public static int ZOOMLENS_SIZE = 500;
-        static List<Bitmap> listZoom = new List<Bitmap>();
-
-        Graphics graphics;
-        Graphics offScreenGraphics;
-        Graphics mainCanvas;
-        Bitmap zoomedScreenshot;
-        Bitmap offScreenBitmap;
-        FixationDetection fixdet;
         DrawingForm drawingForm;
 
         public Point Offset { get; set; }
@@ -37,21 +26,11 @@ namespace GazeToolBar
         {
             InitializeComponent();
 
-            this.Width = ZOOMLENS_SIZE;
-            this.Height = ZOOMLENS_SIZE;
-            offScreenBitmap = new Bitmap(this.Width, this.Height);
-            zoomedScreenshot = new Bitmap(this.Width, this.Height);
-            mainCanvas = this.CreateGraphics();
-            offScreenGraphics = Graphics.FromImage(offScreenBitmap);
-            graphics = Graphics.FromImage(zoomedScreenshot);
-            this.FormBorderStyle = FormBorderStyle.None;//removes window borders from form
-           // fixdet = FixDet;
+            this.FormBorderStyle = FormBorderStyle.None;
             drawingForm = new DrawingForm();
-            //====================================================
-            // This is for making form appear on top of window's menu
             TopMost = true;
 
-            //gazeHighlight = new GazeHighlight(FixDet, offScreenGraphics, EHighlightShaderType.RedToGreen, this);
+            Location = new Point(-200, -200);
         }
 
 
@@ -68,7 +47,8 @@ namespace GazeToolBar
             // Stop timer, and hide drawing form and zoom form
             DrawTimer.Stop();
             drawingForm.ClearForm();
-            Hide();          
+            Hide();
+            Location = new Point(-200, -200);
         }
 
 

@@ -1186,7 +1186,7 @@ namespace GazeToolBar
             this.panelPrecision.Controls.Add(this.lblFixationDetectionTimeLength);
             this.panelPrecision.Location = new System.Drawing.Point(4, 28);
             this.panelPrecision.Name = "panelPrecision";
-            this.panelPrecision.Size = new System.Drawing.Size(1368, 184);
+            this.panelPrecision.Size = new System.Drawing.Size(1368, 222);
             this.panelPrecision.TabIndex = 13;
             // 
             // pnlFixTimeLengthContent
@@ -1283,7 +1283,7 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(824, 97);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(154, 61);
+            this.pnlRearrange.Size = new System.Drawing.Size(152, 61);
             this.pnlRearrange.TabIndex = 30;
             this.pnlRearrange.Visible = false;
             // 
@@ -1490,10 +1490,10 @@ namespace GazeToolBar
             // 
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1005, 97);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1027, 97);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(151, 61);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(169, 61);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
             // 
@@ -1557,7 +1557,7 @@ namespace GazeToolBar
             // 
             this.trackBarCrosshair.BackColor = System.Drawing.Color.Black;
             this.trackBarCrosshair.Location = new System.Drawing.Point(108, 35);
-            this.trackBarCrosshair.Maximum = 8;
+            this.trackBarCrosshair.Maximum = 7;
             this.trackBarCrosshair.Name = "trackBarCrosshair";
             this.trackBarCrosshair.Size = new System.Drawing.Size(896, 45);
             this.trackBarCrosshair.TabIndex = 12;

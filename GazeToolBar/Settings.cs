@@ -710,7 +710,7 @@ namespace GazeToolBar
         {
             int RIGHT_XPOS = pnlRearrange.Width - 400;
             int LEFT_XPOS = 400;
-            int yPos = 0;
+            int yPos = 150;
             const int YGAP = 10;
             const int XGAP = 10;
 

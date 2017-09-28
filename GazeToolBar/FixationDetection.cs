@@ -29,15 +29,15 @@ namespace GazeToolBar
     public class FixationDetection
     {
         //Use to toggle extra point smoothing on and off
-       bool usePointSmoother = false;
+        bool usePointSmoother = false;
 
-       //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
-       public delegate void FixationProgressEvent( object o, FixationProgressEventArgs e);
-       public event FixationProgressEvent currentProgress;
-       
+        //Deceleration of event used to drive Gaze highlight, event contains data that shows the percentage through the current fixation.
+        public delegate void FixationProgressEvent(object o, FixationProgressEventArgs e);
+        public event FixationProgressEvent currentProgress;
+
         private double fixationProgressStartTimeStamp;
 
-       
+
         //Timer to measure if a how long it has been since the fixation started. 
         public Timer fixationTimer;
         public Timer timeOutTimer;
@@ -45,7 +45,7 @@ namespace GazeToolBar
         //Fixation data stream, used to attached to fixation events.
         //public static FixationDataStream fixationPointDataStream;
         //EventHandler<FixationEventArgs> FixationEventStreamDelegate;
-       
+
         public int FixationDetectionTimeLength { get; set; }
         int FixationExtensionBuffer;
         public int FixationTimeOutLength { get; set; }
@@ -68,6 +68,11 @@ namespace GazeToolBar
         public FixationDetection() : this(new FormsEyeXHost())
         {
 
+        }
+
+        public FixationDetection(FormsEyeXHost EyeXHost, int bufferSize) : this(EyeXHost)
+        {
+            pointSmootherBufferSize = bufferSize;
         }
 
         public FixationDetection(FormsEyeXHost EyeXHost)
@@ -105,7 +110,7 @@ namespace GazeToolBar
             return new FixationSmootherExponential(size);
         }
 
-        
+
         /// <summary>
         /// This method of is run on gaze events, checks if it is the beginning or end of a fixation and runs appropriate code.
         /// </summary>
@@ -126,7 +131,7 @@ namespace GazeToolBar
                     //increment timeout interval so a fixation doesn't get cut off.
                     timeOutTimer.Interval += FixationDetectionTimeLength + FixationExtensionBuffer; ;
 
-         //           Console.WriteLine(timeOutTimer.Interval);
+                    //           Console.WriteLine(timeOutTimer.Interval);
                     fixationProgressStartTimeStamp = fixationDataBucket.TimeStamp;
 
 
@@ -153,7 +158,7 @@ namespace GazeToolBar
                         yPosFixation = (int)Math.Floor(fixationDataBucket.Y);
                     }
 
-                   // calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
+                    // calculateFixationProgressPercent(fixationDataBucket.TimeStamp);
                     onFixationProgressEvent(fixationDataBucket.TimeStamp, xPosFixation, yPosFixation);
 
                 }
@@ -181,7 +186,7 @@ namespace GazeToolBar
             fixationState = EFixationState.WaitingForFixationRequest;
             SystemFlags.hasGaze = true;
             //Debug
-           // Console.WriteLine("Timer reached event, running required action");
+            // Console.WriteLine("Timer reached event, running required action");
         }
 
         /// <summary>
@@ -201,7 +206,7 @@ namespace GazeToolBar
             fixationState = EFixationState.WaitingForFixationRequest;
         }
 
-        
+
 
         /// <summary>
         //This method has the Action that will be run once a fixation is confirmed passed in and stored in SelectedFicationAction. It also sets the state to RunningFixationDetection, 
@@ -238,8 +243,8 @@ namespace GazeToolBar
 
             double progressPercent = (currentFixationlength / FixationDetectionTimeLength) * 100;
 
-           
-            return(int)progressPercent;
+
+            return (int)progressPercent;
         }
 
         /// <summary>
@@ -254,7 +259,7 @@ namespace GazeToolBar
 
             //Console.WriteLine("Fixation percentage " + progress);
 
-            if(currentProgress != null)
+            if (currentProgress != null)
             {
                 currentProgress(this, FPEA);
             }

@@ -36,7 +36,7 @@ namespace GazeToolBar
 
             SystemFlags.currentState = SystemState.Wait;
 
-            fixationWorker = new FixationDetection(eyeXHost);
+            fixationWorker = new FixationDetection(eyeXHost, 25);
 
             scrollWorker = new ScrollControl(200, 5, 50, 20, eyeXHost);
 
@@ -76,7 +76,7 @@ namespace GazeToolBar
             SystemFlags.timeOut = false;
             fixationWorker.IsZoomerFixation(false);
             currentState = SystemState.Wait;
-            
+
         }
 
 
@@ -170,6 +170,9 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
+                    zoomer.Start();
+                    zoomer.Show();
+                    zoomer.CrossHairPos = fixationWorker.getXY();
                     break;
                 case SystemState.Zooming:
                     fixationWorker.IsZoomerFixation(true);
@@ -183,7 +186,7 @@ namespace GazeToolBar
                         fixationPoint = fixationWorker.getXY();//get the location the user looked
                     }
                     magnifier.Timer.Enabled = true;
-                   // magnifier.UpdatePosition(fixationPoint);
+                    // magnifier.UpdatePosition(fixationPoint);
                     // Give the magnifier the point on screen to magnify
                     magnifier.FixationPoint = fixationPoint;
                     Point p1 = Utils.DividePoint(magnifier.Offset, magnifier.MagnifierDivAmount());
@@ -220,12 +223,12 @@ namespace GazeToolBar
                     fixationPoint = magnifier.GetLookPosition();
                     Utils.Print(fixationPoint);
                     zoomer.ResetZoomLens();//hide the lens
-                  //  MessageBox.Show(magnifier.SecondaryOffset.X + " " + magnifier.SecondaryOffset.Y);
-                    //Set the magnification factor back to initial value
-                    // This is done so that a "dynamic zoom in" feature can be
-                    // implemented in the future
+                                           //  MessageBox.Show(magnifier.SecondaryOffset.X + " " + magnifier.SecondaryOffset.Y);
+                                           //Set the magnification factor back to initial value
+                                           // This is done so that a "dynamic zoom in" feature can be
+                                           // implemented in the future
                     magnifier.ResetZoomValue();
-
+                    magnifier.Stop();
 
 
                     //execute the appropriate action
