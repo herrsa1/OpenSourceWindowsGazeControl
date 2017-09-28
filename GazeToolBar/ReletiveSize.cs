@@ -13,7 +13,7 @@ namespace GazeToolBar
     {
         public static Point panelSaveAndCancel(int width, int height)
         {
-            int x = ((Constants.SCREEN_SIZE.Width / 2) - (width / 2));
+            int x = (Constants.SCREEN_SIZE.Width - (width / 2)) / 2;
             int y = Constants.SCREEN_SIZE.Height - height - (int)(Constants.SCREEN_SIZE.Height * 0.01);
             return new Point(x, y);
         }
@@ -36,7 +36,7 @@ namespace GazeToolBar
         public static Point mainPanelLocation(int _y, int height)
         {
             int x = 0;
-            int y = _y + height + (int)(Constants.SCREEN_SIZE.Height * 0.06);
+            int y = _y + height + (int)(Constants.SCREEN_SIZE.Height * 0.01);
             return new Point(x, y);
         }
 

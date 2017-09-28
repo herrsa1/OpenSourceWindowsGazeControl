@@ -275,6 +275,7 @@ namespace GazeToolBar
             this.pnlCancel.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCancel.Name = "pnlCancel";
             this.pnlCancel.Size = new System.Drawing.Size(154, 155);
+
             this.pnlCancel.TabIndex = 22;
             // 
             // pnlSave
@@ -1282,6 +1283,7 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlScrollClickButton);
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(1159, 123);
+
             this.pnlRearrange.Name = "pnlRearrange";
             this.pnlRearrange.Size = new System.Drawing.Size(152, 61);
             this.pnlRearrange.TabIndex = 30;

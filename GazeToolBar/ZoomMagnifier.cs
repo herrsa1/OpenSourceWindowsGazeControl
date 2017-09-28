@@ -28,7 +28,7 @@ namespace GazeToolBar
         FormsEyeXHost eyeXHost;
         GazePointDataStream gazeStream;
 
-        public Point CurrentLook {get; set;}
+        public Point CurrentLook { get; set; }
         public float MaxZoom { get; set; } //Max zoom amount
 
         public Timer Timer { get { return updateTimer; } }
@@ -60,6 +60,11 @@ namespace GazeToolBar
             eyeXHost.Start();
             gazeStream = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             gazeStream.Next += (s, e) => SetLook(e.X, e.Y);
+
+            form.Left = -4000;
+            form.Top = -5000;
+            form.Width = 1;
+            form.Height = 1;
 
         }
 
@@ -105,18 +110,18 @@ namespace GazeToolBar
             int finalLeft = form.Left;
             int finalTop = form.Top;
 
-            Utils.Print("Position-",initLeft, initTop, finalLeft, finalTop);
+            Utils.Print("Position-", initLeft, initTop, finalLeft, finalTop);
             int offsetX = finalLeft - initLeft;
             int offsetY = finalTop - initTop;
 
             //Offset = new Point(offsetX, offsetY);
             Utils.Print("Offset-", offsetX, offsetY);
         }
-         
+
         public virtual void UpdateMagnifier()
         {
             //If the magnifier is not setup correctly (will crash otherwise)
-            if ((!hasInitialized) || (hwndMag == IntPtr.Zero))
+            if ((!hasInitialized) || (hwndMag == IntPtr.Zero) || !updateTimer.Enabled)
             {
                 return;
             }
@@ -208,9 +213,15 @@ namespace GazeToolBar
             get { return magnification; }
         }
 
-        public  void Stop()
+        public void Stop()
         {
             updateTimer.Enabled = false;
+            form.Left = -4000;
+            form.Top = -5000;
+            form.Width = 1;
+            form.Height = 1;
+            form.Refresh();
+            form.Hide();
         }
 
         public virtual int MagnifierDivAmount()

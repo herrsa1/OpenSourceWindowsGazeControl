@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.3" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="GazeToolBar.exe" version="1.0.0.5" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Gaze.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -53,14 +53,22 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+<<<<<<< HEAD
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1653248">
+=======
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GazeToolBar.exe" size="1643520">
+>>>>>>> toMerge
       <assemblyIdentity name="GazeToolBar" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>xYjcv5Z03WdvLx71zsJgjGyAsaa5fx1YEFhddG7IMFw=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>yciyUPht5gsEJeb6POdmsRFe/7VuVOQHomTSM1y4/uE=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -84,7 +92,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8Sv6BMuDObIMg5r0gys2ypAx+XIO3aoKveOibq8pKf8=</dsig:DigestValue>
+        <dsig:DigestValue>nSf2KmdUPJE7yLq9MDwV+urt0FSg4rpCvmOC+Ml37Mc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -149,14 +157,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4033536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OptiKey.exe" size="4030976">
       <assemblyIdentity name="OptiKey" version="2.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>Leg9QvB3zULCiLc4MSP2mu6310a4+yjvLdR1mZptIK8=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>BXUiRywj/D3LZwxtepRC1RdPE66xEnXOI/F7FUyo5Ek=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -168,7 +180,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>OtloIQtutprX3TRq5EvZD2vdzTTsAwabizKS+7zfY+4=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>+Mm2SStI+2bIZ1kJz+LXC25zHHSdYNfNLcr7Nb1MBY4=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -180,7 +196,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>gVKUQs19lWHCteWNWvPzM9dVvR4LBFAs7ozfDaeWG1s=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>8NY/zNkeI47nv8UWcNQAjqEb1WvacVE5dLGGm6U+FIo=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -192,7 +212,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>qBXp7UaCLsrpkNt9K6R+h5tKiDfPlpFK5mV+4odLrW8=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>J4O4tGMNXMt97cicxGqth0itseIpkTAptR9geem9HZA=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -204,7 +228,11 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+<<<<<<< HEAD
         <dsig:DigestValue>PFt0BrRop/2rKnuxIp+YOyHzfvVfcvk/HrNj2EXov6g=</dsig:DigestValue>
+=======
+        <dsig:DigestValue>DaCGeO+cbc09ueqLDaO3qy2yKgMRHq8iu3GrjPzPJZM=</dsig:DigestValue>
+>>>>>>> toMerge
       </hash>
     </dependentAssembly>
   </dependency>
@@ -610,6 +638,15 @@
       <dsig:DigestValue>sii5u5B04BgPl/v2+OFo5heboRDDIQDQcwLlXms2taw=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="programIcon.ico" size="370070">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>72x7WhLoLnI8i4htwZDANbKh1VMqZHJ6vd2hlObI/Qc=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="Tobii.EyeX.Client.dll" size="1228504">
     <hash>
       <dsig:Transforms>
@@ -624,16 +661,15 @@
       <!-- A list of the Windows versions that this application has been tested on and is
            is designed to work with. Uncomment the appropriate elements and Windows will 
            automatically selected the most compatible environment. -->
-      <!-- Windows Vista -->
+      Windows Vista
       <supportedOS Id="{e2011457-1546-43c5-a5fe-008deee3d3f0}" />
-      <!-- Windows 7 -->
+      Windows 7
       <supportedOS Id="{35138b9a-5d96-4fbd-8e2d-a2440225f93a}" />
-      <!-- Windows 8 -->
+      Windows 8
       <supportedOS Id="{4a2f28e3-53b9-4441-ba9c-d69d4a4a6e38}" />
-      <!-- Windows 8.1 -->
+      Windows 8.1
       <supportedOS Id="{1f676c76-80e1-4239-95bb-83d0f6d0da78}" />
-      <!-- Windows 10 -->
-      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" />
-    </application>
+      Windows 10
+      <supportedOS Id="{8e0f7a12-bfb3-4fe8-b9a5-48fd50a15a9a}" /></application>
   </compatibility>
 </asmv1:assembly>

@@ -3,7 +3,7 @@ using System;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,22 +16,31 @@ namespace GazeToolBar
         public static string path { get; set; }
         public static SettingJSON readSettings { get; set; }
         public static bool onStartUp { get; set; }
-        
+
+        static Mutex mutex = new Mutex(true, "51427aea-a311-11e7-abc4-cec278b6b50a");
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            //eyeXHost.Start();
-            path = Application.StartupPath + "\\" + "Settings.json";
-            ReadWriteJson();
-            ReadWriteJson();
-            onStartUp = AutoStart.IsOn();
+            if (mutex.WaitOne(TimeSpan.Zero, true))
+            {
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+                path = Application.StartupPath + "\\" + "Settings.json";
+                ReadWriteJson();
+
+                onStartUp = AutoStart.IsOn();
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new Form1());
+                mutex.ReleaseMutex();
+            }
+            else
+            {
+                MessageBox.Show("There is already an instance of Gaze Toolbar running!");
+            }
 
         }
 

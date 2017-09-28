@@ -74,20 +74,20 @@ namespace GazeToolBar
 
         public void ArrangeSidebar(string[] sidebarArrangement)
         {
-            foreach(Panel p in highlightPannerList)
+            foreach (Panel p in highlightPannerList)
             {
                 p.Left = -100;
             }
 
             const int BUTTON_HEIGHT = 75;
-            int gapSize = (740 / sidebarArrangement.Length) - (BUTTON_HEIGHT/2);
-         //   MessageBox.Show(gapSize + " " + sidebarArrangement.Length + " " + 740 + " " + BUTTON_HEIGHT);
+            int gapSize = ((int)(Height / 1.5) / sidebarArrangement.Length) - (BUTTON_HEIGHT / 2);
+            //   MessageBox.Show(gapSize + " " + sidebarArrangement.Length + " " + 740 + " " + BUTTON_HEIGHT);
             int yPos = gapSize;
-            foreach(String s in sidebarArrangement)
+            foreach (String s in sidebarArrangement)
             {
                 Panel highlight = GetHighlightPanelForString(s);
 
-                if(highlight != null)
+                if (highlight != null)
                 {
                     highlight.Top = yPos;
                     highlight.Left = 15;
@@ -128,12 +128,28 @@ namespace GazeToolBar
         {
             menuItemExit.Text = "Exit";
             menuItemStartOnOff.Text = Constants.AUTO_START_OFF;
+            menuItemStartOnOff.Click += new EventHandler(menuItemAutostart_click);
             menuItemExit.Click += new EventHandler(menuItemExit_Click);
-            settingsItem.Text = "Setting";
+            settingsItem.Text = "Settings";
             contextMenu.MenuItems.Add(settingsItem);
             contextMenu.MenuItems.Add(menuItemStartOnOff);
             contextMenu.MenuItems.Add(menuItemExit);
             notifyIcon.ContextMenu = contextMenu;
+            notifyIcon.Text = "Gaze Toolbar";
+            notifyIcon.Visible = true;
+            OnStartTextChange();
+        }
+
+        public void menuItemAutostart_click(object o, EventArgs e)
+        {
+            if(AutoStart.IsOn())
+            {
+                AutoStart.SetOff();
+            }
+            else
+            {
+                AutoStart.SetOn();
+            }
             OnStartTextChange();
         }
 
@@ -175,7 +191,12 @@ namespace GazeToolBar
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.DoubleClick] = Program.readSettings.doubleClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = Program.readSettings.rightClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = Program.readSettings.scoll;
-            timer2.Enabled = true;           
+            timer2.Enabled = true;
+
+            Height = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
+
+            String[] sidebarArrangement = Program.readSettings.sidebar;
+            ArrangeSidebar(sidebarArrangement);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -232,13 +253,15 @@ namespace GazeToolBar
 
         public void OnStartTextChange()
         {
-            if (Program.onStartUp)
+            if (AutoStart.IsOn())
             {
                 menuItemStartOnOff.Text = Constants.AUTO_START_ON;
+                MenuItemStartOnOff.Checked = true;
             }
             else
             {
                 menuItemStartOnOff.Text = Constants.AUTO_START_OFF;
+                MenuItemStartOnOff.Checked = false;
             }
         }
 
