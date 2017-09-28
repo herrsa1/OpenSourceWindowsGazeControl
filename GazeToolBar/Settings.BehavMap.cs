@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GazeToolBar
 {
-    partial class Settings 
+    partial class Settings
     {
 
         int buttonClickDelay = 500;
@@ -41,10 +41,13 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnActionRightClick, new GazeAwareBehavior(OnBtnActionRightClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnActionScrollClick, new GazeAwareBehavior(OnBtnActionScrollClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnActionSettings, new GazeAwareBehavior(OnBtnActionSettings_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(buttonCrosshairDown, new GazeAwareBehavior(OnButtonCrosshairDown_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(buttonCrosshairUp, new GazeAwareBehavior(OnButtonCrosshairUp_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnShortCutKeySetting, new GazeAwareBehavior(OnBtnKeyboardSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnZoomSettings, new GazeAwareBehavior(OnBtnZoomSettings_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnRearrangeSetting, new GazeAwareBehavior(OnBtnRearrangeSetting_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(buttonCrosshairSetting, new GazeAwareBehavior(OnbuttonCrosshairSetting_Click) { DelayMilliseconds = buttonClickDelay });
 
             //Set buttons
             bhavSettingMap.Add(btFKeyLeftClick, new GazeAwareBehavior(btFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
@@ -57,7 +60,7 @@ namespace GazeToolBar
             bhavSettingMap.Add(btClearFKeyRightClick, new GazeAwareBehavior(btClearFKeyRightClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btClearFKeyDoubleClick, new GazeAwareBehavior(btClearFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btClearFKeyScroll, new GazeAwareBehavior(btClearFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
-           // bhavSettingMap.Add(btClearFKeyDrapAndDrop, new GazeAwareBehavior(btClearFKeyDrapAndDrop_Click) { DelayMilliseconds = buttonClickDelay });
+            // bhavSettingMap.Add(btClearFKeyDrapAndDrop, new GazeAwareBehavior(btClearFKeyDrapAndDrop_Click) { DelayMilliseconds = buttonClickDelay });
             //highlight panels
             bhavSettingMap.Add(pnlFKeyHighlight1, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFKeyHighlight2, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -67,15 +70,16 @@ namespace GazeToolBar
             bhavSettingMap.Add(pnlFKeyHighlight6, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFKeyHighlight7, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFKeyHighlight8, new GazeAwareBehavior(OnGazeChangeBTColour));
-           // bhavSettingMap.Add(pnlFKeyHighlight9, new GazeAwareBehavior(OnGazeChangeBTColour));
-           // bhavSettingMap.Add(pnlFKeyHighlight10, new GazeAwareBehavior(OnGazeChangeBTColour));
-            
-           
+            // bhavSettingMap.Add(pnlFKeyHighlight9, new GazeAwareBehavior(OnGazeChangeBTColour));
+            // bhavSettingMap.Add(pnlFKeyHighlight10, new GazeAwareBehavior(OnGazeChangeBTColour));
+
+
 
             bhavSettingMap.Add(pnlGeneralButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlKeysButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlZoomButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlRearrangeButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(panelCrosshairButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFTLMins, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFTLPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFTOMins, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -96,6 +100,8 @@ namespace GazeToolBar
             bhavSettingMap.Add(pnlRightClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlScrollClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlSettingsButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlCrosshairDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlCrosshairUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
 
         }
 
@@ -229,6 +235,21 @@ namespace GazeToolBar
             if (e.HasGaze) btnActionSettings.PerformClick();
         }
 
+        private void OnbuttonCrosshairSetting_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) buttonCrosshairSetting.PerformClick();
+        }
+
+        private void OnButtonCrosshairDown_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) buttonCrosshairDown.PerformClick();
+        }
+
+        private void OnButtonCrosshairUp_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) buttonCrosshairUp.PerformClick();
+        }
+
 
 
         //====================================================================================
@@ -246,7 +267,7 @@ namespace GazeToolBar
             WaitForUserKeyPress = true;
             actionToAssignKey = ActionToBePerformed.LeftClick;
             lbFKeyFeedback.Text = "please press a key";
-            
+
         }
 
         private void btFKeyRightClick_Click(object sender, EventArgs e)
@@ -275,7 +296,7 @@ namespace GazeToolBar
 
         //}
 
-       
+
         //Clear key map
 
         private void btClearFKeyLeftClick_Click(object sender, EventArgs e)

@@ -71,18 +71,18 @@ namespace GazeToolBar
 
         private void controlRelocateAndResize()
         {
-            int percentageSize = 300; //Higher number for smaller trackbars
+            int percentageSize = 400; //Higher number for smaller trackbars
             pnlSwitchSetting.Location = ReletiveSize.panelSwitchSettingLocation(pnlSwitchSetting.Width, pnlSwitchSetting.Height);
             panelSaveAndCancel.Location = ReletiveSize.panelSaveAndCancel(panelSaveAndCancel.Width, panelSaveAndCancel.Height);
 
             //General Settings size and location
-            pnlGeneral.Size = ReletiveSize.panelGeneralSize();
             pnlGeneral.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlGeneral.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlGeneral.Location.Y);
             //Precision panel
             panelPrecision.Location = ReletiveSize.distribute(pnlGeneral, panelPrecision.Location.X, 1, 3, "h", 0);
             panelPrecision.Size = new Size(pnlGeneral.Size.Width, panelPrecision.Size.Height);
-            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", 0.15);
-            pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(panelPrecision, pnlFixTimeLengthContent.Size.Height, 0.8);
+            pnlFixTimeLengthContent.Location = ReletiveSize.distribute(panelPrecision, pnlFixTimeLengthContent.Location.Y, 1, 1, "w", 0.1);
+            pnlFixTimeLengthContent.Size = ReletiveSize.controlLength(panelPrecision, pnlFixTimeLengthContent.Size.Height, 0.9);
             double generalPercentage = (double)(pnlFixTimeLengthContent.Size.Width - percentageSize) / (double)pnlFixTimeLengthContent.Size.Width;
             trackBarFixTimeLength.Size = ReletiveSize.controlLength(pnlFixTimeLengthContent, trackBarFixTimeLength.Size.Height, generalPercentage);
             pnlFTLPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, pnlFTLPlus.Location.Y, 7, 'v');
@@ -98,24 +98,24 @@ namespace GazeToolBar
             //Auto start panel
             panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 3, 3, "h", 0);
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
-            pnlOtherAuto.Location = new Point(panelOther.Size.Width / 2, pnlOtherAuto.Location.Y);
+            pnlOtherAuto.Location = new Point((panelOther.Size.Width / 2) - (pnlOtherAuto.Width / 2), pnlOtherAuto.Location.Y);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
             //Shortcut settings panel
             //pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
-            pnlPageKeyboard.Size = ReletiveSize.panelGeneralSize();
             pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlPageKeyboard.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlPageKeyboard.Location.Y);            
             //Set feed back label to the center of the screen.
             lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
             //pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
             //Zoom Settings size and location
             //Main Panel
-            pnlZoomSettings.Size = ReletiveSize.panelGeneralSize();
             pnlZoomSettings.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlZoomSettings.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlZoomSettings.Location.Y);            
             //Zoom size panel
             pnlZoomSize.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSize.Location.X, 1, 3, "h", 0);
             pnlZoomSize.Size = new Size(pnlZoomSettings.Size.Width, pnlZoomSize.Size.Height);
-            pnlZoomSizeContent.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSizeContent.Location.Y, 1, 1, "w", 0.15);
-            pnlZoomSizeContent.Size = ReletiveSize.controlLength(pnlZoomSettings, pnlZoomSizeContent.Size.Height, 0.8);
+            pnlZoomSizeContent.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSizeContent.Location.Y, 1, 1, "w", 0.1);
+            pnlZoomSizeContent.Size = ReletiveSize.controlLength(pnlZoomSettings, pnlZoomSizeContent.Size.Height, 0.9);
             double zoomPercentage = (double)(pnlZoomSizeContent.Size.Width - percentageSize) / (double)pnlZoomSizeContent.Size.Width;
             trackBarZoomWindowSize.Size = ReletiveSize.controlLength(pnlZoomSizeContent, trackBarZoomWindowSize.Size.Height, zoomPercentage);
             pnlZWSPlus.Location = ReletiveSize.reletiveLocation(trackBarZoomWindowSize, pnlZWSPlus.Location.Y, 7, 'v');
@@ -129,12 +129,12 @@ namespace GazeToolBar
             pnlZIAPlus.Location = new Point(pnlZWSPlus.Location.X, pnlZIAPlus.Location.Y);
             labZoomAmount.Location = ReletiveSize.labelPosition(pnlZoomAmount, labZoomAmount);
             //Rearrange panel
-            pnlRearrange.Size = ReletiveSize.panelGeneralSize();
             pnlRearrange.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlRearrange.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlRearrange.Location.Y);            
             pnlRearrangeControls.Location = ReletiveSize.centerLocation(pnlRearrange, pnlRearrangeControls);
             //Crosshair Panel
-            pnlCrosshairPage.Size = ReletiveSize.panelGeneralSize();
             pnlCrosshairPage.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlCrosshairPage.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlCrosshairPage.Location.Y);            
             panelCrosshairSelection.Location = ReletiveSize.centerLocation(pnlCrosshairPage, panelCrosshairSelection);
             pictureBoxCrosshairPreview.Location = ReletiveSize.centerLocation(pnlCrosshairPage, pictureBoxCrosshairPreview);
             pictureBoxCrosshairPreview.Location = new Point(pictureBoxCrosshairPreview.Location.X, pictureBoxCrosshairPreview.Location.Y + pictureBoxCrosshairPreview.Height);
@@ -708,11 +708,15 @@ namespace GazeToolBar
 
         public void RefreshActions()
         {
-            int XPOS = pnlRearrange.Width - 400;
-            int yPos = 10;
+            int RIGHT_XPOS = pnlRearrange.Width - 400;
+            int LEFT_XPOS = 400;
+            int yPos = 0;
             const int YGAP = 10;
+            const int XGAP = 10;
 
             int ind = 0;
+            int notUsed = 0;
+            int notUsedY = 0;
             foreach (Button b in actionButtons)
             {
                 if (ButtonInSidebar(b))
@@ -720,14 +724,24 @@ namespace GazeToolBar
                     int selIndex = selectedActions.IndexOf(GetStringForButton(b));
                     int y = yPos + ((b.Height + YGAP) * selIndex);
 
-                    actionPanels[ind].Left = XPOS;
+                    actionPanels[ind].Left = RIGHT_XPOS;
                     actionPanels[ind].Top = y;
 
                 }
                 else
                 {
-                    actionPanels[ind].Left = sidebarActionInitPositions[ind].X;
-                    actionPanels[ind].Top = sidebarActionInitPositions[ind].Y;
+                    if (notUsed >= 3)
+                    {
+                        actionPanels[ind].Left = LEFT_XPOS + b.Width + XGAP;
+                        actionPanels[ind].Top = yPos + ((b.Height + YGAP) * notUsedY);
+                        notUsedY++;
+                    }
+                    else
+                    {
+                        actionPanels[ind].Left = LEFT_XPOS;
+                        actionPanels[ind].Top = yPos + ((b.Height + YGAP) * notUsed);
+                    }
+                    notUsed++;
                 }
                 ind++;
             }
