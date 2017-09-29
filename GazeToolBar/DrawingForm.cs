@@ -17,8 +17,7 @@ namespace GazeToolBar
     /// </summary>
     public partial class DrawingForm : Form
     {
-        public enum CrossHair { CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3, CROSSHAIR_4, CROSSHAIR_5, CROSSHAIR_6, CROSSHAIR_7, NONE };
-
+        public enum CrossHair { CROSSHAIR_1, CROSSHAIR_2, CROSSHAIR_3, CROSSHAIR_4, CROSSHAIR_5, CROSSHAIR_6, CROSSHAIR_7, CRPSSHAIR_8, NONE };
 
         Graphics graphics;
         //Size highlightSize;
@@ -58,6 +57,8 @@ namespace GazeToolBar
                     return Properties.Resources.crosshair_6;
                 case CrossHair.CROSSHAIR_7:
                     return Properties.Resources.crosshair_7;
+                case CrossHair.CRPSSHAIR_8:
+                    return Properties.Resources.crosshair_8;
                 case CrossHair.NONE:
                     return Properties.Resources.crosshair_None;
                 default:

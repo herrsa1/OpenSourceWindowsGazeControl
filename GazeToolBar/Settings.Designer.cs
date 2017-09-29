@@ -275,7 +275,6 @@ namespace GazeToolBar
             this.pnlCancel.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCancel.Name = "pnlCancel";
             this.pnlCancel.Size = new System.Drawing.Size(154, 155);
-
             this.pnlCancel.TabIndex = 22;
             // 
             // pnlSave
@@ -1072,6 +1071,7 @@ namespace GazeToolBar
             // trackBarFixTimeOut
             // 
             this.trackBarFixTimeOut.Location = new System.Drawing.Point(170, 58);
+            this.trackBarFixTimeOut.Maximum = 30;
             this.trackBarFixTimeOut.Name = "trackBarFixTimeOut";
             this.trackBarFixTimeOut.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.trackBarFixTimeOut.Size = new System.Drawing.Size(894, 45);
@@ -1230,6 +1230,7 @@ namespace GazeToolBar
             // 
             this.trackBarFixTimeLength.BackColor = System.Drawing.Color.Black;
             this.trackBarFixTimeLength.Location = new System.Drawing.Point(170, 58);
+            this.trackBarFixTimeLength.Maximum = 30;
             this.trackBarFixTimeLength.Name = "trackBarFixTimeLength";
             this.trackBarFixTimeLength.Size = new System.Drawing.Size(896, 45);
             this.trackBarFixTimeLength.TabIndex = 12;
@@ -1283,7 +1284,6 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlScrollClickButton);
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(1159, 123);
-
             this.pnlRearrange.Name = "pnlRearrange";
             this.pnlRearrange.Size = new System.Drawing.Size(152, 61);
             this.pnlRearrange.TabIndex = 30;

@@ -173,6 +173,16 @@ namespace GazeToolBar.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap crosshair_8 {
+            get {
+                object obj = ResourceManager.GetObject("crosshair_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap crosshair_None {
             get {
                 object obj = ResourceManager.GetObject("crosshair_None", resourceCulture);
