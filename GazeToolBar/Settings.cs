@@ -51,7 +51,7 @@ namespace GazeToolBar
             }
 
             shownPanel = pnlGeneral;
-            
+
             //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
             fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll };// pnlDragAndDrop };
             //Set panel positions.
@@ -64,6 +64,7 @@ namespace GazeToolBar
             lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
 
             WaitForUserKeyPress = false;
+
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
 
@@ -88,7 +89,7 @@ namespace GazeToolBar
             pnlFTLPlus.Location = ReletiveSize.reletiveLocation(trackBarFixTimeLength, pnlFTLPlus.Location.Y, 7, 'v');
             lblFixationDetectionTimeLength.Location = ReletiveSize.labelPosition(panelPrecision, lblFixationDetectionTimeLength);
             //Fixation time out panel
-            pnlFixationTimeOut.Location = ReletiveSize.distribute(pnlGeneral, pnlFixationTimeOut.Location.X, 2, 3, "h", 0);
+            pnlFixationTimeOut.Location = ReletiveSize.distributeToBottom(pnlGeneral, pnlFixationTimeOut.Location.X, pnlFixationTimeOut.Height, 2, 3, "h", 0);
             pnlFixationTimeOut.Size = new Size(pnlGeneral.Size.Width, pnlFixationTimeOut.Size.Height);
             pnlFixTimeOutContent.Location = new Point(pnlFixTimeLengthContent.Location.X, pnlFixTimeOutContent.Location.Y);
             pnlFixTimeOutContent.Size = pnlFixTimeLengthContent.Size;
@@ -96,32 +97,32 @@ namespace GazeToolBar
             pnlFTOPlus.Location = new Point(pnlFTLPlus.Location.X, pnlFTOPlus.Location.Y);
             lblSpeed.Location = ReletiveSize.labelPosition(pnlFixationTimeOut, lblSpeed);
             //Auto start panel
-            panelOther.Location = ReletiveSize.distribute(pnlGeneral, panelOther.Location.X, 3, 3, "h", 0);
+            panelOther.Location = ReletiveSize.distributeToBottom(pnlGeneral, panelOther.Location.X, panelOther.Height, 3, 3, "h", 0);
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
             pnlOtherAuto.Location = new Point((panelOther.Size.Width / 2) - (pnlOtherAuto.Width / 2), pnlOtherAuto.Location.Y);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
             //Shortcut settings panel
             //pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
             pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-            pnlPageKeyboard.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlPageKeyboard.Location.Y);            
+            pnlPageKeyboard.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlPageKeyboard.Location.Y);
             //Set feed back label to the center of the screen.
             lbFKeyFeedback.Location = new Point((pnlPageKeyboard.Width / 2) - (lbFKeyFeedback.Width / 2), lbFKeyFeedback.Location.Y);
             //pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
             //Zoom Settings size and location
             //Main Panel
             pnlZoomSettings.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-            pnlZoomSettings.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlZoomSettings.Location.Y);            
+            pnlZoomSettings.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlZoomSettings.Location.Y);
             //Zoom size panel
-            pnlZoomSize.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSize.Location.X, 1, 3, "h", 0);
+            pnlZoomSize.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSize.Location.X, 1, 2, "h", 0);
             pnlZoomSize.Size = new Size(pnlZoomSettings.Size.Width, pnlZoomSize.Size.Height);
-            pnlZoomSizeContent.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomSizeContent.Location.Y, 1, 1, "w", 0.1);
+            pnlZoomSizeContent.Location = ReletiveSize.distribute(pnlZoomSize, pnlZoomSizeContent.Location.Y, 1, 1, "w", 0.1);
             pnlZoomSizeContent.Size = ReletiveSize.controlLength(pnlZoomSettings, pnlZoomSizeContent.Size.Height, 0.9);
             double zoomPercentage = (double)(pnlZoomSizeContent.Size.Width - percentageSize) / (double)pnlZoomSizeContent.Size.Width;
             trackBarZoomWindowSize.Size = ReletiveSize.controlLength(pnlZoomSizeContent, trackBarZoomWindowSize.Size.Height, zoomPercentage);
             pnlZWSPlus.Location = ReletiveSize.reletiveLocation(trackBarZoomWindowSize, pnlZWSPlus.Location.Y, 7, 'v');
             labZoomWindowSize.Location = ReletiveSize.labelPosition(pnlZoomSize, labZoomWindowSize);
             //Zoom amount panel
-            pnlZoomAmount.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomAmount.Location.X, 2, 3, "h", 0);
+            pnlZoomAmount.Location = ReletiveSize.distribute(pnlZoomSettings, pnlZoomAmount.Location.X, 2, 2, "h", 0);
             pnlZoomAmount.Size = new Size(pnlZoomSettings.Size.Width, pnlZoomAmount.Size.Height);
             pnlZoomAmountContent.Location = new Point(pnlZoomSizeContent.Location.X, pnlZoomAmountContent.Location.Y);
             pnlZoomAmountContent.Size = pnlZoomSizeContent.Size;
@@ -130,14 +131,31 @@ namespace GazeToolBar
             labZoomAmount.Location = ReletiveSize.labelPosition(pnlZoomAmount, labZoomAmount);
             //Rearrange panel
             pnlRearrange.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-            pnlRearrange.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlRearrange.Location.Y);            
+            pnlRearrange.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlRearrange.Location.Y);
             pnlRearrangeControls.Location = ReletiveSize.centerLocation(pnlRearrange, pnlRearrangeControls);
-            //Crosshair Panel
+            //Crosshair Settings size and location
+            //Main panel
             pnlCrosshairPage.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-            pnlCrosshairPage.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlCrosshairPage.Location.Y);            
-            panelCrosshairSelection.Location = ReletiveSize.centerLocation(pnlCrosshairPage, panelCrosshairSelection);
-            pictureBoxCrosshairPreview.Location = ReletiveSize.centerLocation(pnlCrosshairPage, pictureBoxCrosshairPreview);
-            pictureBoxCrosshairPreview.Location = new Point(pictureBoxCrosshairPreview.Location.X, pictureBoxCrosshairPreview.Location.Y + pictureBoxCrosshairPreview.Height);
+            pnlCrosshairPage.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlCrosshairPage.Location.Y);
+            //Crosshair selection panel
+            panelCrosshairSelection.Location = ReletiveSize.distributeToBottom(pnlCrosshairPage, panelCrosshairSelection.Location.X, panelCrosshairSelection.Height, 1, 3, "h", 0);
+            panelCrosshairSelection.Size = new Size(pnlCrosshairPage.Size.Width, panelCrosshairSelection.Size.Height);
+            panelCrosshairHolder.Location = ReletiveSize.distribute(panelCrosshairSelection, panelCrosshairHolder.Location.Y, 1, 1, "w", 0.1);
+            panelCrosshairHolder.Size = ReletiveSize.controlLength(pnlCrosshairPage, panelCrosshairHolder.Size.Height, 0.9);
+            double crosshairPercentage = (double)(panelCrosshairHolder.Size.Width - percentageSize) / (double)panelCrosshairHolder.Size.Width;
+            trackBarCrosshair.Size = ReletiveSize.controlLength(panelCrosshairHolder, trackBarCrosshair.Size.Height, crosshairPercentage);
+            pnlCrosshairUpButton.Location = ReletiveSize.reletiveLocation(trackBarCrosshair, pnlCrosshairUpButton.Location.Y, 7, 'v');
+            labCrosshairType.Location = ReletiveSize.labelPosition(panelCrosshairSelection, labCrosshairType);
+            //Crosshair picture
+            pictureBoxCrosshairPreview.Location = ReletiveSize.distribute(pnlCrosshairPage, pictureBoxCrosshairPreview.Location.X, 2, 3, "h", 0);
+            pictureBoxCrosshairPreview.Location = ReletiveSize.distribute(pnlCrosshairPage, pictureBoxCrosshairPreview.Location.Y, 1, 1, "w", 0.5);
+            pictureBoxCrosshairPreview.Left = (pictureBoxCrosshairPreview.Location.X - (pictureBoxCrosshairPreview.Width / 2));
+            //Feedback panel
+            pnlFeedback.Location = ReletiveSize.distributeToBottom(pnlCrosshairPage, pnlFeedback.Location.X, pnlFeedback.Height, 3, 3, "h", 0);
+            pnlFeedback.Size = new Size(pnlCrosshairPage.Size.Width, pnlFeedback.Size.Height);
+            pnlFeedbackContent.Location = new Point((pnlFeedback.Size.Width / 2) - (pnlFeedbackContent.Width / 2), pnlFeedbackContent.Location.Y);
+            pnlFeedbackContent.Location = new Point((pnlFeedback.Size.Width / 2) - (pnlFeedbackContent.Width / 2), pnlFeedbackContent.Location.Y);
+            labFeedback.Location = ReletiveSize.labelPosition(pnlFeedback, labFeedback);
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
@@ -187,7 +205,7 @@ namespace GazeToolBar
         public void ChangeButtonColor(Button button, bool onOff, bool hasText)
         {
 
-            button.BackColor = onOff ? Constants.SelectedColor: Constants.SettingButtonColor;
+            button.BackColor = onOff ? Constants.SelectedColor : Constants.SettingButtonColor;
             if (hasText)
             {
                 if (onOff)
@@ -236,7 +254,7 @@ namespace GazeToolBar
         //    }
         //}
 
-        
+
 
         //private void lblOnOff(Label l, bool b)
         //{
@@ -322,7 +340,7 @@ namespace GazeToolBar
             //trackBarFixTimeLength.Value = Program.readSettings.precision;
             //trackBarFixTimeOut.Value = Program.readSettings.speed;
             //lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
-            
+
             if (Program.onStartUp)
             {
                 ChangeButtonColor(btnAutoStart, true, false);
@@ -515,7 +533,7 @@ namespace GazeToolBar
 
             String keyPressed = pressedKey.KeyPressed.ToString();
 
-             if(WaitForUserKeyPress)
+            if (WaitForUserKeyPress)
             {
 
                 if (checkIfKeyIsAssignedAlready(keyPressed, form1.shortCutKeyWorker.keyAssignments))
@@ -535,10 +553,10 @@ namespace GazeToolBar
 
         private bool checkIfKeyIsAssignedAlready(String ValueToCheck, Dictionary<ActionToBePerformed, String> KeyAssignedDict)
         {
-            
+
             foreach (KeyValuePair<ActionToBePerformed, String> currentKVP in KeyAssignedDict)
-            { 
-                if(currentKVP.Value == ValueToCheck)
+            {
+                if (currentKVP.Value == ValueToCheck)
                 {
                     return true;
                 }
@@ -851,6 +869,11 @@ namespace GazeToolBar
         private void btnActionButtonClick_Click(object sender, EventArgs e)
         {
             ActionButtonClick((Button)sender);
+        }
+
+        private void btnFeedback_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

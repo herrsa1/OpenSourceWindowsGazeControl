@@ -144,6 +144,12 @@ namespace GazeToolBar
             this.pnlDoubleLeftClickButton = new System.Windows.Forms.Panel();
             this.btnActionDoubleLeftClick = new System.Windows.Forms.Button();
             this.pnlCrosshairPage = new System.Windows.Forms.Panel();
+            this.pnlFeedback = new System.Windows.Forms.Panel();
+            this.pnlFeedbackContent = new System.Windows.Forms.Panel();
+            this.pnlFeedbackButton = new System.Windows.Forms.Panel();
+            this.btnFeedback = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labFeedback = new System.Windows.Forms.Label();
             this.pictureBoxCrosshairPreview = new System.Windows.Forms.PictureBox();
             this.panelCrosshairSelection = new System.Windows.Forms.Panel();
             this.panelCrosshairHolder = new System.Windows.Forms.Panel();
@@ -152,7 +158,7 @@ namespace GazeToolBar
             this.trackBarCrosshair = new System.Windows.Forms.TrackBar();
             this.pnlCrosshairDownButton = new System.Windows.Forms.Panel();
             this.buttonCrosshairDown = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labCrosshairType = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
@@ -219,6 +225,9 @@ namespace GazeToolBar
             this.pnlScrollClickButton.SuspendLayout();
             this.pnlDoubleLeftClickButton.SuspendLayout();
             this.pnlCrosshairPage.SuspendLayout();
+            this.pnlFeedback.SuspendLayout();
+            this.pnlFeedbackContent.SuspendLayout();
+            this.pnlFeedbackButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrosshairPreview)).BeginInit();
             this.panelCrosshairSelection.SuspendLayout();
             this.panelCrosshairHolder.SuspendLayout();
@@ -265,13 +274,13 @@ namespace GazeToolBar
             this.panelSaveAndCancel.Location = new System.Drawing.Point(21, 480);
             this.panelSaveAndCancel.Margin = new System.Windows.Forms.Padding(2);
             this.panelSaveAndCancel.Name = "panelSaveAndCancel";
-            this.panelSaveAndCancel.Size = new System.Drawing.Size(509, 164);
+            this.panelSaveAndCancel.Size = new System.Drawing.Size(791, 164);
             this.panelSaveAndCancel.TabIndex = 25;
             // 
             // pnlCancel
             // 
             this.pnlCancel.Controls.Add(this.btnCancel);
-            this.pnlCancel.Location = new System.Drawing.Point(345, 2);
+            this.pnlCancel.Location = new System.Drawing.Point(626, 2);
             this.pnlCancel.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCancel.Name = "pnlCancel";
             this.pnlCancel.Size = new System.Drawing.Size(154, 155);
@@ -1007,7 +1016,7 @@ namespace GazeToolBar
             this.pnlZoomSettings.Location = new System.Drawing.Point(449, 123);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(152, 61);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(161, 81);
             this.pnlZoomSettings.TabIndex = 29;
             this.pnlZoomSettings.Visible = false;
             // 
@@ -1019,7 +1028,7 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelPrecision);
             this.pnlGeneral.Location = new System.Drawing.Point(95, 123);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(152, 58);
+            this.pnlGeneral.Size = new System.Drawing.Size(152, 81);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1120,9 +1129,9 @@ namespace GazeToolBar
             this.panelOther.BackColor = System.Drawing.Color.Black;
             this.panelOther.Controls.Add(this.pnlOtherAuto);
             this.panelOther.Controls.Add(this.lblOther);
-            this.panelOther.Location = new System.Drawing.Point(4, 380);
+            this.panelOther.Location = new System.Drawing.Point(4, 371);
             this.panelOther.Name = "panelOther";
-            this.panelOther.Size = new System.Drawing.Size(1243, 192);
+            this.panelOther.Size = new System.Drawing.Size(1243, 174);
             this.panelOther.TabIndex = 21;
             // 
             // pnlOtherAuto
@@ -1133,16 +1142,16 @@ namespace GazeToolBar
             this.pnlOtherAuto.Location = new System.Drawing.Point(765, 9);
             this.pnlOtherAuto.Margin = new System.Windows.Forms.Padding(2);
             this.pnlOtherAuto.Name = "pnlOtherAuto";
-            this.pnlOtherAuto.Size = new System.Drawing.Size(204, 178);
+            this.pnlOtherAuto.Size = new System.Drawing.Size(139, 164);
             this.pnlOtherAuto.TabIndex = 22;
             // 
             // pnlAuto
             // 
             this.pnlAuto.Controls.Add(this.btnAutoStart);
-            this.pnlAuto.Location = new System.Drawing.Point(31, 69);
+            this.pnlAuto.Location = new System.Drawing.Point(2, 26);
             this.pnlAuto.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAuto.Name = "pnlAuto";
-            this.pnlAuto.Size = new System.Drawing.Size(59, 59);
+            this.pnlAuto.Size = new System.Drawing.Size(134, 135);
             this.pnlAuto.TabIndex = 23;
             // 
             // btnAutoStart
@@ -1153,7 +1162,7 @@ namespace GazeToolBar
             this.btnAutoStart.ForeColor = System.Drawing.Color.White;
             this.btnAutoStart.Location = new System.Drawing.Point(2, 2);
             this.btnAutoStart.Name = "btnAutoStart";
-            this.btnAutoStart.Size = new System.Drawing.Size(55, 55);
+            this.btnAutoStart.Size = new System.Drawing.Size(130, 130);
             this.btnAutoStart.TabIndex = 4;
             this.btnAutoStart.UseVisualStyleBackColor = false;
             this.btnAutoStart.Click += new System.EventHandler(this.btnAutoStart_Click);
@@ -1163,7 +1172,7 @@ namespace GazeToolBar
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(19, 12);
+            this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 18);
             this.label2.TabIndex = 19;
@@ -1172,11 +1181,11 @@ namespace GazeToolBar
             // lblOther
             // 
             this.lblOther.AutoSize = true;
-            this.lblOther.Font = new System.Drawing.Font("SimSun", 12F);
+            this.lblOther.Font = new System.Drawing.Font("Arial", 12F);
             this.lblOther.ForeColor = System.Drawing.Color.White;
             this.lblOther.Location = new System.Drawing.Point(19, 78);
             this.lblOther.Name = "lblOther";
-            this.lblOther.Size = new System.Drawing.Size(48, 16);
+            this.lblOther.Size = new System.Drawing.Size(46, 18);
             this.lblOther.TabIndex = 17;
             this.lblOther.Text = "Other";
             // 
@@ -1285,7 +1294,7 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(1159, 123);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(152, 61);
+            this.pnlRearrange.Size = new System.Drawing.Size(164, 61);
             this.pnlRearrange.TabIndex = 30;
             this.pnlRearrange.Visible = false;
             // 
@@ -1490,14 +1499,80 @@ namespace GazeToolBar
             // 
             // pnlCrosshairPage
             // 
+            this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1511, 123);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1513, 123);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(156, 75);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(154, 90);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
+            // 
+            // pnlFeedback
+            // 
+            this.pnlFeedback.BackColor = System.Drawing.Color.Black;
+            this.pnlFeedback.Controls.Add(this.pnlFeedbackContent);
+            this.pnlFeedback.Controls.Add(this.labFeedback);
+            this.pnlFeedback.Location = new System.Drawing.Point(45, 432);
+            this.pnlFeedback.Name = "pnlFeedback";
+            this.pnlFeedback.Size = new System.Drawing.Size(1035, 174);
+            this.pnlFeedback.TabIndex = 22;
+            // 
+            // pnlFeedbackContent
+            // 
+            this.pnlFeedbackContent.BackColor = System.Drawing.Color.Black;
+            this.pnlFeedbackContent.Controls.Add(this.pnlFeedbackButton);
+            this.pnlFeedbackContent.Controls.Add(this.label1);
+            this.pnlFeedbackContent.Location = new System.Drawing.Point(765, 9);
+            this.pnlFeedbackContent.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFeedbackContent.Name = "pnlFeedbackContent";
+            this.pnlFeedbackContent.Size = new System.Drawing.Size(139, 164);
+            this.pnlFeedbackContent.TabIndex = 22;
+            // 
+            // pnlFeedbackButton
+            // 
+            this.pnlFeedbackButton.Controls.Add(this.btnFeedback);
+            this.pnlFeedbackButton.Location = new System.Drawing.Point(2, 26);
+            this.pnlFeedbackButton.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlFeedbackButton.Name = "pnlFeedbackButton";
+            this.pnlFeedbackButton.Size = new System.Drawing.Size(134, 135);
+            this.pnlFeedbackButton.TabIndex = 23;
+            // 
+            // btnFeedback
+            // 
+            this.btnFeedback.BackColor = System.Drawing.Color.Black;
+            this.btnFeedback.FlatAppearance.BorderSize = 5;
+            this.btnFeedback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFeedback.ForeColor = System.Drawing.Color.White;
+            this.btnFeedback.Location = new System.Drawing.Point(2, 2);
+            this.btnFeedback.Name = "btnFeedback";
+            this.btnFeedback.Size = new System.Drawing.Size(130, 130);
+            this.btnFeedback.TabIndex = 4;
+            this.btnFeedback.UseVisualStyleBackColor = false;
+            this.btnFeedback.Click += new System.EventHandler(this.btnFeedback_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 1);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 18);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Feedback";
+            // 
+            // labFeedback
+            // 
+            this.labFeedback.AutoSize = true;
+            this.labFeedback.Font = new System.Drawing.Font("Arial", 12F);
+            this.labFeedback.ForeColor = System.Drawing.Color.White;
+            this.labFeedback.Location = new System.Drawing.Point(19, 78);
+            this.labFeedback.Name = "labFeedback";
+            this.labFeedback.Size = new System.Drawing.Size(79, 18);
+            this.labFeedback.TabIndex = 17;
+            this.labFeedback.Text = "Feedback";
             // 
             // pictureBoxCrosshairPreview
             // 
@@ -1513,7 +1588,7 @@ namespace GazeToolBar
             // 
             this.panelCrosshairSelection.BackColor = System.Drawing.Color.Black;
             this.panelCrosshairSelection.Controls.Add(this.panelCrosshairHolder);
-            this.panelCrosshairSelection.Controls.Add(this.label3);
+            this.panelCrosshairSelection.Controls.Add(this.labCrosshairType);
             this.panelCrosshairSelection.Location = new System.Drawing.Point(4, 90);
             this.panelCrosshairSelection.Name = "panelCrosshairSelection";
             this.panelCrosshairSelection.Size = new System.Drawing.Size(1347, 165);
@@ -1591,16 +1666,16 @@ namespace GazeToolBar
             this.buttonCrosshairDown.UseVisualStyleBackColor = false;
             this.buttonCrosshairDown.Click += new System.EventHandler(this.buttonCrosshairDown_Click);
             // 
-            // label3
+            // labCrosshairType
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(3, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 36);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Crosshair\r\nType";
+            this.labCrosshairType.AutoSize = true;
+            this.labCrosshairType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCrosshairType.ForeColor = System.Drawing.Color.White;
+            this.labCrosshairType.Location = new System.Drawing.Point(3, 60);
+            this.labCrosshairType.Name = "labCrosshairType";
+            this.labCrosshairType.Size = new System.Drawing.Size(76, 36);
+            this.labCrosshairType.TabIndex = 11;
+            this.labCrosshairType.Text = "Crosshair\r\nType";
             // 
             // pictureBox5
             // 
@@ -1620,12 +1695,12 @@ namespace GazeToolBar
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlCrosshairPage);
+            this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
-            this.Controls.Add(this.pnlCrosshairPage);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlSwitchSetting);
-            this.Controls.Add(this.panelSaveAndCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1716,6 +1791,11 @@ namespace GazeToolBar
             this.pnlScrollClickButton.ResumeLayout(false);
             this.pnlDoubleLeftClickButton.ResumeLayout(false);
             this.pnlCrosshairPage.ResumeLayout(false);
+            this.pnlFeedback.ResumeLayout(false);
+            this.pnlFeedback.PerformLayout();
+            this.pnlFeedbackContent.ResumeLayout(false);
+            this.pnlFeedbackContent.PerformLayout();
+            this.pnlFeedbackButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCrosshairPreview)).EndInit();
             this.panelCrosshairSelection.ResumeLayout(false);
             this.panelCrosshairSelection.PerformLayout();
@@ -1838,7 +1918,7 @@ namespace GazeToolBar
         private TrackBar trackBarCrosshair;
         private Panel pnlCrosshairDownButton;
         private Button buttonCrosshairDown;
-        private Label label3;
+        private Label labCrosshairType;
         private PictureBox pictureBoxCrosshairPreview;
         private Panel pnlRightClickButton;
         private Button btnActionRightClick;
@@ -1852,5 +1932,11 @@ namespace GazeToolBar
         private Button btnActionScrollClick;
         private Panel pnlDoubleLeftClickButton;
         private Button btnActionDoubleLeftClick;
+        private Panel pnlFeedback;
+        private Panel pnlFeedbackContent;
+        private Panel pnlFeedbackButton;
+        private Button btnFeedback;
+        private Label label1;
+        private Label labFeedback;
     }
 }
