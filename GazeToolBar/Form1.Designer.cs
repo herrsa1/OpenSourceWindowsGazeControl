@@ -32,20 +32,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.bhavMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.pnlHighLightKeyboard = new System.Windows.Forms.Panel();
-            this.btnKeyboard = new System.Windows.Forms.Button();
             this.pnlHighLightScrol = new System.Windows.Forms.Panel();
-            this.btnScoll = new System.Windows.Forms.Button();
             this.pnlHighLightSettings = new System.Windows.Forms.Panel();
-            this.btnSettings = new System.Windows.Forms.Button();
             this.pnlHighLightDoubleClick = new System.Windows.Forms.Panel();
-            this.btnDoubleClick = new System.Windows.Forms.Button();
             this.pnlHighLightSingleLeft = new System.Windows.Forms.Panel();
-            this.btnSingleLeftClick = new System.Windows.Forms.Button();
             this.pnlHiLteRightClick = new System.Windows.Forms.Panel();
-            this.btnRightClick = new System.Windows.Forms.Button();
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.btnKeyboard = new System.Windows.Forms.Button();
+            this.btnRightClick = new System.Windows.Forms.Button();
+            this.btnScoll = new System.Windows.Forms.Button();
+            this.btnSingleLeftClick = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
+            this.btnDoubleClick = new System.Windows.Forms.Button();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
             this.pnlHighLightSettings.SuspendLayout();
@@ -62,6 +62,57 @@
             this.pnlHighLightKeyboard.Size = new System.Drawing.Size(80, 80);
             this.pnlHighLightKeyboard.TabIndex = 11;
             // 
+            // pnlHighLightScrol
+            // 
+            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
+            this.pnlHighLightScrol.Location = new System.Drawing.Point(15, 455);
+            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
+            this.pnlHighLightScrol.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightScrol.TabIndex = 10;
+            // 
+            // pnlHighLightSettings
+            // 
+            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
+            this.pnlHighLightSettings.Location = new System.Drawing.Point(15, 682);
+            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
+            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightSettings.TabIndex = 9;
+            // 
+            // pnlHighLightDoubleClick
+            // 
+            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
+            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(15, 239);
+            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
+            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightDoubleClick.TabIndex = 8;
+            // 
+            // pnlHighLightSingleLeft
+            // 
+            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
+            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(15, 127);
+            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
+            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightSingleLeft.TabIndex = 7;
+            // 
+            // pnlHiLteRightClick
+            // 
+            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
+            this.pnlHiLteRightClick.Location = new System.Drawing.Point(15, 30);
+            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
+            this.pnlHiLteRightClick.Size = new System.Drawing.Size(80, 80);
+            this.pnlHiLteRightClick.TabIndex = 6;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            // 
             // btnKeyboard
             // 
             this.btnKeyboard.BackColor = System.Drawing.Color.Black;
@@ -73,94 +124,6 @@
             this.btnKeyboard.TabIndex = 5;
             this.btnKeyboard.UseVisualStyleBackColor = false;
             this.btnKeyboard.Click += new System.EventHandler(this.btnKeyboard_Click);
-            // 
-            // pnlHighLightScrol
-            // 
-            this.pnlHighLightScrol.Controls.Add(this.btnScoll);
-            this.pnlHighLightScrol.Location = new System.Drawing.Point(15, 455);
-            this.pnlHighLightScrol.Name = "pnlHighLightScrol";
-            this.pnlHighLightScrol.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightScrol.TabIndex = 10;
-            // 
-            // btnScoll
-            // 
-            this.btnScoll.BackColor = System.Drawing.Color.Black;
-            this.btnScoll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScoll.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
-            this.btnScoll.Location = new System.Drawing.Point(3, 3);
-            this.btnScoll.Name = "btnScoll";
-            this.btnScoll.Size = new System.Drawing.Size(75, 75);
-            this.btnScoll.TabIndex = 5;
-            this.btnScoll.UseVisualStyleBackColor = false;
-            this.btnScoll.Click += new System.EventHandler(this.btnScoll_Click);
-            // 
-            // pnlHighLightSettings
-            // 
-            this.pnlHighLightSettings.Controls.Add(this.btnSettings);
-            this.pnlHighLightSettings.Location = new System.Drawing.Point(15, 682);
-            this.pnlHighLightSettings.Name = "pnlHighLightSettings";
-            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightSettings.TabIndex = 9;
-            // 
-            // btnSettings
-            // 
-            this.btnSettings.BackColor = System.Drawing.Color.Black;
-            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
-            this.btnSettings.Location = new System.Drawing.Point(3, 3);
-            this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(75, 75);
-            this.btnSettings.TabIndex = 5;
-            this.btnSettings.UseVisualStyleBackColor = false;
-            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
-            // 
-            // pnlHighLightDoubleClick
-            // 
-            this.pnlHighLightDoubleClick.Controls.Add(this.btnDoubleClick);
-            this.pnlHighLightDoubleClick.Location = new System.Drawing.Point(15, 239);
-            this.pnlHighLightDoubleClick.Name = "pnlHighLightDoubleClick";
-            this.pnlHighLightDoubleClick.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightDoubleClick.TabIndex = 8;
-            // 
-            // btnDoubleClick
-            // 
-            this.btnDoubleClick.BackColor = System.Drawing.Color.Black;
-            this.btnDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDoubleClick.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
-            this.btnDoubleClick.Location = new System.Drawing.Point(3, 3);
-            this.btnDoubleClick.Name = "btnDoubleClick";
-            this.btnDoubleClick.Size = new System.Drawing.Size(75, 75);
-            this.btnDoubleClick.TabIndex = 4;
-            this.btnDoubleClick.UseVisualStyleBackColor = false;
-            this.btnDoubleClick.Click += new System.EventHandler(this.btnDoubleClick_Click);
-            // 
-            // pnlHighLightSingleLeft
-            // 
-            this.pnlHighLightSingleLeft.Controls.Add(this.btnSingleLeftClick);
-            this.pnlHighLightSingleLeft.Location = new System.Drawing.Point(15, 127);
-            this.pnlHighLightSingleLeft.Name = "pnlHighLightSingleLeft";
-            this.pnlHighLightSingleLeft.Size = new System.Drawing.Size(80, 80);
-            this.pnlHighLightSingleLeft.TabIndex = 7;
-            // 
-            // btnSingleLeftClick
-            // 
-            this.btnSingleLeftClick.BackColor = System.Drawing.Color.Black;
-            this.btnSingleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSingleLeftClick.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
-            this.btnSingleLeftClick.Location = new System.Drawing.Point(3, 3);
-            this.btnSingleLeftClick.Name = "btnSingleLeftClick";
-            this.btnSingleLeftClick.Size = new System.Drawing.Size(75, 75);
-            this.btnSingleLeftClick.TabIndex = 3;
-            this.btnSingleLeftClick.UseVisualStyleBackColor = false;
-            this.btnSingleLeftClick.Click += new System.EventHandler(this.btnSingleLeftClick_Click);
-            // 
-            // pnlHiLteRightClick
-            // 
-            this.pnlHiLteRightClick.Controls.Add(this.btnRightClick);
-            this.pnlHiLteRightClick.Location = new System.Drawing.Point(15, 30);
-            this.pnlHiLteRightClick.Name = "pnlHiLteRightClick";
-            this.pnlHiLteRightClick.Size = new System.Drawing.Size(80, 80);
-            this.pnlHiLteRightClick.TabIndex = 6;
             // 
             // btnRightClick
             // 
@@ -174,16 +137,53 @@
             this.btnRightClick.UseVisualStyleBackColor = false;
             this.btnRightClick.Click += new System.EventHandler(this.btnRightClick_Click);
             // 
-            // timer2
+            // btnScoll
             // 
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.btnScoll.BackColor = System.Drawing.Color.Black;
+            this.btnScoll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScoll.Image = global::GazeToolBar.Properties.Resources.Scroll_icon;
+            this.btnScoll.Location = new System.Drawing.Point(3, 3);
+            this.btnScoll.Name = "btnScoll";
+            this.btnScoll.Size = new System.Drawing.Size(75, 75);
+            this.btnScoll.TabIndex = 5;
+            this.btnScoll.UseVisualStyleBackColor = false;
+            this.btnScoll.Click += new System.EventHandler(this.btnScoll_Click);
             // 
-            // notifyIcon
+            // btnSingleLeftClick
             // 
-            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "notifyIcon";
-            this.notifyIcon.Visible = true;
+            this.btnSingleLeftClick.BackColor = System.Drawing.Color.Black;
+            this.btnSingleLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSingleLeftClick.Image = global::GazeToolBar.Properties.Resources.Left_Click_icon;
+            this.btnSingleLeftClick.Location = new System.Drawing.Point(3, 3);
+            this.btnSingleLeftClick.Name = "btnSingleLeftClick";
+            this.btnSingleLeftClick.Size = new System.Drawing.Size(75, 75);
+            this.btnSingleLeftClick.TabIndex = 3;
+            this.btnSingleLeftClick.UseVisualStyleBackColor = false;
+            this.btnSingleLeftClick.Click += new System.EventHandler(this.btnSingleLeftClick_Click);
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.BackColor = System.Drawing.Color.Black;
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
+            this.btnSettings.Location = new System.Drawing.Point(3, 3);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(75, 75);
+            this.btnSettings.TabIndex = 5;
+            this.btnSettings.UseVisualStyleBackColor = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnDoubleClick
+            // 
+            this.btnDoubleClick.BackColor = System.Drawing.Color.Black;
+            this.btnDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDoubleClick.Image = global::GazeToolBar.Properties.Resources.Double_Click_icon;
+            this.btnDoubleClick.Location = new System.Drawing.Point(3, 3);
+            this.btnDoubleClick.Name = "btnDoubleClick";
+            this.btnDoubleClick.Size = new System.Drawing.Size(75, 75);
+            this.btnDoubleClick.TabIndex = 4;
+            this.btnDoubleClick.UseVisualStyleBackColor = false;
+            this.btnDoubleClick.Click += new System.EventHandler(this.btnDoubleClick_Click);
             // 
             // Form1
             // 

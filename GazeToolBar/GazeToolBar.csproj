@@ -251,6 +251,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\Mic-icon.png" />
     <Content Include="programIcon.ico" />
     <Content Include="Gaze.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
