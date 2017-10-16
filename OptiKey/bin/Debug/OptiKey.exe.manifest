@@ -43,11 +43,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Newtonsoft.Json" version="6.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Bass.Net.dll" size="663552">
       <assemblyIdentity name="Bass.Net" version="2.4.11.1" publicKeyToken="B7566C273E6EF480" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -307,19 +302,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SrXaDwj0MKmTggXzqY1Hko3rLQQWAH8HI5Ln973EnOg=</dsig:DigestValue>
+        <dsig:DigestValue>ZHuvAG4Xm3RcU16f5DS7pzUgfTtdH0FpMAn/a1CfhNs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="39424">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de-DE\OptiKey.resources.dll" size="38912">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="de-DE" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9R20lrFnl0uX5/CmZKqHSTF1JKZ2JtnPnM5uR+BF1+o=</dsig:DigestValue>
+        <dsig:DigestValue>ihBpi9LntTcwoQe6VxM5Y9gd1ZMQn4I326mwa6n6sos=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -331,19 +326,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eaOsGTLrZNf2Jt095UKGK5XUqkLdM38yJp2tRZz62Kw=</dsig:DigestValue>
+        <dsig:DigestValue>RLn07pQsSAUieZZ0mBcEBB4DRXydAhqvT30A6raMu3Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38912">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="nl\OptiKey.resources.dll" size="38400">
       <assemblyIdentity name="OptiKey.resources" version="2.3.0.0" language="nl" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ddyopSMeXgNI8mpIijRPxKHNIjmq7QNAuc02sci25Eo=</dsig:DigestValue>
+        <dsig:DigestValue>o2qY1vu91yaegKacBsXAv53+1xfLmQ/odUbckXRUung=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -355,7 +350,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Me5NGaYhaLmdS2cj3ssqlMstr0EWMcwrkCw56V509Mc=</dsig:DigestValue>
+        <dsig:DigestValue>eAzsBFwd1zLtXNrnAjbZRLozM7gPJ7H4/WSnJ1VZWJk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -512,121 +507,121 @@
       <dsig:DigestValue>qNl5Rg6XDoTqzONrimiuX2ucwP4W4FpiCbTq1SuBsCE=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\CatalanSpain.dic" size="1450132">
+  <file name="Dictionaries\CatalanSpain.dic" size="1319452">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>PG+P1G19tsu5aVTYPoLwcTmikyr1yZPRt87obZskf5Y=</dsig:DigestValue>
+      <dsig:DigestValue>7S9jrX0ESkVzA/M7mcrWu0E71P13X2gFhBevlmXvm5M=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\DanishDenmark.dic" size="748242">
+  <file name="Dictionaries\DanishDenmark.dic" size="678382">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>pVnSBghhhjo/1WAtuWqhJ76BQF41VFpK61RlOLFB1gE=</dsig:DigestValue>
+      <dsig:DigestValue>ywulw+TNP6+dadYRhtkTwnItH6V6FeG+sXm1EXeelS8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\DutchBelgium.dic" size="4508147">
+  <file name="Dictionaries\DutchBelgium.dic" size="4167413">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>GNk8peEDRIrz9Rwt/b2yk00MwIOFEzoptXwycP6nVH8=</dsig:DigestValue>
+      <dsig:DigestValue>VOoVuwu0/lRzj1JgLRQy9ohkJ+T2Tis3zsqGa7AuLyA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\DutchNetherlands.dic" size="4508147">
+  <file name="Dictionaries\DutchNetherlands.dic" size="4167413">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>GNk8peEDRIrz9Rwt/b2yk00MwIOFEzoptXwycP6nVH8=</dsig:DigestValue>
+      <dsig:DigestValue>VOoVuwu0/lRzj1JgLRQy9ohkJ+T2Tis3zsqGa7AuLyA=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\EnglishCanada.dic" size="589985">
+  <file name="Dictionaries\EnglishCanada.dic" size="532649">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3aVoyL9uyaDrIcxG7AMJsHLiHbKFfJionFY07ydtk8o=</dsig:DigestValue>
+      <dsig:DigestValue>XAKy7pYINMupvHvARwsLEFWarn+/5/6fIMbK/Jng7zw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\EnglishUK.dic" size="590426">
+  <file name="Dictionaries\EnglishUK.dic" size="533059">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>tIOfhfOnvGpm+Ied4oqucn4j4LOKmHL0qbhu+CJ7qEQ=</dsig:DigestValue>
+      <dsig:DigestValue>OLkjjwXl8g+y+tHKHQOLx0VXSI1s9/LcYq09Dgl7zOk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\EnglishUS.dic" size="589187">
+  <file name="Dictionaries\EnglishUS.dic" size="531887">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>9d4JGn4RM4Cu4pSltD6sfwliA9VxuHAWwL0ftQB3n6w=</dsig:DigestValue>
+      <dsig:DigestValue>vn0oHaM7g8fkbqDmeZzvVA6asnC3wA2E0oGJhB/1RLI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\FrenchFrance.dic" size="870080">
+  <file name="Dictionaries\FrenchFrance.dic" size="796043">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>KBOWEwLNcabIO1E5DnxMYqO7/WZMfllEJ185UN83g2k=</dsig:DigestValue>
+      <dsig:DigestValue>AUJ0cmsGoapBuZvSEUTxUIJmkgQb4SBFbJRg37/bJYI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\GermanGermany.dic" size="632831">
+  <file name="Dictionaries\GermanGermany.dic" size="578869">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>AHjHvGikJ5VFRPXop1rkC/80PLHqi9No4tmJMTNdkj0=</dsig:DigestValue>
+      <dsig:DigestValue>xGeojSKdhVUB1h8P5aCOx/XZJ6bgcfukxLUQZGccP5Y=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\RussianRussia.dic" size="1303152">
+  <file name="Dictionaries\RussianRussia.dic" size="1231207">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>33RwunGohqBLGn8joVBDqnBha3bSAzEnRa8VIlPx6iQ=</dsig:DigestValue>
+      <dsig:DigestValue>3BHtHxQmEqmk53XwOOllkIhsyMx9Kuj1HZ93hWCG5Wo=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dictionaries\SpanishSpain.dic" size="735977">
+  <file name="Dictionaries\SpanishSpain.dic" size="664813">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QxqigInAC4YXvLn2aViueqewhwAq6hgk66FPi6WDXsk=</dsig:DigestValue>
+      <dsig:DigestValue>d/bvvADU/6VRirtIY46YI3q6F008szk749Wp5YGGV2U=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="OptiKey.exe.config" size="31560">
+  <file name="OptiKey.exe.config" size="30660">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>JXANpXms5NEk8Q9mu+uQ1K/yhOuGxCHGT2FCQqTH37E=</dsig:DigestValue>
+      <dsig:DigestValue>Sn6wvtv21dShenbCEs62ZSNDxV2Vr7rMHniNdmM2vGg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Resources\Fonts\Roboto Font - Apache License.txt" size="11590">
+  <file name="Resources\Fonts\Roboto Font - Apache License.txt" size="11388">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>L0p4uAReMvyxsf6v/dimIwgd4kWkgDEFZaNaselE0dU=</dsig:DigestValue>
+      <dsig:DigestValue>PoSA4meYVN/90MTxYtmUH9W5IxvogYWfy0GVRM17bJk=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\Icons\Main.ico" size="142534">

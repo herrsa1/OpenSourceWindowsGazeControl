@@ -14,8 +14,6 @@ namespace GazeToolBar
 {
     public enum SystemState { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
-    public enum Corner { NoCorner = -1, TopLeft, TopRight, BottomLeft, BottomRight }
-    public enum Edge { NoEdge = -1, Top, Right, Bottom, Left, TopLeft, TopRight, BottomLeft, BottomRight }
 
     public class StateManager
     {
@@ -63,7 +61,6 @@ namespace GazeToolBar
             UpdateState();
             Action();
         }
-
 
         public void EnterWaitState()
         {
@@ -258,6 +255,12 @@ namespace GazeToolBar
         private ZoomMagnifier CreateMagnifier()
         {
             return new ZoomMagnifierCentered(zoomer, fixationPoint);
+        }
+
+        public void RefreshZoom()
+        {
+            zoomer = new ZoomLens();
+            magnifier = CreateMagnifier();
         }
     }
 }

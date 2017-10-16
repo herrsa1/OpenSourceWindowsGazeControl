@@ -305,6 +305,7 @@ namespace GazeToolBar
 
 
                 Program.readSettings.sidebar = selectedActions.ToArray<string>();
+                Program.readSettings.maxZoom = setting.maxZoom;
                 form1.ArrangeSidebar(Program.readSettings.sidebar);
                 string settings = JsonConvert.SerializeObject(setting);
                 File.WriteAllText(Program.path, settings);
@@ -315,6 +316,7 @@ namespace GazeToolBar
                 form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
                 this.Close();
                 form1.NotifyIcon.ShowBalloonTip(2000);
+                form1.stateManager.RefreshZoom();
             }
             catch (Exception exception)
             {
