@@ -18,7 +18,7 @@ namespace GazeToolBar
     public class StateManager
     {
         public FixationDetection fixationWorker;
-        ScrollControl scrollWorker;
+        public ScrollControl scrollWorker;
         Form1 toolbar;
         ZoomLens zoomer;
         Point fixationPoint;
@@ -66,6 +66,8 @@ namespace GazeToolBar
         {
             //these flags are here so that they get reset before anything else happens in the SM
             //these were previously in the action method but that causes issues because the update state is run again before all of the flags are reset.
+            zoomer.ResetZoomLens();
+            magnifier.Stop();
             SystemFlags.fixationRunning = false;
             SystemFlags.actionButtonSelected = false;
             SystemFlags.fixationRunning = false;
@@ -73,6 +75,8 @@ namespace GazeToolBar
             SystemFlags.timeOut = false;
             fixationWorker.IsZoomerFixation(false);
             currentState = SystemState.Wait;
+            SystemFlags.currentState = SystemState.Wait;
+            zoomer.Refresh();
 
         }
 
@@ -218,7 +222,6 @@ namespace GazeToolBar
                     fixationPoint.Y += zoomer.Offset.Y;
 
                     fixationPoint = magnifier.GetLookPosition();
-                    Utils.Print(fixationPoint);
                     zoomer.ResetZoomLens();//hide the lens
                                            //  MessageBox.Show(magnifier.SecondaryOffset.X + " " + magnifier.SecondaryOffset.Y);
                                            //Set the magnification factor back to initial value
@@ -259,8 +262,14 @@ namespace GazeToolBar
 
         public void RefreshZoom()
         {
+            magnifier.Stop();
+
             zoomer = new ZoomLens();
             magnifier = CreateMagnifier();
+            zoomer.ResetZoomLens();
+            magnifier.ResetZoomValue();
+
+            EnterWaitState();
         }
     }
 }

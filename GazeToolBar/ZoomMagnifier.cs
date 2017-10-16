@@ -168,7 +168,8 @@ namespace GazeToolBar
         {
             Offset = new Point(0, 0);
             SecondaryOffset = new Point(0, 0);
-            Magnification = 2.0f;
+            Magnification = Program.readSettings.maxZoom;
+            MaxZoom = magnification;
             Timer.Enabled = false;
         }
 

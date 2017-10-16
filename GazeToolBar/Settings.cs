@@ -311,12 +311,12 @@ namespace GazeToolBar
                 File.WriteAllText(Program.path, settings);
 
                 Program.readSettings = setting;
+                form1.stateManager.RefreshZoom();
                 //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
                 form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
                 this.Close();
                 form1.NotifyIcon.ShowBalloonTip(2000);
-                form1.stateManager.RefreshZoom();
             }
             catch (Exception exception)
             {
