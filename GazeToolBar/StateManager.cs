@@ -144,7 +144,19 @@ namespace GazeToolBar
                     }
                     else
                     {
-                        EnterWaitState();
+                        if(Program.readSettings.stickyLeftClick && SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick) //if stick left && left click
+                        {
+                            EnterWaitState();
+
+                            SystemFlags.actionButtonSelected = true;
+                            SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
+                            SystemFlags.currentState = SystemState.ActionButtonSelected;
+                            SystemFlags.hasSelectedButtonColourBeenReset = true;
+                        }
+                        else
+                        {
+                            EnterWaitState();
+                        }
                     }
                     break;
             }

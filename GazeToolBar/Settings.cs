@@ -297,6 +297,9 @@ namespace GazeToolBar
                 setting.maxZoom = trackBarZoomAmount.Value;
                 setting.zoomWindowSize = trackBarZoomWindowSize.Value;
 
+                //TODO: sticky left click setting
+                setting.stickyLeftClick = Program.readSettings.stickyLeftClick;
+
                 //setting.sidebar = Program.readSettings.sidebar;
                 //Program.readSettings.sidebar = selectedActions.ToArray<string>();
 
