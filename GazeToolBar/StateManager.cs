@@ -12,6 +12,9 @@ using Karna.Magnification;
 
 namespace GazeToolBar
 {
+
+
+
     public enum SystemState { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
 

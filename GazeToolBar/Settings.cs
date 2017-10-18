@@ -25,7 +25,7 @@ namespace GazeToolBar
         private List<Panel> actionPanels = new List<Panel>();
         private String selectionButton = "";
         private Dictionary<String, Button> buttonMap = new Dictionary<string, Button>();
-
+        private bool stickyLeft;
 
         private List<Panel> fKeyPannels;
 
@@ -65,6 +65,9 @@ namespace GazeToolBar
 
             WaitForUserKeyPress = false;
 
+            stickyLeft = Program.readSettings.stickyLeftClick;
+            if (stickyLeft)
+                buttonStickyLeftClick.BackColor = Color.White;
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
 
@@ -276,16 +279,6 @@ namespace GazeToolBar
             {
                 SettingJSON setting = new SettingJSON();
 
-                //TODO: Need to be replaced
-
-                //setting.position = lblIndicationLeftOrRight.Text.Substring(3);
-                //setting.precision = trackBarFixTimeLength.Value;
-                //setting.selection = gazeOrSwitch.ToString();
-                //setting.size = sizes.ToString();
-                //setting.soundFeedback = onOff[3];
-                //setting.speed = trackBarFixTimeOut.Value;
-                //setting.wordPrediction = onOff[2];
-
                 setting.fixationTimeLength = trackBarFixTimeLength.Value * Constants.GAP_TIME_LENGTH + Constants.MIN_TIME_LENGTH;
                 setting.fixationTimeOut = trackBarFixTimeOut.Value * Constants.GAP_TIME_OUT + Constants.MIN_TIME_OUT;
                 setting.leftClick = lbLeft.Text;
@@ -296,16 +289,7 @@ namespace GazeToolBar
                 setting.Crosshair = trackBarCrosshair.Value;
                 setting.maxZoom = trackBarZoomAmount.Value;
                 setting.zoomWindowSize = trackBarZoomWindowSize.Value;
-
-                //TODO: sticky left click setting
-                setting.stickyLeftClick = Program.readSettings.stickyLeftClick;
-
-                //setting.sidebar = Program.readSettings.sidebar;
-                //Program.readSettings.sidebar = selectedActions.ToArray<string>();
-
-                //string sidebarSettings = JsonConvert.SerializeObject(Program.readSettings);
-                //File.WriteAllText(Program.path, sidebarSettings);
-
+                setting.stickyLeftClick = stickyLeft;
 
                 Program.readSettings.sidebar = selectedActions.ToArray<string>();
                 Program.readSettings.maxZoom = setting.maxZoom;
@@ -315,7 +299,7 @@ namespace GazeToolBar
 
                 Program.readSettings = setting;
                 form1.stateManager.RefreshZoom();
-                //MessageBox.Show("Save Success", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 form1.NotifyIcon.BalloonTipTitle = "Saving success";
                 form1.NotifyIcon.BalloonTipText = "Your settings are successfuly saved";
                 this.Close();
@@ -329,7 +313,6 @@ namespace GazeToolBar
                 this.Close();
                 form1.NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClicked;
                 form1.NotifyIcon.ShowBalloonTip(5000);
-                //MessageBox.Show(exception.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -341,10 +324,6 @@ namespace GazeToolBar
         private void Settings_Load(object sender, EventArgs e)
         {
             Program.ReadWriteJson();
-            //TODO: Need to be replaced
-            //trackBarFixTimeLength.Value = Program.readSettings.precision;
-            //trackBarFixTimeOut.Value = Program.readSettings.speed;
-            //lblIndicationLeftOrRight.Text = lblIndicationLeftOrRight.Text.Remove(3) + Program.readSettings.position;
 
             if (Program.onStartUp)
             {
@@ -368,27 +347,6 @@ namespace GazeToolBar
 
             trackBarCrosshair.Value = Program.readSettings.Crosshair;
             UpdateCrosshair();
-
-            //if (Program.readSettings.selection == GazeOrSwitch.GAZE.ToString())
-            //{
-            //    gazeOrSwitch = GazeOrSwitch.GAZE;
-            //    //changeSitchGaze(gazeOrSwitch);
-            //}
-            //else
-            //{
-            //    gazeOrSwitch = GazeOrSwitch.SWITCH;
-            //    //changeSitchGaze(gazeOrSwitch);
-            //}
-
-            //if (Program.readSettings.position == "left")
-            //{
-            //    OnTheRight = false;
-            //    //ChangeButtonColor(btnChangeSide, true, false);
-            //}
-            //else
-            //{
-            //    OnTheRight = true;
-            //}
         }
 
         private void btnGeneralSetting_Click(object sender, EventArgs e)
@@ -589,9 +547,6 @@ namespace GazeToolBar
             }
         }
 
-
-
-
         private void setFkeyPanelWidth(List<Panel> panelList)
         {
             int screenWidth = pnlPageKeyboard.Width;
@@ -658,7 +613,6 @@ namespace GazeToolBar
         private void btnZoomAmountPlus_Click(object sender, EventArgs e)
         {
             changeTrackBarValue(trackBarZoomAmount, "I");
-            MessageBox.Show("Click Working!!");
         }
 
         private void trackBarZoomWindowSize_ValueChanged(object sender, EventArgs e)
@@ -879,6 +833,15 @@ namespace GazeToolBar
         private void btnFeedback_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonStickyLeftClick_Click(object sender, EventArgs e)
+        {
+            stickyLeft = !stickyLeft;
+
+            buttonStickyLeftClick.BackColor = Color.Black;
+            if (stickyLeft)
+                buttonStickyLeftClick.BackColor = Color.White;
         }
     }
 }

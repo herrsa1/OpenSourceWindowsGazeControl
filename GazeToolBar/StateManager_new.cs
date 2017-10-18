@@ -8,7 +8,7 @@ using System.Windows.Forms;
 namespace GazeToolBar
 {
     //TODO: Remove "_new" from anything once done
-
+    //This will probably not get used :(
 
     //The program states
     public enum SystemState_new { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }

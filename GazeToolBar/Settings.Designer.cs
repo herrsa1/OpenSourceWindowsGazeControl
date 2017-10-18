@@ -110,6 +110,10 @@ namespace GazeToolBar
             this.btnFixTimeOutMins = new System.Windows.Forms.Button();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.panelOther = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonStickyLeftClick = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlOtherAuto = new System.Windows.Forms.Panel();
             this.pnlAuto = new System.Windows.Forms.Panel();
             this.btnAutoStart = new System.Windows.Forms.Button();
@@ -206,6 +210,8 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeOut)).BeginInit();
             this.pnlFTOMins.SuspendLayout();
             this.panelOther.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.pnlOtherAuto.SuspendLayout();
             this.pnlAuto.SuspendLayout();
             this.panelPrecision.SuspendLayout();
@@ -1028,7 +1034,7 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelPrecision);
             this.pnlGeneral.Location = new System.Drawing.Point(95, 123);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(152, 81);
+            this.pnlGeneral.Size = new System.Drawing.Size(201, 81);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1127,12 +1133,57 @@ namespace GazeToolBar
             // panelOther
             // 
             this.panelOther.BackColor = System.Drawing.Color.Black;
+            this.panelOther.Controls.Add(this.panel1);
             this.panelOther.Controls.Add(this.pnlOtherAuto);
             this.panelOther.Controls.Add(this.lblOther);
-            this.panelOther.Location = new System.Drawing.Point(4, 371);
+            this.panelOther.Location = new System.Drawing.Point(4, 383);
             this.panelOther.Name = "panelOther";
             this.panelOther.Size = new System.Drawing.Size(1243, 174);
             this.panelOther.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Location = new System.Drawing.Point(1071, 10);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(139, 164);
+            this.panel1.TabIndex = 24;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.buttonStickyLeftClick);
+            this.panel2.Location = new System.Drawing.Point(2, 26);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(134, 135);
+            this.panel2.TabIndex = 23;
+            // 
+            // buttonStickyLeftClick
+            // 
+            this.buttonStickyLeftClick.BackColor = System.Drawing.Color.Black;
+            this.buttonStickyLeftClick.FlatAppearance.BorderSize = 5;
+            this.buttonStickyLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonStickyLeftClick.ForeColor = System.Drawing.Color.White;
+            this.buttonStickyLeftClick.Location = new System.Drawing.Point(2, 2);
+            this.buttonStickyLeftClick.Name = "buttonStickyLeftClick";
+            this.buttonStickyLeftClick.Size = new System.Drawing.Size(130, 130);
+            this.buttonStickyLeftClick.TabIndex = 4;
+            this.buttonStickyLeftClick.UseVisualStyleBackColor = false;
+            this.buttonStickyLeftClick.Click += new System.EventHandler(this.buttonStickyLeftClick_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 1);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 18);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Sticky Left Click";
             // 
             // pnlOtherAuto
             // 
@@ -1769,6 +1820,9 @@ namespace GazeToolBar
             this.pnlFTOMins.ResumeLayout(false);
             this.panelOther.ResumeLayout(false);
             this.panelOther.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.pnlOtherAuto.ResumeLayout(false);
             this.pnlOtherAuto.PerformLayout();
             this.pnlAuto.ResumeLayout(false);
@@ -1938,5 +1992,9 @@ namespace GazeToolBar
         private Button btnFeedback;
         private Label label1;
         private Label labFeedback;
+        private Panel panel1;
+        private Panel panel2;
+        private Button buttonStickyLeftClick;
+        private Label label3;
     }
 }
