@@ -288,7 +288,6 @@ namespace GazeToolBar
             magnifier = CreateMagnifier();
             zoomer.ResetZoomLens();
             magnifier.ResetZoomValue();
-
             EnterWaitState();
         }
     }

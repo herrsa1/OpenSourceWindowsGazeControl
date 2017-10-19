@@ -38,7 +38,7 @@ namespace GazeToolBar
 
         public ZoomMagnifier(Form displayform, Point fixationPoint)
         {
-            Magnification = DO_ZOOM ? 1 : ZOOM_MAX; //Set magnification to the max if not zooming
+            Magnification = DO_ZOOM ? 1 : Program.readSettings.maxZoom; //Set magnification to the max if not zooming
             form = displayform;
             form.TopMost = true;
             updateTimer = new Timer();
