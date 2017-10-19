@@ -183,7 +183,6 @@ namespace GazeToolBar
         private void OnBtnZoomAmountMinus_Click(object sender, GazeAwareEventArgs e)
         {
             if (e.HasGaze) btnZoomAmountMinus.PerformClick();
-            MessageBox.Show("Event called!!");
         }
 
         private void OnBtnZoomAmountPlus_Click(object sender, GazeAwareEventArgs e)
