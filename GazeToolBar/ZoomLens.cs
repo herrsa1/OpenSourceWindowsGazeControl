@@ -25,6 +25,7 @@ namespace GazeToolBar
         public ZoomLens()
         {
             InitializeComponent();
+            ShowInTaskbar = false;
 
             this.FormBorderStyle = FormBorderStyle.None;
             drawingForm = new DrawingForm();

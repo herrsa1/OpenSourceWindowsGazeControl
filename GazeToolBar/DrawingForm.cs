@@ -28,7 +28,7 @@ namespace GazeToolBar
         public DrawingForm()
         {
             InitializeComponent();
-
+            ShowInTaskbar = false;
             smoother = CreateSmoother();
             // If wanting to draw a fillEllipse, or re-introduce gazeHighlight
             // then un-comment the below line to set size
