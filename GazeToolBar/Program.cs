@@ -60,6 +60,7 @@ namespace GazeToolBar
                 defaultSetting.Crosshair = 1;
                 defaultSetting.zoomWindowSize = 10;
                 defaultSetting.stickyLeftClick = false;
+                defaultSetting.selectionFeedback = true;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
             }

@@ -19,5 +19,7 @@ namespace GazeToolBar
         public int Crosshair { get; set; }
         public int zoomWindowSize { get; set; }
         public bool stickyLeftClick { get; set; }
+        public bool selectionFeedback { get; set; }
+
     }
 }

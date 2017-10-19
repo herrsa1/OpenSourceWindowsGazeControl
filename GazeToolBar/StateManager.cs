@@ -186,9 +186,12 @@ namespace GazeToolBar
                         fixationWorker.StartDetectingFixation();
                         SystemFlags.fixationRunning = true;
                     }
-                    zoomer.Start();
-                    zoomer.Show();
-                    zoomer.CrossHairPos = fixationWorker.getXY();
+                    if (Program.readSettings.selectionFeedback) //don't show the crosshair if selection feedback is off
+                    {
+                        zoomer.Start();
+                        zoomer.Show();
+                        zoomer.CrossHairPos = fixationWorker.getXY();
+                    }
                     break;
                 case SystemState.Zooming:
                     fixationWorker.IsZoomerFixation(true);

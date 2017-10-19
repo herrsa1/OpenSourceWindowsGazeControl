@@ -25,7 +25,7 @@ namespace GazeToolBar
         private List<Panel> actionPanels = new List<Panel>();
         private String selectionButton = "";
         private Dictionary<String, Button> buttonMap = new Dictionary<string, Button>();
-        private bool stickyLeft;
+        private bool stickyLeft, selectionFeedback;
 
         private List<Panel> fKeyPannels;
 
@@ -68,6 +68,10 @@ namespace GazeToolBar
             stickyLeft = Program.readSettings.stickyLeftClick;
             if (stickyLeft)
                 buttonStickyLeftClick.BackColor = Color.White;
+
+            selectionFeedback = Program.readSettings.selectionFeedback;
+            if (selectionFeedback)
+                btnFeedback.BackColor = Color.White;
 
             form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
 
@@ -290,6 +294,7 @@ namespace GazeToolBar
                 setting.maxZoom = trackBarZoomAmount.Value;
                 setting.zoomWindowSize = trackBarZoomWindowSize.Value;
                 setting.stickyLeftClick = stickyLeft;
+                setting.selectionFeedback = selectionFeedback;
 
                 Program.readSettings.sidebar = selectedActions.ToArray<string>();
                 Program.readSettings.maxZoom = setting.maxZoom;
@@ -832,7 +837,11 @@ namespace GazeToolBar
 
         private void btnFeedback_Click(object sender, EventArgs e)
         {
+            selectionFeedback = !selectionFeedback;
 
+            btnFeedback.BackColor = Color.Black;
+            if (selectionFeedback)
+                btnFeedback.BackColor = Color.White;
         }
 
         private void buttonStickyLeftClick_Click(object sender, EventArgs e)
