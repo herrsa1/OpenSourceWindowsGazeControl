@@ -63,6 +63,8 @@ namespace GazeToolBar
                 defaultSetting.selectionFeedback = true;
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
+
+                readSettings = defaultSetting;
             }
             else
             {
