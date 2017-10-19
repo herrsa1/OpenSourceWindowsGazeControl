@@ -852,5 +852,12 @@ namespace GazeToolBar
             if (stickyLeft)
                 buttonStickyLeftClick.BackColor = Color.White;
         }
-    }
+        private void btnDefaults_Click(object sender, EventArgs e)
+         {
+             File.Delete(Program.path);
+             Program.ReadWriteJson();
+            Settings_Load(this, new System.EventArgs());
+          }
+
+}
 }

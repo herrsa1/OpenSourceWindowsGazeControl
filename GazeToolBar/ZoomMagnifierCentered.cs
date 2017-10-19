@@ -94,18 +94,5 @@ namespace GazeToolBar
         {
             return 1;
         }
-
-        /*
-        public Point GetLookPosition()
-        {
-            Point startPoint = new Point(sourceRect.left, sourceRect.top);
-            Point actualLook = FixationPoint;
-            Point formPos = new Point(form.Left, form.Top);
-            Point adjustedPoint = Utils.SubtractPoints(formPos, actualLook);
-
-            Point finalPoint = Utils.AddPoints(startPoint, adjustedPoint);
-
-            return finalPoint;
-        }*/
     }
 }

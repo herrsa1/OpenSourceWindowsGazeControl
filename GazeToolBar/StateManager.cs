@@ -173,6 +173,7 @@ namespace GazeToolBar
             switch (SystemFlags.currentState)
             {
                 case SystemState.Wait:
+                    scrollWorker.stopScroll();
                     if (SystemFlags.hasSelectedButtonColourBeenReset == false)
                     {
                         toolbar.resetButtonsColor();
@@ -194,6 +195,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.Zooming:
+                    scrollWorker.stopScroll();
                     fixationWorker.IsZoomerFixation(true);
                     if (SystemFlags.shortCutKeyPressed)//if a user defined click key is pressed
                     {
