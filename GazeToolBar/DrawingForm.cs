@@ -24,6 +24,7 @@ namespace GazeToolBar
         Point currentGaze;
         Image crosshairImage;
         private IFixationSmoother smoother;
+        private List<Point> history;
 
         public DrawingForm()
         {
@@ -35,6 +36,7 @@ namespace GazeToolBar
             // highlightSize = new Size(40, 40);
             currentGaze = new Point();
 
+            history = new List<Point>();
             // Load the user feedback image
             crosshairImage = GetCrossHairImage((CrossHair)Program.readSettings.Crosshair);
         }
@@ -76,8 +78,11 @@ namespace GazeToolBar
         {
             Top = 0;
             Left = 0;
-            Width = Constants.SCREEN_SIZE.Width;
-            Height = Constants.SCREEN_SIZE.Height;
+            Rectangle screenBounds = Screen.FromControl(this).Bounds;
+
+
+            Width =  screenBounds.Width;
+            Height = screenBounds.Height + 300;
             FormBorderStyle = FormBorderStyle.None;
             TransparencyKey = Color.Thistle;
             BackColor = Color.Thistle;
@@ -114,6 +119,23 @@ namespace GazeToolBar
 
             Rectangle Dimensions = new Rectangle(crossHairX, crossHairY, image.Width, image.Height);
             graphics.DrawImage(image, Dimensions);
+
+            history.Add(currentGaze);
+
+            //Get rid of ghost crosshairs
+            if (history.Count >= 5)
+            {
+                Point ogPoint = history[0];
+                bool all = true;
+                for (int i = history.Count - 5; i < history.Count; i++)
+                {
+                    if (ogPoint.X != history[i].X && ogPoint.Y != history[i].Y)
+                        all = false;
+                }
+
+                if (all)
+                    this.Close();
+            }
         }
 
         public void ClearForm()

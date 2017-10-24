@@ -271,6 +271,7 @@ namespace GazeToolBar
                         VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                         scrollWorker.StartScroll();
                     }
+                    fixationWorker = new FixationDetection();
                     break;
             }
         }
