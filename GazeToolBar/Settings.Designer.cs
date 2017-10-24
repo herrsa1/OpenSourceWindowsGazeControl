@@ -1581,10 +1581,10 @@ namespace GazeToolBar
             this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1513, 123);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1491, 123);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(154, 90);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(176, 61);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
             // 
@@ -1713,7 +1713,7 @@ namespace GazeToolBar
             // 
             this.trackBarCrosshair.BackColor = System.Drawing.Color.Black;
             this.trackBarCrosshair.Location = new System.Drawing.Point(170, 58);
-            this.trackBarCrosshair.Maximum = 8;
+            this.trackBarCrosshair.Maximum = 7;
             this.trackBarCrosshair.Name = "trackBarCrosshair";
             this.trackBarCrosshair.Size = new System.Drawing.Size(896, 45);
             this.trackBarCrosshair.TabIndex = 12;

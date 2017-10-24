@@ -121,22 +121,22 @@
   <data name="button_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crosshair_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="crosshair_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Right_Click_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\right-click-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crosshair_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="crosshair_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="button_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crosshair_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="crosshair_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crosshair_7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="crosshair_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Double_Click_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -154,7 +154,7 @@
   <data name="crosshair_None" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_None.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="crosshair_6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="crosshair_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crosshair_6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Keyboard_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -165,9 +165,6 @@
   </data>
   <data name="crosshair_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\crosshair_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="crosshair_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\crosshair_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="settings_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\settings-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
