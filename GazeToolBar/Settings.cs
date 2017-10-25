@@ -103,10 +103,12 @@ namespace GazeToolBar
             trackBarFixTimeOut.Size = trackBarFixTimeLength.Size;
             pnlFTOPlus.Location = new Point(pnlFTLPlus.Location.X, pnlFTOPlus.Location.Y);
             lblSpeed.Location = ReletiveSize.labelPosition(pnlFixationTimeOut, lblSpeed);
-            //Auto start panel
+            //Panel other
             panelOther.Location = ReletiveSize.distributeToBottom(pnlGeneral, panelOther.Location.X, panelOther.Height, 3, 3, "h", 0);
             panelOther.Size = new Size(pnlGeneral.Size.Width, panelOther.Size.Height);
-            pnlOtherAuto.Location = new Point((panelOther.Size.Width / 2) - (pnlOtherAuto.Width / 2), pnlOtherAuto.Location.Y);
+            pnlDefaults.Location = ReletiveSize.distribute(panelOther, pnlDefaults.Location.Y, 1, 3, "w", 0.15);
+            pnlOtherAuto.Location = ReletiveSize.distribute(panelOther, pnlOtherAuto.Location.Y, 2, 3, "w", 0.45);
+            pnlStickyLeft.Location = ReletiveSize.distribute(panelOther, pnlStickyLeft.Location.Y, 3, 3, "w", 0.75);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
             //Shortcut settings panel
             //pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
@@ -365,7 +367,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                ChangeButtonColor(btnRearrangeSetting, false, true);
+                ChangeButtonColor(buttonCrosshairSetting, false, true);
                 ChangeButtonColor(btnGeneralSetting, true, true);
 
                 WaitForUserKeyPress = false;
@@ -383,7 +385,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
-                ChangeButtonColor(btnRearrangeSetting, false, true);
+                ChangeButtonColor(buttonCrosshairSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
 
                 lbFKeyFeedback.Text = "";
@@ -401,6 +403,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
+                ChangeButtonColor(buttonCrosshairSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, true, true);
             }
         }
@@ -416,6 +419,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(buttonCrosshairSetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, true, true);
                 RefreshActions();
             }
@@ -427,11 +431,11 @@ namespace GazeToolBar
             shownPanel = pnlCrosshairPage;
             shownPanel.Show();
 
+            ChangeButtonColor(btnGeneralSetting, false, true);
             ChangeButtonColor(btnShortCutKeySetting, false, true);
             ChangeButtonColor(btnZoomSettings, false, true);
             ChangeButtonColor(btnRearrangeSetting, false, true);
-            ChangeButtonColor(btnRearrangeSetting, false, true);
-            ChangeButtonColor(btnGeneralSetting, true, true);
+            ChangeButtonColor(buttonCrosshairSetting, true, true);
 
             WaitForUserKeyPress = false;
         }
@@ -692,7 +696,7 @@ namespace GazeToolBar
         {
             int RIGHT_XPOS = pnlRearrange.Width - 400;
             int LEFT_XPOS = 400;
-            int yPos = 150;
+            int yPos = 20;
             const int YGAP = 10;
             const int XGAP = 10;
 
@@ -852,12 +856,13 @@ namespace GazeToolBar
             if (stickyLeft)
                 buttonStickyLeftClick.BackColor = Color.White;
         }
-        private void btnDefaults_Click(object sender, EventArgs e)
-         {
-             File.Delete(Program.path);
-             Program.ReadWriteJson();
-            Settings_Load(this, new System.EventArgs());
-          }
 
-}
+        private void btnDefaults_Click(object sender, EventArgs e)
+        {
+            File.Delete(Program.path);
+            Program.ReadWriteJson();
+            Settings_Load(this, new System.EventArgs());
+        }
+
+    }
 }

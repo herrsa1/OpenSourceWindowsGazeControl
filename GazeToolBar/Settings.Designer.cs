@@ -36,8 +36,6 @@ namespace GazeToolBar
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSaveAndCancel = new System.Windows.Forms.Panel();
-            this.pnlDefaults = new System.Windows.Forms.Panel();
-            this.btnDefaults = new System.Windows.Forms.Button();
             this.pnlCancel = new System.Windows.Forms.Panel();
             this.pnlSave = new System.Windows.Forms.Panel();
             this.pnlPageKeyboard = new System.Windows.Forms.Panel();
@@ -112,7 +110,9 @@ namespace GazeToolBar
             this.btnFixTimeOutMins = new System.Windows.Forms.Button();
             this.lblSpeed = new System.Windows.Forms.Label();
             this.panelOther = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlDefaults = new System.Windows.Forms.Panel();
+            this.btnDefaults = new System.Windows.Forms.Button();
+            this.pnlStickyLeft = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonStickyLeftClick = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -167,7 +167,6 @@ namespace GazeToolBar
             this.labCrosshairType = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panelSaveAndCancel.SuspendLayout();
-            this.pnlDefaults.SuspendLayout();
             this.pnlCancel.SuspendLayout();
             this.pnlSave.SuspendLayout();
             this.pnlPageKeyboard.SuspendLayout();
@@ -213,7 +212,8 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeOut)).BeginInit();
             this.pnlFTOMins.SuspendLayout();
             this.panelOther.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlDefaults.SuspendLayout();
+            this.pnlStickyLeft.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlOtherAuto.SuspendLayout();
             this.pnlAuto.SuspendLayout();
@@ -278,38 +278,13 @@ namespace GazeToolBar
             // 
             // panelSaveAndCancel
             // 
-            this.panelSaveAndCancel.Controls.Add(this.pnlDefaults);
             this.panelSaveAndCancel.Controls.Add(this.pnlCancel);
             this.panelSaveAndCancel.Controls.Add(this.pnlSave);
             this.panelSaveAndCancel.Location = new System.Drawing.Point(21, 480);
             this.panelSaveAndCancel.Margin = new System.Windows.Forms.Padding(2);
             this.panelSaveAndCancel.Name = "panelSaveAndCancel";
-            this.panelSaveAndCancel.Size = new System.Drawing.Size(1405, 164);
+            this.panelSaveAndCancel.Size = new System.Drawing.Size(782, 164);
             this.panelSaveAndCancel.TabIndex = 25;
-            // 
-            // pnlDefaults
-            // 
-            this.pnlDefaults.Controls.Add(this.btnDefaults);
-            this.pnlDefaults.Location = new System.Drawing.Point(1247, 2);
-            this.pnlDefaults.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDefaults.Name = "pnlDefaults";
-            this.pnlDefaults.Size = new System.Drawing.Size(154, 155);
-            this.pnlDefaults.TabIndex = 25;
-            // 
-            // btnDefaults
-            // 
-            this.btnDefaults.BackColor = System.Drawing.Color.Transparent;
-            this.btnDefaults.FlatAppearance.BorderSize = 3;
-            this.btnDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefaults.ForeColor = System.Drawing.Color.White;
-            this.btnDefaults.Location = new System.Drawing.Point(2, 2);
-            this.btnDefaults.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDefaults.Name = "btnDefaults";
-            this.btnDefaults.Size = new System.Drawing.Size(150, 150);
-            this.btnDefaults.TabIndex = 24;
-            this.btnDefaults.Text = "Default Settings";
-            this.btnDefaults.UseVisualStyleBackColor = false;
-            this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
             // 
             // pnlCancel
             // 
@@ -1050,7 +1025,7 @@ namespace GazeToolBar
             this.pnlZoomSettings.Location = new System.Drawing.Point(449, 123);
             this.pnlZoomSettings.Margin = new System.Windows.Forms.Padding(2);
             this.pnlZoomSettings.Name = "pnlZoomSettings";
-            this.pnlZoomSettings.Size = new System.Drawing.Size(182, 81);
+            this.pnlZoomSettings.Size = new System.Drawing.Size(152, 71);
             this.pnlZoomSettings.TabIndex = 29;
             this.pnlZoomSettings.Visible = false;
             // 
@@ -1062,7 +1037,7 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.panelPrecision);
             this.pnlGeneral.Location = new System.Drawing.Point(95, 123);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(201, 81);
+            this.pnlGeneral.Size = new System.Drawing.Size(154, 71);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1161,7 +1136,8 @@ namespace GazeToolBar
             // panelOther
             // 
             this.panelOther.BackColor = System.Drawing.Color.Black;
-            this.panelOther.Controls.Add(this.panel1);
+            this.panelOther.Controls.Add(this.pnlDefaults);
+            this.panelOther.Controls.Add(this.pnlStickyLeft);
             this.panelOther.Controls.Add(this.pnlOtherAuto);
             this.panelOther.Controls.Add(this.lblOther);
             this.panelOther.Location = new System.Drawing.Point(4, 383);
@@ -1169,16 +1145,40 @@ namespace GazeToolBar
             this.panelOther.Size = new System.Drawing.Size(1243, 174);
             this.panelOther.TabIndex = 21;
             // 
-            // panel1
+            // pnlDefaults
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(1071, 10);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(139, 164);
-            this.panel1.TabIndex = 24;
+            this.pnlDefaults.Controls.Add(this.btnDefaults);
+            this.pnlDefaults.Location = new System.Drawing.Point(300, 36);
+            this.pnlDefaults.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDefaults.Name = "pnlDefaults";
+            this.pnlDefaults.Size = new System.Drawing.Size(134, 135);
+            this.pnlDefaults.TabIndex = 26;
+            // 
+            // btnDefaults
+            // 
+            this.btnDefaults.BackColor = System.Drawing.Color.Transparent;
+            this.btnDefaults.FlatAppearance.BorderSize = 3;
+            this.btnDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaults.ForeColor = System.Drawing.Color.White;
+            this.btnDefaults.Location = new System.Drawing.Point(2, 2);
+            this.btnDefaults.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDefaults.Name = "btnDefaults";
+            this.btnDefaults.Size = new System.Drawing.Size(130, 130);
+            this.btnDefaults.TabIndex = 24;
+            this.btnDefaults.Text = "Default Settings";
+            this.btnDefaults.UseVisualStyleBackColor = false;
+            this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
+            // 
+            // pnlStickyLeft
+            // 
+            this.pnlStickyLeft.BackColor = System.Drawing.Color.Black;
+            this.pnlStickyLeft.Controls.Add(this.panel2);
+            this.pnlStickyLeft.Controls.Add(this.label3);
+            this.pnlStickyLeft.Location = new System.Drawing.Point(1071, 10);
+            this.pnlStickyLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlStickyLeft.Name = "pnlStickyLeft";
+            this.pnlStickyLeft.Size = new System.Drawing.Size(139, 164);
+            this.pnlStickyLeft.TabIndex = 24;
             // 
             // panel2
             // 
@@ -1373,7 +1373,7 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
             this.pnlRearrange.Location = new System.Drawing.Point(1159, 123);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(164, 61);
+            this.pnlRearrange.Size = new System.Drawing.Size(152, 71);
             this.pnlRearrange.TabIndex = 30;
             this.pnlRearrange.Visible = false;
             // 
@@ -1581,10 +1581,10 @@ namespace GazeToolBar
             this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1491, 123);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1511, 122);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(176, 61);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(149, 82);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
             // 
@@ -1713,7 +1713,7 @@ namespace GazeToolBar
             // 
             this.trackBarCrosshair.BackColor = System.Drawing.Color.Black;
             this.trackBarCrosshair.Location = new System.Drawing.Point(170, 58);
-            this.trackBarCrosshair.Maximum = 7;
+            this.trackBarCrosshair.Maximum = 8;
             this.trackBarCrosshair.Name = "trackBarCrosshair";
             this.trackBarCrosshair.Size = new System.Drawing.Size(896, 45);
             this.trackBarCrosshair.TabIndex = 12;
@@ -1773,12 +1773,12 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
-            this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlCrosshairPage);
+            this.Controls.Add(this.pnlZoomSettings);
+            this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
-            this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlSwitchSetting);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1792,7 +1792,6 @@ namespace GazeToolBar
             this.Load += new System.EventHandler(this.Settings_Load);
             this.Shown += new System.EventHandler(this.Settings_Shown);
             this.panelSaveAndCancel.ResumeLayout(false);
-            this.pnlDefaults.ResumeLayout(false);
             this.pnlCancel.ResumeLayout(false);
             this.pnlSave.ResumeLayout(false);
             this.pnlPageKeyboard.ResumeLayout(false);
@@ -1849,8 +1848,9 @@ namespace GazeToolBar
             this.pnlFTOMins.ResumeLayout(false);
             this.panelOther.ResumeLayout(false);
             this.panelOther.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlDefaults.ResumeLayout(false);
+            this.pnlStickyLeft.ResumeLayout(false);
+            this.pnlStickyLeft.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.pnlOtherAuto.ResumeLayout(false);
             this.pnlOtherAuto.PerformLayout();
@@ -2021,7 +2021,7 @@ namespace GazeToolBar
         private Button btnFeedback;
         private Label label1;
         private Label labFeedback;
-        private Panel panel1;
+        private Panel pnlStickyLeft;
         private Panel panel2;
         private Button buttonStickyLeftClick;
         private Label label3;

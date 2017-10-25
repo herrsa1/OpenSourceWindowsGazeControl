@@ -49,6 +49,8 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnRearrangeSetting, new GazeAwareBehavior(OnBtnRearrangeSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(buttonCrosshairSetting, new GazeAwareBehavior(OnbuttonCrosshairSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnFeedback, new GazeAwareBehavior(OnBtnFeedback_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(buttonStickyLeftClick, new GazeAwareBehavior(OnButtonStickyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btnDefaults, new GazeAwareBehavior(OnBtnDefaults_Click) { DelayMilliseconds = buttonClickDelay });
 
             //Set buttons
             bhavSettingMap.Add(btFKeyLeftClick, new GazeAwareBehavior(btFKeyLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
@@ -104,6 +106,8 @@ namespace GazeToolBar
             bhavSettingMap.Add(pnlCrosshairDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlCrosshairUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlFeedbackButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlStickyLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlDefaults, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
         //toggle border on and off on gaze to gaze to give feed back.
@@ -255,15 +259,27 @@ namespace GazeToolBar
             if (e.HasGaze) btnFeedback.PerformClick();
         }
 
-       //====================================================================================
+        private void OnButtonStickyLeftClick_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) buttonStickyLeftClick.PerformClick();
+        }
+
+        private void OnBtnDefaults_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDefaults.PerformClick();
+        }
 
 
-       //Shortcut keys panel buy button event methods. 
+
+        //====================================================================================
 
 
-       //====================================================================================
+        //Shortcut keys panel buy button event methods. 
 
-       ActionToBePerformed actionToAssignKey;
+
+        //====================================================================================
+
+        ActionToBePerformed actionToAssignKey;
 
         private void btFKeyLeftClick_Click(object sender, EventArgs e)
         {
