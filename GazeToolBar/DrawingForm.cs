@@ -119,7 +119,7 @@ namespace GazeToolBar
             graphics.DrawImage(image, Dimensions);
 
             history.Add(currentGaze);
-
+/*
             //Get rid of ghost crosshairs
             if (history.Count >= 5)
             {
@@ -133,7 +133,7 @@ namespace GazeToolBar
 
                 if (all)
                     this.Close();
-            }
+            }*/
         }
 
         public void ClearForm()
