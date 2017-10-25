@@ -24,11 +24,13 @@ namespace GazeToolBar
         {
             this.FixationPoint = fixationPoint;
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
-
+            int offsetX = 0;
+            offsetX = screenBounds.Left;
+            MessageBox.Show(offsetX.ToString());
             form.Width = FORM_WIDTH;
             form.Height = FORM_HEIGHT;
 
-            form.Left = (screenBounds.Right / 2) - (form.Width / 2);
+            form.Left = offsetX + (screenBounds.Right / 2) - (form.Width / 2);
             form.Top = (screenBounds.Bottom / 2) - (form.Height / 2);
 
             int dX = fixationPoint.X - (form.Left + FORM_WIDTH / 2);
@@ -48,11 +50,12 @@ namespace GazeToolBar
             sourceRect = new RECT();
             Point zoomPosition = Utils.SubtractPoints(GetZoomPosition(), Offset);
             Rectangle screenBounds = Screen.FromControl(form).Bounds;
-
+            int offsetX = 0;
+            offsetX = screenBounds.Left;
             form.Width = FORM_WIDTH;
             form.Height = FORM_HEIGHT;
 
-            form.Left = (screenBounds.Right / 2) - (form.Width / 2);
+            form.Left = Math.Abs(offsetX) + (screenBounds.Right / 2) - (form.Width / 2);
             form.Top =  (screenBounds.Bottom / 2) - (form.Height / 2);
 
             int dX = FixationPoint.X - (form.Left + FORM_WIDTH / 2);
