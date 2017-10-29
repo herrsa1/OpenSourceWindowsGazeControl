@@ -36,7 +36,7 @@ namespace GazeToolBar
         public static Point mainPanelLocation(int _y, int height)
         {
             int x = 0;
-            int y = _y + height + (int)(Constants.SCREEN_SIZE.Height * 0.01);
+            int y = _y + height + (int)(Constants.SCREEN_SIZE.Height * 0.10);
             return new Point(x, y);
         }
 
@@ -133,6 +133,6 @@ namespace GazeToolBar
             }
         }
 
-        public static Size TabControlSize = new Size(Constants.SCREEN_SIZE.Width, Constants.SCREEN_SIZE.Height - 56 * 2);  
+        public static Size TabControlSize = new Size(Constants.SCREEN_SIZE.Width, Constants.SCREEN_SIZE.Height - 56 * 2);
     }
 }

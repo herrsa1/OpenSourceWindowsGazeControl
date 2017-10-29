@@ -48,6 +48,10 @@ namespace GazeToolBar
             // Stop timer, and hide drawing form and zoom form
             DrawTimer.Stop();
             drawingForm.ClearForm();
+            drawingForm.Refresh();
+            drawingForm.Close();
+            drawingForm = new DrawingForm();
+
             Hide();
             Location = new Point(-200, -200);
         }
