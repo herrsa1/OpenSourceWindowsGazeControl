@@ -53,7 +53,7 @@ namespace GazeToolBar
             shownPanel = pnlGeneral;
 
             //Store reference to short cut assignment panels in a list so they can be iterated over and set their on screen positions relative form size.
-            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll };// pnlDragAndDrop };
+            fKeyPannels = new List<Panel>() { pnlLeftClick, pnlRightClick, pnlDoubleClick, pnlScroll, pnlMic };// pnlDragAndDrop };
             //Set panel positions.
             setFkeyPanelWidth(fKeyPannels);
 
@@ -356,13 +356,21 @@ namespace GazeToolBar
             UpdateCrosshair();
         }
 
+        private void changePanel(Panel  pnlToShow)
+        { 
+            shownPanel.SendToBack();
+            shownPanel.Hide();
+            shownPanel = pnlToShow;
+            shownPanel.BringToFront();
+            shownPanel.Show();
+        }
+
         private void btnGeneralSetting_Click(object sender, EventArgs e)
         {
             if (shownPanel != pnlGeneral)
             {
-                shownPanel.Hide();
-                shownPanel = pnlGeneral;
-                shownPanel.Show();
+                changePanel(pnlGeneral);
+                UseMap(SettingState.GENERAL);
 
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
@@ -378,9 +386,8 @@ namespace GazeToolBar
         {
             if (shownPanel != pnlPageKeyboard)
             {
-                shownPanel.Hide();
-                shownPanel = pnlPageKeyboard;
-                shownPanel.Show();
+                changePanel(pnlPageKeyboard);
+                UseMap(SettingState.SHORTCUT);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
@@ -396,9 +403,8 @@ namespace GazeToolBar
         {
             if (shownPanel != pnlZoomSettings)
             {
-                shownPanel.Hide();
-                shownPanel = pnlZoomSettings;
-                shownPanel.Show();
+                changePanel(pnlZoomSettings);
+                UseMap(SettingState.ZOOM);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -412,9 +418,8 @@ namespace GazeToolBar
         {
             if (shownPanel != pnlRearrange)
             {
-                shownPanel.Hide();
-                shownPanel = pnlRearrange;
-                shownPanel.Show();
+                changePanel(pnlRearrange);
+                UseMap(SettingState.REARRANGE);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -427,9 +432,8 @@ namespace GazeToolBar
 
         private void buttonCrosshairSetting_Click(object sender, EventArgs e)
         {
-            shownPanel.Hide();
-            shownPanel = pnlCrosshairPage;
-            shownPanel.Show();
+            changePanel(pnlCrosshairPage);
+            UseMap(SettingState.CROSSHAIR);
 
             ChangeButtonColor(btnGeneralSetting, false, true);
             ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -855,6 +859,16 @@ namespace GazeToolBar
             buttonStickyLeftClick.BackColor = Color.Black;
             if (stickyLeft)
                 buttonStickyLeftClick.BackColor = Color.White;
+        }
+
+        private void btnSetMic_Click(object sender, EventArgs e)
+        {
+            lbMic.Text = "Set mic button";
+        }
+
+        private void btnClearMic_Click(object sender, EventArgs e)
+        {
+            lbMic.Text = "Cleared mic button";
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)

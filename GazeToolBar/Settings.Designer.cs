@@ -39,6 +39,13 @@ namespace GazeToolBar
             this.pnlCancel = new System.Windows.Forms.Panel();
             this.pnlSave = new System.Windows.Forms.Panel();
             this.pnlPageKeyboard = new System.Windows.Forms.Panel();
+            this.pnlMic = new System.Windows.Forms.Panel();
+            this.lbMic = new System.Windows.Forms.Label();
+            this.pnlClearMic = new System.Windows.Forms.Panel();
+            this.btnClearMic = new System.Windows.Forms.Button();
+            this.pnlSetMic = new System.Windows.Forms.Panel();
+            this.btnSetMic = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pnlLeftClick = new System.Windows.Forms.Panel();
             this.pnlFKeyHighlight2 = new System.Windows.Forms.Panel();
             this.btClearFKeyLeftClick = new System.Windows.Forms.Button();
@@ -166,10 +173,19 @@ namespace GazeToolBar
             this.buttonCrosshairDown = new System.Windows.Forms.Button();
             this.labCrosshairType = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.bhavGeneralMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavZoomMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavShortcutMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavRearrangeMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavCrosshairMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
             this.pnlSave.SuspendLayout();
             this.pnlPageKeyboard.SuspendLayout();
+            this.pnlMic.SuspendLayout();
+            this.pnlClearMic.SuspendLayout();
+            this.pnlSetMic.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.pnlLeftClick.SuspendLayout();
             this.pnlFKeyHighlight2.SuspendLayout();
             this.pnlFKeyHighlight1.SuspendLayout();
@@ -251,6 +267,7 @@ namespace GazeToolBar
             this.btnSave.BackColor = System.Drawing.Color.Transparent;
             this.btnSave.FlatAppearance.BorderSize = 3;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(2, 2);
             this.btnSave.Margin = new System.Windows.Forms.Padding(2);
@@ -266,6 +283,7 @@ namespace GazeToolBar
             this.btnCancel.BackColor = System.Drawing.Color.Transparent;
             this.btnCancel.FlatAppearance.BorderSize = 3;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Arial", 24F);
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.Location = new System.Drawing.Point(2, 2);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
@@ -307,17 +325,104 @@ namespace GazeToolBar
             // pnlPageKeyboard
             // 
             this.pnlPageKeyboard.BackColor = System.Drawing.Color.Black;
+            this.pnlPageKeyboard.Controls.Add(this.pnlMic);
             this.pnlPageKeyboard.Controls.Add(this.pnlLeftClick);
             this.pnlPageKeyboard.Controls.Add(this.lbFKeyFeedback);
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(805, 123);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(37, 127);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 61);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(1432, 564);
             this.pnlPageKeyboard.TabIndex = 26;
             this.pnlPageKeyboard.Visible = false;
+            // 
+            // pnlMic
+            // 
+            this.pnlMic.BackColor = System.Drawing.Color.Gray;
+            this.pnlMic.Controls.Add(this.lbMic);
+            this.pnlMic.Controls.Add(this.pnlClearMic);
+            this.pnlMic.Controls.Add(this.pnlSetMic);
+            this.pnlMic.Controls.Add(this.pictureBox6);
+            this.pnlMic.Location = new System.Drawing.Point(1204, 12);
+            this.pnlMic.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlMic.Name = "pnlMic";
+            this.pnlMic.Size = new System.Drawing.Size(195, 533);
+            this.pnlMic.TabIndex = 10;
+            // 
+            // lbMic
+            // 
+            this.lbMic.AutoSize = true;
+            this.lbMic.Font = new System.Drawing.Font("Arial", 18F);
+            this.lbMic.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lbMic.Location = new System.Drawing.Point(64, 502);
+            this.lbMic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbMic.Name = "lbMic";
+            this.lbMic.Size = new System.Drawing.Size(77, 27);
+            this.lbMic.TabIndex = 3;
+            this.lbMic.Text = "label5";
+            // 
+            // pnlClearMic
+            // 
+            this.pnlClearMic.Controls.Add(this.btnClearMic);
+            this.pnlClearMic.Location = new System.Drawing.Point(19, 339);
+            this.pnlClearMic.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlClearMic.Name = "pnlClearMic";
+            this.pnlClearMic.Size = new System.Drawing.Size(154, 155);
+            this.pnlClearMic.TabIndex = 9;
+            // 
+            // btnClearMic
+            // 
+            this.btnClearMic.BackColor = System.Drawing.Color.Black;
+            this.btnClearMic.FlatAppearance.BorderSize = 5;
+            this.btnClearMic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearMic.Font = new System.Drawing.Font("Arial", 24F);
+            this.btnClearMic.ForeColor = System.Drawing.Color.White;
+            this.btnClearMic.Location = new System.Drawing.Point(2, 2);
+            this.btnClearMic.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClearMic.Name = "btnClearMic";
+            this.btnClearMic.Size = new System.Drawing.Size(150, 150);
+            this.btnClearMic.TabIndex = 2;
+            this.btnClearMic.Text = "Clear";
+            this.btnClearMic.UseVisualStyleBackColor = false;
+            this.btnClearMic.Click += new System.EventHandler(this.btnClearMic_Click);
+            // 
+            // pnlSetMic
+            // 
+            this.pnlSetMic.Controls.Add(this.btnSetMic);
+            this.pnlSetMic.Location = new System.Drawing.Point(19, 127);
+            this.pnlSetMic.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlSetMic.Name = "pnlSetMic";
+            this.pnlSetMic.Size = new System.Drawing.Size(154, 155);
+            this.pnlSetMic.TabIndex = 8;
+            // 
+            // btnSetMic
+            // 
+            this.btnSetMic.BackColor = System.Drawing.Color.Black;
+            this.btnSetMic.FlatAppearance.BorderSize = 5;
+            this.btnSetMic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetMic.Font = new System.Drawing.Font("Arial", 24F);
+            this.btnSetMic.ForeColor = System.Drawing.Color.White;
+            this.btnSetMic.Location = new System.Drawing.Point(2, 2);
+            this.btnSetMic.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetMic.Name = "btnSetMic";
+            this.btnSetMic.Size = new System.Drawing.Size(150, 150);
+            this.btnSetMic.TabIndex = 1;
+            this.btnSetMic.Text = "Set";
+            this.btnSetMic.UseVisualStyleBackColor = false;
+            this.btnSetMic.Click += new System.EventHandler(this.btnSetMic_Click);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::GazeToolBar.Properties.Resources.Mic_icon;
+            this.pictureBox6.Location = new System.Drawing.Point(19, 22);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(155, 91);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
             // 
             // pnlLeftClick
             // 
@@ -344,6 +449,7 @@ namespace GazeToolBar
             // 
             this.btClearFKeyLeftClick.FlatAppearance.BorderSize = 5;
             this.btClearFKeyLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyLeftClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btClearFKeyLeftClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyLeftClick.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyLeftClick.Margin = new System.Windows.Forms.Padding(2);
@@ -367,6 +473,7 @@ namespace GazeToolBar
             // 
             this.btFKeyLeftClick.FlatAppearance.BorderSize = 5;
             this.btFKeyLeftClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyLeftClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btFKeyLeftClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyLeftClick.Location = new System.Drawing.Point(2, 2);
             this.btFKeyLeftClick.Margin = new System.Windows.Forms.Padding(2);
@@ -380,12 +487,12 @@ namespace GazeToolBar
             // lbLeft
             // 
             this.lbLeft.AutoSize = true;
-            this.lbLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLeft.Font = new System.Drawing.Font("Arial", 18F);
             this.lbLeft.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbLeft.Location = new System.Drawing.Point(64, 502);
             this.lbLeft.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLeft.Name = "lbLeft";
-            this.lbLeft.Size = new System.Drawing.Size(60, 24);
+            this.lbLeft.Size = new System.Drawing.Size(77, 27);
             this.lbLeft.TabIndex = 3;
             this.lbLeft.Text = "label1";
             // 
@@ -403,12 +510,12 @@ namespace GazeToolBar
             // lbFKeyFeedback
             // 
             this.lbFKeyFeedback.AutoSize = true;
-            this.lbFKeyFeedback.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFKeyFeedback.Font = new System.Drawing.Font("Arial", 18F);
             this.lbFKeyFeedback.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbFKeyFeedback.Location = new System.Drawing.Point(543, 570);
             this.lbFKeyFeedback.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbFKeyFeedback.Name = "lbFKeyFeedback";
-            this.lbFKeyFeedback.Size = new System.Drawing.Size(60, 24);
+            this.lbFKeyFeedback.Size = new System.Drawing.Size(77, 27);
             this.lbFKeyFeedback.TabIndex = 5;
             this.lbFKeyFeedback.Text = "label7";
             // 
@@ -427,12 +534,12 @@ namespace GazeToolBar
             // lbRight
             // 
             this.lbRight.AutoSize = true;
-            this.lbRight.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbRight.Font = new System.Drawing.Font("Arial", 18F);
             this.lbRight.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbRight.Location = new System.Drawing.Point(64, 502);
             this.lbRight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbRight.Name = "lbRight";
-            this.lbRight.Size = new System.Drawing.Size(60, 24);
+            this.lbRight.Size = new System.Drawing.Size(77, 27);
             this.lbRight.TabIndex = 3;
             this.lbRight.Text = "label3";
             // 
@@ -460,6 +567,7 @@ namespace GazeToolBar
             // 
             this.btFKeyRightClick.FlatAppearance.BorderSize = 5;
             this.btFKeyRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyRightClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btFKeyRightClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyRightClick.Location = new System.Drawing.Point(2, 2);
             this.btFKeyRightClick.Margin = new System.Windows.Forms.Padding(2);
@@ -483,6 +591,7 @@ namespace GazeToolBar
             // 
             this.btClearFKeyRightClick.FlatAppearance.BorderSize = 5;
             this.btClearFKeyRightClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyRightClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btClearFKeyRightClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyRightClick.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyRightClick.Margin = new System.Windows.Forms.Padding(2);
@@ -508,12 +617,12 @@ namespace GazeToolBar
             // lbDouble
             // 
             this.lbDouble.AutoSize = true;
-            this.lbDouble.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDouble.Font = new System.Drawing.Font("Arial", 18F);
             this.lbDouble.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbDouble.Location = new System.Drawing.Point(64, 502);
             this.lbDouble.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDouble.Name = "lbDouble";
-            this.lbDouble.Size = new System.Drawing.Size(60, 24);
+            this.lbDouble.Size = new System.Drawing.Size(77, 27);
             this.lbDouble.TabIndex = 3;
             this.lbDouble.Text = "label4";
             // 
@@ -541,6 +650,7 @@ namespace GazeToolBar
             // 
             this.btFKeyDoubleClick.FlatAppearance.BorderSize = 5;
             this.btFKeyDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyDoubleClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btFKeyDoubleClick.ForeColor = System.Drawing.Color.White;
             this.btFKeyDoubleClick.Location = new System.Drawing.Point(2, 2);
             this.btFKeyDoubleClick.Margin = new System.Windows.Forms.Padding(2);
@@ -564,6 +674,7 @@ namespace GazeToolBar
             // 
             this.btClearFKeyDoubleClick.FlatAppearance.BorderSize = 5;
             this.btClearFKeyDoubleClick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyDoubleClick.Font = new System.Drawing.Font("Arial", 24F);
             this.btClearFKeyDoubleClick.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyDoubleClick.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyDoubleClick.Margin = new System.Windows.Forms.Padding(2);
@@ -589,12 +700,12 @@ namespace GazeToolBar
             // lbScroll
             // 
             this.lbScroll.AutoSize = true;
-            this.lbScroll.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbScroll.Font = new System.Drawing.Font("Arial", 18F);
             this.lbScroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lbScroll.Location = new System.Drawing.Point(64, 502);
             this.lbScroll.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbScroll.Name = "lbScroll";
-            this.lbScroll.Size = new System.Drawing.Size(60, 24);
+            this.lbScroll.Size = new System.Drawing.Size(77, 27);
             this.lbScroll.TabIndex = 3;
             this.lbScroll.Text = "label5";
             // 
@@ -611,6 +722,7 @@ namespace GazeToolBar
             // 
             this.btClearFKeyScroll.FlatAppearance.BorderSize = 5;
             this.btClearFKeyScroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClearFKeyScroll.Font = new System.Drawing.Font("Arial", 24F);
             this.btClearFKeyScroll.ForeColor = System.Drawing.Color.White;
             this.btClearFKeyScroll.Location = new System.Drawing.Point(2, 2);
             this.btClearFKeyScroll.Margin = new System.Windows.Forms.Padding(2);
@@ -634,6 +746,7 @@ namespace GazeToolBar
             // 
             this.btFKeyScroll.FlatAppearance.BorderSize = 5;
             this.btFKeyScroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFKeyScroll.Font = new System.Drawing.Font("Arial", 24F);
             this.btFKeyScroll.ForeColor = System.Drawing.Color.White;
             this.btFKeyScroll.Location = new System.Drawing.Point(2, 2);
             this.btFKeyScroll.Margin = new System.Windows.Forms.Padding(2);
@@ -704,6 +817,7 @@ namespace GazeToolBar
             this.btnGeneralSetting.BackColor = System.Drawing.Color.Transparent;
             this.btnGeneralSetting.FlatAppearance.BorderSize = 5;
             this.btnGeneralSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGeneralSetting.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGeneralSetting.ForeColor = System.Drawing.Color.White;
             this.btnGeneralSetting.Location = new System.Drawing.Point(2, 2);
             this.btnGeneralSetting.Margin = new System.Windows.Forms.Padding(2);
@@ -719,6 +833,7 @@ namespace GazeToolBar
             this.btnShortCutKeySetting.BackColor = System.Drawing.Color.Transparent;
             this.btnShortCutKeySetting.FlatAppearance.BorderSize = 5;
             this.btnShortCutKeySetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShortCutKeySetting.Font = new System.Drawing.Font("Arial", 15.75F);
             this.btnShortCutKeySetting.ForeColor = System.Drawing.Color.White;
             this.btnShortCutKeySetting.Location = new System.Drawing.Point(2, 2);
             this.btnShortCutKeySetting.Margin = new System.Windows.Forms.Padding(2);
@@ -773,6 +888,7 @@ namespace GazeToolBar
             this.buttonCrosshairSetting.BackColor = System.Drawing.Color.Transparent;
             this.buttonCrosshairSetting.FlatAppearance.BorderSize = 5;
             this.buttonCrosshairSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonCrosshairSetting.Font = new System.Drawing.Font("Arial", 15.75F);
             this.buttonCrosshairSetting.ForeColor = System.Drawing.Color.White;
             this.buttonCrosshairSetting.Location = new System.Drawing.Point(2, 2);
             this.buttonCrosshairSetting.Margin = new System.Windows.Forms.Padding(2);
@@ -796,6 +912,7 @@ namespace GazeToolBar
             this.btnRearrangeSetting.BackColor = System.Drawing.Color.Transparent;
             this.btnRearrangeSetting.FlatAppearance.BorderSize = 5;
             this.btnRearrangeSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRearrangeSetting.Font = new System.Drawing.Font("Arial", 15.75F);
             this.btnRearrangeSetting.ForeColor = System.Drawing.Color.White;
             this.btnRearrangeSetting.Location = new System.Drawing.Point(2, 2);
             this.btnRearrangeSetting.Margin = new System.Windows.Forms.Padding(2);
@@ -819,6 +936,7 @@ namespace GazeToolBar
             this.btnZoomSettings.BackColor = System.Drawing.Color.Transparent;
             this.btnZoomSettings.FlatAppearance.BorderSize = 5;
             this.btnZoomSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnZoomSettings.Font = new System.Drawing.Font("Arial", 15.75F);
             this.btnZoomSettings.ForeColor = System.Drawing.Color.White;
             this.btnZoomSettings.Location = new System.Drawing.Point(2, 2);
             this.btnZoomSettings.Margin = new System.Windows.Forms.Padding(2);
@@ -864,7 +982,7 @@ namespace GazeToolBar
             // 
             this.btnZoomSizePlus.BackColor = System.Drawing.Color.Transparent;
             this.btnZoomSizePlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomSizePlus.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnZoomSizePlus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnZoomSizePlus.ForeColor = System.Drawing.Color.White;
             this.btnZoomSizePlus.Location = new System.Drawing.Point(2, 2);
             this.btnZoomSizePlus.Margin = new System.Windows.Forms.Padding(2);
@@ -901,7 +1019,7 @@ namespace GazeToolBar
             // 
             this.btnZoomSizeMinus.BackColor = System.Drawing.Color.Transparent;
             this.btnZoomSizeMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomSizeMinus.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnZoomSizeMinus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnZoomSizeMinus.ForeColor = System.Drawing.Color.White;
             this.btnZoomSizeMinus.Location = new System.Drawing.Point(2, 2);
             this.btnZoomSizeMinus.Margin = new System.Windows.Forms.Padding(2);
@@ -915,13 +1033,13 @@ namespace GazeToolBar
             // labZoomWindowSize
             // 
             this.labZoomWindowSize.AutoSize = true;
-            this.labZoomWindowSize.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labZoomWindowSize.Font = new System.Drawing.Font("Arial", 18F);
             this.labZoomWindowSize.ForeColor = System.Drawing.Color.White;
-            this.labZoomWindowSize.Location = new System.Drawing.Point(3, 69);
+            this.labZoomWindowSize.Location = new System.Drawing.Point(3, 34);
             this.labZoomWindowSize.Name = "labZoomWindowSize";
-            this.labZoomWindowSize.Size = new System.Drawing.Size(108, 36);
+            this.labZoomWindowSize.Size = new System.Drawing.Size(98, 81);
             this.labZoomWindowSize.TabIndex = 11;
-            this.labZoomWindowSize.Text = "Zoom Window\r\nSize";
+            this.labZoomWindowSize.Text = "Zoom\r\nWindow\r\nSize";
             // 
             // pnlZoomAmount
             // 
@@ -958,7 +1076,7 @@ namespace GazeToolBar
             // 
             this.btnZoomAmountPlus.BackColor = System.Drawing.Color.Transparent;
             this.btnZoomAmountPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomAmountPlus.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnZoomAmountPlus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnZoomAmountPlus.ForeColor = System.Drawing.Color.White;
             this.btnZoomAmountPlus.Location = new System.Drawing.Point(2, 2);
             this.btnZoomAmountPlus.Margin = new System.Windows.Forms.Padding(2);
@@ -996,7 +1114,7 @@ namespace GazeToolBar
             // 
             this.btnZoomAmountMinus.BackColor = System.Drawing.Color.Transparent;
             this.btnZoomAmountMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnZoomAmountMinus.Font = new System.Drawing.Font("SimSun", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnZoomAmountMinus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnZoomAmountMinus.ForeColor = System.Drawing.Color.White;
             this.btnZoomAmountMinus.Location = new System.Drawing.Point(2, 2);
             this.btnZoomAmountMinus.Margin = new System.Windows.Forms.Padding(2);
@@ -1010,11 +1128,11 @@ namespace GazeToolBar
             // labZoomAmount
             // 
             this.labZoomAmount.AutoSize = true;
-            this.labZoomAmount.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labZoomAmount.Font = new System.Drawing.Font("Arial", 18F);
             this.labZoomAmount.ForeColor = System.Drawing.Color.White;
-            this.labZoomAmount.Location = new System.Drawing.Point(3, 69);
+            this.labZoomAmount.Location = new System.Drawing.Point(3, 54);
             this.labZoomAmount.Name = "labZoomAmount";
-            this.labZoomAmount.Size = new System.Drawing.Size(63, 36);
+            this.labZoomAmount.Size = new System.Drawing.Size(100, 54);
             this.labZoomAmount.TabIndex = 14;
             this.labZoomAmount.Text = "Zoom In\r\nAmount";
             // 
@@ -1035,9 +1153,9 @@ namespace GazeToolBar
             this.pnlGeneral.Controls.Add(this.pnlFixationTimeOut);
             this.pnlGeneral.Controls.Add(this.panelOther);
             this.pnlGeneral.Controls.Add(this.panelPrecision);
-            this.pnlGeneral.Location = new System.Drawing.Point(95, 123);
+            this.pnlGeneral.Location = new System.Drawing.Point(93, 122);
             this.pnlGeneral.Name = "pnlGeneral";
-            this.pnlGeneral.Size = new System.Drawing.Size(154, 71);
+            this.pnlGeneral.Size = new System.Drawing.Size(183, 72);
             this.pnlGeneral.TabIndex = 27;
             // 
             // pnlFixationTimeOut
@@ -1075,7 +1193,7 @@ namespace GazeToolBar
             // 
             this.btnFixTimeOutPlus.BackColor = System.Drawing.Color.Transparent;
             this.btnFixTimeOutPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixTimeOutPlus.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeOutPlus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnFixTimeOutPlus.ForeColor = System.Drawing.Color.White;
             this.btnFixTimeOutPlus.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeOutPlus.Margin = new System.Windows.Forms.Padding(2);
@@ -1111,7 +1229,7 @@ namespace GazeToolBar
             // 
             this.btnFixTimeOutMins.BackColor = System.Drawing.Color.Transparent;
             this.btnFixTimeOutMins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixTimeOutMins.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeOutMins.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnFixTimeOutMins.ForeColor = System.Drawing.Color.White;
             this.btnFixTimeOutMins.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeOutMins.Margin = new System.Windows.Forms.Padding(2);
@@ -1125,11 +1243,11 @@ namespace GazeToolBar
             // lblSpeed
             // 
             this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpeed.Font = new System.Drawing.Font("Arial", 18F);
             this.lblSpeed.ForeColor = System.Drawing.Color.White;
             this.lblSpeed.Location = new System.Drawing.Point(3, 66);
             this.lblSpeed.Name = "lblSpeed";
-            this.lblSpeed.Size = new System.Drawing.Size(70, 36);
+            this.lblSpeed.Size = new System.Drawing.Size(110, 54);
             this.lblSpeed.TabIndex = 14;
             this.lblSpeed.Text = "Fixation \r\nTime Out";
             // 
@@ -1159,6 +1277,7 @@ namespace GazeToolBar
             this.btnDefaults.BackColor = System.Drawing.Color.Transparent;
             this.btnDefaults.FlatAppearance.BorderSize = 3;
             this.btnDefaults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaults.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDefaults.ForeColor = System.Drawing.Color.White;
             this.btnDefaults.Location = new System.Drawing.Point(2, 2);
             this.btnDefaults.Margin = new System.Windows.Forms.Padding(2);
@@ -1205,11 +1324,11 @@ namespace GazeToolBar
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Arial", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(3, 1);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 18);
+            this.label3.Size = new System.Drawing.Size(127, 19);
             this.label3.TabIndex = 19;
             this.label3.Text = "Sticky Left Click";
             // 
@@ -1249,22 +1368,22 @@ namespace GazeToolBar
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Arial", 18F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(3, 1);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 18);
+            this.label2.Size = new System.Drawing.Size(115, 27);
             this.label2.TabIndex = 19;
             this.label2.Text = "Auto start";
             // 
             // lblOther
             // 
             this.lblOther.AutoSize = true;
-            this.lblOther.Font = new System.Drawing.Font("Arial", 12F);
+            this.lblOther.Font = new System.Drawing.Font("Arial", 18F);
             this.lblOther.ForeColor = System.Drawing.Color.White;
             this.lblOther.Location = new System.Drawing.Point(19, 78);
             this.lblOther.Name = "lblOther";
-            this.lblOther.Size = new System.Drawing.Size(46, 18);
+            this.lblOther.Size = new System.Drawing.Size(73, 27);
             this.lblOther.TabIndex = 17;
             this.lblOther.Text = "Other";
             // 
@@ -1303,7 +1422,7 @@ namespace GazeToolBar
             // 
             this.btnFixTimeLengthPlus.BackColor = System.Drawing.Color.Transparent;
             this.btnFixTimeLengthPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixTimeLengthPlus.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeLengthPlus.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.btnFixTimeLengthPlus.ForeColor = System.Drawing.Color.White;
             this.btnFixTimeLengthPlus.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeLengthPlus.Margin = new System.Windows.Forms.Padding(2);
@@ -1339,7 +1458,7 @@ namespace GazeToolBar
             // 
             this.btnFixTimeLengthMins.BackColor = System.Drawing.Color.Transparent;
             this.btnFixTimeLengthMins.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFixTimeLengthMins.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFixTimeLengthMins.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFixTimeLengthMins.ForeColor = System.Drawing.Color.White;
             this.btnFixTimeLengthMins.Location = new System.Drawing.Point(2, 2);
             this.btnFixTimeLengthMins.Margin = new System.Windows.Forms.Padding(2);
@@ -1353,13 +1472,13 @@ namespace GazeToolBar
             // lblFixationDetectionTimeLength
             // 
             this.lblFixationDetectionTimeLength.AutoSize = true;
-            this.lblFixationDetectionTimeLength.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFixationDetectionTimeLength.Font = new System.Drawing.Font("Arial", 18F);
             this.lblFixationDetectionTimeLength.ForeColor = System.Drawing.Color.White;
-            this.lblFixationDetectionTimeLength.Location = new System.Drawing.Point(3, 66);
+            this.lblFixationDetectionTimeLength.Location = new System.Drawing.Point(3, 35);
             this.lblFixationDetectionTimeLength.Name = "lblFixationDetectionTimeLength";
-            this.lblFixationDetectionTimeLength.Size = new System.Drawing.Size(93, 36);
+            this.lblFixationDetectionTimeLength.Size = new System.Drawing.Size(102, 81);
             this.lblFixationDetectionTimeLength.TabIndex = 11;
-            this.lblFixationDetectionTimeLength.Text = "Fixation \r\nTime Length";
+            this.lblFixationDetectionTimeLength.Text = "Fixation \r\nTime\r\nLength";
             // 
             // pnlRearrange
             // 
@@ -1581,10 +1700,10 @@ namespace GazeToolBar
             this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1511, 122);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1513, 116);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(149, 82);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(150, 78);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
             // 
@@ -1634,22 +1753,22 @@ namespace GazeToolBar
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Arial", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(3, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 18);
+            this.label1.Size = new System.Drawing.Size(118, 27);
             this.label1.TabIndex = 19;
             this.label1.Text = "Feedback";
             // 
             // labFeedback
             // 
             this.labFeedback.AutoSize = true;
-            this.labFeedback.Font = new System.Drawing.Font("Arial", 12F);
+            this.labFeedback.Font = new System.Drawing.Font("Arial", 18F);
             this.labFeedback.ForeColor = System.Drawing.Color.White;
             this.labFeedback.Location = new System.Drawing.Point(19, 78);
             this.labFeedback.Name = "labFeedback";
-            this.labFeedback.Size = new System.Drawing.Size(79, 18);
+            this.labFeedback.Size = new System.Drawing.Size(118, 27);
             this.labFeedback.TabIndex = 17;
             this.labFeedback.Text = "Feedback";
             // 
@@ -1698,7 +1817,7 @@ namespace GazeToolBar
             // 
             this.buttonCrosshairUp.BackColor = System.Drawing.Color.Transparent;
             this.buttonCrosshairUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCrosshairUp.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonCrosshairUp.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.buttonCrosshairUp.ForeColor = System.Drawing.Color.White;
             this.buttonCrosshairUp.Location = new System.Drawing.Point(2, 2);
             this.buttonCrosshairUp.Margin = new System.Windows.Forms.Padding(2);
@@ -1734,7 +1853,7 @@ namespace GazeToolBar
             // 
             this.buttonCrosshairDown.BackColor = System.Drawing.Color.Transparent;
             this.buttonCrosshairDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCrosshairDown.Font = new System.Drawing.Font("SimSun", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.buttonCrosshairDown.Font = new System.Drawing.Font("SimSun", 72F, System.Drawing.FontStyle.Bold);
             this.buttonCrosshairDown.ForeColor = System.Drawing.Color.White;
             this.buttonCrosshairDown.Location = new System.Drawing.Point(2, 2);
             this.buttonCrosshairDown.Margin = new System.Windows.Forms.Padding(2);
@@ -1748,11 +1867,11 @@ namespace GazeToolBar
             // labCrosshairType
             // 
             this.labCrosshairType.AutoSize = true;
-            this.labCrosshairType.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labCrosshairType.Font = new System.Drawing.Font("Arial", 18F);
             this.labCrosshairType.ForeColor = System.Drawing.Color.White;
             this.labCrosshairType.Location = new System.Drawing.Point(3, 60);
             this.labCrosshairType.Name = "labCrosshairType";
-            this.labCrosshairType.Size = new System.Drawing.Size(76, 36);
+            this.labCrosshairType.Size = new System.Drawing.Size(114, 54);
             this.labCrosshairType.TabIndex = 11;
             this.labCrosshairType.Text = "Crosshair\r\nType";
             // 
@@ -1773,12 +1892,12 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
-            this.Controls.Add(this.pnlCrosshairPage);
-            this.Controls.Add(this.pnlZoomSettings);
+            this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlGeneral);
+            this.Controls.Add(this.pnlZoomSettings);
+            this.Controls.Add(this.pnlCrosshairPage);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlRearrange);
-            this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlSwitchSetting);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1796,6 +1915,11 @@ namespace GazeToolBar
             this.pnlSave.ResumeLayout(false);
             this.pnlPageKeyboard.ResumeLayout(false);
             this.pnlPageKeyboard.PerformLayout();
+            this.pnlMic.ResumeLayout(false);
+            this.pnlMic.PerformLayout();
+            this.pnlClearMic.ResumeLayout(false);
+            this.pnlSetMic.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.pnlLeftClick.ResumeLayout(false);
             this.pnlLeftClick.PerformLayout();
             this.pnlFKeyHighlight2.ResumeLayout(false);
@@ -1974,7 +2098,6 @@ namespace GazeToolBar
         private Label label2;
         private Label lblOther;
         private Panel panelPrecision;
-        private Panel pnlFixTimeLengthContent;
         private Panel pnlFTLPlus;
         private Button btnFixTimeLengthPlus;
         private TrackBar trackBarFixTimeLength;
@@ -2027,5 +2150,18 @@ namespace GazeToolBar
         private Label label3;
         private Panel pnlDefaults;
         private Button btnDefaults;
+        private Panel pnlFixTimeLengthContent;
+        private EyeXFramework.Forms.BehaviorMap bhavGeneralMap;
+        private EyeXFramework.Forms.BehaviorMap bhavZoomMap;
+        private EyeXFramework.Forms.BehaviorMap bhavShortcutMap;
+        private EyeXFramework.Forms.BehaviorMap bhavRearrangeMap;
+        private EyeXFramework.Forms.BehaviorMap bhavCrosshairMap;
+        private Panel pnlMic;
+        private Label lbMic;
+        private Panel pnlClearMic;
+        private Button btnClearMic;
+        private Panel pnlSetMic;
+        private Button btnSetMic;
+        private PictureBox pictureBox6;
     }
 }
