@@ -7,9 +7,47 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GazeToolBar", "GazeToolBar\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeXFramework", "EyeXFramework\EyeXFramework.csproj", "{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiKey", "OptiKey\OptiKey.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karna.Magnification", "Karna.Magnification\Karna.Magnification.csproj", "{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{117E0D45-AA2F-4A2B-AAD5-C3101E1CBCA8}"
+	ProjectSection(SolutionItems) = preProject
+		..\OptiKeyLite\docs\Certificates and signing notes.txt = ..\OptiKeyLite\docs\Certificates and signing notes.txt
+		..\OptiKeyLite\docs\Deployment.txt = ..\OptiKeyLite\docs\Deployment.txt
+		..\OptiKeyLite\docs\Design decision notes.txt = ..\OptiKeyLite\docs\Design decision notes.txt
+		..\OptiKeyLite\docs\Icon design notes.txt = ..\OptiKeyLite\docs\Icon design notes.txt
+		..\OptiKeyLite\docs\Localisation.xls = ..\OptiKeyLite\docs\Localisation.xls
+		..\OptiKeyLite\docs\Localize.md = ..\OptiKeyLite\docs\Localize.md
+		..\OptiKeyLite\docs\Physical setup of eye trackers.txt = ..\OptiKeyLite\docs\Physical setup of eye trackers.txt
+		..\OptiKeyLite\docs\UiAccess.txt = ..\OptiKeyLite\docs\UiAccess.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7AD7A9FD-5D4F-4C9B-A7E8-D3A46BD4B4E3}"
+	ProjectSection(SolutionItems) = preProject
+		..\OptiKeyLite\.nuget\NuGet.Config = ..\OptiKeyLite\.nuget\NuGet.Config
+		..\OptiKeyLite\.nuget\NuGet.exe = ..\OptiKeyLite\.nuget\NuGet.exe
+		..\OptiKeyLite\.nuget\NuGet.targets = ..\OptiKeyLite\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items (2)", "Solution Items (2)", "{AC399855-C756-49CE-8189-6BFA8A9D8F2E}"
+	ProjectSection(SolutionItems) = preProject
+		..\OptiKeyLite\docs\Certificates and signing notes.txt = ..\OptiKeyLite\docs\Certificates and signing notes.txt
+		..\OptiKeyLite\docs\Deployment.txt = ..\OptiKeyLite\docs\Deployment.txt
+		..\OptiKeyLite\docs\Design decision notes.txt = ..\OptiKeyLite\docs\Design decision notes.txt
+		..\OptiKeyLite\docs\Icon design notes.txt = ..\OptiKeyLite\docs\Icon design notes.txt
+		..\OptiKeyLite\docs\Localisation.xls = ..\OptiKeyLite\docs\Localisation.xls
+		..\OptiKeyLite\docs\Localize.md = ..\OptiKeyLite\docs\Localize.md
+		..\OptiKeyLite\docs\Physical setup of eye trackers.txt = ..\OptiKeyLite\docs\Physical setup of eye trackers.txt
+		..\OptiKeyLite\docs\UiAccess.txt = ..\OptiKeyLite\docs\UiAccess.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget (2)", ".nuget (2)", "{45229E5A-0532-4239-8974-3C1367905E38}"
+	ProjectSection(SolutionItems) = preProject
+		..\OptiKeyLite\.nuget\NuGet.Config = ..\OptiKeyLite\.nuget\NuGet.Config
+		..\OptiKeyLite\.nuget\NuGet.exe = ..\OptiKeyLite\.nuget\NuGet.exe
+		..\OptiKeyLite\.nuget\NuGet.targets = ..\OptiKeyLite\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptiKeyLite", "..\OptiKeyLite\src\JuliusSweetland.OptiKey\OptiKeyLite.csproj", "{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +83,6 @@ Global
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x64.Build.0 = Release|x64
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.ActiveCfg = Release|x86
 		{C9BBFBAC-FD0F-46DE-843F-F3620BF79DC2}.Release|x86.Build.0 = Release|x86
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x64.ActiveCfg = Release|Any CPU
-		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x86.ActiveCfg = Release|Any CPU
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -65,6 +95,18 @@ Global
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Release|x64.Build.0 = Release|Any CPU
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Release|x86.ActiveCfg = Release|Any CPU
 		{23E96E6A-2CC7-4514-A8DB-E0605B4EFDE9}.Release|x86.Build.0 = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x64.Build.0 = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Debug|x86.Build.0 = Debug|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x64.ActiveCfg = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x64.Build.0 = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x86.ActiveCfg = Release|Any CPU
+		{6865C5AF-C6F0-4BDA-BA1C-7AE8BC225234}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

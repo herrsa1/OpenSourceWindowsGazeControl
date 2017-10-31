@@ -26,7 +26,7 @@ namespace GazeToolBar
         private MenuItem menuItemStartOnOff;
         private MenuItem settingsItem;
         public StateManager stateManager;
-        private static FormsEyeXHost eyeXHost; 
+        private static FormsEyeXHost eyeXHost;
 
         //Allocate memory location for KeyboardHook and worker.
         public KeyboardHook LowLevelKeyBoardHook;
@@ -41,14 +41,14 @@ namespace GazeToolBar
 
         public Form1()
         {
-            
+
             InitializeComponent();
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
             settingsItem = new MenuItem();
             initMenuItem();
-            
+
             highlightPannerList = new List<Panel>();
             highlightPannerList.Add(pnlHiLteRightClick);
             highlightPannerList.Add(pnlHighLightSingleLeft);
@@ -142,7 +142,7 @@ namespace GazeToolBar
 
         public void menuItemAutostart_click(object o, EventArgs e)
         {
-            if(AutoStart.IsOn())
+            if (AutoStart.IsOn())
             {
                 AutoStart.SetOff();
             }
@@ -201,15 +201,15 @@ namespace GazeToolBar
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-              settings = new Settings(this, eyeXHost);
-              settings.Show();
+            settings = new Settings(this, eyeXHost);
+            settings.Show();
         }
 
         public bool AttemptToggle(ActionToBePerformed action)
         {
             bool isScroll = (SystemFlags.currentState == SystemState.ApplyAction || SystemFlags.currentState == SystemState.ScrollWait) && (action == ActionToBePerformed.Scroll);
 
-            if(SystemFlags.currentState == SystemState.ActionButtonSelected || SystemFlags.currentState == SystemState.ZoomWait || isScroll)
+            if (SystemFlags.currentState == SystemState.ActionButtonSelected || SystemFlags.currentState == SystemState.ZoomWait || isScroll)
             {
                 if (SystemFlags.actionToBePerformed == action)
                 {
@@ -217,7 +217,7 @@ namespace GazeToolBar
                     stateManager.EnterWaitState();
 
                     //special scrolling case
-                    if(isScroll)
+                    if (isScroll)
                     {
                         SystemFlags.scrolling = false;
                         stateManager.scrollWorker.stopScroll();
@@ -234,7 +234,7 @@ namespace GazeToolBar
                 return;
 
             SystemFlags.actionButtonSelected = true;//raise action button flag
-            SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;   
+            SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)
@@ -268,7 +268,7 @@ namespace GazeToolBar
                 keyboard.Show();
                 keyboard.IsEnabled = true;
                 keyboard.InputResume();
-            }                  
+            }
         }
 
         private void btnScoll_Click(object sender, EventArgs e)
@@ -304,18 +304,18 @@ namespace GazeToolBar
         private void setButtonPanelHight(List<Panel> panelList)
         {
             int screenHeight = Constants.SCREEN_SIZE.Height;
-           
+
             int amountOfPanels = panelList.Count;
-           
+
             int panelHight = panelList[0].Height;
-            
+
             int screenSectionSize = screenHeight / amountOfPanels;
-           
+
             int spacer = screenSectionSize - panelHight;
-            
+
             int spacerBuffer = spacer / 2;
 
-            foreach(Panel currentPanel in panelList)
+            foreach (Panel currentPanel in panelList)
             {
                 Point panelLocation = new Point(currentPanel.Location.X, spacerBuffer);
 
