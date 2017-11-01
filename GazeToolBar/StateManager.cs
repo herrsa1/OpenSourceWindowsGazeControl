@@ -14,9 +14,9 @@ namespace GazeToolBar
 {
 
 
-
     public enum SystemState { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }
-    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll, MicInput }
+    public enum SettingState { General, Zoom, Shortcut, Rearrange, Crosshair }
 
     public class StateManager
     {
@@ -270,6 +270,14 @@ namespace GazeToolBar
                         SystemFlags.scrolling = true;
                         VirtualMouse.SetCursorPos(fixationPoint.X, fixationPoint.Y);
                         scrollWorker.StartScroll();
+                    }
+                    else if (SystemFlags.actionToBePerformed == ActionToBePerformed.MicInput)
+                    {
+                        VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                        if (Program.readSettings.micInput != Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE)
+                        {
+                            SendKeys.Send(Program.readSettings.micInput);
+                        }
                     }
                     fixationWorker = new FixationDetection();
                     break;

@@ -62,6 +62,7 @@ namespace GazeToolBar
             lbRight.Text = form1.FKeyMapDictionary[ActionToBePerformed.RightClick];
             lbLeft.Text = form1.FKeyMapDictionary[ActionToBePerformed.LeftClick];
             lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
+            lbMic.Text = form1.FKeyMapDictionary[ActionToBePerformed.MicInput];
 
             WaitForUserKeyPress = false;
 
@@ -291,6 +292,7 @@ namespace GazeToolBar
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
+                setting.micInput = lbMic.Text;
                 setting.sidebar = selectedActions.ToArray<string>();
                 setting.Crosshair = trackBarCrosshair.Value;
                 setting.maxZoom = trackBarZoomAmount.Value;
@@ -351,13 +353,14 @@ namespace GazeToolBar
             lbDouble.Text = Program.readSettings.doubleClick;
             lbRight.Text = Program.readSettings.rightClick;
             lbScroll.Text = Program.readSettings.scoll;
+            lbMic.Text = Program.readSettings.micInput;
 
             trackBarCrosshair.Value = Program.readSettings.Crosshair;
             UpdateCrosshair();
         }
 
-        private void changePanel(Panel  pnlToShow)
-        { 
+        private void changePanel(Panel pnlToShow)
+        {
             shownPanel.SendToBack();
             shownPanel.Hide();
             shownPanel = pnlToShow;
@@ -370,7 +373,7 @@ namespace GazeToolBar
             if (shownPanel != pnlGeneral)
             {
                 changePanel(pnlGeneral);
-                UseMap(SettingState.GENERAL);
+                UseMap(SettingState.General);
 
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
@@ -387,7 +390,7 @@ namespace GazeToolBar
             if (shownPanel != pnlPageKeyboard)
             {
                 changePanel(pnlPageKeyboard);
-                UseMap(SettingState.SHORTCUT);
+                UseMap(SettingState.Shortcut);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
@@ -404,7 +407,7 @@ namespace GazeToolBar
             if (shownPanel != pnlZoomSettings)
             {
                 changePanel(pnlZoomSettings);
-                UseMap(SettingState.ZOOM);
+                UseMap(SettingState.Zoom);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -419,7 +422,7 @@ namespace GazeToolBar
             if (shownPanel != pnlRearrange)
             {
                 changePanel(pnlRearrange);
-                UseMap(SettingState.REARRANGE);
+                UseMap(SettingState.Rearrange);
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -433,7 +436,7 @@ namespace GazeToolBar
         private void buttonCrosshairSetting_Click(object sender, EventArgs e)
         {
             changePanel(pnlCrosshairPage);
-            UseMap(SettingState.CROSSHAIR);
+            UseMap(SettingState.Crosshair);
 
             ChangeButtonColor(btnGeneralSetting, false, true);
             ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -557,6 +560,9 @@ namespace GazeToolBar
                 case ActionToBePerformed.DoubleClick:
                     lbDouble.Text = newKey;
                     break;
+                case ActionToBePerformed.MicInput:
+                    lbMic.Text = newKey;
+                    break;
             }
         }
 
@@ -659,6 +665,7 @@ namespace GazeToolBar
             buttonMap.Add("double_left_click", btnActionDoubleLeftClick);
             buttonMap.Add("scroll", btnActionScrollClick);
             buttonMap.Add("settings", btnActionSettings);
+            buttonMap.Add("mic", btnActionMic);
 
             actionButtons.Add(btnActionDoubleLeftClick);
             actionButtons.Add(btnActionLeftClick);
@@ -666,6 +673,7 @@ namespace GazeToolBar
             actionButtons.Add(btnActionScrollClick);
             actionButtons.Add(btnActionKeyboard);
             actionButtons.Add(btnActionSettings);
+            actionButtons.Add(btnActionMic);
 
             actionPanels.Add(pnlDoubleLeftClickButton);
             actionPanels.Add(pnlLeftClickButton);
@@ -673,6 +681,7 @@ namespace GazeToolBar
             actionPanels.Add(pnlScrollClickButton);
             actionPanels.Add(pnlKeyboardButton);
             actionPanels.Add(pnlSettingsButton);
+            actionPanels.Add(pnlMicButton);
 
             foreach (Panel pnl in actionPanels)
             {
@@ -705,6 +714,7 @@ namespace GazeToolBar
             const int XGAP = 10;
 
             int ind = 0;
+            int outOfScreen = 0;
             int notUsed = 0;
             int notUsedY = 0;
             foreach (Button b in actionButtons)
@@ -714,8 +724,17 @@ namespace GazeToolBar
                     int selIndex = selectedActions.IndexOf(GetStringForButton(b));
                     int y = yPos + ((b.Height + YGAP) * selIndex);
 
-                    actionPanels[ind].Left = RIGHT_XPOS;
-                    actionPanels[ind].Top = y;
+                    if (y + b.Height < pnlRearrange.Height)
+                    {
+                        actionPanels[ind].Left = RIGHT_XPOS;
+                        actionPanels[ind].Top = y;
+                    }
+                    else
+                    {
+                        actionPanels[ind].Left = RIGHT_XPOS + b.Width + XGAP;
+                        actionPanels[ind].Top = yPos + ((b.Height + YGAP) * outOfScreen);
+                        outOfScreen++;
+                    }
 
                 }
                 else
@@ -852,6 +871,7 @@ namespace GazeToolBar
                 btnFeedback.BackColor = Color.White;
         }
 
+
         private void buttonStickyLeftClick_Click(object sender, EventArgs e)
         {
             stickyLeft = !stickyLeft;
@@ -861,22 +881,11 @@ namespace GazeToolBar
                 buttonStickyLeftClick.BackColor = Color.White;
         }
 
-        private void btnSetMic_Click(object sender, EventArgs e)
-        {
-            lbMic.Text = "Set mic button";
-        }
-
-        private void btnClearMic_Click(object sender, EventArgs e)
-        {
-            lbMic.Text = "Cleared mic button";
-        }
-
         private void btnDefaults_Click(object sender, EventArgs e)
         {
             File.Delete(Program.path);
             Program.ReadWriteJson();
             Settings_Load(this, new System.EventArgs());
         }
-
     }
 }

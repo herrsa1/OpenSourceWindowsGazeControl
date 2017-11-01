@@ -32,6 +32,7 @@ namespace GazeToolBar
             bhavMap.Add(btnSettings, new GazeAwareBehavior(OnBtnSettings) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnMic, new GazeAwareBehavior(OnBtnMicClick) { DelayMilliseconds = delayBeforeButtonSelected });
             //bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
 
             bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -41,8 +42,9 @@ namespace GazeToolBar
             bhavMap.Add(pnlHighLightSettings, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighLightMic, new GazeAwareBehavior(OnGazeChangeBTColour));
 
-            
+
         }
 
 
@@ -118,6 +120,16 @@ namespace GazeToolBar
             }
         }
 
+        private void OnBtnMicClick(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnMic.BackColor = Constants.SelectedColor;
+                btnMic.PerformClick();
+            }
+        }
+
         //private void OnBtnDragAndDrop(object sender, EventArgs e)
         //{
         //    resetButtonsColor();
@@ -127,7 +139,7 @@ namespace GazeToolBar
 
         public void resetButtonsColor()
         {
-            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard);
+            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnMic);
         }
 
         /// <summary>
