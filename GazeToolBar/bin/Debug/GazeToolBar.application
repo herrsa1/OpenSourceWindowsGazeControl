@@ -14,11 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-<<<<<<< HEAD
-        <dsig:DigestValue>GTuUBLONT6n5DnNWo5xMggcJwYlzTujIm45o1gktTng=</dsig:DigestValue>
-=======
-        <dsig:DigestValue>LiCLcoetiF6J7Hcocyi/cB3zox0ZkDg5Vsx4b5lFiks=</dsig:DigestValue>
->>>>>>> Fix crosshair slider being too long
+        <dsig:DigestValue>wIROeBx3NYwFI/4ilWYrsCgB/dIjunOCr9MD8IFP0lU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

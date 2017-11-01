@@ -334,17 +334,10 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
-<<<<<<< HEAD
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(805, 116);
-            this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 65);
-=======
             this.pnlPageKeyboard.Location = new System.Drawing.Point(566, 5);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
             this.pnlPageKeyboard.Size = new System.Drawing.Size(218, 65);
->>>>>>> Fix crosshair slider being too long
             this.pnlPageKeyboard.TabIndex = 26;
             this.pnlPageKeyboard.Visible = false;
             // 
@@ -1925,11 +1918,8 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
-<<<<<<< HEAD
             this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
-=======
->>>>>>> Fix crosshair slider being too long
             this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlCrosshairPage);
