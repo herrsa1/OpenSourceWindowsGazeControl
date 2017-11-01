@@ -29,6 +29,7 @@ namespace GazeToolBar
         FormsEyeXHost eyeXHost;
         ShortcutKeyWorker shortCutKeyWorker;
         public ZoomMagnifier magnifier;
+        bool micIsOn = false;
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
         {
@@ -147,7 +148,7 @@ namespace GazeToolBar
                     }
                     else
                     {
-                        if(Program.readSettings.stickyLeftClick && SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick) //if stick left && left click
+                        if (Program.readSettings.stickyLeftClick && SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick) //if stick left && left click
                         {
                             EnterWaitState();
 
@@ -273,10 +274,14 @@ namespace GazeToolBar
                     }
                     else if (SystemFlags.actionToBePerformed == ActionToBePerformed.MicInput)
                     {
-                        VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
                         if (Program.readSettings.micInput != Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE)
                         {
+                            if (!micIsOn)
+                            {
+                                VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                            }
                             SendKeys.Send(Program.readSettings.micInput);
+                            micIsOn = !micIsOn;
                         }
                     }
                     fixationWorker = new FixationDetection();
