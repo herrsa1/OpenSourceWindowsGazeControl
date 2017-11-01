@@ -334,10 +334,17 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
+<<<<<<< HEAD
             this.pnlPageKeyboard.Location = new System.Drawing.Point(805, 116);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
             this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 65);
+=======
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(566, 5);
+            this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlPageKeyboard.Name = "pnlPageKeyboard";
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(218, 65);
+>>>>>>> Fix crosshair slider being too long
             this.pnlPageKeyboard.TabIndex = 26;
             this.pnlPageKeyboard.Visible = false;
             // 
@@ -1403,6 +1410,7 @@ namespace GazeToolBar
             // pnlFixTimeLengthContent
             // 
             this.pnlFixTimeLengthContent.BackColor = System.Drawing.Color.Black;
+            this.pnlFixTimeLengthContent.Controls.Add(this.pnlPageKeyboard);
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLPlus);
             this.pnlFixTimeLengthContent.Controls.Add(this.trackBarFixTimeLength);
             this.pnlFixTimeLengthContent.Controls.Add(this.pnlFTLMins);
@@ -1725,10 +1733,10 @@ namespace GazeToolBar
             this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1513, 116);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1465, 116);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
-            this.pnlCrosshairPage.Size = new System.Drawing.Size(150, 78);
+            this.pnlCrosshairPage.Size = new System.Drawing.Size(198, 65);
             this.pnlCrosshairPage.TabIndex = 30;
             this.pnlCrosshairPage.Visible = false;
             // 
@@ -1857,7 +1865,7 @@ namespace GazeToolBar
             // 
             this.trackBarCrosshair.BackColor = System.Drawing.Color.Black;
             this.trackBarCrosshair.Location = new System.Drawing.Point(170, 58);
-            this.trackBarCrosshair.Maximum = 8;
+            this.trackBarCrosshair.Maximum = 7;
             this.trackBarCrosshair.Name = "trackBarCrosshair";
             this.trackBarCrosshair.Size = new System.Drawing.Size(896, 45);
             this.trackBarCrosshair.TabIndex = 12;
@@ -1917,8 +1925,11 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
+<<<<<<< HEAD
             this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
+=======
+>>>>>>> Fix crosshair slider being too long
             this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlCrosshairPage);
