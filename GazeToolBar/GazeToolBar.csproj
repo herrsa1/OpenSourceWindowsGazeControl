@@ -181,7 +181,6 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
-    <Compile Include="SettingState.cs" />
     <Compile Include="ShortcutKeyWorker.cs" />
     <Compile Include="StateManager.cs" />
     <Compile Include="StateManager_new.cs" />

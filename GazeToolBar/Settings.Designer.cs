@@ -137,6 +137,8 @@ namespace GazeToolBar
             this.btnFixTimeLengthMins = new System.Windows.Forms.Button();
             this.lblFixationDetectionTimeLength = new System.Windows.Forms.Label();
             this.pnlRearrange = new System.Windows.Forms.Panel();
+            this.pnlMicButton = new System.Windows.Forms.Panel();
+            this.btnActionMic = new System.Windows.Forms.Button();
             this.pnlRearrangeControls = new System.Windows.Forms.Panel();
             this.pnlMoveUpButton = new System.Windows.Forms.Panel();
             this.btnMoveUp = new System.Windows.Forms.Button();
@@ -239,6 +241,7 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).BeginInit();
             this.pnlFTLMins.SuspendLayout();
             this.pnlRearrange.SuspendLayout();
+            this.pnlMicButton.SuspendLayout();
             this.pnlRearrangeControls.SuspendLayout();
             this.pnlMoveUpButton.SuspendLayout();
             this.pnlMoveDownButton.SuspendLayout();
@@ -331,10 +334,10 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(37, 127);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(805, 116);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(1432, 564);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 65);
             this.pnlPageKeyboard.TabIndex = 26;
             this.pnlPageKeyboard.Visible = false;
             // 
@@ -1483,6 +1486,7 @@ namespace GazeToolBar
             // pnlRearrange
             // 
             this.pnlRearrange.BackColor = System.Drawing.Color.Black;
+            this.pnlRearrange.Controls.Add(this.pnlMicButton);
             this.pnlRearrange.Controls.Add(this.pnlRearrangeControls);
             this.pnlRearrange.Controls.Add(this.pnlRightClickButton);
             this.pnlRearrange.Controls.Add(this.pnlSettingsButton);
@@ -1490,11 +1494,32 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlKeyboardButton);
             this.pnlRearrange.Controls.Add(this.pnlScrollClickButton);
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
-            this.pnlRearrange.Location = new System.Drawing.Point(1159, 123);
+            this.pnlRearrange.Location = new System.Drawing.Point(49, 99);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(152, 71);
+            this.pnlRearrange.Size = new System.Drawing.Size(989, 495);
             this.pnlRearrange.TabIndex = 30;
             this.pnlRearrange.Visible = false;
+            // 
+            // pnlMicButton
+            // 
+            this.pnlMicButton.BackColor = System.Drawing.Color.Transparent;
+            this.pnlMicButton.Controls.Add(this.btnActionMic);
+            this.pnlMicButton.Location = new System.Drawing.Point(184, 353);
+            this.pnlMicButton.Name = "pnlMicButton";
+            this.pnlMicButton.Size = new System.Drawing.Size(94, 95);
+            this.pnlMicButton.TabIndex = 3;
+            // 
+            // btnActionMic
+            // 
+            this.btnActionMic.BackColor = System.Drawing.Color.Black;
+            this.btnActionMic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActionMic.Image = global::GazeToolBar.Properties.Resources.Mic_icon;
+            this.btnActionMic.Location = new System.Drawing.Point(2, 2);
+            this.btnActionMic.Name = "btnActionMic";
+            this.btnActionMic.Size = new System.Drawing.Size(90, 90);
+            this.btnActionMic.TabIndex = 0;
+            this.btnActionMic.UseVisualStyleBackColor = false;
+            this.btnActionMic.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // pnlRearrangeControls
             // 
@@ -1892,12 +1917,12 @@ namespace GazeToolBar
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1916, 753);
+            this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.pnlCrosshairPage);
             this.Controls.Add(this.panelSaveAndCancel);
-            this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlSwitchSetting);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1987,6 +2012,7 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).EndInit();
             this.pnlFTLMins.ResumeLayout(false);
             this.pnlRearrange.ResumeLayout(false);
+            this.pnlMicButton.ResumeLayout(false);
             this.pnlRearrangeControls.ResumeLayout(false);
             this.pnlMoveUpButton.ResumeLayout(false);
             this.pnlMoveDownButton.ResumeLayout(false);
@@ -2163,5 +2189,7 @@ namespace GazeToolBar
         private Panel pnlSetMic;
         private Button btnSetMic;
         private PictureBox pictureBox6;
+        private Panel pnlMicButton;
+        private Button btnActionMic;
     }
 }

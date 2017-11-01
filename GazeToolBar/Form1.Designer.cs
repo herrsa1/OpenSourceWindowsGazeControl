@@ -46,12 +46,15 @@
             this.bhavMapHLCurrentGazeOnBT = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pnlHighLightMic = new System.Windows.Forms.Panel();
+            this.btnMic = new System.Windows.Forms.Button();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
             this.pnlHighLightSettings.SuspendLayout();
             this.pnlHighLightDoubleClick.SuspendLayout();
             this.pnlHighLightSingleLeft.SuspendLayout();
             this.pnlHiLteRightClick.SuspendLayout();
+            this.pnlHighLightMic.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHighLightKeyboard
@@ -185,12 +188,33 @@
             this.notifyIcon.Text = "notifyIcon";
             this.notifyIcon.Visible = true;
             // 
+            // pnlHighLightMic
+            // 
+            this.pnlHighLightMic.Controls.Add(this.btnMic);
+            this.pnlHighLightMic.Location = new System.Drawing.Point(15, 346);
+            this.pnlHighLightMic.Name = "pnlHighLightMic";
+            this.pnlHighLightMic.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightMic.TabIndex = 9;
+            // 
+            // btnMic
+            // 
+            this.btnMic.BackColor = System.Drawing.Color.Black;
+            this.btnMic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMic.Image = global::GazeToolBar.Properties.Resources.Mic_icon;
+            this.btnMic.Location = new System.Drawing.Point(3, 3);
+            this.btnMic.Name = "btnMic";
+            this.btnMic.Size = new System.Drawing.Size(75, 75);
+            this.btnMic.TabIndex = 4;
+            this.btnMic.UseVisualStyleBackColor = false;
+            this.btnMic.Click += new System.EventHandler(this.btnMic_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(120, 780);
             this.ControlBox = false;
+            this.Controls.Add(this.pnlHighLightMic);
             this.Controls.Add(this.pnlHighLightKeyboard);
             this.Controls.Add(this.pnlHiLteRightClick);
             this.Controls.Add(this.pnlHighLightScrol);
@@ -213,6 +237,7 @@
             this.pnlHighLightDoubleClick.ResumeLayout(false);
             this.pnlHighLightSingleLeft.ResumeLayout(false);
             this.pnlHiLteRightClick.ResumeLayout(false);
+            this.pnlHighLightMic.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -237,6 +262,8 @@
         private System.Windows.Forms.Panel pnlHighLightScrol;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.Panel pnlHighLightMic;
+        private System.Windows.Forms.Button btnMic;
     }
 }
 

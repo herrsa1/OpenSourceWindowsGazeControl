@@ -56,6 +56,7 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightScrol);
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightSettings);
+            highlightPannerList.Add(pnlHighLightMic);
             setButtonPanelHight(highlightPannerList);
 
 
@@ -113,6 +114,8 @@ namespace GazeToolBar
                     return pnlHighLightKeyboard;
                 case "settings":
                     return pnlHighLightSettings;
+                case "mic":
+                    return pnlHighLightMic;
                 default:
                     return null;
             }
@@ -170,6 +173,7 @@ namespace GazeToolBar
             FKeyMapDictionary.Add(ActionToBePerformed.LeftClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
             FKeyMapDictionary.Add(ActionToBePerformed.Scroll, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
             FKeyMapDictionary.Add(ActionToBePerformed.RightClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.MicInput, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
 
 
             //Instantiate keyboard hook and pass into worker class.
@@ -191,6 +195,7 @@ namespace GazeToolBar
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.DoubleClick] = Program.readSettings.doubleClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.RightClick] = Program.readSettings.rightClick;
             shortCutKeyWorker.keyAssignments[ActionToBePerformed.Scroll] = Program.readSettings.scoll;
+            shortCutKeyWorker.keyAssignments[ActionToBePerformed.MicInput] = Program.readSettings.micInput;
             timer2.Enabled = true;
 
             Height = (int)System.Windows.SystemParameters.PrimaryScreenHeight;
@@ -279,6 +284,15 @@ namespace GazeToolBar
             SystemFlags.actionButtonSelected = true;
             SystemFlags.actionToBePerformed = ActionToBePerformed.Scroll;
 
+        }
+
+        private void btnMic_Click(object sender, EventArgs e)
+        {
+            if (AttemptToggle(ActionToBePerformed.MicInput))
+                return;
+
+            SystemFlags.actionButtonSelected = true;//raise action button flag
+            SystemFlags.actionToBePerformed = ActionToBePerformed.MicInput;
         }
 
         public void OnStartTextChange()
