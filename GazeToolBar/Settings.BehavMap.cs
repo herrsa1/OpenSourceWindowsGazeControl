@@ -98,7 +98,7 @@ namespace GazeToolBar
             bhavGeneralMap.Add(pnlFTLPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlFTOMins, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlFTOPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavGeneralMap.Add(pnlAuto, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavGeneralMap.Add(pnlOtherAuto, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlStickyLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlDefaults, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
@@ -127,6 +127,7 @@ namespace GazeToolBar
             bhavShortcutMap.Add(btClearFKeyDoubleClick, new GazeAwareBehavior(btClearFKeyDoubleClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavShortcutMap.Add(btClearFKeyScroll, new GazeAwareBehavior(btClearFKeyScroll_Click) { DelayMilliseconds = buttonClickDelay });
             bhavShortcutMap.Add(btnSetMic, new GazeAwareBehavior(btnSetMic_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavShortcutMap.Add(btnSetMicOff, new GazeAwareBehavior(btnSetMicOff_Click) { DelayMilliseconds = buttonClickDelay });
             bhavShortcutMap.Add(btnClearMic, new GazeAwareBehavior(btnClearMic_Click) { DelayMilliseconds = buttonClickDelay });
 
             bhavShortcutMap.Add(pnlFKeyHighlight1, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -138,6 +139,7 @@ namespace GazeToolBar
             bhavShortcutMap.Add(pnlFKeyHighlight7, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavShortcutMap.Add(pnlFKeyHighlight8, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavShortcutMap.Add(pnlSetMic, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavShortcutMap.Add(pnlSetMicOff, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavShortcutMap.Add(pnlClearMic, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
@@ -151,7 +153,8 @@ namespace GazeToolBar
             bhavRearrangeMap.Add(btnActionLeftClick, new GazeAwareBehavior(OnBtnActionLeftClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavRearrangeMap.Add(btnActionRightClick, new GazeAwareBehavior(OnBtnActionRightClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavRearrangeMap.Add(btnActionScrollClick, new GazeAwareBehavior(OnBtnActionScrollClick_Click) { DelayMilliseconds = buttonClickDelay });
-            bhavRearrangeMap.Add(btnActionSettings, new GazeAwareBehavior(OnBtnActionSettings_Click) { DelayMilliseconds = buttonClickDelay });           
+            bhavRearrangeMap.Add(btnActionSettings, new GazeAwareBehavior(OnBtnActionSettings_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavRearrangeMap.Add(btnActionMic, new GazeAwareBehavior(OnBtnActionMic_Click) { DelayMilliseconds = buttonClickDelay });
 
             bhavRearrangeMap.Add(pnlMoveUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlMoveDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -161,7 +164,8 @@ namespace GazeToolBar
             bhavRearrangeMap.Add(pnlLeftClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlRightClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlScrollClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavRearrangeMap.Add(pnlSettingsButton, new GazeAwareBehavior(OnGazeChangeBTColour));           
+            bhavRearrangeMap.Add(pnlSettingsButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavRearrangeMap.Add(pnlMicButton, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
         private void setupCrosshairMap()
@@ -172,7 +176,7 @@ namespace GazeToolBar
 
             bhavCrosshairMap.Add(pnlCrosshairDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavCrosshairMap.Add(pnlCrosshairUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavCrosshairMap.Add(pnlFeedbackButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavCrosshairMap.Add(pnlFeedbackContent, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
         private void setupMap()
         {
@@ -352,6 +356,11 @@ namespace GazeToolBar
             if (e.HasGaze) btnDefaults.PerformClick();
         }
 
+        private void OnBtnActionMic_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnActionMic.PerformClick();
+        }
+
 
         //====================================================================================
 
@@ -398,6 +407,13 @@ namespace GazeToolBar
             lbFKeyFeedback.Text = "please press a key";
         }
 
+        private void btnSetMicOff_Click(object sender, EventArgs e)
+        {
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.MicInputOff;
+            lbFKeyFeedback.Text = "please press a key";
+        }
+
         //private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
         //{
 
@@ -433,7 +449,9 @@ namespace GazeToolBar
         private void btnClearMic_Click(object sender, EventArgs e)
         {
             form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.MicInput] = notAssigned;
-            lbMic.Text = notAssigned;
+            lbMicOn.Text = notAssigned;
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.MicInputOff] = notAssigned;
+            lbMicOff.Text = notAssigned;
         }
 
         //private void btClearFKeyDrapAndDrop_Click(object sender, EventArgs e)

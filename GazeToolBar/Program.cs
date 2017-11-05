@@ -56,6 +56,7 @@ namespace GazeToolBar
                 defaultSetting.rightClick = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.scoll = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.micInput = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
+                defaultSetting.micInputOff = Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE;
                 defaultSetting.sidebar = new string[] { "right_click", "left_click", "double_left_click", "mic", "scroll", "keyboard", "settings" };
                 defaultSetting.maxZoom = 2;
                 defaultSetting.Crosshair = 1;
