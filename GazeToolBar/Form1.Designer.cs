@@ -102,7 +102,7 @@
             this.pnlHighLightSettings.Controls.Add(this.btnSettings);
             this.pnlHighLightSettings.Location = new System.Drawing.Point(15, 682);
             this.pnlHighLightSettings.Name = "pnlHighLightSettings";
-            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 80);
+            this.pnlHighLightSettings.Size = new System.Drawing.Size(80, 84);
             this.pnlHighLightSettings.TabIndex = 9;
             // 
             // btnSettings
@@ -112,7 +112,7 @@
             this.btnSettings.Image = global::GazeToolBar.Properties.Resources.settings_icon;
             this.btnSettings.Location = new System.Drawing.Point(3, 3);
             this.btnSettings.Name = "btnSettings";
-            this.btnSettings.Size = new System.Drawing.Size(75, 75);
+            this.btnSettings.Size = new System.Drawing.Size(75, 78);
             this.btnSettings.TabIndex = 5;
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
