@@ -44,6 +44,9 @@ namespace GazeToolBar
                 case SettingState.Crosshair: //Crosshair settings
                     bhavCrosshairMap.Dispose();
                     break;
+                case SettingState.Confirm: //Confirm page
+                    bhavConfirmMap.Dispose();
+                    break;
                 default:
                     break;
             }
@@ -79,8 +82,26 @@ namespace GazeToolBar
                     setupCrosshairMap();
                     currentSelection = SettingState.Crosshair;
                     break;
+                case SettingState.Confirm: //Confirm page 
+                    eyeXHost.Connect(bhavConfirmMap);
+                    setupConfirmMap();
+                    currentSelection = SettingState.Confirm;
+                    break;
                 default:
                     break;
+            }
+        }
+
+        public void RemoveAndAddMainBhavMap(string removeOrAdd)
+        {
+            if (removeOrAdd == "add")
+            {
+                eyeXHost.Connect(bhavSettingMap);
+                setupMap();
+            }
+            else if (removeOrAdd == "remove")
+            {
+                bhavSettingMap.Dispose();
             }
         }
 
@@ -98,7 +119,8 @@ namespace GazeToolBar
             bhavGeneralMap.Add(pnlFTLPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlFTOMins, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlFTOPlus, new GazeAwareBehavior(OnGazeChangeBTColour));
-            bhavGeneralMap.Add(pnlOtherAuto, new GazeAwareBehavior(OnGazeChangeBTColour)); bhavGeneralMap.Add(pnlStickyLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavGeneralMap.Add(pnlOtherAuto, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavGeneralMap.Add(pnlStickyLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavGeneralMap.Add(pnlDefaults, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
@@ -176,6 +198,15 @@ namespace GazeToolBar
             bhavCrosshairMap.Add(pnlCrosshairDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavCrosshairMap.Add(pnlCrosshairUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavCrosshairMap.Add(pnlFeedbackContent, new GazeAwareBehavior(OnGazeChangeBTColour));
+        }
+
+        private void setupConfirmMap()
+        {
+            bhavConfirmMap.Add(btnDefaultConfirmYes, new GazeAwareBehavior(OnBtnDefaultConfirmYes_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavConfirmMap.Add(btnDefaultConfirmNo, new GazeAwareBehavior(OnBtnDefaultConfirmNo_Click) { DelayMilliseconds = buttonClickDelay });
+
+            bhavConfirmMap.Add(pnlDefaultConfirmYes, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavConfirmMap.Add(pnlDefaultConfirmNo, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
         private void setupMap()
         {
@@ -356,20 +387,29 @@ namespace GazeToolBar
         }
 
         private void OnBtnActionMic_Click(object sender, GazeAwareEventArgs e)
-	        {
-	            if (e.HasGaze) btnActionMic.PerformClick();
-	        }
+        {
+            if (e.HasGaze) btnActionMic.PerformClick();
+        }
+
+        private void OnBtnDefaultConfirmYes_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDefaultConfirmYes.PerformClick();
+        }
+        private void OnBtnDefaultConfirmNo_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDefaultConfirmNo.PerformClick();
+        }
 
 
-    //====================================================================================
+        //====================================================================================
 
 
-    //Shortcut keys panel buy button event methods. 
+        //Shortcut keys panel buy button event methods. 
 
 
-    //====================================================================================
+        //====================================================================================
 
-    ActionToBePerformed actionToAssignKey;
+        ActionToBePerformed actionToAssignKey;
 
         private void btFKeyLeftClick_Click(object sender, EventArgs e)
         {
@@ -407,20 +447,20 @@ namespace GazeToolBar
         }
 
         private void btnSetMicOff_Click(object sender, EventArgs e)
-	        {
-	            WaitForUserKeyPress = true;
-	            actionToAssignKey = ActionToBePerformed.MicInputOff;
-	            lbFKeyFeedback.Text = "please press a key";
-	        }
-    //private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
-    //{
+        {
+            WaitForUserKeyPress = true;
+            actionToAssignKey = ActionToBePerformed.MicInputOff;
+            lbFKeyFeedback.Text = "please press a key";
+        }
+        //private void btFKeyDrapAndDrop_Click(object sender, EventArgs e)
+        //{
 
-    //}
+        //}
 
 
-    //Clear key map
+        //Clear key map
 
-    private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
+        private void btClearFKeyLeftClick_Click(object sender, EventArgs e)
         {
             form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
             lbLeft.Text = notAssigned;

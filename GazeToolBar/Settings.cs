@@ -17,6 +17,7 @@ namespace GazeToolBar
 
         private Panel shownPanel;
 
+        private Size confirmSize = new Size(595, 300);
         private bool WaitForUserKeyPress;
         private static FormsEyeXHost eyeXHost;
         private List<Point> sidebarActionInitPositions = new List<Point>();
@@ -36,6 +37,9 @@ namespace GazeToolBar
             InitSidebarActions();
             pnlPageKeyboard.Hide();
             pnlCrosshairPage.Hide();
+            pnlRearrange.Hide();
+            pnlZoomSettings.Hide();
+            pnlDefaultConfirm.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
             //This code make setting form full screen
@@ -111,6 +115,9 @@ namespace GazeToolBar
             pnlOtherAuto.Location = ReletiveSize.distribute(panelOther, pnlOtherAuto.Location.Y, 2, 3, "w", 0.45);
             pnlStickyLeft.Location = ReletiveSize.distribute(panelOther, pnlStickyLeft.Location.Y, 3, 3, "w", 0.75);
             lblOther.Location = ReletiveSize.labelPosition(panelOther, lblOther);
+            //Panel confirm defaults
+            pnlDefaultConfirm.Size = confirmSize;
+            pnlDefaultConfirm.Location = ReletiveSize.centerLocation(pnlGeneral, pnlDefaultConfirm);
             //Shortcut settings panel
             //pnlPageKeyboard.Width = Constants.SCREEN_SIZE.Width - 20;
             pnlPageKeyboard.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
@@ -324,6 +331,22 @@ namespace GazeToolBar
                 form1.NotifyIcon.BalloonTipClicked += NotifyIcon_BalloonTipClicked;
                 form1.NotifyIcon.ShowBalloonTip(5000);
             }
+        }
+
+        private void resetSettings()
+        {
+            File.Delete(Program.path);
+            Program.ReadWriteJson();
+            Settings_Load(this, new System.EventArgs());
+            AutoStart.SetOff();
+            Program.onStartUp = !Program.onStartUp;
+            ChangeButtonColor(btnAutoStart, false, false);
+            resetSideBar();
+            stickyLeft = Program.readSettings.stickyLeftClick;
+            buttonStickyLeftClick.BackColor = Color.Black;
+            selectionFeedback = Program.readSettings.selectionFeedback;
+            btnFeedback.BackColor = Color.White;
+
         }
 
         void NotifyIcon_BalloonTipClicked(object sender, EventArgs e)
@@ -699,6 +722,15 @@ namespace GazeToolBar
                 AddAction(s);
             }
         }
+
+        private void resetSideBar()
+        {
+            selectedActions.Clear();
+            foreach (String s in Program.readSettings.sidebar)
+            {
+                AddAction(s);
+            }
+        }
         public void AddAction(String actionString)
         {
             selectedActions.Add(actionString);
@@ -887,11 +919,31 @@ namespace GazeToolBar
                 buttonStickyLeftClick.BackColor = Color.White;
         }
 
+        private void btnDefaultConfirmYes_Click(object sender, EventArgs e)
+        {
+            resetSettings();
+            changePanel(pnlGeneral);
+            UseMap(SettingState.General);
+            RemoveAndAddMainBhavMap("add");
+            pnlDefaultConfirmYes.BackColor = Color.Black;
+        }
+
+        private void btnDefaultConfirmNo_Click(object sender, EventArgs e)
+        {
+            changePanel(pnlGeneral);
+            UseMap(SettingState.General);
+            RemoveAndAddMainBhavMap("add");
+            pnlDefaultConfirmNo.BackColor = Color.Black;
+        }
+
         private void btnDefaults_Click(object sender, EventArgs e)
         {
-            File.Delete(Program.path);
-            Program.ReadWriteJson();
-            Settings_Load(this, new System.EventArgs());
+            RemoveAndAddMainBhavMap("remove");
+            UseMap(SettingState.Confirm);
+            pnlDefaultConfirm.Show();
+            pnlDefaultConfirm.BringToFront();
+            shownPanel = pnlDefaultConfirm;
+            pnlDefaults.BackColor = Color.Black;
         }
     }
 }

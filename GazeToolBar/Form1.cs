@@ -205,10 +205,25 @@ namespace GazeToolBar
             ArrangeSidebar(sidebarArrangement);
         }
 
+        private bool checkOpenForm(Type formToCheck)
+        {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.GetType().Name == formToCheck.Name)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void btnSettings_Click(object sender, EventArgs e)
         {
-              settings = new Settings(this, eyeXHost);
-              settings.Show();
+            if (!checkOpenForm(typeof(Settings)))
+            {
+                settings = new Settings(this, eyeXHost);
+                settings.Show();
+            }
         }
 
         public bool AttemptToggle(ActionToBePerformed action)
