@@ -26,6 +26,13 @@ namespace GazeToolBar
             return new Size(w, h);
         }
 
+        public static Size panelRearrangeSize(int botY, int Y)
+        {
+            int w = Constants.SCREEN_SIZE.Width;
+            int h = botY - Y - (int)(Constants.SCREEN_SIZE.Height * -0.1);
+            return new Size(w, h);
+        }
+
         public static Point panelSwitchSettingLocation(int width, int height)
         {
             int x = Constants.SCREEN_SIZE.Width / 2 - width / 2;

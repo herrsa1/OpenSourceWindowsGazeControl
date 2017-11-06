@@ -15,7 +15,7 @@ namespace GazeToolBar
 
 
     public enum SystemState { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }
-    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll, MicInput }
+    public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll, MicInput, MicInputOff }
     public enum SettingState { General, Zoom, Shortcut, Rearrange, Crosshair }
 
     public class StateManager
@@ -94,8 +94,15 @@ namespace GazeToolBar
                 case SystemState.Wait:
                     if (SystemFlags.actionButtonSelected) //if a button has been selected from the toolbar
                     {
-                        currentState = SystemState.ActionButtonSelected;
-                        SystemFlags.actionButtonSelected = false;
+                        if (SystemFlags.actionToBePerformed == ActionToBePerformed.MicInput && micIsOn)
+                        {
+                            currentState = SystemState.ApplyAction;
+                        }
+                        else
+                        {
+                            currentState = SystemState.ActionButtonSelected;
+                            SystemFlags.actionButtonSelected = false;
+                        }
                     }
                     else if (SystemFlags.shortCutKeyPressed)
                     {
@@ -279,9 +286,16 @@ namespace GazeToolBar
                             if (!micIsOn)
                             {
                                 VirtualMouse.LeftMouseClick(fixationPoint.X, fixationPoint.Y);
+                                SendKeys.Send(Program.readSettings.micInput);
+                                SystemFlags.hasSelectedButtonColourBeenReset = true;
+                                micIsOn = true;
                             }
-                            SendKeys.Send(Program.readSettings.micInput);
-                            micIsOn = !micIsOn;
+                            else
+                            {
+                                SendKeys.Send(Program.readSettings.micInputOff);
+                                SystemFlags.hasSelectedButtonColourBeenReset = false;
+                                micIsOn = false;
+                            }
                         }
                     }
                     fixationWorker = new FixationDetection();

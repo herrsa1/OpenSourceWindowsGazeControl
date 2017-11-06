@@ -62,8 +62,8 @@ namespace GazeToolBar
             lbRight.Text = form1.FKeyMapDictionary[ActionToBePerformed.RightClick];
             lbLeft.Text = form1.FKeyMapDictionary[ActionToBePerformed.LeftClick];
             lbScroll.Text = form1.FKeyMapDictionary[ActionToBePerformed.Scroll];
-            lbMic.Text = form1.FKeyMapDictionary[ActionToBePerformed.MicInput];
-
+            lbMicOn.Text = form1.FKeyMapDictionary[ActionToBePerformed.MicInput];
+            lbMicOff.Text = form1.FKeyMapDictionary[ActionToBePerformed.MicInputOff];
             WaitForUserKeyPress = false;
 
             stickyLeft = Program.readSettings.stickyLeftClick;
@@ -141,7 +141,7 @@ namespace GazeToolBar
             labZoomAmount.Location = ReletiveSize.labelPosition(pnlZoomAmount, labZoomAmount);
             //Rearrange panel
             pnlRearrange.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
-            pnlRearrange.Size = ReletiveSize.panelGeneralSize(panelSaveAndCancel.Location.Y, pnlRearrange.Location.Y);
+            pnlRearrange.Size = ReletiveSize.panelRearrangeSize(panelSaveAndCancel.Location.Y, pnlRearrange.Location.Y);
             pnlRearrangeControls.Location = ReletiveSize.centerLocation(pnlRearrange, pnlRearrangeControls);
             //Crosshair Settings size and location
             //Main panel
@@ -292,7 +292,8 @@ namespace GazeToolBar
                 setting.doubleClick = lbDouble.Text;
                 setting.rightClick = lbRight.Text;
                 setting.scoll = lbScroll.Text;
-                setting.micInput = lbMic.Text;
+                setting.micInput = lbMicOn.Text;
+                setting.micInputOff = lbMicOff.Text;
                 setting.sidebar = selectedActions.ToArray<string>();
                 setting.Crosshair = trackBarCrosshair.Value;
                 setting.maxZoom = trackBarZoomAmount.Value;
@@ -353,7 +354,8 @@ namespace GazeToolBar
             lbDouble.Text = Program.readSettings.doubleClick;
             lbRight.Text = Program.readSettings.rightClick;
             lbScroll.Text = Program.readSettings.scoll;
-            lbMic.Text = Program.readSettings.micInput;
+            lbMicOn.Text = Program.readSettings.micInput;
+            lbMicOff.Text = Program.readSettings.micInputOff;
 
             trackBarCrosshair.Value = Program.readSettings.Crosshair;
             UpdateCrosshair();
@@ -423,6 +425,7 @@ namespace GazeToolBar
             {
                 changePanel(pnlRearrange);
                 UseMap(SettingState.Rearrange);
+                panelSaveAndCancel.BringToFront();
 
                 ChangeButtonColor(btnGeneralSetting, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
@@ -561,7 +564,10 @@ namespace GazeToolBar
                     lbDouble.Text = newKey;
                     break;
                 case ActionToBePerformed.MicInput:
-                    lbMic.Text = newKey;
+                    lbMicOn.Text = newKey;
+                    break;
+                case ActionToBePerformed.MicInputOff:
+                    lbMicOff.Text = newKey;
                     break;
             }
         }
@@ -709,7 +715,7 @@ namespace GazeToolBar
         {
             int RIGHT_XPOS = pnlRearrange.Width - 400;
             int LEFT_XPOS = 400;
-            int yPos = 20;
+            int yPos = 0;
             const int YGAP = 10;
             const int XGAP = 10;
 

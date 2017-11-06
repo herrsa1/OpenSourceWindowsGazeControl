@@ -174,6 +174,7 @@ namespace GazeToolBar
             FKeyMapDictionary.Add(ActionToBePerformed.Scroll, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
             FKeyMapDictionary.Add(ActionToBePerformed.RightClick, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
             FKeyMapDictionary.Add(ActionToBePerformed.MicInput, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
+            FKeyMapDictionary.Add(ActionToBePerformed.MicInputOff, Constants.KEY_FUNCTION_UNASSIGNED_MESSAGE);
 
 
             //Instantiate keyboard hook and pass into worker class.
