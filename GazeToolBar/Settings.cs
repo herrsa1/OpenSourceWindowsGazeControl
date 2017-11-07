@@ -921,7 +921,15 @@ namespace GazeToolBar
 
         private void btnDefaultConfirmYes_Click(object sender, EventArgs e)
         {
-            resetSettings();
+            try
+            {
+                resetSettings();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Your settings were not reset, please restart the application as a administator.");
+            }
+
             changePanel(pnlGeneral);
             UseMap(SettingState.General);
             RemoveAndAddMainBhavMap("add");
