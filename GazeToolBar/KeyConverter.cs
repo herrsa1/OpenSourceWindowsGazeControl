@@ -106,62 +106,91 @@ namespace GazeToolBar
                     convertedKey = "{NUMPAD9}";
                     break;
                 case Key.F1:
+                    convertedKey = "{F1}";
                     break;
                 case Key.F2:
+                    convertedKey = "{F2}";
                     break;
                 case Key.F3:
+                    convertedKey = "{F3}";
                     break;
                 case Key.F4:
+                    convertedKey = "{F4}";
                     break;
                 case Key.F5:
+                    convertedKey = "{F5}";
                     break;
                 case Key.F6:
+                    convertedKey = "{F6}";
                     break;
                 case Key.F7:
+                    convertedKey = "{F7}";
                     break;
                 case Key.F8:
+                    convertedKey = "{F8}";
                     break;
                 case Key.F9:
+                    convertedKey = "{F9}";
                     break;
                 case Key.F10:
+                    convertedKey = "{F10}";
                     break;
                 case Key.F11:
+                    convertedKey = "{F11}";
                     break;
                 case Key.F12:
+                    convertedKey = "{F12}";
                     break;
                 case Key.Back:
+                    convertedKey = "{BACKSPACE}";
                     break;
                 case Key.CapsLock:
+                    convertedKey = "{CAPSLOCK}";
                     break;
                 case Key.Delete:
+                    convertedKey = "{DELETE}";
                     break;
                 case Key.Down:
+                    convertedKey = "{DOWN}";
                     break;
                 case Key.Up:
+                    convertedKey = "{UP}";
                     break;
                 case Key.Left:
+                    convertedKey = "{LEFT}";
                     break;
                 case Key.Right:
+                    convertedKey = "{RIGHT}";
                     break;
                 case Key.End:
+                    convertedKey = "{END}";
                     break;
                 case Key.Enter:
+                    convertedKey = "{ENTER}";
                     break;
                 case Key.Escape:
+                    convertedKey = "{ESC}";
                     break;
                 case Key.Home:
+                    convertedKey = "{HOME}";
                     break;
                 case Key.Insert:
+                    convertedKey = "{INSERT}";
                     break;
                 case Key.PageDown:
+                    convertedKey = "{PGDN}";
                     break;
                 case Key.PageUp:
+                    convertedKey = "{PGUP}";
                     break;
                 case Key.PrintScreen:
+                    convertedKey = "{PRTSC}";
                     break;
                 case Key.Scroll:
+                    convertedKey = "{SCROLLLOCK}";
                     break;
                 case Key.Tab:
+                    convertedKey = "{TAB}";
                     break;
                 default:
                     break;

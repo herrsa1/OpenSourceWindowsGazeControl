@@ -545,8 +545,9 @@ namespace GazeToolBar
         public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
 
         {
+            KeyConverter converter = new KeyConverter();
 
-            String keyPressed = pressedKey.KeyPressed.ToString();
+            String keyPressed = converter.Convert(pressedKey.KeyPressed);
 
             if (WaitForUserKeyPress)
             {
@@ -557,10 +558,17 @@ namespace GazeToolBar
                 }
                 else
                 {
-                    form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
-                    updateLabel(pressedKey.KeyPressed.ToString(), actionToAssignKey);
-                    WaitForUserKeyPress = false;
-                    lbFKeyFeedback.Text = "";
+                    if (keyPressed == Constants.KEY_NOT_VALID_MESSAGE)
+                    {
+                        lbFKeyFeedback.Text = keyPressed;
+                    }
+                    else
+                    {
+                        form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
+                        updateLabel(keyPressed, actionToAssignKey);
+                        WaitForUserKeyPress = false;
+                        lbFKeyFeedback.Text = "";
+                    }
                 }
             }
         }
@@ -931,7 +939,15 @@ namespace GazeToolBar
 
         private void btnDefaultConfirmYes_Click(object sender, EventArgs e)
         {
-            resetSettings();
+            try
+            {
+                resetSettings();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Your settings were not reset, please restart the application as a administator.");
+            }
+
             changePanel(pnlGeneral);
             UseMap(SettingState.General);
             RemoveAndAddMainBhavMap("add");
