@@ -30,5 +30,6 @@ namespace GazeToolBar
         public static readonly Rectangle PRIMARY_SCREEN = Screen.PrimaryScreen.Bounds;
         public static readonly Color SelectedColor = Color.White;
         public static readonly Color SettingButtonColor = Color.Black;
+        public static readonly string KEY_NOT_VALID_MESSAGE = "Key not valid";
     }
 }

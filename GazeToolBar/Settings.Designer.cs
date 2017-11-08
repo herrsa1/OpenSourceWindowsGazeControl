@@ -111,6 +111,12 @@ namespace GazeToolBar
             this.labZoomAmount = new System.Windows.Forms.Label();
             this.pnlZoomSettings = new System.Windows.Forms.Panel();
             this.pnlGeneral = new System.Windows.Forms.Panel();
+            this.pnlDefaultConfirm = new System.Windows.Forms.Panel();
+            this.pnlDefaultConfirmNo = new System.Windows.Forms.Panel();
+            this.btnDefaultConfirmNo = new System.Windows.Forms.Button();
+            this.pnlDefaultConfirmYes = new System.Windows.Forms.Panel();
+            this.btnDefaultConfirmYes = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlFixationTimeOut = new System.Windows.Forms.Panel();
             this.pnlFixTimeOutContent = new System.Windows.Forms.Panel();
             this.pnlFTOPlus = new System.Windows.Forms.Panel();
@@ -183,12 +189,6 @@ namespace GazeToolBar
             this.bhavShortcutMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavRearrangeMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavCrosshairMap = new EyeXFramework.Forms.BehaviorMap(this.components);
-            this.pnlDefaultConfirm = new System.Windows.Forms.Panel();
-            this.pnlDefaultConfirmNo = new System.Windows.Forms.Panel();
-            this.btnDefaultConfirmNo = new System.Windows.Forms.Button();
-            this.pnlDefaultConfirmYes = new System.Windows.Forms.Panel();
-            this.btnDefaultConfirmYes = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.bhavConfirmMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
@@ -235,6 +235,9 @@ namespace GazeToolBar
             this.pnlZIAMinus.SuspendLayout();
             this.pnlZoomSettings.SuspendLayout();
             this.pnlGeneral.SuspendLayout();
+            this.pnlDefaultConfirm.SuspendLayout();
+            this.pnlDefaultConfirmNo.SuspendLayout();
+            this.pnlDefaultConfirmYes.SuspendLayout();
             this.pnlFixationTimeOut.SuspendLayout();
             this.pnlFixTimeOutContent.SuspendLayout();
             this.pnlFTOPlus.SuspendLayout();
@@ -274,9 +277,6 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).BeginInit();
             this.pnlCrosshairDownButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.pnlDefaultConfirm.SuspendLayout();
-            this.pnlDefaultConfirmNo.SuspendLayout();
-            this.pnlDefaultConfirmYes.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -348,10 +348,10 @@ namespace GazeToolBar
             this.pnlPageKeyboard.Controls.Add(this.pnlRightClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlDoubleClick);
             this.pnlPageKeyboard.Controls.Add(this.pnlScroll);
-            this.pnlPageKeyboard.Location = new System.Drawing.Point(803, 116);
+            this.pnlPageKeyboard.Location = new System.Drawing.Point(805, 116);
             this.pnlPageKeyboard.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPageKeyboard.Name = "pnlPageKeyboard";
-            this.pnlPageKeyboard.Size = new System.Drawing.Size(154, 78);
+            this.pnlPageKeyboard.Size = new System.Drawing.Size(152, 78);
             this.pnlPageKeyboard.TabIndex = 26;
             this.pnlPageKeyboard.Visible = false;
             // 
@@ -1215,6 +1215,80 @@ namespace GazeToolBar
             this.pnlGeneral.Size = new System.Drawing.Size(156, 72);
             this.pnlGeneral.TabIndex = 27;
             // 
+            // pnlDefaultConfirm
+            // 
+            this.pnlDefaultConfirm.BackColor = System.Drawing.Color.Black;
+            this.pnlDefaultConfirm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pnlDefaultConfirm.Controls.Add(this.pnlDefaultConfirmNo);
+            this.pnlDefaultConfirm.Controls.Add(this.pnlDefaultConfirmYes);
+            this.pnlDefaultConfirm.Controls.Add(this.label4);
+            this.pnlDefaultConfirm.Location = new System.Drawing.Point(1272, 387);
+            this.pnlDefaultConfirm.Name = "pnlDefaultConfirm";
+            this.pnlDefaultConfirm.Size = new System.Drawing.Size(95, 52);
+            this.pnlDefaultConfirm.TabIndex = 31;
+            // 
+            // pnlDefaultConfirmNo
+            // 
+            this.pnlDefaultConfirmNo.Controls.Add(this.btnDefaultConfirmNo);
+            this.pnlDefaultConfirmNo.Location = new System.Drawing.Point(418, 138);
+            this.pnlDefaultConfirmNo.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDefaultConfirmNo.Name = "pnlDefaultConfirmNo";
+            this.pnlDefaultConfirmNo.Size = new System.Drawing.Size(154, 155);
+            this.pnlDefaultConfirmNo.TabIndex = 24;
+            // 
+            // btnDefaultConfirmNo
+            // 
+            this.btnDefaultConfirmNo.BackColor = System.Drawing.Color.Transparent;
+            this.btnDefaultConfirmNo.FlatAppearance.BorderSize = 3;
+            this.btnDefaultConfirmNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultConfirmNo.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDefaultConfirmNo.ForeColor = System.Drawing.Color.White;
+            this.btnDefaultConfirmNo.Location = new System.Drawing.Point(2, 2);
+            this.btnDefaultConfirmNo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDefaultConfirmNo.Name = "btnDefaultConfirmNo";
+            this.btnDefaultConfirmNo.Size = new System.Drawing.Size(150, 150);
+            this.btnDefaultConfirmNo.TabIndex = 23;
+            this.btnDefaultConfirmNo.Text = "No";
+            this.btnDefaultConfirmNo.UseVisualStyleBackColor = false;
+            this.btnDefaultConfirmNo.Click += new System.EventHandler(this.btnDefaultConfirmNo_Click);
+            // 
+            // pnlDefaultConfirmYes
+            // 
+            this.pnlDefaultConfirmYes.Controls.Add(this.btnDefaultConfirmYes);
+            this.pnlDefaultConfirmYes.Location = new System.Drawing.Point(9, 138);
+            this.pnlDefaultConfirmYes.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDefaultConfirmYes.Name = "pnlDefaultConfirmYes";
+            this.pnlDefaultConfirmYes.Size = new System.Drawing.Size(154, 155);
+            this.pnlDefaultConfirmYes.TabIndex = 23;
+            // 
+            // btnDefaultConfirmYes
+            // 
+            this.btnDefaultConfirmYes.BackColor = System.Drawing.Color.Transparent;
+            this.btnDefaultConfirmYes.FlatAppearance.BorderSize = 3;
+            this.btnDefaultConfirmYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDefaultConfirmYes.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDefaultConfirmYes.ForeColor = System.Drawing.Color.White;
+            this.btnDefaultConfirmYes.Location = new System.Drawing.Point(2, 2);
+            this.btnDefaultConfirmYes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDefaultConfirmYes.Name = "btnDefaultConfirmYes";
+            this.btnDefaultConfirmYes.Size = new System.Drawing.Size(150, 150);
+            this.btnDefaultConfirmYes.TabIndex = 23;
+            this.btnDefaultConfirmYes.Text = "Yes";
+            this.btnDefaultConfirmYes.UseVisualStyleBackColor = false;
+            this.btnDefaultConfirmYes.Click += new System.EventHandler(this.btnDefaultConfirmYes_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Arial", 24F);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(3, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(591, 72);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "All settings will be reset back to defaults. \r\nAre you sure?";
+            // 
             // pnlFixationTimeOut
             // 
             this.pnlFixationTimeOut.BackColor = System.Drawing.Color.Black;
@@ -1965,80 +2039,6 @@ namespace GazeToolBar
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
-            // pnlDefaultConfirm
-            // 
-            this.pnlDefaultConfirm.BackColor = System.Drawing.Color.Black;
-            this.pnlDefaultConfirm.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pnlDefaultConfirm.Controls.Add(this.pnlDefaultConfirmNo);
-            this.pnlDefaultConfirm.Controls.Add(this.pnlDefaultConfirmYes);
-            this.pnlDefaultConfirm.Controls.Add(this.label4);
-            this.pnlDefaultConfirm.Location = new System.Drawing.Point(1272, 387);
-            this.pnlDefaultConfirm.Name = "pnlDefaultConfirm";
-            this.pnlDefaultConfirm.Size = new System.Drawing.Size(95, 52);
-            this.pnlDefaultConfirm.TabIndex = 31;
-            // 
-            // pnlDefaultConfirmNo
-            // 
-            this.pnlDefaultConfirmNo.Controls.Add(this.btnDefaultConfirmNo);
-            this.pnlDefaultConfirmNo.Location = new System.Drawing.Point(418, 138);
-            this.pnlDefaultConfirmNo.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDefaultConfirmNo.Name = "pnlDefaultConfirmNo";
-            this.pnlDefaultConfirmNo.Size = new System.Drawing.Size(154, 155);
-            this.pnlDefaultConfirmNo.TabIndex = 24;
-            // 
-            // btnDefaultConfirmNo
-            // 
-            this.btnDefaultConfirmNo.BackColor = System.Drawing.Color.Transparent;
-            this.btnDefaultConfirmNo.FlatAppearance.BorderSize = 3;
-            this.btnDefaultConfirmNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefaultConfirmNo.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDefaultConfirmNo.ForeColor = System.Drawing.Color.White;
-            this.btnDefaultConfirmNo.Location = new System.Drawing.Point(2, 2);
-            this.btnDefaultConfirmNo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDefaultConfirmNo.Name = "btnDefaultConfirmNo";
-            this.btnDefaultConfirmNo.Size = new System.Drawing.Size(150, 150);
-            this.btnDefaultConfirmNo.TabIndex = 23;
-            this.btnDefaultConfirmNo.Text = "No";
-            this.btnDefaultConfirmNo.UseVisualStyleBackColor = false;
-            this.btnDefaultConfirmNo.Click += new System.EventHandler(this.btnDefaultConfirmNo_Click);
-            // 
-            // pnlDefaultConfirmYes
-            // 
-            this.pnlDefaultConfirmYes.Controls.Add(this.btnDefaultConfirmYes);
-            this.pnlDefaultConfirmYes.Location = new System.Drawing.Point(9, 138);
-            this.pnlDefaultConfirmYes.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDefaultConfirmYes.Name = "pnlDefaultConfirmYes";
-            this.pnlDefaultConfirmYes.Size = new System.Drawing.Size(154, 155);
-            this.pnlDefaultConfirmYes.TabIndex = 23;
-            // 
-            // btnDefaultConfirmYes
-            // 
-            this.btnDefaultConfirmYes.BackColor = System.Drawing.Color.Transparent;
-            this.btnDefaultConfirmYes.FlatAppearance.BorderSize = 3;
-            this.btnDefaultConfirmYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDefaultConfirmYes.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDefaultConfirmYes.ForeColor = System.Drawing.Color.White;
-            this.btnDefaultConfirmYes.Location = new System.Drawing.Point(2, 2);
-            this.btnDefaultConfirmYes.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDefaultConfirmYes.Name = "btnDefaultConfirmYes";
-            this.btnDefaultConfirmYes.Size = new System.Drawing.Size(150, 150);
-            this.btnDefaultConfirmYes.TabIndex = 23;
-            this.btnDefaultConfirmYes.Text = "Yes";
-            this.btnDefaultConfirmYes.UseVisualStyleBackColor = false;
-            this.btnDefaultConfirmYes.Click += new System.EventHandler(this.btnDefaultConfirmYes_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Arial", 24F);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(591, 72);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "All settings will be reset back to defaults. \r\nAre you sure?";
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2117,6 +2117,10 @@ namespace GazeToolBar
             this.pnlZIAMinus.ResumeLayout(false);
             this.pnlZoomSettings.ResumeLayout(false);
             this.pnlGeneral.ResumeLayout(false);
+            this.pnlDefaultConfirm.ResumeLayout(false);
+            this.pnlDefaultConfirm.PerformLayout();
+            this.pnlDefaultConfirmNo.ResumeLayout(false);
+            this.pnlDefaultConfirmYes.ResumeLayout(false);
             this.pnlFixationTimeOut.ResumeLayout(false);
             this.pnlFixationTimeOut.PerformLayout();
             this.pnlFixTimeOutContent.ResumeLayout(false);
@@ -2167,10 +2171,6 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).EndInit();
             this.pnlCrosshairDownButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.pnlDefaultConfirm.ResumeLayout(false);
-            this.pnlDefaultConfirm.PerformLayout();
-            this.pnlDefaultConfirmNo.ResumeLayout(false);
-            this.pnlDefaultConfirmYes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
