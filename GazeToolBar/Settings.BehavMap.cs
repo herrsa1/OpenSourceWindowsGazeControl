@@ -474,7 +474,7 @@ namespace GazeToolBar
 
         private void btClearFKeyDoubleClick_Click(object sender, EventArgs e)
         {
-            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.LeftClick] = notAssigned;
+            form1.shortCutKeyWorker.keyAssignments[ActionToBePerformed.DoubleClick] = notAssigned;
             lbDouble.Text = notAssigned;
         }
 
