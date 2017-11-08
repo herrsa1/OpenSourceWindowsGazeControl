@@ -223,7 +223,7 @@ namespace GazeToolBar
             {
                 settings = new Settings(this, eyeXHost);
                 settings.Show();
-                stateManager.EnterWaitState();
+                AttemptToggle(SystemFlags.actionToBePerformed);
             }
         }
 
