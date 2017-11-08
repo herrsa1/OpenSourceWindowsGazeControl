@@ -530,45 +530,30 @@ namespace GazeToolBar
             form1.shortCutKeyWorker.StopKeyboardWorker();
         }
 
-        private string setSpecialChars(string keyToCheck)
-        {
-            switch(keyToCheck)
-            {
-                default:
-                    return keyToCheck;
-                    break;
-            }           
-        }
-
         //Method to assign key when for function short cut. Waits until WaitForUserKeyPress is set to true, the next key that is pressed
         //is assign to the function stored in actionToAssignKey.
         public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
 
         {
             KeyConverter converter = new KeyConverter();
-
-            String keyPressed = converter.Convert(pressedKey.KeyPressed);
+            String keyPressed = pressedKey.KeyPressed.ToString();
 
             if (WaitForUserKeyPress)
             {
-
+                if (actionToAssignKey == ActionToBePerformed.MicInput || actionToAssignKey == ActionToBePerformed.MicInputOff)
+                {
+                    keyPressed = converter.Convert(pressedKey.KeyPressed);
+                }
                 if (checkIfKeyIsAssignedAlready(keyPressed, form1.shortCutKeyWorker.keyAssignments))
                 {
                     lbFKeyFeedback.Text = keyPressed + " already assigned.";
                 }
                 else
                 {
-                    if (keyPressed == Constants.KEY_NOT_VALID_MESSAGE)
-                    {
-                        lbFKeyFeedback.Text = keyPressed;
-                    }
-                    else
-                    {
-                        form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
-                        updateLabel(keyPressed, actionToAssignKey);
-                        WaitForUserKeyPress = false;
-                        lbFKeyFeedback.Text = "";
-                    }
+                    form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
+                    updateLabel(keyPressed, actionToAssignKey);
+                    WaitForUserKeyPress = false;
+                    lbFKeyFeedback.Text = "";
                 }
             }
         }
