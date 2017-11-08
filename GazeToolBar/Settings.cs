@@ -548,6 +548,10 @@ namespace GazeToolBar
                 {
                     lbFKeyFeedback.Text = keyPressed + " already assigned.";
                 }
+                else if (keyPressed == Constants.KEY_NOT_VALID_MESSAGE)
+                {
+                    lbFKeyFeedback.Text = keyPressed;
+                }
                 else
                 {
                     form1.shortCutKeyWorker.keyAssignments[actionToAssignKey] = keyPressed;
