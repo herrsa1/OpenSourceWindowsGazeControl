@@ -9,39 +9,19 @@ namespace GazeToolBar
 {
     class KeyConverter //Converts Key type into the correct format for Send Keys.
     {
+        public const string ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         public string Convert(Key key)
         {
             string convertedKey = Constants.KEY_NOT_VALID_MESSAGE;
+
+            if(ALPHABET.Contains((key.ToString().ToUpper())))
+            {
+                return key.ToString();
+            }
+
             switch (key)
             {
-                case Key.A:
-                case Key.B:
-                case Key.C:
-                case Key.D:
-                case Key.E:
-                case Key.F:
-                case Key.G:
-                case Key.H:
-                case Key.I:
-                case Key.J:
-                case Key.K:
-                case Key.L:
-                case Key.M:
-                case Key.N:
-                case Key.O:
-                case Key.P:
-                case Key.Q:
-                case Key.R:
-                case Key.S:
-                case Key.T:
-                case Key.U:
-                case Key.V:
-                case Key.W:
-                case Key.X:
-                case Key.Y:
-                case Key.Z:
-                    convertedKey = key.ToString();
-                    break;
                 case Key.D0:
                     convertedKey = "0";
                     break;
