@@ -530,6 +530,16 @@ namespace GazeToolBar
             form1.shortCutKeyWorker.StopKeyboardWorker();
         }
 
+        private string setSpecialChars(string keyToCheck)
+        {
+            switch(keyToCheck)
+            {
+                default:
+                    return keyToCheck;
+                    break;
+            }           
+        }
+
         //Method to assign key when for function short cut. Waits until WaitForUserKeyPress is set to true, the next key that is pressed
         //is assign to the function stored in actionToAssignKey.
         public void GetKeyPress(object o, HookedKeyboardEventArgs pressedKey)
