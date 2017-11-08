@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="OptiKey.exe.manifest" size="51218">
+    <dependentAssembly dependencyType="install" codebase="OptiKey.exe.manifest" size="50926">
       <assemblyIdentity name="OptiKey.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8FsSQ80nKuIVl0w+GlBYfGDeaOX8J2CMv6IZy1deVtg=</dsig:DigestValue>
+        <dsig:DigestValue>qEmtTa62x8484KDVkQODOPSYG4FD16uOPfuhnm5ACqQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
