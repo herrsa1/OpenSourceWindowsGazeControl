@@ -182,6 +182,7 @@ namespace GazeToolBar
         private void runActionWhenTimerReachesLimit(object o, ElapsedEventArgs e)
         {
             timeOutTimer.Stop();
+            fixationTimer.Stop();
             //Once the fixation has run, set the state of fixation detection back to waiting.
             fixationState = EFixationState.WaitingForFixationRequest;
             SystemFlags.hasGaze = true;
@@ -201,6 +202,7 @@ namespace GazeToolBar
             customfixStream.ResetFixationDetectionState();
 
             fixationTimer.Stop();
+            timeOutTimer.Stop();
 
             SystemFlags.timeOut = true;
             fixationState = EFixationState.WaitingForFixationRequest;
