@@ -141,13 +141,7 @@ namespace GazeToolBar
             //Save the users gaze to a field that has global access in this class.
             currentGazeLocationX = currentGaze.X;
             currentGazeLocationY = currentGaze.Y;
-
-            //if the users gaze goes off screen, Stop Scroll control running, this returns control back to the statemanager.
-            if( checkIFGazeOffScreen(currentGaze.X,currentGaze.Y))
-            {
-                stopScroll();
-            }
-
+       
         }
 
        //This method calculates the scroll speed for the input axis coordinate, and bounds
