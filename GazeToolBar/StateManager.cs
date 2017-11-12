@@ -30,6 +30,8 @@ namespace GazeToolBar
         ShortcutKeyWorker shortCutKeyWorker;
         public ZoomMagnifier magnifier;
         bool micIsOn = false;
+        bool resetFlag = false;
+
 
         public StateManager(Form1 Toolbar, ShortcutKeyWorker shortCutKeyWorker, FormsEyeXHost EyeXHost)
         {
@@ -82,6 +84,7 @@ namespace GazeToolBar
             SystemFlags.currentState = SystemState.Wait;
             zoomer.Refresh();
 
+            fixationWorker = new FixationDetection();
         }
 
 
