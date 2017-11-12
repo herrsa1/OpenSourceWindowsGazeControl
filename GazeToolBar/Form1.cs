@@ -295,7 +295,7 @@ namespace GazeToolBar
 
         private void btnScoll_Click(object sender, EventArgs e)
         {
-            if (AttemptToggle(ActionToBePerformed.DoubleClick))
+            if (AttemptToggle(ActionToBePerformed.Scroll))
                 return;
 
             SystemFlags.actionButtonSelected = true;
