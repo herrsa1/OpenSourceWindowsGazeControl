@@ -1,5 +1,8 @@
 # OpenSourceWindowsGazeControl
 
+## Download Here
+https://github.com/accessibilitysoftwarehub/OpenSourceWindowsGazeControl/releases
+
 ## User Guide
 https://github.com/accessibilitysoftwarehub/OpenSourceWindowsGazeControl/wiki/User-Guide
 
