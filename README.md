@@ -11,4 +11,4 @@ Developers should check out the wiki for detailed information https://github.com
 
 ## Demo Video:
 
-https://www.youtube.com/watch?v=uP3FdVz4O7Y
+https://www.youtube.com/embed/ZW5kHXHD29o
