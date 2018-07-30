@@ -33,6 +33,7 @@ namespace GazeToolBar
             bhavMap.Add(btnScoll, new GazeAwareBehavior(OnBtnScroll) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnKeyboard, new GazeAwareBehavior(OnBtnKeyboard) { DelayMilliseconds = delayBeforeButtonSelected });
             bhavMap.Add(btnMic, new GazeAwareBehavior(OnBtnMicClick) { DelayMilliseconds = delayBeforeButtonSelected });
+            bhavMap.Add(btnHome, new GazeAwareBehavior(OnBtnHomeClick) { DelayMilliseconds = delayBeforeButtonSelected });
             //bhavMap.Add(btnDragAndDrop, new GazeAwareBehavior(OnBtnDragAndDrop) { DelayMilliseconds = delayBeforeButtonSelected });
 
             bhavMap.Add(pnlHiLteRightClick, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -43,6 +44,7 @@ namespace GazeToolBar
             bhavMap.Add(pnlHighLightSingleLeft, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavMap.Add(pnlHighLightMic, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavMap.Add(pnlHighlightHomeControl, new GazeAwareBehavior(OnGazeChangeBTColour));
 
 
         }
@@ -130,6 +132,15 @@ namespace GazeToolBar
             }
         }
 
+        private void OnBtnHomeClick(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze)
+            {
+                resetButtonsColor();
+                btnHome.PerformClick();
+            }
+        }
+
         //private void OnBtnDragAndDrop(object sender, EventArgs e)
         //{
         //    resetButtonsColor();
@@ -139,7 +150,7 @@ namespace GazeToolBar
 
         public void resetButtonsColor()
         {
-            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnMic);
+            ResetBtnBackcolor(btnSingleLeftClick, btnDoubleClick, btnRightClick, btnSettings, btnScoll, btnKeyboard, btnMic, btnHome);
         }
 
         /// <summary>

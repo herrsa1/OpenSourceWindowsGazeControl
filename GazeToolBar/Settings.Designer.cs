@@ -87,6 +87,8 @@ namespace GazeToolBar
             this.pnlGeneralButton = new System.Windows.Forms.Panel();
             this.pnlKeysButton = new System.Windows.Forms.Panel();
             this.pnlSwitchSetting = new System.Windows.Forms.Panel();
+            this.pnlHomeControl = new System.Windows.Forms.Panel();
+            this.btnHomeControl = new System.Windows.Forms.Button();
             this.panelCrosshairButton = new System.Windows.Forms.Panel();
             this.buttonCrosshairSetting = new System.Windows.Forms.Button();
             this.pnlRearrangeButton = new System.Windows.Forms.Panel();
@@ -146,6 +148,8 @@ namespace GazeToolBar
             this.btnFixTimeLengthMins = new System.Windows.Forms.Button();
             this.lblFixationDetectionTimeLength = new System.Windows.Forms.Label();
             this.pnlRearrange = new System.Windows.Forms.Panel();
+            this.pnlActionHomeControl = new System.Windows.Forms.Panel();
+            this.btnActionHomeControl = new System.Windows.Forms.Button();
             this.pnlMicButton = new System.Windows.Forms.Panel();
             this.btnActionMic = new System.Windows.Forms.Button();
             this.pnlRearrangeControls = new System.Windows.Forms.Panel();
@@ -183,13 +187,43 @@ namespace GazeToolBar
             this.pnlCrosshairDownButton = new System.Windows.Forms.Panel();
             this.buttonCrosshairDown = new System.Windows.Forms.Button();
             this.labCrosshairType = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.bhavGeneralMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavZoomMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavShortcutMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavRearrangeMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavCrosshairMap = new EyeXFramework.Forms.BehaviorMap(this.components);
             this.bhavConfirmMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.bhavHomeControlMap = new EyeXFramework.Forms.BehaviorMap(this.components);
+            this.pnlHomeControlPage = new System.Windows.Forms.Panel();
+            this.pnlHomeKeyboard = new System.Windows.Forms.Panel();
+            this.btnHomeKeyboard = new System.Windows.Forms.Button();
+            this.pnlButtonLabel = new System.Windows.Forms.Panel();
+            this.txtButtonLabel = new System.Windows.Forms.TextBox();
+            this.pnlSetLabel = new System.Windows.Forms.Panel();
+            this.btnSetLabel = new System.Windows.Forms.Button();
+            this.pnlEmpty = new System.Windows.Forms.Panel();
+            this.btnEmpty = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.pnlTV = new System.Windows.Forms.Panel();
+            this.btnTV = new System.Windows.Forms.Button();
+            this.pnlHeater = new System.Windows.Forms.Panel();
+            this.btnHeater = new System.Windows.Forms.Button();
+            this.pnlLight = new System.Windows.Forms.Panel();
+            this.btnLight = new System.Windows.Forms.Button();
+            this.pnl3 = new System.Windows.Forms.Panel();
+            this.btn3 = new System.Windows.Forms.Button();
+            this.pnl2 = new System.Windows.Forms.Panel();
+            this.btn2 = new System.Windows.Forms.Button();
+            this.pnl1 = new System.Windows.Forms.Panel();
+            this.btn1 = new System.Windows.Forms.Button();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pnlDevice1 = new System.Windows.Forms.Panel();
+            this.btnDevice1 = new System.Windows.Forms.Button();
+            this.pnlDevice2 = new System.Windows.Forms.Panel();
+            this.btnDevice2 = new System.Windows.Forms.Button();
+            this.pnlDevice3 = new System.Windows.Forms.Panel();
+            this.btnDevice3 = new System.Windows.Forms.Button();
             this.panelSaveAndCancel.SuspendLayout();
             this.pnlCancel.SuspendLayout();
             this.pnlSave.SuspendLayout();
@@ -220,6 +254,7 @@ namespace GazeToolBar
             this.pnlGeneralButton.SuspendLayout();
             this.pnlKeysButton.SuspendLayout();
             this.pnlSwitchSetting.SuspendLayout();
+            this.pnlHomeControl.SuspendLayout();
             this.panelCrosshairButton.SuspendLayout();
             this.pnlRearrangeButton.SuspendLayout();
             this.pnlZoomButton.SuspendLayout();
@@ -255,6 +290,7 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).BeginInit();
             this.pnlFTLMins.SuspendLayout();
             this.pnlRearrange.SuspendLayout();
+            this.pnlActionHomeControl.SuspendLayout();
             this.pnlMicButton.SuspendLayout();
             this.pnlRearrangeControls.SuspendLayout();
             this.pnlMoveUpButton.SuspendLayout();
@@ -276,7 +312,21 @@ namespace GazeToolBar
             this.pnlCrosshairUpButton.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).BeginInit();
             this.pnlCrosshairDownButton.SuspendLayout();
+            this.pnlHomeControlPage.SuspendLayout();
+            this.pnlHomeKeyboard.SuspendLayout();
+            this.pnlButtonLabel.SuspendLayout();
+            this.pnlSetLabel.SuspendLayout();
+            this.pnlEmpty.SuspendLayout();
+            this.pnlTV.SuspendLayout();
+            this.pnlHeater.SuspendLayout();
+            this.pnlLight.SuspendLayout();
+            this.pnl3.SuspendLayout();
+            this.pnl2.SuspendLayout();
+            this.pnl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.pnlDevice1.SuspendLayout();
+            this.pnlDevice2.SuspendLayout();
+            this.pnlDevice3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -921,15 +971,40 @@ namespace GazeToolBar
             // pnlSwitchSetting
             // 
             this.pnlSwitchSetting.BackColor = System.Drawing.Color.Black;
+            this.pnlSwitchSetting.Controls.Add(this.pnlHomeControl);
             this.pnlSwitchSetting.Controls.Add(this.panelCrosshairButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlRearrangeButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlZoomButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlKeysButton);
             this.pnlSwitchSetting.Controls.Add(this.pnlGeneralButton);
-            this.pnlSwitchSetting.Location = new System.Drawing.Point(93, 0);
+            this.pnlSwitchSetting.Location = new System.Drawing.Point(28, 1);
             this.pnlSwitchSetting.Name = "pnlSwitchSetting";
-            this.pnlSwitchSetting.Size = new System.Drawing.Size(1574, 107);
+            this.pnlSwitchSetting.Size = new System.Drawing.Size(1871, 107);
             this.pnlSwitchSetting.TabIndex = 28;
+            // 
+            // pnlHomeControl
+            // 
+            this.pnlHomeControl.Controls.Add(this.btnHomeControl);
+            this.pnlHomeControl.Location = new System.Drawing.Point(1721, 0);
+            this.pnlHomeControl.Name = "pnlHomeControl";
+            this.pnlHomeControl.Size = new System.Drawing.Size(154, 105);
+            this.pnlHomeControl.TabIndex = 34;
+            // 
+            // btnHomeControl
+            // 
+            this.btnHomeControl.BackColor = System.Drawing.Color.Transparent;
+            this.btnHomeControl.FlatAppearance.BorderSize = 5;
+            this.btnHomeControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHomeControl.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnHomeControl.ForeColor = System.Drawing.Color.White;
+            this.btnHomeControl.Location = new System.Drawing.Point(0, 2);
+            this.btnHomeControl.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHomeControl.Name = "btnHomeControl";
+            this.btnHomeControl.Size = new System.Drawing.Size(150, 100);
+            this.btnHomeControl.TabIndex = 30;
+            this.btnHomeControl.Text = "HomeControl";
+            this.btnHomeControl.UseVisualStyleBackColor = false;
+            this.btnHomeControl.Click += new System.EventHandler(this.btnHomeControl_Click);
             // 
             // panelCrosshairButton
             // 
@@ -946,7 +1021,7 @@ namespace GazeToolBar
             this.buttonCrosshairSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCrosshairSetting.Font = new System.Drawing.Font("Arial", 15.75F);
             this.buttonCrosshairSetting.ForeColor = System.Drawing.Color.White;
-            this.buttonCrosshairSetting.Location = new System.Drawing.Point(2, 2);
+            this.buttonCrosshairSetting.Location = new System.Drawing.Point(2, 3);
             this.buttonCrosshairSetting.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCrosshairSetting.Name = "buttonCrosshairSetting";
             this.buttonCrosshairSetting.Size = new System.Drawing.Size(150, 100);
@@ -1614,6 +1689,7 @@ namespace GazeToolBar
             // pnlRearrange
             // 
             this.pnlRearrange.BackColor = System.Drawing.Color.Black;
+            this.pnlRearrange.Controls.Add(this.pnlActionHomeControl);
             this.pnlRearrange.Controls.Add(this.pnlMicButton);
             this.pnlRearrange.Controls.Add(this.pnlRearrangeControls);
             this.pnlRearrange.Controls.Add(this.pnlRightClickButton);
@@ -1622,11 +1698,33 @@ namespace GazeToolBar
             this.pnlRearrange.Controls.Add(this.pnlKeyboardButton);
             this.pnlRearrange.Controls.Add(this.pnlScrollClickButton);
             this.pnlRearrange.Controls.Add(this.pnlDoubleLeftClickButton);
-            this.pnlRearrange.Location = new System.Drawing.Point(1159, 113);
+            this.pnlRearrange.Location = new System.Drawing.Point(1094, 113);
             this.pnlRearrange.Name = "pnlRearrange";
-            this.pnlRearrange.Size = new System.Drawing.Size(148, 81);
+            this.pnlRearrange.Size = new System.Drawing.Size(152, 97);
             this.pnlRearrange.TabIndex = 30;
             this.pnlRearrange.Visible = false;
+            this.pnlRearrange.Click += new System.EventHandler(this.btnActionButtonClick_Click);
+            // 
+            // pnlActionHomeControl
+            // 
+            this.pnlActionHomeControl.BackColor = System.Drawing.Color.Transparent;
+            this.pnlActionHomeControl.Controls.Add(this.btnActionHomeControl);
+            this.pnlActionHomeControl.Location = new System.Drawing.Point(73, 455);
+            this.pnlActionHomeControl.Name = "pnlActionHomeControl";
+            this.pnlActionHomeControl.Size = new System.Drawing.Size(94, 95);
+            this.pnlActionHomeControl.TabIndex = 4;
+            // 
+            // btnActionHomeControl
+            // 
+            this.btnActionHomeControl.BackColor = System.Drawing.Color.Black;
+            this.btnActionHomeControl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActionHomeControl.Image = global::GazeToolBar.Properties.Resources.house;
+            this.btnActionHomeControl.Location = new System.Drawing.Point(2, 2);
+            this.btnActionHomeControl.Name = "btnActionHomeControl";
+            this.btnActionHomeControl.Size = new System.Drawing.Size(90, 90);
+            this.btnActionHomeControl.TabIndex = 0;
+            this.btnActionHomeControl.UseVisualStyleBackColor = false;
+            this.btnActionHomeControl.Click += new System.EventHandler(this.btnActionButtonClick_Click);
             // 
             // pnlMicButton
             // 
@@ -1853,7 +1951,7 @@ namespace GazeToolBar
             this.pnlCrosshairPage.Controls.Add(this.pnlFeedback);
             this.pnlCrosshairPage.Controls.Add(this.pictureBoxCrosshairPreview);
             this.pnlCrosshairPage.Controls.Add(this.panelCrosshairSelection);
-            this.pnlCrosshairPage.Location = new System.Drawing.Point(1513, 113);
+            this.pnlCrosshairPage.Location = new System.Drawing.Point(1450, 113);
             this.pnlCrosshairPage.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCrosshairPage.Name = "pnlCrosshairPage";
             this.pnlCrosshairPage.Size = new System.Drawing.Size(150, 81);
@@ -2028,6 +2126,267 @@ namespace GazeToolBar
             this.labCrosshairType.TabIndex = 11;
             this.labCrosshairType.Text = "Crosshair\r\nType";
             // 
+            // pnlHomeControlPage
+            // 
+            this.pnlHomeControlPage.Controls.Add(this.pnlDevice3);
+            this.pnlHomeControlPage.Controls.Add(this.pnlDevice2);
+            this.pnlHomeControlPage.Controls.Add(this.pnlDevice1);
+            this.pnlHomeControlPage.Controls.Add(this.label6);
+            this.pnlHomeControlPage.Controls.Add(this.pnlHomeKeyboard);
+            this.pnlHomeControlPage.Controls.Add(this.pnlButtonLabel);
+            this.pnlHomeControlPage.Controls.Add(this.pnlSetLabel);
+            this.pnlHomeControlPage.Controls.Add(this.pnlEmpty);
+            this.pnlHomeControlPage.Controls.Add(this.label5);
+            this.pnlHomeControlPage.Controls.Add(this.pnlTV);
+            this.pnlHomeControlPage.Controls.Add(this.pnlHeater);
+            this.pnlHomeControlPage.Controls.Add(this.pnlLight);
+            this.pnlHomeControlPage.Controls.Add(this.pnl3);
+            this.pnlHomeControlPage.Controls.Add(this.pnl2);
+            this.pnlHomeControlPage.Controls.Add(this.pnl1);
+            this.pnlHomeControlPage.Location = new System.Drawing.Point(-4, 109);
+            this.pnlHomeControlPage.Name = "pnlHomeControlPage";
+            this.pnlHomeControlPage.Size = new System.Drawing.Size(1903, 929);
+            this.pnlHomeControlPage.TabIndex = 31;
+            // 
+            // pnlHomeKeyboard
+            // 
+            this.pnlHomeKeyboard.BackColor = System.Drawing.Color.Transparent;
+            this.pnlHomeKeyboard.Controls.Add(this.btnHomeKeyboard);
+            this.pnlHomeKeyboard.Location = new System.Drawing.Point(1306, 23);
+            this.pnlHomeKeyboard.Name = "pnlHomeKeyboard";
+            this.pnlHomeKeyboard.Size = new System.Drawing.Size(94, 95);
+            this.pnlHomeKeyboard.TabIndex = 44;
+            // 
+            // btnHomeKeyboard
+            // 
+            this.btnHomeKeyboard.BackColor = System.Drawing.Color.Black;
+            this.btnHomeKeyboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHomeKeyboard.Image = global::GazeToolBar.Properties.Resources.Keyboard_icon;
+            this.btnHomeKeyboard.Location = new System.Drawing.Point(2, 2);
+            this.btnHomeKeyboard.Name = "btnHomeKeyboard";
+            this.btnHomeKeyboard.Size = new System.Drawing.Size(90, 90);
+            this.btnHomeKeyboard.TabIndex = 0;
+            this.btnHomeKeyboard.UseVisualStyleBackColor = false;
+            this.btnHomeKeyboard.Click += new System.EventHandler(this.btnHomeKeyboard_Click);
+            // 
+            // pnlButtonLabel
+            // 
+            this.pnlButtonLabel.Controls.Add(this.txtButtonLabel);
+            this.pnlButtonLabel.Location = new System.Drawing.Point(1111, 128);
+            this.pnlButtonLabel.Name = "pnlButtonLabel";
+            this.pnlButtonLabel.Size = new System.Drawing.Size(316, 58);
+            this.pnlButtonLabel.TabIndex = 43;
+            // 
+            // txtButtonLabel
+            // 
+            this.txtButtonLabel.BackColor = System.Drawing.Color.White;
+            this.txtButtonLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.txtButtonLabel.Location = new System.Drawing.Point(1, 2);
+            this.txtButtonLabel.Name = "txtButtonLabel";
+            this.txtButtonLabel.Size = new System.Drawing.Size(312, 53);
+            this.txtButtonLabel.TabIndex = 41;
+            this.txtButtonLabel.Enter += new System.EventHandler(this.txtButtonLabel_Enter);
+            // 
+            // pnlSetLabel
+            // 
+            this.pnlSetLabel.Controls.Add(this.btnSetLabel);
+            this.pnlSetLabel.Location = new System.Drawing.Point(1112, 21);
+            this.pnlSetLabel.Name = "pnlSetLabel";
+            this.pnlSetLabel.Size = new System.Drawing.Size(154, 105);
+            this.pnlSetLabel.TabIndex = 42;
+            // 
+            // btnSetLabel
+            // 
+            this.btnSetLabel.BackColor = System.Drawing.Color.Transparent;
+            this.btnSetLabel.FlatAppearance.BorderSize = 5;
+            this.btnSetLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetLabel.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnSetLabel.ForeColor = System.Drawing.Color.White;
+            this.btnSetLabel.Location = new System.Drawing.Point(0, 2);
+            this.btnSetLabel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetLabel.Name = "btnSetLabel";
+            this.btnSetLabel.Size = new System.Drawing.Size(150, 100);
+            this.btnSetLabel.TabIndex = 30;
+            this.btnSetLabel.Text = "Set Label";
+            this.btnSetLabel.UseVisualStyleBackColor = false;
+            this.btnSetLabel.Click += new System.EventHandler(this.btnSetLabel_Click);
+            // 
+            // pnlEmpty
+            // 
+            this.pnlEmpty.Controls.Add(this.btnEmpty);
+            this.pnlEmpty.Location = new System.Drawing.Point(1454, 433);
+            this.pnlEmpty.Name = "pnlEmpty";
+            this.pnlEmpty.Size = new System.Drawing.Size(154, 105);
+            this.pnlEmpty.TabIndex = 39;
+            // 
+            // btnEmpty
+            // 
+            this.btnEmpty.BackColor = System.Drawing.Color.Transparent;
+            this.btnEmpty.FlatAppearance.BorderSize = 5;
+            this.btnEmpty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEmpty.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnEmpty.ForeColor = System.Drawing.Color.White;
+            this.btnEmpty.Location = new System.Drawing.Point(0, 2);
+            this.btnEmpty.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEmpty.Name = "btnEmpty";
+            this.btnEmpty.Size = new System.Drawing.Size(150, 100);
+            this.btnEmpty.TabIndex = 30;
+            this.btnEmpty.Text = "Empty";
+            this.btnEmpty.UseVisualStyleBackColor = false;
+            this.btnEmpty.Click += new System.EventHandler(this.btnEmpty_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(1475, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 46);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "Type";
+            // 
+            // pnlTV
+            // 
+            this.pnlTV.Controls.Add(this.btnTV);
+            this.pnlTV.Location = new System.Drawing.Point(1454, 317);
+            this.pnlTV.Name = "pnlTV";
+            this.pnlTV.Size = new System.Drawing.Size(154, 105);
+            this.pnlTV.TabIndex = 37;
+            // 
+            // btnTV
+            // 
+            this.btnTV.BackColor = System.Drawing.Color.Transparent;
+            this.btnTV.FlatAppearance.BorderSize = 5;
+            this.btnTV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTV.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnTV.ForeColor = System.Drawing.Color.White;
+            this.btnTV.Location = new System.Drawing.Point(0, 2);
+            this.btnTV.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTV.Name = "btnTV";
+            this.btnTV.Size = new System.Drawing.Size(150, 100);
+            this.btnTV.TabIndex = 30;
+            this.btnTV.Text = "TV";
+            this.btnTV.UseVisualStyleBackColor = false;
+            this.btnTV.Click += new System.EventHandler(this.btnTV_Click);
+            // 
+            // pnlHeater
+            // 
+            this.pnlHeater.Controls.Add(this.btnHeater);
+            this.pnlHeater.Location = new System.Drawing.Point(1454, 196);
+            this.pnlHeater.Name = "pnlHeater";
+            this.pnlHeater.Size = new System.Drawing.Size(154, 105);
+            this.pnlHeater.TabIndex = 36;
+            // 
+            // btnHeater
+            // 
+            this.btnHeater.BackColor = System.Drawing.Color.Transparent;
+            this.btnHeater.FlatAppearance.BorderSize = 5;
+            this.btnHeater.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHeater.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnHeater.ForeColor = System.Drawing.Color.White;
+            this.btnHeater.Location = new System.Drawing.Point(0, 2);
+            this.btnHeater.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHeater.Name = "btnHeater";
+            this.btnHeater.Size = new System.Drawing.Size(150, 100);
+            this.btnHeater.TabIndex = 30;
+            this.btnHeater.Text = "Heater";
+            this.btnHeater.UseVisualStyleBackColor = false;
+            this.btnHeater.Click += new System.EventHandler(this.btnHeater_Click);
+            // 
+            // pnlLight
+            // 
+            this.pnlLight.Controls.Add(this.btnLight);
+            this.pnlLight.Location = new System.Drawing.Point(1454, 77);
+            this.pnlLight.Name = "pnlLight";
+            this.pnlLight.Size = new System.Drawing.Size(154, 105);
+            this.pnlLight.TabIndex = 35;
+            // 
+            // btnLight
+            // 
+            this.btnLight.BackColor = System.Drawing.Color.Transparent;
+            this.btnLight.FlatAppearance.BorderSize = 5;
+            this.btnLight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLight.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnLight.ForeColor = System.Drawing.Color.White;
+            this.btnLight.Location = new System.Drawing.Point(0, 2);
+            this.btnLight.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLight.Name = "btnLight";
+            this.btnLight.Size = new System.Drawing.Size(150, 100);
+            this.btnLight.TabIndex = 30;
+            this.btnLight.Text = "Light";
+            this.btnLight.UseVisualStyleBackColor = false;
+            this.btnLight.Click += new System.EventHandler(this.btnLight_Click);
+            // 
+            // pnl3
+            // 
+            this.pnl3.Controls.Add(this.btn3);
+            this.pnl3.Location = new System.Drawing.Point(524, 18);
+            this.pnl3.Name = "pnl3";
+            this.pnl3.Size = new System.Drawing.Size(154, 155);
+            this.pnl3.TabIndex = 4;
+            // 
+            // btn3
+            // 
+            this.btn3.FlatAppearance.BorderSize = 5;
+            this.btn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn3.Font = new System.Drawing.Font("Arial", 24F);
+            this.btn3.ForeColor = System.Drawing.Color.White;
+            this.btn3.Location = new System.Drawing.Point(2, -1);
+            this.btn3.Margin = new System.Windows.Forms.Padding(2);
+            this.btn3.Name = "btn3";
+            this.btn3.Size = new System.Drawing.Size(150, 150);
+            this.btn3.TabIndex = 2;
+            this.btn3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn3.UseVisualStyleBackColor = true;
+            this.btn3.Click += new System.EventHandler(this.btn3_Click);
+            // 
+            // pnl2
+            // 
+            this.pnl2.Controls.Add(this.btn2);
+            this.pnl2.Location = new System.Drawing.Point(272, 17);
+            this.pnl2.Name = "pnl2";
+            this.pnl2.Size = new System.Drawing.Size(154, 155);
+            this.pnl2.TabIndex = 3;
+            // 
+            // btn2
+            // 
+            this.btn2.FlatAppearance.BorderSize = 5;
+            this.btn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn2.Font = new System.Drawing.Font("Arial", 24F);
+            this.btn2.ForeColor = System.Drawing.Color.White;
+            this.btn2.Location = new System.Drawing.Point(2, 2);
+            this.btn2.Margin = new System.Windows.Forms.Padding(2);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(150, 150);
+            this.btn2.TabIndex = 2;
+            this.btn2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn2.UseVisualStyleBackColor = true;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            // 
+            // pnl1
+            // 
+            this.pnl1.Controls.Add(this.btn1);
+            this.pnl1.Location = new System.Drawing.Point(26, 14);
+            this.pnl1.Name = "pnl1";
+            this.pnl1.Size = new System.Drawing.Size(154, 155);
+            this.pnl1.TabIndex = 0;
+            // 
+            // btn1
+            // 
+            this.btn1.FlatAppearance.BorderSize = 5;
+            this.btn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn1.Font = new System.Drawing.Font("Arial", 24F);
+            this.btn1.ForeColor = System.Drawing.Color.White;
+            this.btn1.Location = new System.Drawing.Point(2, 2);
+            this.btn1.Margin = new System.Windows.Forms.Padding(2);
+            this.btn1.Name = "btn1";
+            this.btn1.Size = new System.Drawing.Size(150, 150);
+            this.btn1.TabIndex = 2;
+            this.btn1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn1.UseVisualStyleBackColor = true;
+            this.btn1.Click += new System.EventHandler(this.btn1_Click);
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
@@ -2039,16 +2398,100 @@ namespace GazeToolBar
             this.pictureBox5.TabIndex = 0;
             this.pictureBox5.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(1119, 207);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(175, 46);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "Device #";
+            // 
+            // pnlDevice1
+            // 
+            this.pnlDevice1.Controls.Add(this.btnDevice1);
+            this.pnlDevice1.Location = new System.Drawing.Point(1009, 274);
+            this.pnlDevice1.Name = "pnlDevice1";
+            this.pnlDevice1.Size = new System.Drawing.Size(104, 105);
+            this.pnlDevice1.TabIndex = 46;
+            // 
+            // btnDevice1
+            // 
+            this.btnDevice1.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevice1.FlatAppearance.BorderSize = 5;
+            this.btnDevice1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDevice1.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnDevice1.ForeColor = System.Drawing.Color.White;
+            this.btnDevice1.Location = new System.Drawing.Point(2, 2);
+            this.btnDevice1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDevice1.Name = "btnDevice1";
+            this.btnDevice1.Size = new System.Drawing.Size(100, 100);
+            this.btnDevice1.TabIndex = 30;
+            this.btnDevice1.Text = "1";
+            this.btnDevice1.UseVisualStyleBackColor = false;
+            this.btnDevice1.Click += new System.EventHandler(this.btnDevice1_Click);
+            // 
+            // pnlDevice2
+            // 
+            this.pnlDevice2.Controls.Add(this.btnDevice2);
+            this.pnlDevice2.Location = new System.Drawing.Point(1173, 273);
+            this.pnlDevice2.Name = "pnlDevice2";
+            this.pnlDevice2.Size = new System.Drawing.Size(104, 105);
+            this.pnlDevice2.TabIndex = 47;
+            // 
+            // btnDevice2
+            // 
+            this.btnDevice2.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevice2.FlatAppearance.BorderSize = 5;
+            this.btnDevice2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDevice2.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnDevice2.ForeColor = System.Drawing.Color.White;
+            this.btnDevice2.Location = new System.Drawing.Point(2, 2);
+            this.btnDevice2.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDevice2.Name = "btnDevice2";
+            this.btnDevice2.Size = new System.Drawing.Size(100, 100);
+            this.btnDevice2.TabIndex = 30;
+            this.btnDevice2.Text = "2";
+            this.btnDevice2.UseVisualStyleBackColor = false;
+            this.btnDevice2.Click += new System.EventHandler(this.btnDevice2_Click);
+            // 
+            // pnlDevice3
+            // 
+            this.pnlDevice3.Controls.Add(this.btnDevice3);
+            this.pnlDevice3.Location = new System.Drawing.Point(1327, 274);
+            this.pnlDevice3.Name = "pnlDevice3";
+            this.pnlDevice3.Size = new System.Drawing.Size(104, 105);
+            this.pnlDevice3.TabIndex = 48;
+            // 
+            // btnDevice3
+            // 
+            this.btnDevice3.BackColor = System.Drawing.Color.Transparent;
+            this.btnDevice3.FlatAppearance.BorderSize = 5;
+            this.btnDevice3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDevice3.Font = new System.Drawing.Font("Arial", 15.75F);
+            this.btnDevice3.ForeColor = System.Drawing.Color.White;
+            this.btnDevice3.Location = new System.Drawing.Point(2, 2);
+            this.btnDevice3.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDevice3.Name = "btnDevice3";
+            this.btnDevice3.Size = new System.Drawing.Size(100, 100);
+            this.btnDevice3.TabIndex = 30;
+            this.btnDevice3.Text = "3";
+            this.btnDevice3.UseVisualStyleBackColor = false;
+            this.btnDevice3.Click += new System.EventHandler(this.btnDevice3_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1596, 753);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.pnlHomeControlPage);
+            this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlPageKeyboard);
             this.Controls.Add(this.pnlGeneral);
             this.Controls.Add(this.pnlCrosshairPage);
-            this.Controls.Add(this.pnlRearrange);
             this.Controls.Add(this.pnlZoomSettings);
             this.Controls.Add(this.panelSaveAndCancel);
             this.Controls.Add(this.pnlSwitchSetting);
@@ -2099,6 +2542,7 @@ namespace GazeToolBar
             this.pnlGeneralButton.ResumeLayout(false);
             this.pnlKeysButton.ResumeLayout(false);
             this.pnlSwitchSetting.ResumeLayout(false);
+            this.pnlHomeControl.ResumeLayout(false);
             this.panelCrosshairButton.ResumeLayout(false);
             this.pnlRearrangeButton.ResumeLayout(false);
             this.pnlZoomButton.ResumeLayout(false);
@@ -2145,6 +2589,7 @@ namespace GazeToolBar
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFixTimeLength)).EndInit();
             this.pnlFTLMins.ResumeLayout(false);
             this.pnlRearrange.ResumeLayout(false);
+            this.pnlActionHomeControl.ResumeLayout(false);
             this.pnlMicButton.ResumeLayout(false);
             this.pnlRearrangeControls.ResumeLayout(false);
             this.pnlMoveUpButton.ResumeLayout(false);
@@ -2170,7 +2615,23 @@ namespace GazeToolBar
             this.pnlCrosshairUpButton.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarCrosshair)).EndInit();
             this.pnlCrosshairDownButton.ResumeLayout(false);
+            this.pnlHomeControlPage.ResumeLayout(false);
+            this.pnlHomeControlPage.PerformLayout();
+            this.pnlHomeKeyboard.ResumeLayout(false);
+            this.pnlButtonLabel.ResumeLayout(false);
+            this.pnlButtonLabel.PerformLayout();
+            this.pnlSetLabel.ResumeLayout(false);
+            this.pnlEmpty.ResumeLayout(false);
+            this.pnlTV.ResumeLayout(false);
+            this.pnlHeater.ResumeLayout(false);
+            this.pnlLight.ResumeLayout(false);
+            this.pnl3.ResumeLayout(false);
+            this.pnl2.ResumeLayout(false);
+            this.pnl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.pnlDevice1.ResumeLayout(false);
+            this.pnlDevice2.ResumeLayout(false);
+            this.pnlDevice3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2315,6 +2776,7 @@ namespace GazeToolBar
         private EyeXFramework.Forms.BehaviorMap bhavShortcutMap;
         private EyeXFramework.Forms.BehaviorMap bhavRearrangeMap;
         private EyeXFramework.Forms.BehaviorMap bhavCrosshairMap;
+        private EyeXFramework.Forms.BehaviorMap bhavHomeControlMap;
         private Panel pnlMic;
         private Label lbMicOn;
         private Panel pnlClearMic;
@@ -2334,5 +2796,38 @@ namespace GazeToolBar
         private Button btnDefaultConfirmYes;
         private Label label4;
         private EyeXFramework.Forms.BehaviorMap bhavConfirmMap;
+        private Panel pnlHomeControl;
+        private Button btnHomeControl;
+        private Panel pnlHomeControlPage;
+        private Panel pnl1;
+        private Button btn1;
+        private Panel pnl2;
+        private Button btn2;
+        private Panel pnl3;
+        private Button btn3;
+        private Panel pnlActionHomeControl;
+        private Button btnActionHomeControl;
+        private Label label5;
+        private Panel pnlTV;
+        private Button btnTV;
+        private Panel pnlHeater;
+        private Button btnHeater;
+        private Panel pnlLight;
+        private Button btnLight;
+        private Panel pnlEmpty;
+        private Button btnEmpty;
+        private Panel pnlSetLabel;
+        private Button btnSetLabel;
+        private TextBox txtButtonLabel;
+        private Panel pnlButtonLabel;
+        private Panel pnlHomeKeyboard;
+        private Button btnHomeKeyboard;
+        private Panel pnlDevice3;
+        private Button btnDevice3;
+        private Panel pnlDevice2;
+        private Button btnDevice2;
+        private Panel pnlDevice1;
+        private Button btnDevice1;
+        private Label label6;
     }
 }

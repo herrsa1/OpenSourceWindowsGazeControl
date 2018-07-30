@@ -102,6 +102,19 @@
     <Reference Include="ImageProcessing">
       <HintPath>C:\Users\medlsp1\Desktop\ImageProcessing.dll</HintPath>
     </Reference>
+    <Reference Include="IronPython">
+      <HintPath>..\..\..\IronPython\net40\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules">
+      <HintPath>..\..\..\IronPython\net40\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic">
+      <HintPath>..\..\..\IronPython\net40\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting">
+      <HintPath>..\..\..\IronPython\net40\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -165,6 +178,12 @@
     </Compile>
     <Compile Include="GazePoint.cs" />
     <Compile Include="GazeToolbar.cs" />
+    <Compile Include="HomeControlPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeControlPage.Designer.cs">
+      <DependentUpon>HomeControlPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="HookedKeyboardEventArgs.cs" />
     <Compile Include="IFixationSmoother.cs" />
     <Compile Include="KeyboardHook.cs" />
@@ -174,6 +193,9 @@
     <Compile Include="ReletiveSize.cs" />
     <Compile Include="ScrollControl.cs" />
     <Compile Include="SettingJSON.cs" />
+    <Compile Include="HomeControlPage.BehavMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Settings.BehavMap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +227,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeControlPage.resx">
+      <DependentUpon>HomeControlPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -260,6 +285,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Mic-icon.png" />
+    <None Include="Images\Light.png" />
+    <None Include="Images\tv.png" />
+    <None Include="Images\heater.png" />
+    <None Include="Images\house.png" />
+    <None Include="Images\LightOn.png" />
+    <None Include="Images\houseOn.png" />
+    <None Include="Images\heaterOn.png" />
+    <None Include="Images\tvOn.png" />
     <Content Include="programIcon.ico" />
     <Content Include="Gaze.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

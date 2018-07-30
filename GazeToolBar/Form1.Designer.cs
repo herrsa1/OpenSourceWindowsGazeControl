@@ -48,6 +48,8 @@
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.pnlHighLightMic = new System.Windows.Forms.Panel();
             this.btnMic = new System.Windows.Forms.Button();
+            this.pnlHighlightHomeControl = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.Button();
             this.pnlHighLightKeyboard.SuspendLayout();
             this.pnlHighLightScrol.SuspendLayout();
             this.pnlHighLightSettings.SuspendLayout();
@@ -55,6 +57,7 @@
             this.pnlHighLightSingleLeft.SuspendLayout();
             this.pnlHiLteRightClick.SuspendLayout();
             this.pnlHighLightMic.SuspendLayout();
+            this.pnlHighlightHomeControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHighLightKeyboard
@@ -208,12 +211,33 @@
             this.btnMic.UseVisualStyleBackColor = false;
             this.btnMic.Click += new System.EventHandler(this.btnMic_Click);
             // 
+            // pnlHighlightHomeControl
+            // 
+            this.pnlHighlightHomeControl.Controls.Add(this.btnHome);
+            this.pnlHighlightHomeControl.Location = new System.Drawing.Point(15, 784);
+            this.pnlHighlightHomeControl.Name = "pnlHighlightHomeControl";
+            this.pnlHighlightHomeControl.Size = new System.Drawing.Size(80, 84);
+            this.pnlHighlightHomeControl.TabIndex = 10;
+            // 
+            // btnHome
+            // 
+            this.btnHome.BackColor = System.Drawing.Color.Black;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Image = global::GazeToolBar.Properties.Resources.house;
+            this.btnHome.Location = new System.Drawing.Point(3, 3);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(75, 78);
+            this.btnHome.TabIndex = 5;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(120, 780);
+            this.ClientSize = new System.Drawing.Size(120, 880);
             this.ControlBox = false;
+            this.Controls.Add(this.pnlHighlightHomeControl);
             this.Controls.Add(this.pnlHighLightMic);
             this.Controls.Add(this.pnlHighLightKeyboard);
             this.Controls.Add(this.pnlHiLteRightClick);
@@ -238,6 +262,7 @@
             this.pnlHighLightSingleLeft.ResumeLayout(false);
             this.pnlHiLteRightClick.ResumeLayout(false);
             this.pnlHighLightMic.ResumeLayout(false);
+            this.pnlHighlightHomeControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -264,6 +289,8 @@
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.Panel pnlHighLightMic;
         private System.Windows.Forms.Button btnMic;
+        private System.Windows.Forms.Panel pnlHighlightHomeControl;
+        private System.Windows.Forms.Button btnHome;
     }
 }
 

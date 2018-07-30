@@ -27,6 +27,10 @@ namespace GazeToolBar
         private String selectionButton = "";
         private Dictionary<String, Button> buttonMap = new Dictionary<string, Button>();
         private bool stickyLeft, selectionFeedback;
+        private String[] homeLables = new String[] { };
+        private int?[] buttonDeviceNumbers = new int?[] { };
+        private HomeControlPage.ButtonType[] homeButtonTypes = new HomeControlPage.ButtonType[] { };
+        private List<Button> HomeControlButtons = new List<Button>();    
 
         private List<Panel> fKeyPannels;
 
@@ -40,6 +44,7 @@ namespace GazeToolBar
             pnlRearrange.Hide();
             pnlZoomSettings.Hide();
             pnlDefaultConfirm.Hide();
+            pnlHomeControlPage.Hide();
             ChangeButtonColor(btnGeneralSetting, true, true);
             this.form1 = form1;
             //This code make setting form full screen
@@ -78,8 +83,7 @@ namespace GazeToolBar
             if (selectionFeedback)
                 btnFeedback.BackColor = Color.White;
 
-            form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;
-
+            form1.LowLevelKeyBoardHook.OnKeyPressed += GetKeyPress;           
         }
 
         private void controlRelocateAndResize()
@@ -173,6 +177,10 @@ namespace GazeToolBar
             pnlFeedbackContent.Location = new Point((pnlFeedback.Size.Width / 2) - (pnlFeedbackContent.Width / 2), pnlFeedbackContent.Location.Y);
             pnlFeedbackContent.Location = new Point((pnlFeedback.Size.Width / 2) - (pnlFeedbackContent.Width / 2), pnlFeedbackContent.Location.Y);
             labFeedback.Location = ReletiveSize.labelPosition(pnlFeedback, labFeedback);
+            //Home Control panel
+            pnlHomeControlPage.Location = ReletiveSize.mainPanelLocation(pnlSwitchSetting.Location.Y, pnlSwitchSetting.Height);
+            pnlHomeControlPage.Size = ReletiveSize.panelRearrangeSize(panelSaveAndCancel.Location.Y, pnlHomeControlPage.Location.Y);
+
         }
 
         //private void btnChangeSide_Click(object sender, EventArgs e)
@@ -307,6 +315,10 @@ namespace GazeToolBar
                 setting.zoomWindowSize = trackBarZoomWindowSize.Value;
                 setting.stickyLeftClick = stickyLeft;
                 setting.selectionFeedback = selectionFeedback;
+                setting.homeLables = homeLables;
+                setting.homeButtonTypes = homeButtonTypes;
+                setting.buttonDeviceNumbers = buttonDeviceNumbers;
+                
 
                 Program.readSettings.sidebar = selectedActions.ToArray<string>();
                 Program.readSettings.maxZoom = setting.maxZoom;
@@ -379,9 +391,12 @@ namespace GazeToolBar
             lbScroll.Text = Program.readSettings.scoll;
             lbMicOn.Text = Program.readSettings.micInput;
             lbMicOff.Text = Program.readSettings.micInputOff;
+            homeLables = Program.readSettings.homeLables;
+            homeButtonTypes = Program.readSettings.homeButtonTypes;
 
             trackBarCrosshair.Value = Program.readSettings.Crosshair;
             UpdateCrosshair();
+            init_HomeControl();
         }
 
         private void changePanel(Panel pnlToShow)
@@ -391,6 +406,7 @@ namespace GazeToolBar
             shownPanel = pnlToShow;
             shownPanel.BringToFront();
             shownPanel.Show();
+            form1.clear_Screen();
         }
 
         private void btnGeneralSetting_Click(object sender, EventArgs e)
@@ -404,6 +420,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(buttonCrosshairSetting, false, true);
+                ChangeButtonColor(btnHomeControl, false, true);
                 ChangeButtonColor(btnGeneralSetting, true, true);
 
                 WaitForUserKeyPress = false;
@@ -421,6 +438,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(buttonCrosshairSetting, false, true);
+                ChangeButtonColor(btnHomeControl, false, true);
                 ChangeButtonColor(btnShortCutKeySetting, true, true);
 
                 lbFKeyFeedback.Text = "";
@@ -438,6 +456,7 @@ namespace GazeToolBar
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnRearrangeSetting, false, true);
                 ChangeButtonColor(buttonCrosshairSetting, false, true);
+                ChangeButtonColor(btnHomeControl, false, true);
                 ChangeButtonColor(btnZoomSettings, true, true);
             }
         }
@@ -454,8 +473,26 @@ namespace GazeToolBar
                 ChangeButtonColor(btnShortCutKeySetting, false, true);
                 ChangeButtonColor(btnZoomSettings, false, true);
                 ChangeButtonColor(buttonCrosshairSetting, false, true);
+                ChangeButtonColor(btnHomeControl, false, true);
                 ChangeButtonColor(btnRearrangeSetting, true, true);
                 RefreshActions();
+            }
+        }
+        
+        private void btnHomeControl_Click(object sender, EventArgs e)
+        {
+            if (shownPanel != pnlHomeControlPage)
+            {
+                changePanel(pnlHomeControlPage);
+                UseMap(SettingState.HomeControl);
+                panelSaveAndCancel.BringToFront();
+
+                ChangeButtonColor(btnGeneralSetting, false, true);
+                ChangeButtonColor(btnShortCutKeySetting, false, true);
+                ChangeButtonColor(btnZoomSettings, false, true);
+                ChangeButtonColor(buttonCrosshairSetting, false, true);
+                ChangeButtonColor(btnRearrangeSetting, false, true);
+                ChangeButtonColor(btnHomeControl, true, true);
             }
         }
 
@@ -468,6 +505,7 @@ namespace GazeToolBar
             ChangeButtonColor(btnShortCutKeySetting, false, true);
             ChangeButtonColor(btnZoomSettings, false, true);
             ChangeButtonColor(btnRearrangeSetting, false, true);
+            ChangeButtonColor(btnHomeControl, false, true);
             ChangeButtonColor(buttonCrosshairSetting, true, true);
 
             WaitForUserKeyPress = false;
@@ -702,6 +740,7 @@ namespace GazeToolBar
             buttonMap.Add("scroll", btnActionScrollClick);
             buttonMap.Add("settings", btnActionSettings);
             buttonMap.Add("mic", btnActionMic);
+            buttonMap.Add("home_control", btnActionHomeControl);
 
             actionButtons.Add(btnActionDoubleLeftClick);
             actionButtons.Add(btnActionLeftClick);
@@ -710,6 +749,7 @@ namespace GazeToolBar
             actionButtons.Add(btnActionKeyboard);
             actionButtons.Add(btnActionSettings);
             actionButtons.Add(btnActionMic);
+            actionButtons.Add(btnActionHomeControl);
 
             actionPanels.Add(pnlDoubleLeftClickButton);
             actionPanels.Add(pnlLeftClickButton);
@@ -718,6 +758,7 @@ namespace GazeToolBar
             actionPanels.Add(pnlKeyboardButton);
             actionPanels.Add(pnlSettingsButton);
             actionPanels.Add(pnlMicButton);
+            actionPanels.Add(pnlActionHomeControl);
 
             foreach (Panel pnl in actionPanels)
             {
@@ -960,5 +1001,190 @@ namespace GazeToolBar
             shownPanel = pnlDefaultConfirm;
             pnlDefaults.BackColor = Color.Black;
         }
+
+        //Methods & Variables for Home Control
+        private Button selectedButton = null;
+
+        private void init_HomeControl()
+        {
+            HomeControlButtons.Add(btn1);
+            HomeControlButtons.Add(btn2);
+            HomeControlButtons.Add(btn3);
+            int t = homeButtonTypes.Count();
+            for (int i = 0; i <= HomeControlButtons.Count - 1; i++)
+            {
+                HomeControlButtons[i].TextAlign = ContentAlignment.BottomCenter;
+                HomeControlButtons[i].Font = new Font("Arial", 12);
+                HomeControlButtons[i].Text = homeLables[i];
+                updateBtn(i);               
+            }
+        }
+
+        private void updateBtn(int i)
+        {
+            switch (homeButtonTypes[i])
+            {
+                case HomeControlPage.ButtonType.heater:
+                    HomeControlButtons[i].Image = Properties.Resources.heater;
+                    HomeControlButtons[i].Text = homeLables[i];
+                    break;
+                case HomeControlPage.ButtonType.light:
+                    HomeControlButtons[i].Image = Properties.Resources.Light;
+                    HomeControlButtons[i].Text = homeLables[i];
+                    break;
+                case HomeControlPage.ButtonType.tv:
+                    HomeControlButtons[i].Image = Properties.Resources.tv;
+                    HomeControlButtons[i].Text = homeLables[i];
+                    break;
+                default:
+                    HomeControlButtons[i].Image = null;
+                    break;
+            }
+        }
+
+        private void changeType(HomeControlPage.ButtonType btnType)
+        {
+            for (int i = 0; i <= HomeControlButtons.Count - 1; i++)
+            {
+                if (selectedButton == HomeControlButtons[i])
+                {
+                    homeButtonTypes[i] = btnType;
+                    updateBtn(i);
+                    goto end;
+                }
+            }
+        end:;
+        }
+
+        private void changeLabel(String text)
+        {
+            for (int i = 0; i <= HomeControlButtons.Count - 1; i++)
+            {
+                if (selectedButton == HomeControlButtons[i])
+                {
+                    homeLables[i] = text;
+                    updateBtn(i);
+                    goto end;
+                }
+            }
+        end:;
+        }
+
+        private void changeBtnDevice(int deviceNum)
+        {
+            for (int i = 0; i <= HomeControlButtons.Count - 1; i++)
+            {
+                if (selectedButton == HomeControlButtons[i])
+                {
+                    buttonDeviceNumbers[i] = deviceNum;
+                    updateBtn(i);
+                    goto end;
+                }
+            }
+        end:;
+        }
+
+        private void selectButton(Button btn)
+        {
+            //Make selected color go away
+            for (int i = 0; i <= HomeControlButtons.Count - 1; i++)
+            {
+                HomeControlButtons[i].BackColor = Color.Transparent;
+            }
+
+            //if button clicked is not the current selection then select
+            //else deselect button
+            if (selectedButton != btn)
+            {
+                selectedButton = btn;
+                btn.BackColor = Color.Yellow;
+            }
+            else
+            {
+                selectedButton = null;
+                btn.BackColor = Color.Transparent;
+            }           
+        }
+
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            selectButton(btn1);
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            selectButton(btn2);
+        }      
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            selectButton(btn3);
+        }
+
+        private void btnHeater_Click(object sender, EventArgs e)
+        {
+            changeType(HomeControlPage.ButtonType.heater);
+        }
+
+        private void btnTV_Click(object sender, EventArgs e)
+        {
+            changeType(HomeControlPage.ButtonType.tv);
+        }        
+
+        private void btnLight_Click(object sender, EventArgs e)
+        {
+            changeType(HomeControlPage.ButtonType.light);
+        }
+
+        private void btnEmpty_Click(object sender, EventArgs e)
+        {
+            changeType(HomeControlPage.ButtonType.undefined);           
+        }
+
+        private void btnHomeKeyboard_Click(object sender, EventArgs e)
+        {
+            if (form1.keyboard.IsVisible)
+            {
+                form1.clear_Screen();
+            }
+            else
+            {
+                form1.keyboard.Show();
+                form1.keyboard.IsEnabled = true;
+                form1.keyboard.Topmost = true;
+                form1.keyboard.InputResume();              
+            }
+        }
+
+        private void txtButtonLabel_Enter(object sender, EventArgs e)
+        {
+            {
+                txtButtonLabel.Focus();
+                form1.keyboard.Show();
+                form1.keyboard.IsEnabled = true;
+                form1.keyboard.Topmost = true;
+                form1.keyboard.InputResume();
+            }
+        }
+
+        private void btnSetLabel_Click(object sender, EventArgs e)
+        {
+            changeLabel(txtButtonLabel.Text);
+        }
+
+        private void btnDevice1_Click(object sender, EventArgs e)
+        {
+            changeBtnDevice(0);
+        }
+
+        private void btnDevice2_Click(object sender, EventArgs e)
+        {
+            changeBtnDevice(1);
+        }
+
+        private void btnDevice3_Click(object sender, EventArgs e)
+        {
+            changeBtnDevice(2);
+        }       
     }
 }

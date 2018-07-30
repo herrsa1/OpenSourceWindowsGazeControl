@@ -41,7 +41,6 @@ namespace GazeToolBar
             {
                 MessageBox.Show("There is already an instance of Gaze Toolbar running!");
             }
-
         }
 
         public static void ReadWriteJson()
@@ -63,6 +62,12 @@ namespace GazeToolBar
                 defaultSetting.zoomWindowSize = 10;
                 defaultSetting.stickyLeftClick = false;
                 defaultSetting.selectionFeedback = true;
+                defaultSetting.homeLables = new string[] 
+                { "Undefined", "Undefined", "Undefined", "Undefined", "Undefined", "Undefined", "Undefined", "Undefined", "Undefined" };
+                defaultSetting.buttonDeviceNumbers = new int?[] { null, null, null, null, null, null, null, null, null };
+                defaultSetting.homeButtonTypes = new HomeControlPage.ButtonType[]                
+                { HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined
+                , HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined, HomeControlPage.ButtonType.undefined};
                 string JSONstr = JsonConvert.SerializeObject(defaultSetting);
                 File.AppendAllText(path, JSONstr);
 

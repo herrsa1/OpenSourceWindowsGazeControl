@@ -44,6 +44,9 @@ namespace GazeToolBar
                 case SettingState.Crosshair: //Crosshair settings
                     bhavCrosshairMap.Dispose();
                     break;
+                case SettingState.HomeControl: //Home Control page
+                    bhavHomeControlMap.Dispose();
+                    break;
                 case SettingState.Confirm: //Confirm page
                     bhavConfirmMap.Dispose();
                     break;
@@ -86,6 +89,11 @@ namespace GazeToolBar
                     eyeXHost.Connect(bhavConfirmMap);
                     setupConfirmMap();
                     currentSelection = SettingState.Confirm;
+                    break;
+                case SettingState.HomeControl: //Home Control settings
+                    eyeXHost.Connect(bhavHomeControlMap);
+                    setupHomeControlMap();
+                    currentSelection = SettingState.HomeControl;
                     break;
                 default:
                     break;
@@ -176,6 +184,7 @@ namespace GazeToolBar
             bhavRearrangeMap.Add(btnActionScrollClick, new GazeAwareBehavior(OnBtnActionScrollClick_Click) { DelayMilliseconds = buttonClickDelay });
             bhavRearrangeMap.Add(btnActionSettings, new GazeAwareBehavior(OnBtnActionSettings_Click) { DelayMilliseconds = buttonClickDelay });
             bhavRearrangeMap.Add(btnActionMic, new GazeAwareBehavior(OnBtnActionMic_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavRearrangeMap.Add(btnActionHomeControl, new GazeAwareBehavior(OnBtnActionHomeControl_Click) { DelayMilliseconds = buttonClickDelay });
 
             bhavRearrangeMap.Add(pnlMoveUpButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlMoveDownButton, new GazeAwareBehavior(OnGazeChangeBTColour));
@@ -187,6 +196,7 @@ namespace GazeToolBar
             bhavRearrangeMap.Add(pnlScrollClickButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlSettingsButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavRearrangeMap.Add(pnlMicButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavRearrangeMap.Add(pnlActionHomeControl, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
         private void setupCrosshairMap()
@@ -217,14 +227,48 @@ namespace GazeToolBar
             bhavSettingMap.Add(btnGeneralSetting, new GazeAwareBehavior(OnBtnGeneralSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(btnRearrangeSetting, new GazeAwareBehavior(OnBtnRearrangeSetting_Click) { DelayMilliseconds = buttonClickDelay });
             bhavSettingMap.Add(buttonCrosshairSetting, new GazeAwareBehavior(OnbuttonCrosshairSetting_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavSettingMap.Add(btnHomeControl, new GazeAwareBehavior(OnBtnHomeControlSettings_Click) { DelayMilliseconds = buttonClickDelay });
 
             bhavSettingMap.Add(pnlGeneralButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlKeysButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlZoomButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlRearrangeButton, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(panelCrosshairButton, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavSettingMap.Add(pnlHomeControl, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlSave, new GazeAwareBehavior(OnGazeChangeBTColour));
             bhavSettingMap.Add(pnlCancel, new GazeAwareBehavior(OnGazeChangeBTColour));
+        }
+
+        private void setupHomeControlMap()
+        {
+            bhavHomeControlMap.Add(btn1, new GazeAwareBehavior(OnBtn1_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btn2, new GazeAwareBehavior(OnBtn2_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btn3, new GazeAwareBehavior(OnBtn3_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnHeater, new GazeAwareBehavior(OnBtnHeater_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnLight, new GazeAwareBehavior(OnBtnLight_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnTV, new GazeAwareBehavior(OnBtnTV_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnEmpty, new GazeAwareBehavior(OnBtnEmpty_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnSetLabel, new GazeAwareBehavior(OnBtnSetLabel_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(txtButtonLabel, new GazeAwareBehavior(OnTxtButtonLable_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnHomeKeyboard, new GazeAwareBehavior(OnBtnHomeKeyboard_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnDevice1, new GazeAwareBehavior(OnBtnDevice1_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnDevice2, new GazeAwareBehavior(OnBtnDevice2_Click) { DelayMilliseconds = buttonClickDelay });
+            bhavHomeControlMap.Add(btnDevice3, new GazeAwareBehavior(OnBtnDevice3_Click) { DelayMilliseconds = buttonClickDelay });
+
+
+            bhavHomeControlMap.Add(pnlDevice1, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlDevice2, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlDevice3, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnl1, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnl2, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnl3, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlHeater, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlLight, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlTV, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlEmpty, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlSetLabel, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlButtonLabel, new GazeAwareBehavior(OnGazeChangeBTColour));
+            bhavHomeControlMap.Add(pnlHomeKeyboard, new GazeAwareBehavior(OnGazeChangeBTColour));
         }
 
         //toggle border on and off on gaze to gaze to give feed back.
@@ -399,7 +443,79 @@ namespace GazeToolBar
         {
             if (e.HasGaze) btnDefaultConfirmNo.PerformClick();
         }
+        private void OnBtnHomeControlSettings_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnHomeControl.PerformClick();
+        }
 
+        private void OnBtnHeater_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnHeater.PerformClick();
+        }
+
+        private void OnBtnLight_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnLight.PerformClick();
+        }
+
+        private void OnBtnTV_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnTV.PerformClick();
+        }
+        private void OnBtnEmpty_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnEmpty.PerformClick();
+        }
+
+        private void OnBtnSetLabel_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnSetLabel.PerformClick();
+        }
+
+        private void OnTxtButtonLable_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) txtButtonLabel.Focus();
+        }
+
+        private void OnBtn1_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btn1.PerformClick();
+        }
+
+        private void OnBtn2_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btn2.PerformClick();
+        }
+
+        private void OnBtn3_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btn3.PerformClick();
+        }
+
+        private void OnBtnActionHomeControl_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnActionHomeControl.PerformClick();
+        }
+
+        private void OnBtnHomeKeyboard_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnHomeKeyboard.PerformClick();
+        }
+
+        private void OnBtnDevice1_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDevice1.PerformClick();
+        }
+
+        private void OnBtnDevice2_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDevice2.PerformClick();
+        }
+
+        private void OnBtnDevice3_Click(object sender, GazeAwareEventArgs e)
+        {
+            if (e.HasGaze) btnDevice3.PerformClick();
+        }
 
         //====================================================================================
 

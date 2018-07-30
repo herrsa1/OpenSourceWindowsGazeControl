@@ -22,6 +22,8 @@ namespace GazeToolBar
         public int zoomWindowSize { get; set; }
         public bool stickyLeftClick { get; set; }
         public bool selectionFeedback { get; set; }
-
+        public string[] homeLables { get; set; }
+        public int?[] buttonDeviceNumbers { get; set; }
+        public HomeControlPage.ButtonType[] homeButtonTypes { get; set; }
     }
 }

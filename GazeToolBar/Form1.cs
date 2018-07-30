@@ -21,6 +21,7 @@ namespace GazeToolBar
     public partial class Form1 : ShellLib.ApplicationDesktopToolbar
     {
         private Settings settings;
+        private HomeControlPage homeControl;
         private ContextMenu contextMenu;
         private MenuItem menuItemExit;
         private MenuItem menuItemStartOnOff;
@@ -33,7 +34,7 @@ namespace GazeToolBar
         public ShortcutKeyWorker shortCutKeyWorker;
 
         OptiKey.GazeKeyboard keyboardInitializer;
-        MainWindow keyboard;
+        public MainWindow keyboard;
 
         public Dictionary<ActionToBePerformed, String> FKeyMapDictionary;
 
@@ -57,6 +58,7 @@ namespace GazeToolBar
             highlightPannerList.Add(pnlHighLightKeyboard);
             highlightPannerList.Add(pnlHighLightSettings);
             highlightPannerList.Add(pnlHighLightMic);
+            highlightPannerList.Add(pnlHighlightHomeControl);
             setButtonPanelHight(highlightPannerList);
 
 
@@ -116,6 +118,8 @@ namespace GazeToolBar
                     return pnlHighLightSettings;
                 case "mic":
                     return pnlHighLightMic;
+                case "home_control":
+                    return pnlHighlightHomeControl;
                 default:
                     return null;
             }
@@ -368,5 +372,25 @@ namespace GazeToolBar
             eyeXHost.Dispose();
         }
 
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            clear_Screen();
+            if (!checkOpenForm(typeof(HomeControlPage)))
+            {
+                homeControl = new HomeControlPage(this, eyeXHost);
+                homeControl.Show();
+                AttemptToggle(SystemFlags.actionToBePerformed);
+            }
+        }
+
+        public void clear_Screen()
+        {
+            if (keyboard.IsVisible)
+            {
+                keyboard.Hide();
+                keyboard.IsEnabled = false;
+                keyboard.InputPause();
+            }
+        }
     }
 }

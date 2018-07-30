@@ -16,7 +16,7 @@ namespace GazeToolBar
 
     public enum SystemState { Wait, ActionButtonSelected, Zooming, ZoomWait, ApplyAction, ScrollWait }
     public enum ActionToBePerformed { RightClick, LeftClick, DoubleClick, Scroll, MicInput, MicInputOff }
-    public enum SettingState { General, Zoom, Shortcut, Rearrange, Crosshair, Confirm }
+    public enum SettingState { General, Zoom, Shortcut, Rearrange, Crosshair, Confirm , HomeControl}
 
     public class StateManager
     {
