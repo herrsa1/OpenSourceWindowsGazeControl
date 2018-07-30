@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System.IO;
 using EyeXFramework.Forms;
 using System.Linq;
-using IronPython.Hosting;
 
 namespace GazeToolBar
 {
@@ -21,7 +20,6 @@ namespace GazeToolBar
         private HomeControlPage.ButtonType[] homeButtonTypes = new HomeControlPage.ButtonType[] { };
         private List<Button> buttons = new List<Button>();
         private List<Boolean> buttonsPower = new List<Boolean>();
-        //public dynamic broadlink, py;
 
         public enum ButtonType { light, heater, tv, undefined }       
 
@@ -30,7 +28,7 @@ namespace GazeToolBar
             eyeXHost = EyeXHost;
             InitializeComponent();
             this.form1 = form1;
-            //This code make setting form full screen
+            //This code makes form full screen
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //End                
@@ -43,7 +41,6 @@ namespace GazeToolBar
 
         public void ChangeButtonColor(Button button, bool onOff, bool hasText)
         {
-
             button.BackColor = onOff ? Constants.SelectedColor : Constants.SettingButtonColor;
             if (hasText)
             {
@@ -62,7 +59,7 @@ namespace GazeToolBar
             buttons.Add(btn1);
             buttons.Add(btn2);
             buttons.Add(btn3);
-            //TO BE REPLACED=========
+            //========TO BE REPLACED=========
             //boolean variables to be replaced with devices ability to send current power status
             buttonsPower.Add(false);
             buttonsPower.Add(false);
@@ -131,9 +128,11 @@ namespace GazeToolBar
                 }
             }
         }
+        //========TODO==========
+        //replace buttonsPower[i] = !buttonsPower[i] to python method to toggle power
         private void btn1_Click(object sender, EventArgs e)
         {
-            //broadlink.toggleDevice(0);
+            buttonsPower[0] = !buttonsPower[0];
             updateBtnImage();
         }
         private void btn2_Click(object sender, EventArgs e)
@@ -171,16 +170,6 @@ namespace GazeToolBar
             homeLables = Program.readSettings.homeLables;
             homeButtonTypes = Program.readSettings.homeButtonTypes;
 
-            //##IronPython Method. does not work due to needing python3 which is currently not compatible with IronPython
-            //var engine = Python.CreateEngine();
-            //ICollection<string> paths = engine.GetSearchPaths();
-            //string modulePath = @"D:\Anaconda3\Lib";
-            //paths.Add(modulePath);
-            //string modulePath2 = @"D:\Anaconda3\Lib\site-packages";
-            //paths.Add(modulePath2);
-            //engine.SetSearchPaths(paths);
-            //dynamic py = engine.ExecuteFile(@"homectrl.py");
-            //dynamic homectrl = py.homectrl_methods();
             ini_Buttons();
         }
     }
