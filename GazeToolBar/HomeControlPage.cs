@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.IO;
 using EyeXFramework.Forms;
 using System.Linq;
+using Python.Runtime;
 
 namespace GazeToolBar
 {
@@ -20,6 +21,7 @@ namespace GazeToolBar
         private HomeControlPage.ButtonType[] homeButtonTypes = new HomeControlPage.ButtonType[] { };
         private List<Button> buttons = new List<Button>();
         private List<Boolean> buttonsPower = new List<Boolean>();
+        private dynamic devices;
 
         public enum ButtonType { light, heater, tv, undefined }       
 
@@ -31,7 +33,16 @@ namespace GazeToolBar
             //This code makes form full screen
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
-            //End                
+            //End      
+            using (Py.GIL())
+            {
+                dynamic broadlink = Py.Import("broadlink");
+
+                //(0 = none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
+                broadlink.setup("WIFI", "PASSWORD", 3);
+
+                devices = broadlink.discover();
+            }
         }
 
         private void controlRelocateAndResize()
@@ -54,6 +65,7 @@ namespace GazeToolBar
                 }
             }
         }
+
         private void ini_Buttons()
         {
             buttons.Add(btn1);
@@ -70,22 +82,31 @@ namespace GazeToolBar
                 buttons[i].TextAlign = ContentAlignment.BottomCenter;
                 buttons[i].Font = new Font("Arial",12);
                 buttons[i].Text = homeLables[i];
-                updateBtnImage();
+                updateBtnImages();
             }
         }
 
-        private void updateBtnImages(int i)
+        private void updateBtnImage(int i)
         {
             switch (homeButtonTypes[i])
             {
-                case ButtonType.heater:
-                    buttons[i].Image = Properties.Resources.heater;
+                case HomeControlPage.ButtonType.heater:
+                    if (buttonsPower[i])
+                    { buttons[i].Image = Properties.Resources.heaterOn; }
+                    else
+                    { buttons[i].Image = Properties.Resources.heater; }
                     break;
-                case ButtonType.light:
-                    buttons[i].Image = Properties.Resources.Light;
+                case HomeControlPage.ButtonType.light:
+                    if (buttonsPower[i])
+                    { buttons[i].Image = Properties.Resources.LightOn; }
+                    else
+                    { buttons[i].Image = Properties.Resources.Light; }
                     break;
-                case ButtonType.tv:
-                    buttons[i].Image = Properties.Resources.tv;
+                case HomeControlPage.ButtonType.tv:
+                    if (buttonsPower[i])
+                    { buttons[i].Image = Properties.Resources.tvOn; }
+                    else
+                    { buttons[i].Image = Properties.Resources.tv; }
                     break;
                 default:
                     buttons[i].Image = null;
@@ -98,7 +119,7 @@ namespace GazeToolBar
             Close();
         }
        
-        private void updateBtnImage()
+        private void updateBtnImages()
         {
             for (int i = 0; i <= buttons.Count - 1; i++)
             {
@@ -128,22 +149,43 @@ namespace GazeToolBar
                 }
             }
         }
+
         //========TODO==========
         //replace buttonsPower[i] = !buttonsPower[i] to python method to toggle power
         private void btn1_Click(object sender, EventArgs e)
         {
             buttonsPower[0] = !buttonsPower[0];
-            updateBtnImage();
+            updateBtnImage(0);
+            //using (Py.GIL())
+            //{
+            //    dynamic np = Py.Import("numpy");
+            //    Console.WriteLine(np.cos(np.pi * 2));
+
+            //    dynamic sin = np.sin;
+            //    Console.WriteLine(sin(5));
+
+            //    double c = np.cos(5) + sin(5);
+            //    Console.WriteLine(c);
+
+            //    dynamic a = np.array(new List<float> { 1, 2, 3 });
+            //    Console.WriteLine(a.dtype);
+
+            //    dynamic b = np.array(new List<float> { 6, 5, 4 }, dtype: np.int32);
+            //    Console.WriteLine(b.dtype);
+
+            //    Console.WriteLine(a * b);
+            //    Console.ReadKey();
+            //}
         }
         private void btn2_Click(object sender, EventArgs e)
         {
             buttonsPower[1] = !buttonsPower[1];
-            updateBtnImage();
+            updateBtnImage(1);
         }
         private void btn3_Click(object sender, EventArgs e)
         {
             buttonsPower[2] = !buttonsPower[2];
-            updateBtnImage();           
+            updateBtnImage(2);           
         }       
 
         private void HomePage_Shown(object sender, EventArgs e)
@@ -168,7 +210,7 @@ namespace GazeToolBar
             Program.ReadWriteJson();
 
             homeLables = Program.readSettings.homeLables;
-            homeButtonTypes = Program.readSettings.homeButtonTypes;
+            homeButtonTypes = Program.readSettings.homeButtonTypes;            
 
             ini_Buttons();
         }

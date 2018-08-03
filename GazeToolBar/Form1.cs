@@ -42,7 +42,6 @@ namespace GazeToolBar
 
         public Form1()
         {
-            
             InitializeComponent();
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
