@@ -8,6 +8,7 @@ using System.IO;
 using EyeXFramework.Forms;
 using System.Linq;
 using Python.Runtime;
+using System.Collections;
 
 namespace GazeToolBar
 {
@@ -41,7 +42,11 @@ namespace GazeToolBar
                 //(0 = none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
                 broadlink.setup("WIFI", "PASSWORD", 3);
 
-                devices = broadlink.discover();
+                devices = broadlink.discover(Py.kw("timeout",5));
+                for(int i = 0; i <= ((ICollection)devices).Count; i++)
+                {
+                    devices[i].set_power(!devices[i].check_power());
+                }
             }
         }
 
