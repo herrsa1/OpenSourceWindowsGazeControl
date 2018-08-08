@@ -50,7 +50,7 @@ namespace GazeToolBar
 
                 devices = broadlink.discover(Py.kw("timeout", 5));
 
-                for (int i = 0; i <= 1; i++)
+                for (int i = 0; i <= devices.check_power(); i++)
                 {
                     devices[i].auth();
                     devices[i].check_power();
@@ -58,21 +58,6 @@ namespace GazeToolBar
                 }
             }
             //TESING PYTHON IMPLEMENTATION===========================
-        }
-
-        public PyConverter pythonConverter()
-        {
-            using (Py.GIL())
-            {
-                var converter = new PyConverter();  //create a instance of PyConverter
-                converter.AddListType();
-                converter.Add(new StringType());
-                converter.Add(new Int64Type());
-                converter.Add(new Int32Type());
-                converter.Add(new FloatType());
-                converter.Add(new DoubleType());
-                return converter;
-            }
         }
 
         private void controlRelocateAndResize()
