@@ -35,18 +35,43 @@ namespace GazeToolBar
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
             //End      
+            
+            //TESING PYTHON IMPLEMENTATION===========================
+            //TODO:
+            //Reduce loading times
+            //convert python objects to clr objects
+
             using (Py.GIL())
             {
                 dynamic broadlink = Py.Import("broadlink");
 
                 //(0 = none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
-                broadlink.setup("WIFI", "PASSWORD", 3);
+                broadlink.setup("SPARK-4LDFTZ", "P7FKRAA7XS", 3);
 
-                devices = broadlink.discover(Py.kw("timeout",5));
-                for(int i = 0; i <= ((ICollection)devices).Count; i++)
+                devices = broadlink.discover(Py.kw("timeout", 5));
+
+                for (int i = 0; i <= 1; i++)
                 {
+                    devices[i].auth();
+                    devices[i].check_power();
                     devices[i].set_power(!devices[i].check_power());
                 }
+            }
+            //TESING PYTHON IMPLEMENTATION===========================
+        }
+
+        public PyConverter pythonConverter()
+        {
+            using (Py.GIL())
+            {
+                var converter = new PyConverter();  //create a instance of PyConverter
+                converter.AddListType();
+                converter.Add(new StringType());
+                converter.Add(new Int64Type());
+                converter.Add(new Int32Type());
+                converter.Add(new FloatType());
+                converter.Add(new DoubleType());
+                return converter;
             }
         }
 
