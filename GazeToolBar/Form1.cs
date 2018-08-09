@@ -10,6 +10,7 @@ using EyeXFramework.Forms;
 using OptiKey;
 using OptiKey.UI.Windows;
 using GazeToolBar;
+using Python.Runtime;
 
 namespace GazeToolBar
 {
@@ -43,6 +44,7 @@ namespace GazeToolBar
         public Form1()
         {
             InitializeComponent();
+            PythonEngine.Initialize();
             contextMenu = new ContextMenu();
             menuItemExit = new MenuItem();
             menuItemStartOnOff = new MenuItem();
