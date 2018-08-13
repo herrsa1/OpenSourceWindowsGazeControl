@@ -210,6 +210,8 @@ namespace GazeToolBar
             SystemFlags.scrolling = false;
             //Stop timer from running event to check if scrolling is needed.
             scrollStepTimer.Stop();
+            //scrollStepTimer.Dispose();
+            //VirtualMouse.MiddleMouseButton(5, 5);
         }
 
         public void SetDeadZoneBounds()

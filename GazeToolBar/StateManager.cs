@@ -113,6 +113,10 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ActionButtonSelected:
+                    if (!(SystemFlags.actionToBePerformed == ActionToBePerformed.Scroll))
+                    {
+                        //MessageBox.Show("hello");
+                    }
                     SystemFlags.hasSelectedButtonColourBeenReset = false;
                     if (SystemFlags.hasGaze)
                     {
@@ -148,7 +152,12 @@ namespace GazeToolBar
                 case SystemState.ScrollWait:
                     if (!SystemFlags.scrolling)
                     {
+                        //scrollWorker.stopScroll();
                         EnterWaitState();
+                    }
+                    if(SystemFlags.shortCutKeyPressed)
+                    {
+                        MessageBox.Show("scrollwait -sck");
                     }
                     break;
                 case SystemState.ApplyAction:
@@ -158,6 +167,7 @@ namespace GazeToolBar
                     }
                     else
                     {
+                        //scrollWorker.stopScroll();
                         if (Program.readSettings.stickyLeftClick && SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick) //if stick left && left click
                         {
                             EnterWaitState();
@@ -184,7 +194,7 @@ namespace GazeToolBar
             switch (SystemFlags.currentState)
             {
                 case SystemState.Wait:
-                    scrollWorker.stopScroll();
+                    //scrollWorker.stopScroll();
                     if (SystemFlags.hasSelectedButtonColourBeenReset == false)
                     {
                         toolbar.resetButtonsColor();
@@ -192,7 +202,11 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.ActionButtonSelected:
-                    scrollWorker.stopScroll();
+                    if (SystemFlags.scrolling)
+                    {
+                        MessageBox.Show("Scrolling");
+                    }
+
                     if (!SystemFlags.fixationRunning)
                     {
                         fixationWorker.StartDetectingFixation();
@@ -206,7 +220,7 @@ namespace GazeToolBar
                     }
                     break;
                 case SystemState.Zooming:
-                    scrollWorker.stopScroll();
+                    //scrollWorker.stopScroll();
                     fixationWorker.IsZoomerFixation(true);
                     if (SystemFlags.shortCutKeyPressed)//if a user defined click key is pressed
                     {
@@ -260,7 +274,6 @@ namespace GazeToolBar
                                            // implemented in the future
                     magnifier.ResetZoomValue();
                     magnifier.Stop();
-
 
                     //execute the appropriate action
                     if (SystemFlags.actionToBePerformed == ActionToBePerformed.LeftClick)

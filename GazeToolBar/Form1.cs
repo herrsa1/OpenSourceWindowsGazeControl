@@ -226,7 +226,11 @@ namespace GazeToolBar
                 AttemptToggle(SystemFlags.actionToBePerformed);
             }
         }
-
+        private void stopScroll()
+        {
+            SystemFlags.scrolling = false;
+            stateManager.scrollWorker.stopScroll();
+        }
         public bool AttemptToggle(ActionToBePerformed action)
         {
             bool isScroll = (SystemFlags.currentState == SystemState.ApplyAction || SystemFlags.currentState == SystemState.ScrollWait) && (action == ActionToBePerformed.Scroll);
@@ -241,8 +245,7 @@ namespace GazeToolBar
                     //special scrolling case
                     if(isScroll)
                     {
-                        SystemFlags.scrolling = false;
-                        stateManager.scrollWorker.stopScroll();
+                        stopScroll();
                     }
                     return true;
                 }
@@ -254,16 +257,17 @@ namespace GazeToolBar
         {
             if (AttemptToggle(ActionToBePerformed.RightClick))
                 return;
-
+            stopScroll();
             SystemFlags.actionButtonSelected = true;//raise action button flag
             SystemFlags.actionToBePerformed = ActionToBePerformed.RightClick;   
         }
 
         private void btnSingleLeftClick_Click(object sender, EventArgs e)
         {
+
             if (AttemptToggle(ActionToBePerformed.LeftClick))
                 return;
-
+            stopScroll();
             SystemFlags.actionButtonSelected = true;//raise action button flag
             SystemFlags.actionToBePerformed = ActionToBePerformed.LeftClick;
         }
@@ -272,13 +276,14 @@ namespace GazeToolBar
         {
             if (AttemptToggle(ActionToBePerformed.DoubleClick))
                 return;
-
+            stopScroll();
             SystemFlags.actionButtonSelected = true;//raise action button flag
             SystemFlags.actionToBePerformed = ActionToBePerformed.DoubleClick;
         }
 
         private void btnKeyboard_Click(object sender, EventArgs e)
         {
+            stopScroll();
             if (keyboard.IsVisible)
             {
                 keyboard.Hide();
