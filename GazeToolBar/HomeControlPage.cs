@@ -45,20 +45,25 @@ namespace GazeToolBar
             //
             //#Bugs:
             //1)cant count number of objects in device list due to being a python object so going past the number of devices crashes the program.
-
-            //devices[i].auth() allows further communication with devices
+           
             using (Py.GIL())
             {
-                //dynamic broadlink = Py.Import("broadlink");
+                dynamic broadlink = Py.Import("broadlink");
+                dynamic json = Py.Import("json");
 
                 //(0 = none, 1 = WEP, 2 = WPA1, 3 = WPA2, 4 = WPA1/2)
-                //broadlink.setup("SPARK-4LDFTZ", "P7FKRAA7XS", 3);
+                //broadlink.setup("WiFi SSID", "PASSWORD", 3);
+                broadlink.setup("SPARK-4LDFTZ", "P7FKRAA7XS", 3);
 
-                //devices = broadlink.discover(Py.kw("timeout", 5));
+                devices = broadlink.discover(Py.kw("timeout", 5));
+
+                //devices[i].auth() allows further communication with devices
                 int nDevices = 1;
                 for (int i = 0; i <= nDevices-1; i++)
                 {
-                    //devices[i].auth();                                     
+                    devices[i].auth();
+                    devices[i].check_power();
+                    MessageBox.Show(json.dumps(devices[i].check_power()));
                 }
             }
             //TESING PYTHON IMPLEMENTATION===========================

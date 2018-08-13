@@ -10,6 +10,7 @@ for i in range(len(devices)):
     devices[i].auth()
     devices[i].set_power(not devices[i].check_power())
 
+
 def toggleDevice(i):
     devices[i].set_power(not devices[i].check_power())
 
