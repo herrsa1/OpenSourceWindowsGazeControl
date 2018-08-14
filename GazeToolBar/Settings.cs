@@ -1174,17 +1174,17 @@ namespace GazeToolBar
 
         private void btnDevice1_Click(object sender, EventArgs e)
         {
-            changeBtnDevice(0);
+            //changeBtnDevice(0);
         }
 
         private void btnDevice2_Click(object sender, EventArgs e)
         {
-            changeBtnDevice(1);
+            //changeBtnDevice(1);
         }
 
         private void btnDevice3_Click(object sender, EventArgs e)
         {
-            changeBtnDevice(2);
+            //changeBtnDevice(2);
         }       
     }
 }

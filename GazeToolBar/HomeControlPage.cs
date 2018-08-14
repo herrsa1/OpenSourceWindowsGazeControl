@@ -25,7 +25,7 @@ namespace GazeToolBar
         private List<Boolean> buttonsPower = new List<Boolean>();
         private dynamic devices;
 
-        public enum ButtonType { light, heater, tv, undefined }       
+        public enum ButtonType { light, heater, tv, undefined }
 
         public HomeControlPage(Form1 form1, FormsEyeXHost EyeXHost)
         {
@@ -38,14 +38,10 @@ namespace GazeToolBar
             //End      
             controlRelocateAndResize();
 
-            //TESING PYTHON IMPLEMENTATION===========================
             //#TODO:
             //1)Reduce loading times(narrowed it down to broadlink.setup taking time to connect to wifi)
-            //2)convert python objects to clr objects
-            //
-            //#Bugs:
-            //1)cant count number of objects in device list due to being a python object so going past the number of devices crashes the program.
-           
+            //###will move wifi setup and device discovery to form1
+
             using (Py.GIL())
             {
                 dynamic broadlink = Py.Import("broadlink");
@@ -58,15 +54,22 @@ namespace GazeToolBar
                 devices = broadlink.discover(Py.kw("timeout", 5));
 
                 //devices[i].auth() allows further communication with devices
-                int nDevices = 1;
-                for (int i = 0; i <= nDevices-1; i++)
+                int nDevices = 9;
+                for (int i = 0; i <= nDevices; i++)
                 {
-                    devices[i].auth();
-                    devices[i].check_power();
-                    MessageBox.Show(json.dumps(devices[i].check_power()));
+                    //Due to the python implementations limitations we cannot convert the python object to c# thus cannot count the devices array
+                    //the try catch will handle the error thrown when index goes out of range
+                    try
+                    {
+                        devices[i].auth();
+                    }
+                    catch (Exception e)
+                    {
+                        //do something
+                        break;
+                    }
                 }
             }
-            //TESING PYTHON IMPLEMENTATION===========================
         }
 
         private void controlRelocateAndResize()
@@ -79,17 +82,14 @@ namespace GazeToolBar
             buttons.Add(btn1);
             buttons.Add(btn2);
             buttons.Add(btn3);
-            //========TO BE REPLACED=========
-            //boolean variables to be replaced with devices ability to send current power status
-            //devices[i].check_power();
             buttonsPower.Add(false);
             buttonsPower.Add(false);
             buttonsPower.Add(false);
-            //=======================
-            for (int i = 0; i <= buttons.Count-1; i++)
+            updatePowerValues();
+            for (int i = 0; i <= buttons.Count - 1; i++)
             {
                 buttons[i].TextAlign = ContentAlignment.BottomCenter;
-                buttons[i].Font = new Font("Arial",12);
+                buttons[i].Font = new Font("Arial", 12);
                 buttons[i].Text = homeLables[i];
                 updateBtnImages();
             }
@@ -127,7 +127,7 @@ namespace GazeToolBar
         {
             Close();
         }
-       
+
         private void updateBtnImages()
         {
             for (int i = 0; i <= buttons.Count - 1; i++)
@@ -159,29 +159,72 @@ namespace GazeToolBar
             }
         }
 
-        //========TODO==========
-        //replace buttonsPower[i] = !buttonsPower[i] to python method to toggle power
-        private void btnDefaultAction(int buttonNumber)
+        private void updatePowerValues()
         {
-            buttonsPower[buttonNumber] = !buttonsPower[buttonNumber];
-            updateBtnImage(buttonNumber);
             using (Py.GIL())
             {
-                devices[buttonNumber].set_power(!devices[buttonNumber].check_power());
+                dynamic broadlink = Py.Import("broadlink");
+                dynamic json = Py.Import("json");
+
+                bool power = false;
+
+                int nDevices = 9;
+                for (int i = 0; i <= nDevices; i++)
+                {
+                    try
+                    {
+                        if (json.dumps(devices[i].check_power()) == "true")
+                        { power = true; }
+                        else
+                        { power = false; }
+                        buttonsPower[i] = power;
+                        updateBtnImage(i);
+                    }
+                    catch (Exception e)
+                    {
+                        //do something
+                        break;
+                    }
+                }
             }
         }
+
+        private void togglePower(int buttonNumber)
+        {
+            using (Py.GIL())
+            {
+                dynamic broadlink = Py.Import("broadlink");
+                dynamic json = Py.Import("json");
+
+                bool power = false;
+                String sPower = json.dumps(devices[buttonNumber].check_power());
+                if (sPower == "true")
+                { power = true; }
+                else
+                { power = false; }
+                buttonsPower[buttonNumber] = power;
+                updateBtnImage(buttonNumber);
+                devices[buttonNumber].set_power(!power);
+            }
+        }
+        
+        private void btnDefaultAction(int buttonNumber)
+        {
+            togglePower(buttonNumber);
+        }
+
         //btnDeviceNumbers is type int?(Nullable int). "btnDeviceNumbers[i] ?? default(int)" converts it to int
         private void btn1_Click(object sender, EventArgs e)
         {
-            btnDefaultAction(btnDeviceNumbers[0] ?? default(int));
+            btnDefaultAction(0);
         }
         private void btn2_Click(object sender, EventArgs e)
         {
-            btnDefaultAction(btnDeviceNumbers[1] ?? default(int));
+            btnDefaultAction(1);
         }
         private void btn3_Click(object sender, EventArgs e)
         {
-            btnDefaultAction(btnDeviceNumbers[2] ?? default(int));
+            btnDefaultAction(2);
         }
 
         private void HomeControlPage_FormClosed(object sender, FormClosedEventArgs e)
